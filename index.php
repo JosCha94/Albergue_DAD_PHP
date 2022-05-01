@@ -16,11 +16,11 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <link rel="stylesheet" href="libs/css/estilos.css">
     <script src="libs/javascript/funciones.js">
     </script>
-    <title>Albergue de perritos<?php echo ($modulo == "adoptar") ? " - adopción " : " ";
-                                echo ($modulo == "apadrinar") ? " - apadrinar " : " ";
-                                echo ($modulo == "tienda") ? " - tienda " : " ";
-                                echo ($modulo == "donar") ? " - donación " : " ";
-                                echo ($modulo == "blog") ? " - blog " : " "; ?>
+    <title>Albergue de perritos<?php echo ($modulo == "adoptar") ? " - Adopción " : " ";
+                                echo ($modulo == "apadrinar") ? " - Apadrinar " : " ";
+                                echo ($modulo == "tienda") ? " - Tienda " : " ";
+                                echo ($modulo == "donar") ? " - Donación " : " ";
+                                echo ($modulo == "blog") ? " - Blog " : " "; ?>
     </title>
 </head>
 
