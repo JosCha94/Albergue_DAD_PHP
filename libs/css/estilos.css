@@ -1,8 +1,14 @@
+/* MENU */
 .nav-link:hover {
-    transition: 0.5s;
-    font-weight: bold;
-    
+  transition: 0.5s;
+  font-weight: bold;
+  
 }
+.active{
+  font-weight: bold;
+}
+/* MENU */
+
 /* VAINA DE LOADING */
 .lds-facebook {
     display: inline-block;
@@ -42,9 +48,5 @@
   }
 /* VAINA DE LOADING */
 
-/* MENU */
-.active{
-  font-weight: bold;
-}
-/* MENU */
+
 
