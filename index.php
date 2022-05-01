@@ -14,9 +14,14 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <meta name="description" content="Adopta un perrito en el albergue, dona para apoyar al albergue, suscribete a un plan para apadrinar, coprar productos para el perrito">
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="libs/css/estilos.css">
-    <script src="libs/javascript/funciones.js">      
+    <script src="libs/javascript/funciones.js">
     </script>
-    <title>Albergue de perritos</title>
+    <title>Albergue de perritos<?php echo ($modulo == "adoptar") ? " - adopción " : " ";
+                                echo ($modulo == "apadrinar") ? " - apadrinar " : " ";
+                                echo ($modulo == "tienda") ? " - tienda " : " ";
+                                echo ($modulo == "donar") ? " - donación " : " ";
+                                echo ($modulo == "blog") ? " - blog " : " "; ?>
+    </title>
 </head>
 
 <body>
@@ -103,33 +108,27 @@ $modulo = $_REQUEST['modulo'] ?? '';
 <script src="libs/javascript/jquery-3.6.0.min.js"></script>
 <script src="libs/javascript/script.js"></script>
 <script>
-	function saludame()
-    { 
-      var parametros = 
-      {
-        "nombre" : "dostin",
-        "apellido" : "hurtado",
-        "telefono" : "123456789"
-      };
+    function saludame() {
+        var parametros = {
+            "nombre": "dostin",
+            "apellido": "hurtado",
+            "telefono": "123456789"
+        };
 
-      $.ajax({
-        data: parametros,
-        url: 'codigo_php.php',
-        type: 'POST',
-        
-        beforesend: function()
-        {
-          $('#mostrar_mensaje').html("Mensaje antes de Enviar");
-        },
+        $.ajax({
+            data: parametros,
+            url: 'codigo_php.php',
+            type: 'POST',
 
-        success: function(mensaje)
-        {
-          $('#mostrar_mensaje').html(mensaje);
-        }
-      });
+            beforesend: function() {
+                $('#mostrar_mensaje').html("Mensaje antes de Enviar");
+            },
+
+            success: function(mensaje) {
+                $('#mostrar_mensaje').html(mensaje);
+            }
+        });
     }
-
-
 </script>
 
 </html>
