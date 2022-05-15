@@ -11,11 +11,20 @@
   font-weight: bold;
 }
 /*NAVBAR*/
-.navbar .container{
+
+/* .navbar .container{
+  background-color: #001E6C;  
+}
+.navbar .container .collapse .nav-link{
+  color:#FCD900
+} */
+
+.bg-blue{
   background-color: #001E6C;
   
 }
-.navbar .container .collapse .nav-link{
+
+.container-fluid .navbar .collapse .nav-link{
   color:#FCD900
 }
 /*NAVBAR END*/

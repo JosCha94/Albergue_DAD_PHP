@@ -26,8 +26,9 @@ $modulo = $_REQUEST['modulo'] ?? '';
 
 <body>
     <!-- HEADER -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid">
-        <div class="container">
+    <div class="container-fluid bg-blue">
+        <nav class="navbar navbar-expand-lg navbar-light .bg-transparent container-fluid">
+
             <a class="navbar-brand" href="index.php?modulo=inicio">
                 <a href="index.php?modulo= "><img src="Presentacion/libs/images/doglogo.png" alt="logo" width="80em"></a>
 
@@ -55,12 +56,12 @@ $modulo = $_REQUEST['modulo'] ?? '';
                 </ul>
                 <button type="button" class="btn btn-light" onclick="saludame();">Iniciar Sesion</button>
             </div>
-        </div>
-    </nav>
 
+        </nav>
+    </div>
 
     <!-- BODY -->
-    <div class="container mb-5" >
+    <div class="container mb-5">
         <?php
 
         if ($modulo == "" || $modulo == "inicio") {
