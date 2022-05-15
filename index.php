@@ -60,7 +60,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
 
 
     <!-- BODY -->
-    <div class="container mb-5" id="mostrar_mensaje">
+    <div class="container mb-5" >
         <?php
 
         if ($modulo == "" || $modulo == "inicio") {
