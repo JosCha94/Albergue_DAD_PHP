@@ -12,9 +12,9 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="adopcion, perritos, donaciones, albergues, suscripción">
     <meta name="description" content="Adopta un perrito en el albergue, dona para apoyar al albergue, suscribete a un plan para apadrinar, coprar productos para el perrito">
-    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="libs/css/estilos.css">
-    <script src="libs/javascript/funciones.js">
+    <link rel="stylesheet" href="Presentacion/libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Presentacion/libs/css/estilos.css">
+    <script src="Presentacion/libs/javascript/funciones.js">
     </script>
     <title>Albergue de perritos<?php echo ($modulo == "adoptar") ? " - Adopción " : " ";
                                 echo ($modulo == "apadrinar") ? " - Apadrinar " : " ";
@@ -29,7 +29,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid">
         <div class="container">
             <a class="navbar-brand" href="index.php?modulo=inicio">
-                <a href="index.php?modulo= "><img src="libs/images/doglogo.png" alt="logo" width="80em"></a>
+                <a href="index.php?modulo= "><img src="Presentacion/libs/images/doglogo.png" alt="logo" width="80em"></a>
 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,22 +64,22 @@ $modulo = $_REQUEST['modulo'] ?? '';
         <?php
 
         if ($modulo == "" || $modulo == "inicio") {
-            include_once "vistas/inicio.php";
+            include_once "Presentacion/vistas/inicio.php";
         }
         if ($modulo == "adoptar") {
-            include_once "vistas/adoptar.php";
+            include_once "Presentacion/vistas/adoptar.php";
         }
         if ($modulo == "apadrinar") {
-            include_once "vistas/apadrinar.php";
+            include_once "Presentacion/vistas/apadrinar.php";
         }
         if ($modulo == "tienda") {
-            include_once "vistas/tienda.php";
+            include_once "Presentacion/vistas/tienda.php";
         }
         if ($modulo == "donar") {
-            include_once "vistas/donar.php";
+            include_once "Presentacion/vistas/donar.php";
         }
         if ($modulo == "blog") {
-            include_once "vistas/blog.php";
+            include_once "Presentacion/vistas/blog.php";
         }
 
 
@@ -104,31 +104,9 @@ $modulo = $_REQUEST['modulo'] ?? '';
     feather.replace()
 </script>
 <script src="https://kit.fontawesome.com/f52de5d372.js" crossorigin="anonymous"></script>
-<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="libs/javascript/jquery-3.6.0.min.js"></script>
-<script src="libs/javascript/script.js"></script>
-<script>
-    function saludame() {
-        var parametros = {
-            "nombre": "dostin",
-            "apellido": "hurtado",
-            "telefono": "123456789"
-        };
+<script src="Presentacion/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="Presentacion/libs/javascript/jquery-3.6.0.min.js"></script>
+<script src="Presentacion/libs/javascript/script.js"></script>
 
-        $.ajax({
-            data: parametros,
-            url: 'codigo_php.php',
-            type: 'POST',
-
-            beforesend: function() {
-                $('#mostrar_mensaje').html("Mensaje antes de Enviar");
-            },
-
-            success: function(mensaje) {
-                $('#mostrar_mensaje').html(mensaje);
-            }
-        });
-    }
-</script>
 
 </html>
