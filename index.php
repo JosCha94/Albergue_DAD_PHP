@@ -54,10 +54,50 @@ $modulo = $_REQUEST['modulo'] ?? '';
                         <a class="nav-link <?php echo ($modulo == "blog") ? " active " : " " ?> mx-2" href="index.php?modulo=blog">Blog</a>
                     </li>
                 </ul>
-                <button type="button" class="btn btn-light" onclick="saludame();">Iniciar Sesion</button>
+                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalLogin">Iniciar Sesion</button>
             </div>
 
         </nav>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bienvenido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div> -->
+                <div class="modal-body">
+                    <main class="form-signin">
+                        <form>
+
+                            <h1 class="h3 mb-3 fw-normal text-center">Bienvenido</h1>
+
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="user" placeholder="usuario">
+                                <label for="floatingInput">Usuario</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="pass" placeholder="contraseña">
+                                <label for="pass">Contraseña</label>
+                            </div>
+
+                            <!-- <div class="checkbox mb-3">
+                                <label>
+                                    <input type="checkbox" value="remember-me"> Remember me
+                                </label>
+                            </div> -->
+                            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Iniciar Sesión</button>
+                            <p class="mt-5 mb-3 text-muted">© 2021–<span id="anio"></p>
+                        </form>
+                    </main>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Registrarse</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- BODY -->
