@@ -12,8 +12,13 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="adopcion, perritos, donaciones, albergues, suscripción">
     <meta name="description" content="Adopta un perrito en el albergue, dona para apoyar al albergue, suscribete a un plan para apadrinar, coprar productos para el perrito">
+   
     <link rel="stylesheet" href="Presentacion/libs/bootstrap/dist/css/bootstrap.min.css">
+    <script src="Presentacion/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="Presentacion/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    
     <link rel="stylesheet" href="Presentacion/libs/css/estilos.css">
+
     <script src="Presentacion/libs/javascript/funciones.js">
     </script>
     <title>Albergue de perritos<?php echo ($modulo == "adoptar") ? " - Adopción " : " ";

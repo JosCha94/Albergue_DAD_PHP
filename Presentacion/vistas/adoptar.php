@@ -89,21 +89,21 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-8">
-                        <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
+                    <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
                         <label class="mr-2">Sort by:</label>
-                        <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
-                            <a class="dropdown-item" href="#">Relevance</a>
-                            <a class="dropdown-item" href="#">Price Descending</a>
-                            <a class="dropdown-item" href="#">Price Ascending</a>
-                            <a class="dropdown-item" href="#">Best Selling</a>
-                        </div>
+                        <a class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdown" role="button" aria-expanded="false">Relevance</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
+                            <li><a class="dropdown-item" href="#">Relevance</a></li>
+                            <li><a class="dropdown-item" href="#">Price Descending</a></li>
+                            <li><a class="dropdown-item" href="#">Price Ascending</a></li>
+                            <li><a class="dropdown-item" href="#">Best Selling</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="dropdown float-right">
                         <label class="mr-2">View:</label>
-                        <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">9 <span class="caret"></span></a>
+                        <a class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">9 <span class="caret"></span></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
                             <a class="dropdown-item" href="#">12</a>
                             <a class="dropdown-item" href="#">24</a>
@@ -117,7 +117,64 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-3"> 
+
+            <!-- perritos -->
+            <div class="wrapper-gallery row magnific-popup mt-5">
+               <!-- Image 1 -->
+               <div class="item-gallery col-lg-4 col-md-6">
+                  <div class="polaroid-gallery">
+                     <a href="">
+                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
+                        <p class="caption-gallery" data-aos="zoom-in">Grooming Time!</p>
+                     </a>
+                  </div>
+               </div>
+               <!-- Image 2 -->
+               <div class="item-gallery col-lg-4 col-md-6">
+                  <div class="polaroid-gallery">
+                     <a href="">
+                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
+                        <p class="caption-gallery" data-aos="zoom-in">Jack is Ready For an Adventure</p>
+                     </a>
+                  </div>
+               </div>
+               <div class="item-gallery col-lg-4 col-md-6">
+                  <div class="polaroid-gallery">
+                     <a href="">
+                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
+                        <p class="caption-gallery" data-aos="zoom-in">Obedience Training</p>
+                     </a>
+                  </div>
+               </div>
+               <div class="item-gallery col-lg-4 col-md-6">
+                  <div class="polaroid-gallery">
+                     <a href="">
+                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
+                        <p class="caption-gallery" data-aos="zoom-in">Grooming Time!</p>
+                     </a>
+                  </div>
+               </div>
+               <!-- Image 2 -->
+               <div class="item-gallery col-lg-4 col-md-6">
+                  <div class="polaroid-gallery">
+                     <a href="">
+                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
+                        <p class="caption-gallery" data-aos="zoom-in">Jack is Ready For an Adventure</p>
+                     </a>
+                  </div>
+               </div>
+               <div class="item-gallery col-lg-4 col-md-6">
+                  <div class="polaroid-gallery">
+                     <a href="">
+                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
+                        <p class="caption-gallery" data-aos="zoom-in">Obedience Training</p>
+                     </a>
+                  </div>
+               </div>
+            </div>
+
+
+            <!-- <div class="row mt-3"> 
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                     <div class="card h-100 border-0">
                         <div class="card-img-top">
@@ -134,7 +191,8 @@
                         </div>
                     </div>
                 </div>
-            </div>  
+            </div>   -->
+            <!-- END CARD -->
             <div class="row sorting mb-5 mt-5">
                 <div class="col-8">
                     <a class="btn btn-light"><i class="fas fa-arrow-up mr-2"></i> Back to top</a>
