@@ -131,22 +131,17 @@ $modulo = $_REQUEST['modulo'] ?? '';
     </div>
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="container-fluid">
+    <div class="container-fluid">
             <div class="row bg-light">
-                <p class="text-center mt-3">© <span id="anio"></span> PlanetDog.com by FJF WEB SAC</p>
+                <p class="text-center mt-3">© <span id="anio_footer"></span> PlanetDog.com by FJF WEB SAC</p>
             </div>
         </div>
     </footer>
 
 </body>
 <!-- LINKS SCRIPT -->
-<script src="feather-icons/dist/feather.min.js"></script>
-<script>
-    feather.replace()
-</script>
 <script src="Presentacion/libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="Presentacion/libs/javascript/jquery-3.6.0.min.js"></script>
 <script src="Presentacion/libs/javascript/script.js"></script>
-
 
 </html>
