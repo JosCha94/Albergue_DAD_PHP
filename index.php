@@ -12,15 +12,9 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="adopcion, perritos, donaciones, albergues, suscripción">
     <meta name="description" content="Adopta un perrito en el albergue, dona para apoyar al albergue, suscribete a un plan para apadrinar, coprar productos para el perrito">
-   
-    <link rel="stylesheet" href="Presentacion/libs/bootstrap/dist/css/bootstrap.min.css">
-    <script src="Presentacion/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="Presentacion/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <!-- LINKS HOJAS DE ESTILOS -->
+    <link rel="stylesheet" href="Presentacion/libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="Presentacion/libs/css/estilos.css">
-
-    <script src="Presentacion/libs/javascript/funciones.js">
-    </script>
     <title>Albergue de perritos<?php echo ($modulo == "adoptar") ? " - Adopción " : " ";
                                 echo ($modulo == "apadrinar") ? " - Apadrinar " : " ";
                                 echo ($modulo == "tienda") ? " - Tienda " : " ";
@@ -145,12 +139,12 @@ $modulo = $_REQUEST['modulo'] ?? '';
     </footer>
 
 </body>
+<!-- LINKS SCRIPT -->
 <script src="feather-icons/dist/feather.min.js"></script>
 <script>
     feather.replace()
 </script>
-<script src="https://kit.fontawesome.com/f52de5d372.js" crossorigin="anonymous"></script>
-<script src="Presentacion/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="Presentacion/libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="Presentacion/libs/javascript/jquery-3.6.0.min.js"></script>
 <script src="Presentacion/libs/javascript/script.js"></script>
 
