@@ -31,7 +31,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
 
 <body>
     <!-- HEADER -->
-    <div class="container-fluid bg-blue">
+    <div class="container-fluid" id="nav_principal">
         <nav class="navbar navbar-expand-lg navbar-light .bg-transparent container-fluid">
 
             <a class="navbar-brand" href="index.php?modulo=inicio">

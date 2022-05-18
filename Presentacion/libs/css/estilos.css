@@ -19,12 +19,12 @@
   color:#FCD900
 } */
 
-.bg-blue{
+#nav_principal{
   background-color: #001E6C;
   
 }
 
-.container-fluid .navbar .collapse .nav-link{
+#nav_principal .navbar .collapse .nav-link{
   color:#FCD900
 }
 /*NAVBAR END*/
