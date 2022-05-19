@@ -15,11 +15,13 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <!-- LINKS HOJAS DE ESTILOS -->
     <link rel="stylesheet" href="Presentacion/libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="Presentacion/libs/css/estilos.css">
+    
     <title>Albergue de perritos<?php echo ($modulo == "adoptar") ? " - Adopción " : " ";
                                 echo ($modulo == "apadrinar") ? " - Apadrinar " : " ";
                                 echo ($modulo == "tienda") ? " - Tienda " : " ";
                                 echo ($modulo == "donar") ? " - Donación " : " ";
                                 echo ($modulo == "blog") ? " - Blog " : " "; ?>
+                                
     </title>
 </head>
 
@@ -121,6 +123,9 @@ $modulo = $_REQUEST['modulo'] ?? '';
         if ($modulo == "blog") {
             include_once "Presentacion/vistas/blog.php";
         }
+        if ($modulo == "adoptar-single") {
+            include_once "Presentacion/vistas/adoptar-single.php";
+        }
 
 
         ?>
@@ -143,5 +148,11 @@ $modulo = $_REQUEST['modulo'] ?? '';
 <script src="Presentacion/libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="Presentacion/libs/javascript/jquery-3.6.0.min.js"></script>
 <script src="Presentacion/libs/javascript/script.js"></script>
+<script src="Presentacion/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src ="Presentacion\libs\javascript\plugins.js"></script>
+
+
+
+
 
 </html>

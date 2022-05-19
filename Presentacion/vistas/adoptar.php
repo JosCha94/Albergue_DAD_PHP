@@ -123,7 +123,7 @@
                <!-- Image 1 -->
                <div class="item-gallery col-lg-4 col-md-6">
                   <div class="polaroid-gallery">
-                     <a href="">
+                     <a href="index.php?modulo=adoptar-single">
                         <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in">Grooming Time!</p>
                      </a>
@@ -132,7 +132,7 @@
                <!-- Image 2 -->
                <div class="item-gallery col-lg-4 col-md-6">
                   <div class="polaroid-gallery">
-                     <a href="">
+                     <a href="index.php?modulo=adoptar-single">
                         <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in">Jack is Ready For an Adventure</p>
                      </a>
@@ -140,7 +140,7 @@
                </div>
                <div class="item-gallery col-lg-4 col-md-6">
                   <div class="polaroid-gallery">
-                     <a href="">
+                     <a href="index.php?modulo=adoptar-single">
                         <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in">Obedience Training</p>
                      </a>
@@ -148,7 +148,7 @@
                </div>
                <div class="item-gallery col-lg-4 col-md-6">
                   <div class="polaroid-gallery">
-                     <a href="">
+                     <a href="index.php?modulo=adoptar-single">
                         <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in">Grooming Time!</p>
                      </a>
@@ -157,7 +157,7 @@
                <!-- Image 2 -->
                <div class="item-gallery col-lg-4 col-md-6">
                   <div class="polaroid-gallery">
-                     <a href="">
+                     <a href="index.php?modulo=adoptar-single">
                         <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in">Jack is Ready For an Adventure</p>
                      </a>
@@ -165,7 +165,7 @@
                </div>
                <div class="item-gallery col-lg-4 col-md-6">
                   <div class="polaroid-gallery">
-                     <a href="">
+                     <a href="index.php?modulo=adoptar-single">
                         <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in">Obedience Training</p>
                      </a>

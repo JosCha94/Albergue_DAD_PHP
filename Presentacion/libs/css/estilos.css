@@ -148,6 +148,81 @@
   filter: none;
   transform: scale(1, 1) rotate(0deg) !important;
   transition: all 0.35s;
+  -webkit-transform:;
+  -moz-transform:;
+  -ms-transform:;
+  -o-transform:;
 }
 /*===============FIN FOTOS PERRITOS=============*/
+
+/*===============ADOPTAR-SINGLE================*/
+
+.pet-adopt-info {
+  margin-bottom:20px;
+}
+.pet-adopt-info h6{
+display:inline;
+}
+
+
+/* Jumbotron */
+
+.jumbotron {
+  background: url(../images/jumbotron.png);
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:center;
+  width: 100%;
+  height: 380px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 7em;
+  border-bottom-left-radius: 25%;
+  border-bottom-right-radius: 25%;
+}
+.jumbotron .jumbo-heading {
+  size: content;
+  color: #fff;
+  padding: 40px 70px;
+  background-color: #E8630A ;
+  margin-top: 330px;
+  display: inline-block;
+  border-radius: 50%;
+  border: 10px solid;
+}
+
+.jumbo-heading h1 {
+  margin: 0px;
+}
+/*FIN JUMBOTRON*/
+.pet-adopt-info {
+  margin-bottom:20px;
+}
+.pet-adopt-info h6{
+display:inline;
+color: #E8630A ;
+
+}
+.btn-adopt{
+  color: #fff;
+  background-color: #E8630A;
+}
+.btn-adopt:hover{
+ background-color:#001E6C;
+ color: #fff;
+ box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.breadcrumb-link{
+  color:#E8630A;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.breadcrumb-item.active{
+  font-size: 20px;
+}
+
+
+/*===============ADOPTAR-SINGLE-END================*/
+
 
