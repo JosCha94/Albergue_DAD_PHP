@@ -145,10 +145,11 @@ $modulo = $_REQUEST['modulo'] ?? '';
 
 </body>
 <!-- LINKS SCRIPT -->
+<script src="https://kit.fontawesome.com/f52de5d372.js" crossorigin="anonymous"></script>
 <script src="Presentacion/libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="Presentacion/libs/javascript/jquery-3.6.0.min.js"></script>
 <script src="Presentacion/libs/javascript/script.js"></script>
-<script src="Presentacion/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="Presentacion/libs/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 <script src ="Presentacion\libs\javascript\plugins.js"></script>
 
 
