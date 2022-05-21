@@ -1,5 +1,5 @@
 <?php
-require_once('BL/consulta_tienda.php');
+require_once('BL/consultas_tienda.php');
 require_once('DAL/conexion.php');
 require_once('DAL/clases/producto.php');
 $conexion = conexion::conectar();
