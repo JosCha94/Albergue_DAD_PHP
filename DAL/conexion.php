@@ -6,7 +6,7 @@ class conexion
     {
         $contrasena = "";
         $usuario = "root";
-        $BaseDeDatos = "albergue_dogs";
+        $BaseDeDatos = "albergue_dogs_prueba";
         $servidor = "localhost";
         try {
             $conexion = new PDO("mysql:host=$servidor;  dbname=$BaseDeDatos", $usuario, $contrasena);

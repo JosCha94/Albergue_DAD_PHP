@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
+session_start();
+error_reporting(0);
+$mysesion = $_SESSION['usuario'] ;
 
 $modulo = $_REQUEST['modulo'] ?? '';
-
 ?>
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -40,7 +42,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item ">
-                        <a class="nav-link <?php echo ($modulo == "adoptar") ? " active " : " " ?> mx-2" href="index.php?modulo=adoptar">Adoptar</a>
+                        <a class="nav-link <?php echo ($modulo == "adoptar" || "adoptar-single") ? " active " : " " ?> mx-2" href="index.php?modulo=adoptar">Adoptar</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link <?php echo ($modulo == "apadrinar") ? " active " : " " ?> mx-2" href="index.php?modulo=apadrinar">Apadrinar</a>
@@ -54,8 +56,43 @@ $modulo = $_REQUEST['modulo'] ?? '';
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($modulo == "blog") ? " active " : " " ?> mx-2" href="index.php?modulo=blog">Blog</a>
                     </li>
+                    <!-- <li class="nav-item ">
+                        <a class="nav-link <?php echo ($modulo == "prueba") ? " active " : " " ?> mx-2" 
+                        href="
+                        <?php if ($mysesion == null || $mysesion == '') {
+                            echo 'Deve iniciar sesión';
+                        } else {
+                            echo 'index.php?modulo=prueba';} ?>">Prueba</a>
+                    </li> -->
+                    <li class="nav-item ">
+                        <a class="nav-link <?php echo ($modulo == "prueba") ? " active " : " " ?> mx-2" 
+                        href="index.php?modulo=prueba">Prueba</a>
+                    </li>
                 </ul>
-                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalLogin">Iniciar Sesion</button>
+
+                <!-- ------------------------ -->
+
+                <?php if ($mysesion == null || $mysesion == '') {
+                    ?>
+                                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalLogin">Iniciar Sesion</button>
+                <?php
+                } else {
+                    ?>
+                    <div class="dropdown mx-4">
+                            <a class="dropdown-toggle text-uppercase" type="button" id="dropdownMenuUser"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo $_SESSION['usuario'] ?>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuUser">
+                                <li>
+                                <a href="BL/cerrar_sesion.php">Cerrar Sesión</a>
+                                </li>
+                            </ul>
+                        </div>
+                <?php
+                }
+                 ?>
+
             </div>
 
         </nav>
@@ -70,16 +107,16 @@ $modulo = $_REQUEST['modulo'] ?? '';
                 </div> -->
                 <div class="modal-body">
                     <main class="form-signin">
-                        <form>
+                        <form action="BL/valida_user.php" method="post">
 
                             <h1 class="h3 mb-3 fw-normal text-center">Bienvenido</h1>
 
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="user" placeholder="usuario">
+                                <input type="text" class="form-control" id="user" name="user" placeholder="usuario">
                                 <label for="floatingInput">Usuario</label>
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="pass" placeholder="contraseña">
+                                <input type="password" class="form-control" id="pass" name="pass" placeholder="contraseña">
                                 <label for="pass">Contraseña</label>
                             </div>
 
@@ -125,6 +162,9 @@ $modulo = $_REQUEST['modulo'] ?? '';
         }
         if ($modulo == "adoptar-single") {
             include_once "Presentacion/vistas/adoptar-single.php";
+        }
+        if ($modulo == "prueba") {
+            include_once "Presentacion/vistas/prueba.php";
         }
 
 
