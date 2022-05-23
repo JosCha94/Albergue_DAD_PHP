@@ -1,3 +1,18 @@
+<?php
+require_once('BL/consultas_adopcion.php');
+require_once('DAL/conexion.php');
+require_once('DAL/clases/perritos.php');
+require_once('DAL/clases/img_perritos.php');
+
+$conexion = conexion::conectar();
+$consulta = new Consulta_perro();
+
+$perro = $consulta->listarPerro($conexion);
+$imgPerro = $consulta->listarImagen_perro($conexion);
+
+?>
+
+
 <div class="container adop-text text-center">
     <h1>¡Ayudanos a ayudar!</h1>
     <p>Todos nuestros perritos estan listos para ser adoptados y para que los cuides en su neuva vida</p>
@@ -5,194 +20,109 @@
 <div class="container adop-body mt-5">
     <div class="row">
         <div class="col-md-3 sidebar-filter">
-            <h3 class="mt-0 mb-5">Showing <span class="text-primary">12</span> Products</h3>
-            <h6 class="text-uppercase font-weight-bold mb-3">Categories</h6>
+            <h3 class="mt-0 mb-5">Filtrar por:</h3>
+            <h6 class="text-uppercase font-weight-bold mb-3">TAMAÑO</h6>
             <div class="mt-2 mb-2 pl-2">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="category-1">
-                    <label class="custom-control-label" for="category-1">Accessories</label>
+                    <label class="custom-control-label" for="category-1">Grandes</label>
                 </div>
             </div>
             <div class="mt-2 mb-2 pl-2">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="category-2">
-                    <label class="custom-control-label" for="category-2">Coats &amp; Jackets</label>
+                    <label class="custom-control-label" for="category-2">Medianos</label>
                 </div>
             </div>
             <div class="mt-2 mb-2 pl-2">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="category-3">
-                    <label class="custom-control-label" for="category-3">Hoodies &amp; Sweatshirts</label>
-                </div>
-            </div>
-            <div class="mt-2 mb-2 pl-2">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="category-4">
-                    <label class="custom-control-label" for="category-4">Jeans</label>
-                </div>
-            </div>
-            <div class="mt-2 mb-2 pl-2">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="category-5">
-                    <label class="custom-control-label" for="category-5">Shirts</label>
-                </div>
-            </div>
-            <div class="mt-2 mb-2 pl-2">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="category-6">
-                    <label class="custom-control-label" for="category-6">Underwear</label>
+                    <label class="custom-control-label" for="category-3">Pequeños</label>
                 </div>
             </div>
             <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
-            <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">Size</h6>
+            <h6 class="text-uppercase font-weight-bold mb-3">EDAD</h6>
+            <div class="mt-2 mb-2 pl-2">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="category-1">
+                    <label class="custom-control-label" for="category-1">De 0 a 3 años</label>
+                </div>
+            </div>
+            <div class="mt-2 mb-2 pl-2">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="category-2">
+                    <label class="custom-control-label" for="category-2">De 4 a 6 años</label>
+                </div>
+            </div>
+            <div class="mt-2 mb-2 pl-2">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="category-3">
+                    <label class="custom-control-label" for="category-3">De 6 a 9 años</label>
+                </div>
+            </div>
+            <div class="mt-2 mb-2 pl-2">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="category-3">
+                    <label class="custom-control-label" for="category-3">De 10 a más años</label>
+                </div>
+            </div>
+            <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+            <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">SEXO</h6>
             <div class="mt-2 mb-2 pl-2">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="filter-size-1">
-                    <label class="custom-control-label" for="filter-size-1">X-Small</label>
+                    <label class="custom-control-label" for="filter-size-1">Macho</label>
                 </div>
             </div>
             <div class="mt-2 mb-2 pl-2">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="filter-size-2">
-                    <label class="custom-control-label" for="filter-size-2">Small</label>
-                </div>
-            </div>
-            <div class="mt-2 mb-2 pl-2">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="filter-size-3">
-                    <label class="custom-control-label" for="filter-size-3">Medium</label>
-                </div>
-            </div>
-            <div class="mt-2 mb-2 pl-2">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="filter-size-4">
-                    <label class="custom-control-label" for="filter-size-4">Large</label>
-                </div>
-            </div>
-            <div class="mt-2 mb-2 pl-2">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="filter-size-5">
-                    <label class="custom-control-label" for="filter-size-5">X-Large</label>
+                    <label class="custom-control-label" for="filter-size-2">Hembra</label>
                 </div>
             </div>
             <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
-            <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">Price</h6>
-            <div class="price-filter-control">
-                <input type="number" class="form-control w-50 pull-left mb-2" value="50" id="price-min-control">
-                <input type="number" class="form-control w-50 pull-right" value="150" id="price-max-control">
+            <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">NIVEL DE ACTIVIDAD</h6>
+            <div class="mt-2 mb-2 pl-2">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="category-1">
+                    <label class="custom-control-label" for="category-1">Ligera</label>
+                </div>
             </div>
-            <input id="ex2" type="text" class="slider " value="50,150" data-slider-min="10" data-slider-max="200" data-slider-step="5" data-slider-value="[50,150]" data-value="50,150" style="display: none;">
+            <div class="mt-2 mb-2 pl-2">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="category-2">
+                    <label class="custom-control-label" for="category-2">Moderada</label>
+                </div>
+            </div>
+            <div class="mt-2 mb-2 pl-2">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="category-3">
+                    <label class="custom-control-label" for="category-3">Intensa</label>
+                </div>
+            </div>
             <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
-            <a href="#" class="btn btn-lg btn-block btn-primary mt-5">Update Results</a>
+            <a href="#" class="btn btn-lg btn-block btn-primary mt-5">Filtrar</a>
         </div>
 
         <div class="col-md-9">
-            <div class="row">
-                <div class="col-8">
-                    <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
-                        <label class="mr-2">Sort by:</label>
-                        <a class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdown" role="button" aria-expanded="false">Relevance</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
-                            <li><a class="dropdown-item" href="#">Relevance</a></li>
-                            <li><a class="dropdown-item" href="#">Price Descending</a></li>
-                            <li><a class="dropdown-item" href="#">Price Ascending</a></li>
-                            <li><a class="dropdown-item" href="#">Best Selling</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="dropdown float-right">
-                        <label class="mr-2">View:</label>
-                        <a class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">9 <span class="caret"></span></a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
-                            <a class="dropdown-item" href="#">12</a>
-                            <a class="dropdown-item" href="#">24</a>
-                            <a class="dropdown-item" href="#">48</a>
-                            <a class="dropdown-item" href="#">96</a>
-                        </div>
-                        <div class="btn-group float-md-right ml-3">
-                            <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
-                            <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- perritos -->
             <div class="wrapper-gallery row magnific-popup mt-5">
+            <?php foreach ($perro as $key => $value) : ?>
+                
                <!-- Image 1 -->
-               <div class="item-gallery col-lg-4 col-md-6">
+               <div class="item-gallery col-lg-4 col-md-6 mb-5">
+                   
                   <div class="polaroid-gallery">
                      <a href="index.php?modulo=adoptar-single">
-                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
-                        <p class="caption-gallery" data-aos="zoom-in">Grooming Time!</p>
+                     <?php foreach ($imgPerro as $keyImg => $valueImg) : ?>
+                        <img width="" src="data:image/jpeg;base64,<?php echo base64_encode( $valueImg ); ?>" alt="" class="img-fluid">
+                     <?php endforeach; ?>
+                        <p class="caption-gallery" data-aos="zoom-in"><?=$value['perro_nombre'];?></p>
                      </a>
                   </div>
                </div>
-               <!-- Image 2 -->
-               <div class="item-gallery col-lg-4 col-md-6">
-                  <div class="polaroid-gallery">
-                     <a href="index.php?modulo=adoptar-single">
-                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
-                        <p class="caption-gallery" data-aos="zoom-in">Jack is Ready For an Adventure</p>
-                     </a>
-                  </div>
-               </div>
-               <div class="item-gallery col-lg-4 col-md-6">
-                  <div class="polaroid-gallery">
-                     <a href="index.php?modulo=adoptar-single">
-                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
-                        <p class="caption-gallery" data-aos="zoom-in">Obedience Training</p>
-                     </a>
-                  </div>
-               </div>
-               <div class="item-gallery col-lg-4 col-md-6">
-                  <div class="polaroid-gallery">
-                     <a href="index.php?modulo=adoptar-single">
-                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
-                        <p class="caption-gallery" data-aos="zoom-in">Grooming Time!</p>
-                     </a>
-                  </div>
-               </div>
-               <!-- Image 2 -->
-               <div class="item-gallery col-lg-4 col-md-6">
-                  <div class="polaroid-gallery">
-                     <a href="index.php?modulo=adoptar-single">
-                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
-                        <p class="caption-gallery" data-aos="zoom-in">Jack is Ready For an Adventure</p>
-                     </a>
-                  </div>
-               </div>
-               <div class="item-gallery col-lg-4 col-md-6">
-                  <div class="polaroid-gallery">
-                     <a href="index.php?modulo=adoptar-single">
-                        <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
-                        <p class="caption-gallery" data-aos="zoom-in">Obedience Training</p>
-                     </a>
-                  </div>
-               </div>
-            </div>
-
-
-            <!-- <div class="row mt-3"> 
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                    <div class="card h-100 border-0">
-                        <div class="card-img-top">
-                            <img src="https://via.placeholder.com/240x240/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Card image cap">
-                        </div>
-                        <div class="card-body text-center">
-                            <h4 class="card-title">
-                                <a href="product.html" class=" font-weight-bold text-dark text-uppercase small"> Product name</a>
-                            </h4>
-                            <h5 class="card-price small text-warning">
-                                <i>
-                                <s>$199</s> $99</i>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>   -->
-            <!-- END CARD -->
+            <?php endforeach; ?>
+            </div>   
             <div class="row sorting mb-5 mt-5">
                 <div class="col-8">
                     <a class="btn btn-light"><i class="fas fa-arrow-up mr-2"></i> Back to top</a>
