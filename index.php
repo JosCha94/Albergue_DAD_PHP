@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-$mysesion = $_SESSION['usuario'] ;
+$mysesion = $_SESSION['usuario'];
 
 $modulo = $_REQUEST['modulo'] ?? '';
 ?>
@@ -17,13 +17,14 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <!-- LINKS HOJAS DE ESTILOS -->
     <link rel="stylesheet" href="Presentacion/libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="Presentacion/libs/css/estilos.css">
-    
+
     <title>Albergue de perritos<?php echo ($modulo == "adoptar") ? " - Adopción " : " ";
                                 echo ($modulo == "apadrinar") ? " - Apadrinar " : " ";
                                 echo ($modulo == "tienda") ? " - Tienda " : " ";
                                 echo ($modulo == "donar") ? " - Donación " : " ";
-                                echo ($modulo == "blog") ? " - Blog " : " "; ?>
-                                
+                                echo ($modulo == "blog") ? " - Blog " : " ";
+                                echo ($modulo == "registro") ? " - Registro de usuario " : " "; ?>
+
     </title>
 </head>
 
@@ -56,42 +57,29 @@ $modulo = $_REQUEST['modulo'] ?? '';
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($modulo == "blog") ? " active " : " " ?> mx-2" href="index.php?modulo=blog">Blog</a>
                     </li>
-                    <!-- <li class="nav-item ">
-                        <a class="nav-link <?php echo ($modulo == "prueba") ? " active " : " " ?> mx-2" 
-                        href="
-                        <?php if ($mysesion == null || $mysesion == '') {
-                            echo 'Deve iniciar sesión';
-                        } else {
-                            echo 'index.php?modulo=prueba';} ?>">Prueba</a>
-                    </li> -->
                     <li class="nav-item ">
-                        <a class="nav-link <?php echo ($modulo == "prueba") ? " active " : " " ?> mx-2" 
-                        href="index.php?modulo=prueba">Prueba</a>
+                        <a class="nav-link <?php echo ($modulo == "prueba") ? " active " : " " ?> mx-2" href="index.php?modulo=prueba">Prueba</a>
                     </li>
                 </ul>
-
-                <!-- ------------------------ -->
-
                 <?php if ($mysesion == null || $mysesion == '') {
-                    ?>
-                                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalLogin">Iniciar Sesion</button>
+                ?>
+                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalLogin">Iniciar Sesion</button>
                 <?php
                 } else {
-                    ?>
+                ?>
                     <div class="dropdown mx-4">
-                            <a class="dropdown-toggle text-uppercase" type="button" id="dropdownMenuUser"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <?php echo $_SESSION['usuario'] ?>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuUser">
-                                <li>
+                        <a class="dropdown-toggle text-uppercase" type="button" id="dropdownMenuUser" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?php echo $_SESSION['usuario'] ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuUser">
+                            <li>
                                 <a href="BL/cerrar_sesion.php">Cerrar Sesión</a>
-                                </li>
-                            </ul>
-                        </div>
+                            </li>
+                        </ul>
+                    </div>
                 <?php
                 }
-                 ?>
+                ?>
 
             </div>
 
@@ -132,7 +120,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Registrarse</button>
+                    <a href="index.php?modulo=registro" class="btn btn-primary">Registrarse</a>
                 </div>
             </div>
         </div>
@@ -141,7 +129,21 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <!-- BODY -->
     <div class="container mb-5">
         <?php
-
+        if (isset($_REQUEST['mensaje'])) {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show float-right" role="alert">
+                <strong>Exito!</strong> <?php echo $_REQUEST['mensaje']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php
+        } else if (isset($_REQUEST['error'])) {
+        ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong> <?php echo $_REQUEST['error']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php
+        }
         if ($modulo == "" || $modulo == "inicio") {
             include_once "Presentacion/vistas/inicio.php";
         }
@@ -166,6 +168,9 @@ $modulo = $_REQUEST['modulo'] ?? '';
         if ($modulo == "prueba") {
             include_once "Presentacion/vistas/prueba.php";
         }
+        if ($modulo == "registro") {
+            include_once "Presentacion/vistas/registro_user.php";
+        }
 
 
         ?>
@@ -176,13 +181,13 @@ $modulo = $_REQUEST['modulo'] ?? '';
     </div>
     <!-- FOOTER -->
     <footer class="footer">
-    <div class="container-fluid">
+        <div class="container-fluid">
             <div class="row bg-light">
                 <p class="text-center mt-3">© <span id="anio_footer"></span> PlanetDog.com by FJF WEB SAC</p>
             </div>
         </div>
     </footer>
-    
+
 </body>
 <!-- LINKS SCRIPT -->
 <script src="Presentacion/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
