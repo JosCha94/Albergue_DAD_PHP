@@ -225,4 +225,84 @@ color: #E8630A ;
 
 /*===============ADOPTAR-SINGLE-END================*/
 
+/*===============DONAR================*/
+
+/* section-heading */
+ .section-heading {
+     margin-bottom: 90px;
+     text-align: center;
+     position: relative;
+     z-index: 99;
+}
+ .section-heading h2{
+     font-size: 62px;
+     font-weight: 800;
+}
+ .section-heading.light-icon h2:before{
+     color: #fff!important;
+}
+ .section-heading h2:before{
+     content: "\f110";
+     z-index: 0;
+     font-family: "flaticon";
+     font-size: 120px;
+     z-index: 0;
+     opacity: 0.3;
+     display: block;
+     font-weight: normal;
+     left: 35%;
+     z-index: -1;
+     margin-top: -40px;
+     position: absolute;
+}
+/* forms */
+ .form-control {
+     transition:all 0.3s ease-in-out;
+     border:0;
+     border: 2px solid;
+     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+     border-radius: 0px;
+     line-height: 2;
+}
+ .form-control input{
+     height:50px;
+}
+ .form-control:focus{
+     outline:none;
+     box-shadow:none;
+}
+ .input-group>.custom-select:not(:last-child), .input-group>.form-control:not(:last-child) {
+     border-top-right-radius: 0;
+     border-bottom-right-radius: 0;
+}
+ .form-control.border2{
+     border-color:#fff;
+}
+ .input-group-btn .btn{
+     margin-top:0px;
+     height: 48px;
+     margin-left: 0px;
+     border-radius: 0;
+}
+/* button */
+.btn-donation{
+  color: #fff;
+  background-color: #E8630A;
+  padding: 0px 40px;
+  line-height: 2.7em;
+  letter-spacing:1px;
+  font-weight: 700;
+  font-size: 16px;
+  outline: none;
+  position: relative;
+}
+.btn-donation:hover{
+ background-color:#001E6C;
+ color: #fff;
+ box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+/*===============DONAR================*/
+
+
 
