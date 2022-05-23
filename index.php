@@ -17,6 +17,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <!-- LINKS HOJAS DE ESTILOS -->
     <link rel="stylesheet" href="Presentacion/libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="Presentacion/libs/css/estilos.css">
+    <link rel="stylesheet" href="Presentacion/libs/flaticon/flaticon.css">
 
     <title>Albergue de perritos<?php echo ($modulo == "adoptar") ? " - Adopción " : " ";
                                 echo ($modulo == "apadrinar") ? " - Apadrinar " : " ";
