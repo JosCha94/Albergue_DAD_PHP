@@ -1,9 +1,4 @@
 <?php
-if ($mysesion == null || $mysesion == '') {
-   echo 'Deve iniciar sesión';
-}else{
-?>
-<?php
 require_once('BL/consultas_tienda.php');
 require_once('DAL/conexion.php');
 require_once('DAL/clases/producto.php');
@@ -19,13 +14,25 @@ $categories = $consulta->listarCategorias($conexion);
       <div class="col-md-3 sidebar-filter">
          <h3 class="mt-0 mb-5">Tienda <br> Productos</h3>
          <h6 class="text-uppercase font-weight-bold mb-3">Categorias</h6>
-         <?php foreach ($categories as $key => $value) : ?>
-            <div class="mt-2 mb-2 pl-2">
+            <div class="form-check">
+               <input class="form-check-input categoria" category="All" type="radio" name="flexRadioProduct" id="flexRadioTodos" checked>
+               <label class="form-check-label" for="flexRadioTodos">
+                  Todas
+               </label>
+            </div>
+         <?php foreach ($categories as $key => $value) : ?>            
+            <div class="form-check">
+               <input class="form-check-input categoria" category="<?= $value['cat_id']; ?>" type="radio" name="flexRadioProduct" id="RadioProduct<?= $value['cat_nombre']; ?>">
+               <label class="form-check-label" for="RadioProduct<?= $value['cat_nombre']; ?>">
+                  <?= $value['cat_nombre']; ?>
+               </label>
+            </div>
+            <!-- <div class="mt-2 mb-2 pl-2">
                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="category-1">
+                  <input type="checkbox" class="custom-control-input categoria" category="<?= $value['cat_id']; ?>">
                   <label class="custom-control-label" for="category-1"><?= $value['cat_nombre']; ?></label>
                </div>
-            </div>
+            </div> -->
          <?php endforeach; ?>
 
          <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
@@ -36,13 +43,12 @@ $categories = $consulta->listarCategorias($conexion);
          <div class="row">
             <div class="col-8">
                <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
-                  <label class="mr-2">Sort by:</label>
-                  <a class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdown" role="button" aria-expanded="false">Relevance</a>
+                  <label class="mr-2 fs-4">Perrito:</label>
+                  <a class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdown" role="button" aria-expanded="false">Tamaño</a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
-                     <li><a class="dropdown-item" href="#">Relevance</a></li>
-                     <li><a class="dropdown-item" href="#">Price Descending</a></li>
-                     <li><a class="dropdown-item" href="#">Price Ascending</a></li>
-                     <li><a class="dropdown-item" href="#">Best Selling</a></li>
+                     <li><a class="dropdown-item sizes" size="Pequeno" href="#">Pequeño</a></li>
+                     <li><a class="dropdown-item sizes" size="Mediano" href="#">Mediano</a></li>
+                     <li><a class="dropdown-item sizes" size="Grande" href="#">Grande</a></li>
                   </ul>
                </div>
             </div>
@@ -68,20 +74,19 @@ $categories = $consulta->listarCategorias($conexion);
          <div class="wrapper-gallery row magnific-popup mt-5">
             <!-- producto -->
             <?php foreach ($products as $key => $value) : ?>
-               <div class="item-gallery col-lg-4 col-md-6">
+               <div class="item-gallery col-lg-4 col-md-6 producto" category="<?= $value['cat_id']; ?>" dog_size="<?= $value['product_size_perro']; ?>">
                   <div class="polaroid-gallery">
                      <a href="">
                         <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in"><?= $value['product_nombre']; ?></p>
                         <div class="row">
-                           <div class="col-6"><a href="">Mas detalles</a></div>
-                           <div class="col-6"><a href="">Añadir al carrito</a></div>
+                        <button type="button" class="btn btn-outline-danger">Añadir al carrito</button>
                         </div>
-                        
+
                      </a>
                   </div>
                </div>
-            <?php endforeach; ?>            
+            <?php endforeach; ?>
          </div>
          <!-- END CARD -->
          <div class="row sorting mb-5 mt-5">
@@ -108,6 +113,3 @@ $categories = $consulta->listarCategorias($conexion);
       </div>
    </div>
 </div>
-<?php
-}
-?>

@@ -42,7 +42,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item ">
-                        <a class="nav-link <?php echo ($modulo == "adoptar" || "adoptar-single") ? " active " : " " ?> mx-2" href="index.php?modulo=adoptar">Adoptar</a>
+                        <a class="nav-link <?php echo ($modulo == "adoptar" || $modulo == "adoptar-single") ? " active " : " " ?> mx-2" href="index.php?modulo=adoptar">Adoptar</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link <?php echo ($modulo == "apadrinar") ? " active " : " " ?> mx-2" href="index.php?modulo=apadrinar">Apadrinar</a>
@@ -182,17 +182,13 @@ $modulo = $_REQUEST['modulo'] ?? '';
             </div>
         </div>
     </footer>
-
+    
 </body>
 <!-- LINKS SCRIPT -->
+<script src="Presentacion/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://kit.fontawesome.com/f52de5d372.js" crossorigin="anonymous"></script>
-<script src="Presentacion/libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="Presentacion/libs/javascript/jquery-3.6.0.min.js"></script>
 <script src="Presentacion/libs/javascript/script.js"></script>
-<!-- <script src="Presentacion/libs/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-<script src ="Presentacion\libs\javascript\plugins.js"></script>
-
-
 
 
 
