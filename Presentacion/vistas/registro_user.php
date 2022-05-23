@@ -12,7 +12,6 @@
                 <div id="donation_form">
                     <form action="" method="post">
                         <div class="row">
-
                             <div class="col-md-12 text-light">
                                 <label>Usuario</label>
                                 <input type="text" name="user" class="form-control input-field" maxlength="15" minlength="5" required="">
