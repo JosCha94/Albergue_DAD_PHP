@@ -11,7 +11,7 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
 ?>
 
 
-<div class="container adop-text text-center">
+<div class="container adop-text text-center mt-4">
     <h1>¡Ayudanos a ayudar!</h1>
     <p>Todos nuestros perritos estan listos para ser adoptados y para que los cuides en su neuva vida</p>
 </div>
