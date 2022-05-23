@@ -16,7 +16,9 @@ try {
         $_SESSION['usuario'] = $usuarios['usr_nombre'];
         header("location: ../index.php");
     } else {
-        echo "<p id='error'>Datos incorrrectos</p>";
+
+        echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=inicio&error=Usuario o Contraseña incorrectos" />';
+        
     }
 } catch (PDOException $e) {
     echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
