@@ -69,6 +69,17 @@
   }
 /* VAINA DE LOADING END*/
 
+/* REGISTRO USER */
+.size-btn{
+  padding: 0px 40px;
+  line-height: 2.7em;
+  letter-spacing:1px;
+  font-weight: 700;
+  font-size: 16px;
+  outline: none;
+  position: relative;
+}
+
 /* PAGINA DE ADOPCION */
 
 .container.adop-text{
