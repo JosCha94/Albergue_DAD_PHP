@@ -52,22 +52,6 @@ $categories = $consulta->listarCategorias($conexion);
                   </ul>
                </div>
             </div>
-            <div class="col-4">
-               <div class="dropdown float-right">
-                  <label class="mr-2">View:</label>
-                  <a class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">9 <span class="caret"></span></a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
-                     <a class="dropdown-item" href="#">12</a>
-                     <a class="dropdown-item" href="#">24</a>
-                     <a class="dropdown-item" href="#">48</a>
-                     <a class="dropdown-item" href="#">96</a>
-                  </div>
-                  <div class="btn-group float-md-right ml-3">
-                     <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
-                     <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
-                  </div>
-               </div>
-            </div>
          </div>
 
          <!-- productos -->
@@ -91,7 +75,7 @@ $categories = $consulta->listarCategorias($conexion);
          <!-- END CARD -->
          <div class="row sorting mb-5 mt-5">
             <div class="col-8">
-               <a class="btn btn-light"><i class="fas fa-arrow-up mr-2"></i> Back to top</a>
+               <a class="btn btn-light"><i class="fas fa-arrow-up mr-2 scroll_up"></i> Back to top</a>
             </div>
             <div class="col-4">
                <div class="dropdown float-md-right">

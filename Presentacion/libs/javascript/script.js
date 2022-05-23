@@ -1,5 +1,7 @@
+// AÑO-----------------------------------
 document.getElementById("anio").innerHTML = new Date().getFullYear();
 document.getElementById("anio_footer").innerHTML = new Date().getFullYear();
+// ----------AÑO-------------
 
 // FILTRO PRODUCTOS
 $('.categoria').click(function () {
@@ -41,3 +43,10 @@ $('.sizes').click(function () {
     } setTimeout(verTalla, 400);
 });
 // ---------FILTRO PRODUCTOS-----------------------        
+
+// SCROLL-----------------------------------
+$(".scroll_up").click(function()
+{
+    jQuery('html,body').animate({scrollTop:0},2000);
+})
+// ------------------SCROLL-----------------
