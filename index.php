@@ -120,7 +120,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
                                 </label>
                             </div> -->
                             <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Iniciar Sesión</button>
-                            <p class="mt-5 mb-3 text-muted">© 2021–<span id="anio"></p>
+                            <p class="mt-5 mb-3 text-muted">© 2021–<span class="anio"></p>
                         </form>
                     </main>
                 </div>
@@ -189,7 +189,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <footer class="footer">
         <div class="container-fluid">
             <div class="row bg-light">
-                <p class="text-center mt-3">© <span id="anio_footer"></span> PlanetDog.com by FJF WEB SAC</p>
+                <p class="text-center mt-3">© <span class="anio"></span> PlanetDog.com by FJF WEB SAC</p>
             </div>
         </div>
     </footer>

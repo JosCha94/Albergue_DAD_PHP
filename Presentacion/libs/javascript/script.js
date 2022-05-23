@@ -1,6 +1,8 @@
 // AÑO-----------------------------------
-document.getElementById("anio").innerHTML = new Date().getFullYear();
-document.getElementById("anio_footer").innerHTML = new Date().getFullYear();
+var anio = (new Date).getFullYear();
+$(document).ready(function() {
+      $(".anio").text( anio );
+});
 // ----------AÑO-------------
 
 // FILTRO PRODUCTOS
