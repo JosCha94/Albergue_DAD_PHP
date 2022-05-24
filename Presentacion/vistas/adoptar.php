@@ -2,11 +2,13 @@
 require_once('BL/consultas_adopcion.php');
 require_once('DAL/conexion.php');
 require_once('DAL/clases/img_perritos.php');
+require_once('DAL/clases/perritos.php');
 
 $conexion = conexion::conectar();
 $consulta = new Consulta_perro();
 
 $imgPerro = $consulta->listarImagen_perro($conexion);
+// $perro = $consulta->listarPerro($conexion);
 
 ?>
 
@@ -108,7 +110,7 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
                 <?php foreach ($imgPerro as $key => $value) : ?>
                <div class="item-gallery col-lg-4 col-md-6 mb-5">
                   <div class="polaroid-gallery">
-                     <a href="index.php?modulo=adoptar-single">
+                     <a href="index.php?modulo=adoptar-single=<?= $value['perro_id']; ?>">
                         <img src="data:image/<?php echo($value['img_perro_tipo']);?>;base64,<?php echo base64_encode( $value['img_perro_foto'] ); ?>" alt="" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in"><?=$value['perro_nombre'];?></p>
                      </a>

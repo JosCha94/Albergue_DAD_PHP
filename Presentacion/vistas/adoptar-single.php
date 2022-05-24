@@ -1,3 +1,24 @@
+<?php
+    require_once('BL/consultas_adopcion.php');
+    require_once('DAL/clases/img_perritos.php');
+    require_once('DAL/clases/perritos.php');
+    require_once('DAL/conexion.php');
+   
+    $conexion = conexion::conectar();
+    $consulta = new Consulta_perro();
+    
+    $perro_detalle = $consulta->listarPerro($conexion);
+
+    $imgPerro = $consulta->listarImagen_perro($conexion, $_GET['perro_id']);
+
+
+    
+
+
+?>
+
+
+
 <div id="preloader">
          <div class="spinner">
             <div class="bounce1"></div>

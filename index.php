@@ -49,7 +49,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item ">
-                        <a class="nav-link <?php echo ($modulo == "adoptar" || $modulo == "adoptar-single") ? " active " : " " ?> mx-2" href="index.php?modulo=adoptar">Adoptar</a>
+                        <a class="nav-link <?php echo ($modulo == "adoptar" || $modulo == "adoptar-single" ) ? " active " : " " ?> mx-2" href="index.php?modulo=adoptar">Adoptar</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link <?php echo ($modulo == "apadrinar") ? " active " : " " ?> mx-2" href="index.php?modulo=apadrinar">Apadrinar</a>
