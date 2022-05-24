@@ -3,7 +3,7 @@ class Consulta_perro{
     //Muestra todos los datos de los perritos
     public function listarPerro($conexion) {
         try{
-            $sql = "CALL SP_listar_perrito()";
+            $sql = "CALL SP_buscar_perro()";
             $consulta = $conexion->prepare($sql);
             $consulta->execute();
             $perro = $consulta->fetchAll(PDO::FETCH_ASSOC);

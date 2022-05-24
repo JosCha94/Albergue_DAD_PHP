@@ -3,16 +3,13 @@
     require_once('DAL/clases/img_perritos.php');
     require_once('DAL/clases/perritos.php');
     require_once('DAL/conexion.php');
-   
+
+
     $conexion = conexion::conectar();
     $consulta = new Consulta_perro();
-    
-    $perro_detalle = $consulta->listarPerro($conexion);
 
-    $imgPerro = $consulta->listarImagen_perro($conexion, $_GET['perro_id']);
-
-
-    
+    $perro_detalle = $consulta->listarPerro($conexion, $_GET['id']);
+    $imgPerro = $consulta->listarImagen_perro($conexion);
 
 
 ?>
