@@ -24,6 +24,18 @@ class Consulta_producto{
         }
 
     }
+
+    public function detalleProducto($conexion, $id) {
+        try{
+            $sql = "CALL SP_detalle_producto($id)";
+            $consulta = $conexion->prepare($sql);
+            $consulta->execute();
+            $product = $consulta->fetch(PDO::FETCH_ASSOC);
+            return $product;
+        } catch (PDOException $e) {
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        }
+    }
 }
     
 

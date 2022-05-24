@@ -60,7 +60,7 @@ $categories = $consulta->listarCategorias($conexion);
             <?php foreach ($products as $key => $value) : ?>
                <div class="item-gallery col-lg-4 col-md-6 producto" category="<?= $value['cat_id']; ?>" dog_size="<?= $value['product_size_perro']; ?>">
                   <div class="polaroid-gallery">
-                     <a href="index.php?modulo=product_detail?id=<?=$value['product_id'];?>">
+                     <a href="index.php?modulo=product_detail&id=<?=$value['product_id'];?>">
                      <img src="data:image/<?php echo($value['img_product_tipo']);?>;base64,<?php echo base64_encode( $value['img_product_foto'] ); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in"><?= $value['product_nombre']; ?></p>
                         <div class="row">
