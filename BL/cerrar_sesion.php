@@ -1,5 +1,7 @@
 <?php
     session_start();
-    session_destroy();
-    header("location: ../index.php");
+    if (isset($_REQUEST['sesion']) && $_REQUEST['sesion'] == 'cerrar') {
+        session_destroy();
+        header("Location: ../index.php");
+      };
 ?>

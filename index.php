@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+session_regenerate_id(true);
 $mysesion = $_SESSION['usuario'];
 
 $modulo = $_REQUEST['modulo'] ?? '';
@@ -79,7 +80,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuUser">
                             <li>
-                                <a href="BL/cerrar_sesion.php">Cerrar Sesión</a>
+                                <a href="BL/cerrar_sesion.php?modulo=&sesion=cerrar">Cerrar Sesión</a>
                             </li>
                         </ul>
                     </div>
@@ -170,6 +171,9 @@ $modulo = $_REQUEST['modulo'] ?? '';
         }
         if ($modulo == "adoptar-single") {
             include_once "Presentacion/vistas/adoptar-single.php";
+        }
+        if ($modulo == "blog-single") {
+            include_once "Presentacion/vistas/blog-single.php";
         }
         if ($modulo == "prueba") {
             include_once "Presentacion/vistas/prueba.php";
