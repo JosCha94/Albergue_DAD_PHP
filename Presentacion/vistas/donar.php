@@ -14,12 +14,10 @@
                      <h5 class="mt-4">Cuentas Bancarias</h5>
                      <ul class="custom pl-0">
                         <li>Cuenta corriente en soles BCP: 978-998889-54894-55</li>
-						<li>Cuenta corriente en soles Scotiabank: 144-8989-8884-22</li>
-						<li>Cuenta corriente en soles BBVA: 785-48875-588-55</li>
-                        
-                     </ul>
-                  </div>
-                 
+                        <li>Cuenta corriente en soles Scotiabank: 144-8989-8884-22</li>
+                        <li>Cuenta corriente en soles BBVA: 785-48875-588-55</li>               
+                     </ul>                   
+                  </div>                
                </div>
                   
                </div>

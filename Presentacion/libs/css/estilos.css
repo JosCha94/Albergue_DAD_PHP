@@ -322,5 +322,116 @@ color: #E8630A ;
 
 /*===============DONAR================*/
 
+/*=========================== Blog Pages ============================ */
+#blog-home .card.blog-card{
+  border: 0px;
+  border-radius: 0px;
+  margin-top: 40px;
+  border-bottom: 1px solid;
+}
+*blog  prev style1 */
+/* Page margin*/
+.page{
+  background-color: #fff;
+  padding-top:50px;
+  padding-bottom:90px;
+position:relative;
+z-index:100;
+}
+/* page with sidebar */
+  .page-with-sidebar{
+      padding-right:30px;
+ }
+/* cards */
+.card {
+  display:block;
+  border:0px;
+  border-radius:15px;
+  padding:20px;
+}
+.card-header{
+  background:none;
+}
+.card-title{
+  transition: all 0.2s ease-in-out;
+}
+a .card-title:hover {
+  color: inherit;
+}
+
+
+/* widgets */
+.widget-area{
+  margin:40px 0px;
+  padding: 20px;
+}
+.widget-area:first-child{
+  margin-top: 0px;
+}
+.widget-area:before{
+  font-family: 'Flaticon';
+  content: "\f110";
+  font-weight:normal;
+  font-size: 30px;
+  margin: 0 auto;
+  position: absolute;
+  margin-top: -30px;
+  float: right;
+  right: 20px;
+  transform: rotate(12deg);
+  opacity: 0.5;
+}
+.widget-area .form-control{
+ border:2px solid transparent;
+}
+
+/* blog style1 */
+.blog-card .post-info{
+  font-family:'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px 5px 0px 0px;
+}
+.blog-card .card-body{
+ padding:20px 0 0 0px;
+}
+.blog-card .post-info a{
+  margin:0px 5px;
+}
+.card.blog-card:first-child{
+  margin-top:0px!important;
+}
+.blog-card .card-img-top{
+  transition: all .3s ease-out;
+}
+.blog-card .blog-img{
+  overflow:hidden;
+  border: 10px solid;
+}
+.blog-card .card-img-top:hover{
+  transform: scale(1.2) rotate(5deg);
+}
+/* blog sidebar and comments */
+.blog-sidebar .card{
+  background:none;
+  padding: 20px;
+}
+.comment{
+  padding:30px 0px;
+  border-bottom:1px dotted;
+}
+.comment-img{
+  max-width:150px;
+  max-height:150px;
+}
+.comment:last-child{
+  border-bottom:0px;
+}
+
+
+/*=========================== Blog Pages ============================ */
+
 
 
