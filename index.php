@@ -26,7 +26,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
 
     <title>Albergue de perritos<?php echo ($modulo == "adoptar") ? " - Adopción " : " ";
                                 echo ($modulo == "apadrinar") ? " - Apadrinar " : " ";
-                                echo ($modulo == "tienda") ? " - Tienda " : " ";
+                                echo ($modulo == "tienda"||"product_detail" ) ? " - Tienda " : " ";
                                 echo ($modulo == "donar") ? " - Donación " : " ";
                                 echo ($modulo == "blog") ? " - Blog " : " ";
                                 echo ($modulo == "registro") ? " - Registro de usuario " : " "; ?>
@@ -55,7 +55,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
                         <a class="nav-link <?php echo ($modulo == "apadrinar") ? " active " : " " ?> mx-2" href="index.php?modulo=apadrinar">Apadrinar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($modulo == "tienda") ? " active " : " " ?> mx-2" href="index.php?modulo=tienda">Tienda</a>
+                        <a class="nav-link <?php echo ($modulo == "tienda"|| $modulo == "product_detail") ? " active " : " " ?> mx-2" href="index.php?modulo=tienda">Tienda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($modulo == "donar") ? " active " : " " ?> mx-2" href="index.php?modulo=donar">Donar</a>
@@ -176,6 +176,9 @@ $modulo = $_REQUEST['modulo'] ?? '';
         }
         if ($modulo == "registro") {
             include_once "Presentacion/vistas/registro_user.php";
+        }
+        if ($modulo == "product_detail") {
+            include_once "Presentacion/vistas/detalle_producto.php";
         }
 
 
