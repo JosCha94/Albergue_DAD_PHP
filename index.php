@@ -171,6 +171,9 @@ $modulo = $_REQUEST['modulo'] ?? '';
         if ($modulo == "adoptar-single") {
             include_once "Presentacion/vistas/adoptar-single.php";
         }
+        if ($modulo == "blog-single") {
+            include_once "Presentacion/vistas/blog-single.php";
+        }
         if ($modulo == "prueba") {
             include_once "Presentacion/vistas/prueba.php";
         }

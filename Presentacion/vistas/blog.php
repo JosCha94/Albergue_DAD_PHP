@@ -22,7 +22,7 @@
                         <!-- /blog-img -->
                      </a>
                      <div class="card-body">
-                        <a href="blog-single.html">
+                        <a href="index.php?modulo=blog-single">
                            <h3 class="card-title">10 señales de un barrio que admite perros</h3>
                         </a>
                         <!-- excerpt -->
@@ -49,7 +49,7 @@
                         <!-- /blog-img -->
                      </a>
                      <div class="card-body">
-                        <a href="blog-single.html">
+                        <a href="index.php?modulo=blog-single">
                            <h3 class="card-title">10 señales de un barrio que admite perros</h3>
                         </a>
                         <!-- excerpt -->
