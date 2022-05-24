@@ -90,7 +90,7 @@ if ($mysesion == null || $mysesion == '') {
             <!-- END CARD -->
             <div class="row sorting mb-5 mt-5">
                <div class="col-8">
-                  <a class="btn btn-light"><i class="fas fa-arrow-up mr-2"></i> Back to top</a>
+                  <a class="btn btn-light"><i class="fas fa-arrow-up mr-2 scroll_up"></i> Back to top</a>
                </div>
                <div class="col-4">
                   <div class="dropdown float-md-right">
