@@ -8,7 +8,6 @@ $conexion = conexion::conectar();
 $consulta = new Consulta_perro();
 
 $imgPerro = $consulta->listarImagen_perro($conexion);
-// $perro = $consulta->listarPerro($conexion);
 
 ?>
 

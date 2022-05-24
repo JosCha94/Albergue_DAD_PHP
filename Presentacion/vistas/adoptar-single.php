@@ -8,37 +8,39 @@
     $conexion = conexion::conectar();
     $consulta = new Consulta_perro();
 
-    $perro_detalle = $consulta->listarPerro($conexion, $_GET['id']);
-    $imgPerro = $consulta->listarImagen_perro($conexion);
+    $p_id = $_REQUEST['id'];
+    
+    $perro_detalle = $consulta->listarPerro($conexion,$p_id);
+
+    // $imgPerro = $consulta->listarImagen_perro($conexion);
 
 
 ?>
-
-
-
 <div id="preloader">
          <div class="spinner">
             <div class="bounce1"></div>
          </div>
       </div>
       <!-- Preloader ends -->
-    
       <!-- /navbar ends -->
       <!-- Section Adoption -->
-      <section id="adoption" class="pages">
-         <div class="jumbotron ">
+    <section id="adoption" class="pages">
+
+        <div class="jumbotron ">
             <!-- Heading -->
+            
             <div class="jumbo-heading">
-               <h1>Nombre Del perrito</h1>
+            <h1><?=$perro_detalle['perro_nombre']; ?></h1>
             </div>
-         </div>
+
+        </div>
          <!-- container-->
-		 <div class="container">
+		<div class="container">
                <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Galeria de Adopción</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Nombre del perrito</li>
+                    <li class="breadcrumb-item"><a href="index.php?modulo=adoptar" class="breadcrumb-link">Galeria de Adopción</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?=$perro_detalle ['perro_nombre']; ?></li>
                 </ol>
             </nav>
         </div>
@@ -70,6 +72,7 @@
          <!-- /row -->
 		</div>
        <!-- /container -->
-      </section>
+
+    </section>
       <!-- /Section ends -->
       <!-- Footer -->	
