@@ -76,7 +76,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
                 ?>
                     <div class="dropdown mx-4">
                         <a class="dropdown-toggle text-uppercase" type="button" id="dropdownMenuUser" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?php echo $_SESSION['usuario'] ?>
+                            <?php echo $_SESSION['usuario'][1] ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuUser">
                             <li>
