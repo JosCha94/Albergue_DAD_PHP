@@ -1,28 +1,24 @@
 <?php
+    require_once('DAL/conexion.php');
     require_once('BL/consultas_adopcion.php');
     require_once('DAL/clases/img_perritos.php');
     require_once('DAL/clases/perritos.php');
-    require_once('DAL/conexion.php');
-
-
     $conexion = conexion::conectar();
     $consulta = new Consulta_perro();
 
-    $p_id = $_REQUEST['id'];
+    $id = $_GET['id'];
+    $perro = $consulta->listarPerro($conexion, $id);
     
-    $perro_detalle = $consulta->listarPerro($conexion,$p_id);
 
-    // $imgPerro = $consulta->listarImagen_perro($conexion);
-
+    $imgPerro = $consulta->buscarImagen_perro($conexion, $id);
 
 ?>
+
 <div id="preloader">
          <div class="spinner">
             <div class="bounce1"></div>
          </div>
       </div>
-      <!-- Preloader ends -->
-      <!-- /navbar ends -->
       <!-- Section Adoption -->
     <section id="adoption" class="pages">
 
@@ -30,7 +26,7 @@
             <!-- Heading -->
             
             <div class="jumbo-heading">
-            <h1><?=$perro_detalle['perro_nombre']; ?></h1>
+            <h1><?php echo ($perro['perro_nombre']) ?></h1>
             </div>
 
         </div>
@@ -40,23 +36,22 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php?modulo=adoptar" class="breadcrumb-link">Galeria de Adopción</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><?=$perro_detalle ['perro_nombre']; ?></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?= $perro ['perro_nombre']; ?></li>
                 </ol>
             </nav>
         </div>
         <div class="container margin1">
             <div class="row">
                 <div class="col-md-5">
-                    <img src="Presentacion/libs/images/perro1.jpg" class="img-fluid" alt="Perro adopcion">
+                    <img src="data:image/<?php echo($imgPerro['img_perro_tipo']);?>;base64,<?php echo base64_encode( $imgPerro['img_perro_foto'] ); ?>" class="img-fluid" alt="Perro ">
                 </div>
                 <div class="col-md-7 res-margin">
                     <div class="pet-adopt-info">
-                        <h6 class="mx-3">Sexo: Macho</h6><img src="Presentacion/libs/images/paw.png" alt="Girl in a jacket" width="20" height="20">
-                        <h6 class="mx-3">Tamaño: Grande</h6><img src="Presentacion/libs/images/paw.png" alt="Girl in a jacket" width="20" height="20">
-                        <h6 class="mx-3">Actividad: mucha</h6><img src="Presentacion/libs/images/paw.png" alt="Girl in a jacket" width="20" height="20">
+                        <h6 class="mx-3">Sexo: <?= $perro ['perro_sexo']; ?></h6><img src="Presentacion/libs/images/paw.png" alt="Girl in a jacket" width="20" height="20">
+                        <h6 class="mx-3">Tamaño: <?= $perro ['perro_tamano']; ?></h6><img src="Presentacion/libs/images/paw.png" alt="Girl in a jacket" width="20" height="20">
+                        <h6 class="mx-3">Actividad: <?= $perro ['perro_actividad']; ?></h6><img src="Presentacion/libs/images/paw.png" alt="Girl in a jacket" width="20" height="20">
                         <h3 class="mt-3">Descripción</h3>
-                        <p>Elit uasi quidem minus id omnis a nibh fusce mollis imperdie tlorem ipuset phas ellus ac sodales Lorem ipsum dolor Phas ellus 
-                            ac sodales felis tiam non metus. lorem ipsum dolor sit amet, consectetur adipisicing elit uasi quidem minus id omnis a nibh fusce mollis imperdie tlorem ipuset campas fincas
+                        <p><?= $perro ['perro_descripcion']; ?>
                         </p>				 
                         <!-- ul custom-->
                         <ul class="custom no-margin">
