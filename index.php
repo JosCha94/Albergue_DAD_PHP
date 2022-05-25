@@ -25,11 +25,11 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&display=swap" rel="stylesheet">
 
-    <title>Albergue de perritos<?php echo ($modulo == "adoptar") ? " - Adopción " : " ";
+    <title>Albergue de perritos<?php echo ($modulo == "adoptar"||"adoptar-single") ? " - Adopción " : " ";
                                 echo ($modulo == "apadrinar") ? " - Apadrinar " : " ";
-                                echo ($modulo == "tienda"||"product_detail" ) ? " - Tienda " : " ";
+                                echo ($modulo == "tienda"||"product_detail") ? " - Tienda " : " ";
                                 echo ($modulo == "donar") ? " - Donación " : " ";
-                                echo ($modulo == "blog") ? " - Blog " : " ";
+                                echo ($modulo == "blog"||"blog-single") ? " - Blog " : " ";
                                 echo ($modulo == "registro") ? " - Registro de usuario " : " "; ?>
 
     </title>
@@ -62,7 +62,7 @@ $modulo = $_REQUEST['modulo'] ?? '';
                         <a class="nav-link <?php echo ($modulo == "donar") ? " active " : " " ?> mx-2" href="index.php?modulo=donar">Donar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($modulo == "blog") ? " active " : " " ?> mx-2" href="index.php?modulo=blog">Blog</a>
+                        <a class="nav-link <?php echo ($modulo == "blog" || $modulo == "blog-single") ? " active " : " " ?> mx-2" href="index.php?modulo=blog">Blog</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link <?php echo ($modulo == "prueba") ? " active " : " " ?> mx-2" href="index.php?modulo=prueba">Prueba</a>
@@ -107,11 +107,11 @@ $modulo = $_REQUEST['modulo'] ?? '';
                             <h1 class="h3 mb-3 fw-normal text-center">Bienvenido</h1>
 
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="user" name="user" placeholder="usuario">
-                                <label for="floatingInput">Usuario</label>
+                                <input type="text" class="form-control" id="user" name="user" placeholder="Correo electronico o numero de celular">
+                                <label for="floatingInput">Correo electronico o numero de celular</label>
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="pass" name="pass" placeholder="contraseña">
+                                <input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña">
                                 <label for="pass">Contraseña</label>
                             </div>
 
