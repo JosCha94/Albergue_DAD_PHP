@@ -13,7 +13,9 @@ try {
     $usuarios = $result->fetch(PDO::FETCH_ASSOC);
     // VALIDA Q LA VARIABLE TENGA ALGO
     if ($usuarios) {
-        $_SESSION['usuario'] = $usuarios['usr_nombre'];
+        $_SESSION['usuario'] = array();
+        $_SESSION['usuario'][0] = $usuarios['usr_id'];
+        $_SESSION['usuario'][1] = $usuarios['usuario'];
         header("location: ../index.php");
     } else {
 
