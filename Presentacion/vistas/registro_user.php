@@ -1,3 +1,14 @@
+<?php
+require_once('BL/consultas_usuario.php');
+require_once 'DAL/clases/usuario.php';
+require_once('DAL/conexion.php');
+$conexion = conexion::conectar();
+if(isset($_REQUEST['registro_usr'])){
+    $usu = new usuario($_POST['user'],$_POST['pass'],  $_POST['name'],$_POST['ape_p'],$_POST['ape_m'],$_POST['email'],$_POST['celu']);
+    $consulta = new Consulta_usuario();
+    $consulta->insetar_usuario($conexion, $usu);
+}
+?>
 <section id="donation" class="container-fluid mt-5">
     <div class="container">
         <div class="section-heading text-center">
@@ -43,7 +54,7 @@
                         </div>
                         <!-- button -->
                         <div class="mt-3 d-flex justify-content-around">
-                            <button type="submit" id="submit_btn" value="Submit" class="btn btn-donation mt-3">Registrase</button>
+                            <button type="submit" name="registro_usr" value="Submit" class="btn btn-donation mt-3">Registrase</button>
                             <button type="reset" id="submit_btn" value="Submit" class="btn btn-danger size-btn mt-3">Limpiar</button>
                         </div>
                     </form>
