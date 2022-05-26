@@ -1,5 +1,8 @@
 <?php
-if ($mysesion == null || $mysesion == '') {
+require_once 'SL/logueado.php';
+$log = new autorizacion();
+$logueado = $log->logueado($mysesion);
+if ($logueado =='false') {
 ?>
    <div class="alert alert-danger" role="alert">
       Deve iniciar sesión
