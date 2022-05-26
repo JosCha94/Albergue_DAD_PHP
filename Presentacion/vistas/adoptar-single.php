@@ -43,13 +43,13 @@
         <div class="container margin1">
             <div class="row">
                 <div class="col-md-5">
-                    <img src="data:image/<?php echo($imgPerro['img_perro_tipo']);?>;base64,<?php echo base64_encode( $imgPerro['img_perro_foto'] ); ?>" class="img-fluid" alt="Perro ">
+                    <img src="data:image/<?php echo($imgPerro['img_perro_tipo']);?>;base64,<?php echo base64_encode( $imgPerro['img_perro_foto'] ); ?>" class="img-fluid" alt="foto perrito en adopcion">
                 </div>
                 <div class="col-md-7 res-margin">
                     <div class="pet-adopt-info">
-                        <h6 class="mx-3">Sexo: <?= $perro ['perro_sexo']; ?></h6><img src="Presentacion/libs/images/paw.png" alt="Girl in a jacket" width="20" height="20">
-                        <h6 class="mx-3">Tamaño: <?= $perro ['perro_tamano']; ?></h6><img src="Presentacion/libs/images/paw.png" alt="Girl in a jacket" width="20" height="20">
-                        <h6 class="mx-3">Actividad: <?= $perro ['perro_actividad']; ?></h6><img src="Presentacion/libs/images/paw.png" alt="Girl in a jacket" width="20" height="20">
+                        <h6 class="mx-3">Sexo:<h6 class="text-dark me-2"><?= $perro ['perro_sexo']; ?></h6></h6><img src="Presentacion/libs/images/paw.png" alt="foto perrito en adopcion" width="20" height="20">
+                        <h6 class="mx-3">Tamaño: <h6 class="text-dark me-2"><?= $perro ['perro_tamano']; ?></h6></h6><img src="Presentacion/libs/images/paw.png" alt="foto perrito en adopcion" width="20" height="20">
+                        <h6 class="mx-3">Actividad:<h6 class="text-dark me-2"> <?= $perro ['perro_actividad']; ?></h6></h6><img src="Presentacion/libs/images/paw.png" alt="foto perrito en adopcion" width="20" height="20">
                         <h3 class="mt-3">Descripción</h3>
                         <p><?= $perro ['perro_descripcion']; ?>
                         </p>				 
