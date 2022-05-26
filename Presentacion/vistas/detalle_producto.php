@@ -23,7 +23,7 @@ $product = $consulta->detalleProducto($conexion, $id);
                     $tamano = $product['product_size_perro']; ?>
                     <li class="list-group-item "><strong>Para perritos de tamaño:</strong> <?php echo ($tamano == 'Pequeno') ? "Pequeño" : "$tamano"; ?></li>
                     <li class="list-group-item "><strong>Precio:</strong> <?= $product['product_precio']; ?></li>
-                    <li class="list-group-item "><strong>IGV:</strong> <?= $product['product_precio']; ?></li>
+                    <li class="list-group-item "><strong>IGV:</strong> <?= $product['product_igv']; ?></li>
                     <li class="list-group-item "><strong>Stock disponible:</strong> <?= $product['product_stock']; ?></li>
                 </ul>
                 <div class="mt-3 d-flex justify-content-around">

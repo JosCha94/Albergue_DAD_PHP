@@ -26,12 +26,6 @@ $categories = $consulta->listarCategorias($conexion);
                   <?= $value['cat_nombre']; ?>
                </label>
             </div>
-            <!-- <div class="mt-2 mb-2 pl-2">
-               <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input categoria" category="<?= $value['cat_id']; ?>">
-                  <label class="custom-control-label" for="category-1"><?= $value['cat_nombre']; ?></label>
-               </div>
-            </div> -->
          <?php endforeach; ?>
 
          <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>

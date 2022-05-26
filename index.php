@@ -22,14 +22,14 @@ $modulo = $_REQUEST['modulo'] ?? '';
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&display=swap" rel="stylesheet">
 
-    <title>Albergue de perritos<?php echo ($modulo == "adoptar"||"adoptar-single") ? " - Adopción " : " ";
+    <title>Albergue de perritos<?php echo ($modulo == "adoptar" || "adoptar-single") ? " - Adopción " : " ";
                                 echo ($modulo == "apadrinar") ? " - Apadrinar " : " ";
-                                echo ($modulo == "tienda"||"product_detail") ? " - Tienda " : " ";
+                                echo ($modulo == "tienda" || "product_detail") ? " - Tienda " : " ";
                                 echo ($modulo == "donar") ? " - Donación " : " ";
-                                echo ($modulo == "blog"||"blog-single") ? " - Blog " : " ";
+                                echo ($modulo == "blog" || "blog-single") ? " - Blog " : " ";
                                 echo ($modulo == "registro") ? " - Registro de usuario " : " "; ?>
 
     </title>
@@ -50,13 +50,13 @@ $modulo = $_REQUEST['modulo'] ?? '';
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item ">
-                        <a class="nav-link <?php echo ($modulo == "adoptar" || $modulo == "adoptar-single" ) ? " active " : " " ?> mx-2" href="index.php?modulo=adoptar">Adoptar</a>
+                        <a class="nav-link <?php echo ($modulo == "adoptar" || $modulo == "adoptar-single") ? " active " : " " ?> mx-2" href="index.php?modulo=adoptar">Adoptar</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link <?php echo ($modulo == "apadrinar") ? " active " : " " ?> mx-2" href="index.php?modulo=apadrinar">Apadrinar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($modulo == "tienda"|| $modulo == "product_detail") ? " active " : " " ?> mx-2" href="index.php?modulo=tienda">Tienda</a>
+                        <a class="nav-link <?php echo ($modulo == "tienda" || $modulo == "product_detail") ? " active " : " " ?> mx-2" href="index.php?modulo=tienda">Tienda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($modulo == "donar") ? " active " : " " ?> mx-2" href="index.php?modulo=donar">Donar</a>
@@ -187,14 +187,11 @@ $modulo = $_REQUEST['modulo'] ?? '';
 
 
         ?>
-
     </div>
 
-
-    </div>
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="container-fluid">
+        <div class="container-fluid <?php echo($logueado == 'false')?"position-absolute bottom-0":"" ?>">
             <div class="row bg-light">
                 <p class="text-center mt-3">© <span class="anio"></span> PlanetDog.com by FJF WEB SAC</p>
             </div>

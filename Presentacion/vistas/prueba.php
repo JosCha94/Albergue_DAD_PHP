@@ -2,10 +2,10 @@
 require_once 'SL/logueado.php';
 $log = new autorizacion();
 $logueado = $log->logueado($mysesion);
-if ($logueado =='false') {
+if ($logueado == 'false') {
 ?>
    <div class="alert alert-danger" role="alert">
-      Deve iniciar sesión
+      Deve iniciar sesión para poder visualizar este pagina
    </div>
 <?php
 } else {
@@ -77,7 +77,7 @@ if ($logueado =='false') {
                <?php foreach ($products as $key => $value) : ?>
                   <div class="item-gallery col-lg-4 col-md-6">
                      <div class="polaroid-gallery">
-                        <a href="">
+                        <a href="index.php?modulo=prueba&id=<?= $value['product_id']; ?>" data-bs-toggle="modal" data-bs-target="#ModalProduct">
                            <img src="Presentacion\libs\images\img_perrito.jpg" alt="" class="img-fluid">
                            <p class="caption-gallery" data-aos="zoom-in"><?= $value['product_nombre']; ?></p>
                            <div class="row">
