@@ -36,6 +36,19 @@ class Consulta_producto{
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
     }
+
+    public function listarImgProducto($conexion, $id) {
+        try{
+            $sql = "CALL SP_select_imgsproducto($id)";
+            $consulta = $conexion->prepare($sql);
+            $consulta->execute();
+            $imgproduct = $consulta->fetchAll(PDO::FETCH_ASSOC);
+            return $imgproduct;
+        } catch (PDOException $e) {
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        }
+
+    }
 }
     
 
