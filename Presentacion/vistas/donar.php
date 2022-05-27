@@ -6,8 +6,7 @@
             <div class="row">
                <div class="col-lg-6">
                   <h4>Sigue estos pasos para donar:</h4>
-                  <p>Llena el formulario con tus datos y la captura del váucher de tu donación.</p>
-                  
+                  <p>Llena el formulario con tus datos y la captura del váucher de tu donación.</p>                   
                    <div class="row">
                   <div class="col-sm-12">
                      <!-- Bank accounts List -->
@@ -24,39 +23,41 @@
                <!-- donation box -->  
                <div class="col-lg-6 p-5 res-margin bg-secondary h-50">
                   <h4 class="text-light">¡Muchas gracias por tu ayuda!</h4>
-				  
                   <!-- Form Starts -->
                   <div id="donation_form">
+                  <form action="" method="post">
                      <div class="form-group">
                         <div class="row">
                            <div class="col-md-12 text-light">
-                              <label>Nombres</label>
-                              <input type="text" name="name" class="form-control input-field" required=""> 
+                              <label>Nombre</label>
+                              <input type="text" name="nombre" class="form-control input-field" minlength="4" maxlength="50" placeholder="Ingresa tu nombre"required=""> 
                            </div>
-						   <div class="col-md-12 text-light">
-                              <label>Apellidos</label>
-                              <input type="text" name="name" class="form-control input-field" required=""> 
+						         <div class="col-md-12 text-light">
+                              <label>Apellido</label>
+                              <input type="text" name="apellido" class="form-control input-field" minlength="4" maxlength="50" placeholder="Ingresa tu apellido" required=""> 
                            </div>
                            <div class="col-md-12 text-light">
-                              <label>Email </label>
-                              <input type="email" name="email" class="form-control input-field" required=""> 
+                              <label>Correo Electrónico</label>
+                              <input type="email" name="email" class="form-control input-field" minlength="4" maxlength="50" placeholder="Ingresa tu correo electrónico" required=""> 
                            </div>
-						   <div class="col-md-12 text-light">
+                           <div class="col-md-12 text-light">
+                              <label>Celular</label>
+                              <input type="text" name="celular" class="form-control input-field" minlength="9" placeholder="Ingresa tu número de celular" required=""> 
+                           </div>
+						         <div class="col-md-12 text-light">
                               <label>DNI </label>
-                              <input type="number" name="dni" class="form-control input-field" required=""> 
+                              <input type="text" name="dni" class="form-control input-field" minlength="9" placeholder="Ingresa tu DNI" required=""> 
                            </div>
                            <div class="col-md-12 text-light">
                               <label>Sube tu váucher</label>
                               <input type="file" name="vaucher" class="form-control input-field"> 
-                           </div>
-                          
+                           </div>                          
                         </div>
                         <!-- button -->
                         <button type="submit" id="submit_btn" value="Submit" class="btn btn-donation mt-3"">Donar</button>
                      </div>
-                     <!-- /form-group-->
-                     <!-- Donation results -->
-                     <div id="donation_results"></div>
+                     <!-- /form-group-->                    
+                     </form>
                   </div>
                </div>
                <!-- /col-lg-->
