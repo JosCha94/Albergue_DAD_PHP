@@ -3,7 +3,15 @@ require_once('BL/consultas_usuario.php');
 require_once 'DAL/clases/usuario.php';
 require_once('DAL/conexion.php');
 $conexion = conexion::conectar();
-if(isset($_REQUEST['registro_usr'])){
+if(isset($_POST['registro_usr'])){
+    $usuario = trim($_POST['user']);
+    $contrasena = trim($_POST['pass']);
+    $nombre = trim($_POST['name']);
+    $apellidoPat = trim($_POST['ape_p']);
+    $apellidoMat = trim($_POST['ape_m']);
+    $correo = trim($_POST['email']);
+    $telefono = trim($_POST['celu']);
+    
     $usu = new usuario($_POST['user'],$_POST['pass'],  $_POST['name'],$_POST['ape_p'],$_POST['ape_m'],$_POST['email'],$_POST['celu']);
     $consulta = new Consulta_usuario();
     $consulta->insetar_usuario($conexion, $usu);
