@@ -28,6 +28,20 @@ class Consulta_perro{
     }
     public function buscarImagen_perro($conexion, $id) {
         try{
+            $sql = "CALL SP_listar_img_byId($id)";
+            // $sql = "SELECT img_perro_foto from img_perritos where perro_id = $id";
+            $consulta = $conexion->prepare($sql);
+            $consulta->execute();
+            $img_perro = $consulta->fetchall(PDO::FETCH_ASSOC);
+            return $img_perro;
+        } catch (PDOException $e) {
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        }
+
+    }
+
+    public function mostarImagenes_perro($conexion, $id) {
+        try{
             $sql = "CALL SP_buscar_img_perrito($id)";
             $consulta = $conexion->prepare($sql);
             $consulta->execute();
@@ -38,6 +52,7 @@ class Consulta_perro{
         }
 
     }
+   
 }
     
 

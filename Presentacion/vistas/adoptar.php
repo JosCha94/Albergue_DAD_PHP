@@ -110,7 +110,7 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
                <div class="item-gallery col-lg-4 col-md-6 mb-5">
                   <div class="polaroid-gallery">
                      <a href="index.php?modulo=adoptar-single&id=<?= $value['perro_id']; ?>">
-                        <img src="data:image/<?php echo($value['img_perro_tipo']);?>;base64,<?php echo base64_encode( $value['img_perro_foto'] ); ?>" alt="" class="img-fluid">
+                        <img src="data:image/<?php echo($value['img_perro_tipo']);?>;base64,<?php echo base64_encode( $value['img_perro_foto']); ?>" alt="" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in"><?=$value['perro_nombre'];?></p>
                      </a>
                   </div>

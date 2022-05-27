@@ -3,15 +3,15 @@
     require_once('BL/consultas_adopcion.php');
     require_once('DAL/clases/img_perritos.php');
     require_once('DAL/clases/perritos.php');
+
     $conexion = conexion::conectar();
     $consulta = new Consulta_perro();
-
     $id = $_GET['id'];
+    $imgActive = $consulta ->mostarImagenes_perro($conexion,$id);
     $perro = $consulta->listarPerro($conexion, $id);
-    
-
     $imgPerro = $consulta->buscarImagen_perro($conexion, $id);
 
+    
 ?>
 
 <div id="preloader">
@@ -42,13 +42,29 @@
         </div>
         <div class="container margin1">
             <div class="row">
-                <div class="col-md-5 ">
-                    <img src="data:image/<?php echo($imgPerro['img_perro_tipo']);?>;base64,<?php echo base64_encode( $imgPerro['img_perro_foto'] ); ?>" class="img-fluid" alt="foto perrito en adopcion">
-                    <div class="col-12">
-                        <div class="row-slider">    
-                            <a href="#"><img width="120px" src="data:image/<?php echo($imgPerro['img_perro_tipo']);?>;base64,<?php echo base64_encode( $imgPerro['img_perro_foto'] ); ?>" class="mx-3"  alt="foto perrito en adopcion"></a>
-                            <a href="#"><img width="120px" src="data:image/<?php echo($imgPerro['img_perro_tipo']);?>;base64,<?php echo base64_encode( $imgPerro['img_perro_foto'] ); ?>" alt="foto perrito en adopcion"></a>
-                        </div>    
+                <div class="col-md-5">
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="data:image/<?php echo ($imgActive['img_perro_tipo']); ?>;base64,<?php echo base64_encode($imgActive['img_perro_foto']); ?>" 
+                                class="d-block w-100" alt="perro en adopcion">
+                            </div>
+                            <?php foreach ($imgPerro as $key => $value) : ?>
+                                <div class="carousel-item">
+                                    <img src="data:image/<?php echo ($value['img_perro_tipo']); ?>;base64,<?php echo base64_encode($value['img_perro_foto']); ?>"
+                                    class="img-fluid" alt="perro foto">
+                                </div>
+                            <?php endforeach; ?>
+                                
+                            </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
                 </div>
                 <div class="col-md-7 ps-5">
