@@ -4,7 +4,7 @@ error_reporting(0);
 session_regenerate_id(true);
 $mysesion = $_SESSION['usuario'];
 
-$modulo = $_REQUEST['modulo'] ?? '';
+$modulo = $_GET['modulo'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -136,17 +136,17 @@ $modulo = $_REQUEST['modulo'] ?? '';
     <!-- BODY -->
     <div class="container mb-5">
         <?php
-        if (isset($_REQUEST['mensaje'])) {
+        if (isset($_GET['mensaje'])) {
         ?>
             <div class="alert alert-success alert-dismissible fade show float-right" role="alert">
-                <strong>Exito!</strong> <?php echo $_REQUEST['mensaje']; ?>
+                <strong>Exito!</strong> <?php echo $_GET['mensaje']; ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php
-        } else if (isset($_REQUEST['error'])) {
+        } else if (isset($_GET['error'])) {
         ?>
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                <strong>Error!</strong> <?php echo $_REQUEST['error']; ?>
+                <strong>Error!</strong> <?php echo $_GET['error']; ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php
