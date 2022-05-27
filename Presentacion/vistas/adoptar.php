@@ -100,7 +100,7 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
                 </div>
             </div>
             <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
-            <a href="#" class="btn btn-lg btn-block btn-primary mt-5">Filtrar</a>
+            <a href="#" class="btn btn-lg btn-block btn-adopt mt-5">Filtrar</a>
         </div>
 
         <div class="col-md-9">
