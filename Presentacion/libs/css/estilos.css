@@ -30,6 +30,17 @@
 #nav_principal .navbar .collapse .nav-link{
   color:#FCD900
 }
+
+.btn-login{
+  color: #fff;
+  background-color: #E8630A;
+
+}
+.btn-login:hover{
+ background-color: #ca0f48;
+ color: #fff;
+ box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 /*NAVBAR END*/
 /* MENU */
 
@@ -360,7 +371,7 @@ color: #E8630A ;
 /* button */
 .btn-donation{
   color: #fff;
-  background-color: #E8630A;
+  background-color: #e8630a;
   padding: 0px 40px;
   line-height: 2.7em;
   letter-spacing:1px;
