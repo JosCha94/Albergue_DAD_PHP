@@ -13,8 +13,8 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
 
 
 <div class="container adop-text text-center mt-4">
-    <h1>¡Ayudanos a ayudar!</h1>
-    <p>Todos nuestros perritos estan listos para ser adoptados y para que los cuides en su neuva vida</p>
+    <h1>¡Ayúdanos a ayudar!</h1>
+    <p>Todos nuestros perritos están listos para ser adoptados y para que los cuides en su nueva vida</p>
 </div>
 <div class="container adop-body mt-5">
     <div class="row">
@@ -100,7 +100,7 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
                 </div>
             </div>
             <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
-            <a href="#" class="btn btn-lg btn-block btn-primary mt-5">Filtrar</a>
+            <a href="#" class="btn btn-lg btn-block btn-adopt mt-5">Filtrar</a>
         </div>
 
         <div class="col-md-9">
@@ -110,7 +110,7 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
                <div class="item-gallery col-lg-4 col-md-6 mb-5">
                   <div class="polaroid-gallery">
                      <a href="index.php?modulo=adoptar-single&id=<?= $value['perro_id']; ?>">
-                        <img src="data:image/<?php echo($value['img_perro_tipo']);?>;base64,<?php echo base64_encode( $value['img_perro_foto'] ); ?>" alt="" class="img-fluid">
+                        <img src="data:image/<?php echo($value['img_perro_tipo']);?>;base64,<?php echo base64_encode( $value['img_perro_foto']); ?>" alt="" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in"><?=$value['perro_nombre'];?></p>
                      </a>
                   </div>

@@ -70,7 +70,7 @@ $modulo = $_GET['modulo'] ?? '';
                 </ul>
                 <?php if ($mysesion == null || $mysesion == '') {
                 ?>
-                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalLogin">Iniciar Sesion</button>
+                    <button type="button" class="btn btn-login m-3" data-bs-toggle="modal" data-bs-target="#ModalLogin">Iniciar Sesion</button>
                 <?php
                 } else {
                 ?>
@@ -107,7 +107,7 @@ $modulo = $_GET['modulo'] ?? '';
                             <h1 class="h3 mb-3 fw-normal text-center">Bienvenido</h1>
 
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="user" name="user" placeholder="Correo electronico o numero de celular">
+                                <input type="text" class="form-control mb-3" id="user" name="user" placeholder="Correo electronico o numero de celular">
                                 <label for="floatingInput">Correo electronico o numero de celular</label>
                             </div>
                             <div class="form-floating">
@@ -120,14 +120,14 @@ $modulo = $_GET['modulo'] ?? '';
                                     <input type="checkbox" value="remember-me"> Remember me
                                 </label>
                             </div> -->
-                            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Iniciar Sesión</button>
+                            <button class="w-100 btn btn-login mt-3" type="submit">Iniciar Sesión</button>
                             <p class="mt-5 mb-3 text-muted">© 2021–<span class="anio"></p>
                         </form>
                     </main>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <a href="index.php?modulo=registro" class="btn btn-primary">Registrarse</a>
+                    <a href="index.php?modulo=registro" class="btn btn-login">Registrarse</a>
                 </div>
             </div>
         </div>
@@ -184,7 +184,9 @@ $modulo = $_GET['modulo'] ?? '';
         if ($modulo == "product_detail") {
             include_once "Presentacion/vistas/detalle_producto.php";
         }
-
+        if ($modulo == "adoptar-formulario") {
+            include_once "Presentacion/vistas/adoptar-formulario.php";
+        }
 
         ?>
     </div>
