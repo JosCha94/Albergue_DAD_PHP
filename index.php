@@ -184,7 +184,9 @@ $modulo = $_GET['modulo'] ?? '';
         if ($modulo == "product_detail") {
             include_once "Presentacion/vistas/detalle_producto.php";
         }
-
+        if ($modulo == "adoptar-formulario") {
+            include_once "Presentacion/vistas/adoptar-formulario.php";
+        }
 
         ?>
     </div>

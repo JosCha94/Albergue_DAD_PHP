@@ -10,25 +10,18 @@
     $imgActive = $consulta ->mostarImagenes_perro($conexion,$id);
     $perro = $consulta->listarPerro($conexion, $id);
     $imgPerro = $consulta->buscarImagen_perro($conexion, $id);
-
-    
 ?>
-
 <div id="preloader">
          <div class="spinner">
             <div class="bounce1"></div>
          </div>
-      </div>
       <!-- Section Adoption -->
     <section id="adoption" class="pages">
-
         <div class="jumbotron ">
             <!-- Heading -->
-            
             <div class="jumbo-heading">
-            <h1><?php echo ($perro['perro_nombre']) ?></h1>
+                <h1><?php echo ($perro['perro_nombre']) ?></h1>
             </div>
-
         </div>
          <!-- container-->
 		<div class="container">
@@ -55,7 +48,6 @@
                                     class="img-fluid" alt="perro foto">
                                 </div>
                             <?php endforeach; ?>
-                                
                             </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -108,7 +100,7 @@
 
                             </div>
                             <div class="d-grid justify-content-center btns">
-                                <a href="#" class="btn btn-adopt mt-3">¡Adóptalo ahora!</a><br>
+                                <a href="index.php?modulo=adoptar-formulario" class="btn btn-adopt mt-3">¡Adóptalo ahora!</a><br>
                                 <a href="index.php?modulo=apadrinar"><span>Si no puedes adoptarlo, ¡apadrínalo!</span> </a>
                             </div>
                         </div>
@@ -123,3 +115,6 @@
     </section>
       <!-- /Section ends -->
       <!-- Footer -->	
+</div>    
+
+
