@@ -1,6 +1,6 @@
 <?php
 require_once('BL/consultas_usuario.php');
-require_once 'DAL/clases/usuario.php';
+require_once 'ENTIDADES/usuario.php';
 require_once('DAL/conexion.php');
 $conexion = conexion::conectar();
 if (isset($_POST['registro_usr'])) {
