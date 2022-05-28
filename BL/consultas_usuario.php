@@ -18,5 +18,69 @@ class Consulta_usuario
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
     }
+
+    public function Validar_registro($usu){
+        $errores = [];
+        $usuario = trim($usu->getUsuario());
+        $clave = trim($usu->getUsr_clave());
+        $nombre = trim($usu->getUsr_nombre());
+        $ape_pat = trim($usu->getUsr_apellido_paterno());
+        $ape_mat = trim($usu->getUsr_apellido_materno());
+        $mail = trim($usu->getUsr_email());
+        $celular = trim($usu->getUsr_celular());
+        if (empty($usuario)) {
+            $errores['usu'] = "Campo Usuario es requerido";
+        } elseif (strlen($usuario) < 5 || strlen($usuario) > 15) {
+            $errores['usu'] = "El campo Usuario debe tener de 5 a 15 caracteres, sin espacios en blanco";
+        }
+        if (empty($clave)) {
+            $errores['pass'] = "El campo Contraseña es requerido";
+        } elseif (strlen($clave) < 8 || strlen($clave) > 15) {
+            $errores['pass'] = "La Contraseña debe tener de 8 a 15 caracteres, sin espacios en blanco";
+        }
+        if (empty($nombre)) {
+            $errores['name'] = "El campo Nombre es requerido";
+        }elseif (strlen($nombre) < 4 || strlen($nombre) >20 ) {
+            $errores['name'] = "El Nombre deve tener de 4 a 20 letras, sin espacios en blanco";
+        }elseif (ctype_alpha($nombre) == false) {
+            $errores['name'] = "El Nombre solo puede tener letras";
+        }elseif (lcfirst($nombre) == ($nombre)) {
+            $errores['name'] = "La primera letra del Nombre debe estar en mayuscula";
+        }
+        if (empty($ape_pat)) {
+            $errores['ape_p'] = "El campo Apellido Paterno es requerido";
+        }elseif (strlen($ape_pat) < 4 || strlen($ape_pat) >20 ) {
+            $errores['ape_p'] = "El Apellido Paterno deve tener de 4 a 20 letras, sin espacios en blanco";
+        }elseif (ctype_alpha($ape_pat) == false) {
+            $errores['ape_p'] = "El Apellido Paterno solo puede tener letras";
+        }elseif (lcfirst($ape_pat) == ($ape_pat)) {
+            $errores['ape_p'] = "La primera letra del Apellido Paterno debe estar en mayuscula";
+        }
+        if (empty($ape_mat)) {
+            $errores['ape_m'] = "El campo Apellido Materno es requerido";
+        }elseif (strlen($ape_mat) < 4 || strlen($ape_mat) >20 ) {
+            $errores['ape_m'] = "El Apellido Materno deve tener de 4 a 20 letras, sin espacios en blanco";
+        }elseif (ctype_alpha($ape_mat) == false) {
+            $errores['ape_m'] = "El Apellido Materno solo puede tener letras";
+        }elseif (lcfirst($ape_mat) == ($ape_mat)) {
+            $errores['ape_m'] = "La primera letra del Apellido Materno debe estar en mayuscula";
+        }
+        if (empty($mail)) {
+            $errores['mail'] = "El campo Correo electronico es requerido";
+        }elseif (strlen($mail) >20 ) {
+            $errores['mail'] = "El Correo electronico puede tener de hasta 30 caracteres, sin espacios en blanco";
+        }elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL))
+        {
+            $errores['mail'] = "La sintaxis del Correo electronico es incorrecta";
+        }
+        if (empty($celular)) {
+            $errores['celu'] = "El campo Celular es requerido";
+        }elseif (strlen($celular) < 9 ) {
+            $errores['celu'] = "El Celular debe 9 digitos, sin espacios en blanco";
+        }elseif (!ctype_digit($celular)) {
+            $errores['celu'] = "El Celular solo puede tener numeros enteros";
+        }
+        return $errores;
+    }
 }
 ?>
