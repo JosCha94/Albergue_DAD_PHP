@@ -1,7 +1,7 @@
 <?php
 class Consulta_usuario
 {
-    public function insetar_usuario($conexion,$usu)
+    public function insetar_usuario($conexion, $usu)
     {
         try {
             $sql = "CALL SP_insertar_usuario(:usuario, :clave, :nombre, :ape_pat, :ape_mat, :email, :celular)";
@@ -14,12 +14,37 @@ class Consulta_usuario
             $consulta->bindValue(':email', $usu->getUsr_email());
             $consulta->bindValue(':celular', $usu->getUsr_celular());
             $consulta->execute();
+            $estado='bien';
+
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            $bad = $e->getMessage();
+            $cel = 'UK_numero_celular_USR';
+            $email = 'UK_email_USR';
+
+            $cel_coincidencia = strpos($bad, $cel);
+            $email_coincidencia = strpos($bad, $email);
+            if ($cel_coincidencia !== false) { ?>
+                <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                    <strong>Error!</strong> El numero de celular ya existe, ingrese otro numero de celular
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php
+            }elseif ($email_coincidencia !== false) { ?>
+                <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                    <strong>Error!</strong> El correo electronico ya existe, ingrese otra dirreción de correo
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php
+            };
+            $estado='mal';
         }
+        return $estado;
+        
     }
 
-    public function Validar_registro($usu){
+    public function Validar_registro($usu)
+    {
         $errores = [];
         $usuario = trim($usu->getUsuario());
         $clave = trim($usu->getUsr_clave());
@@ -40,44 +65,43 @@ class Consulta_usuario
         }
         if (empty($nombre)) {
             $errores['name'] = "El campo Nombre es requerido";
-        }elseif (strlen($nombre) < 4 || strlen($nombre) >20 ) {
+        } elseif (strlen($nombre) < 4 || strlen($nombre) > 20) {
             $errores['name'] = "El Nombre deve tener de 4 a 20 letras, sin espacios en blanco";
-        }elseif (ctype_alpha($nombre) == false) {
+        } elseif (ctype_alpha($nombre) == false) {
             $errores['name'] = "El Nombre solo puede tener letras";
-        }elseif (lcfirst($nombre) == ($nombre)) {
+        } elseif (lcfirst($nombre) == ($nombre)) {
             $errores['name'] = "La primera letra del Nombre debe estar en mayuscula";
         }
         if (empty($ape_pat)) {
             $errores['ape_p'] = "El campo Apellido Paterno es requerido";
-        }elseif (strlen($ape_pat) < 4 || strlen($ape_pat) >20 ) {
+        } elseif (strlen($ape_pat) < 4 || strlen($ape_pat) > 20) {
             $errores['ape_p'] = "El Apellido Paterno deve tener de 4 a 20 letras, sin espacios en blanco";
-        }elseif (ctype_alpha($ape_pat) == false) {
+        } elseif (ctype_alpha($ape_pat) == false) {
             $errores['ape_p'] = "El Apellido Paterno solo puede tener letras";
-        }elseif (lcfirst($ape_pat) == ($ape_pat)) {
+        } elseif (lcfirst($ape_pat) == ($ape_pat)) {
             $errores['ape_p'] = "La primera letra del Apellido Paterno debe estar en mayuscula";
         }
         if (empty($ape_mat)) {
             $errores['ape_m'] = "El campo Apellido Materno es requerido";
-        }elseif (strlen($ape_mat) < 4 || strlen($ape_mat) >20 ) {
+        } elseif (strlen($ape_mat) < 4 || strlen($ape_mat) > 20) {
             $errores['ape_m'] = "El Apellido Materno deve tener de 4 a 20 letras, sin espacios en blanco";
-        }elseif (ctype_alpha($ape_mat) == false) {
+        } elseif (ctype_alpha($ape_mat) == false) {
             $errores['ape_m'] = "El Apellido Materno solo puede tener letras";
-        }elseif (lcfirst($ape_mat) == ($ape_mat)) {
+        } elseif (lcfirst($ape_mat) == ($ape_mat)) {
             $errores['ape_m'] = "La primera letra del Apellido Materno debe estar en mayuscula";
         }
         if (empty($mail)) {
             $errores['mail'] = "El campo Correo electronico es requerido";
-        }elseif (strlen($mail) >20 ) {
+        } elseif (strlen($mail) > 20) {
             $errores['mail'] = "El Correo electronico puede tener de hasta 30 caracteres, sin espacios en blanco";
-        }elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL))
-        {
+        } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
             $errores['mail'] = "La sintaxis del Correo electronico es incorrecta";
         }
         if (empty($celular)) {
             $errores['celu'] = "El campo Celular es requerido";
-        }elseif (strlen($celular) < 9 ) {
+        } elseif (strlen($celular) < 9) {
             $errores['celu'] = "El Celular debe 9 digitos, sin espacios en blanco";
-        }elseif (!ctype_digit($celular)) {
+        } elseif (!ctype_digit($celular)) {
             $errores['celu'] = "El Celular solo puede tener numeros enteros";
         }
         return $errores;

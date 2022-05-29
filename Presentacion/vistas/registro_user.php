@@ -15,15 +15,13 @@ if (isset($_POST['registro_usr'])) {
     $consulta = new Consulta_usuario();
     $errores = $consulta->Validar_registro($usu);
     if (count($errores) == 0) {
-        // $consulta->insetar_usuario($conexion, $usu);
-        $user = '';
-        $pass = '';
-        $name = '';
-        $ape_p = '';
-        $ape_m = '';
-        $email = '';
-        $celu = '';
-        echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=inicio&mensaje=El Usuario se registro correctamente" />';
+        $estado=$consulta->insetar_usuario($conexion, $usu);
+
+        if($estado == 'mal'){
+
+        }else{
+           echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=inicio&mensaje=El Usuario se registro correctamente" />'; 
+        }
     }
 }
 ?>
@@ -43,16 +41,17 @@ if (isset($_POST['registro_usr'])) {
                 <div id="donation_form">
                     <form action="" method="post">
                     <?php if (isset($errores)) : ?>
-                        <?php if(count($errores) != 0) : ?>
-                            <ul class="alert alert-danger mt-3">
+                        <?php if(count($errores) != 0) : ?>                          
+                            <ul class="alert alert-danger mt-3">  
+                            <h1>Corregir</h1>                                 
                                 <?php foreach ($errores as  $error) : ?>
                                     <li><?= $error; ?></li>
                                 <?php endforeach; ?>
                             </ul>
                             <?php else : ?>
-                            <div class="alert alert-success mt-3">
+                            <!-- <div class="alert alert-success mt-3">
                                 <p>¡Registro exitoso!</p>
-                            </div>
+                            </div> -->
                         <?php endif; ?>
                     <?php endif; ?>
                         <div class="row">
