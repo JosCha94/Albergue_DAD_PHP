@@ -106,8 +106,10 @@ $('.filtroA').click(function () {
         $('.perrito[actividad="' + acti + '"]').css('transform', 'scale(1)');
     } setTimeout(verActividad, 400);
 });
+
+
 //filtro para edad
-$('.filtroA').click(function () {
+$('.filtroE').click(function () {
     var age1 = $(this).attr('edad1');
     var age2 = $(this).attr('edad2');
     var age3 = $(this).attr('edad3');
