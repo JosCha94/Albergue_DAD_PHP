@@ -1,22 +1,30 @@
 <?php
 require_once 'SL/logueado.php';
+require_once('DAL/conexion.php');
+$conexion = conexion::conectar();
 $log = new autorizacion();
 $logueado = $log->logueado($mysesion);
-if ($logueado == 'false') {
-?>
-   <div class="alert alert-danger" role="alert">
-      Deve iniciar sesión para poder visualizar este pagina
-   </div>
-   <?php
-} elseif (($_SESSION['usuario'][2] == 'Activado')) {
-   if (($_SESSION['usuario'][5] == 'Activado')) {
-   ?>
-      <?php
-      require_once('BL/consultas_tienda.php');
-      require_once('DAL/conexion.php');
-      $conexion = conexion::conectar();
-      $consulta = new Consulta_producto();
+$rol = $log->activeRol($_SESSION['usuario'][2]);
+$permiso = $log->activePermi($_SESSION['usuario'][5]);
 
+switch ($error='SinError') {
+   case ($logueado == 'false'):
+      $error='Deve iniciar sesión para poder visualizar este pagina';
+       break;
+   case ($rol != 'true'):
+      $error='No tiene activado el rol de Cliente';
+       break;
+   case ($permiso != 'true'):
+      $error='Su rol actual no tiene permiso para acceder a esta pagina';
+       break;
+   break;
+}  
+?>
+<?php
+if ($error == 'SinError') {?>
+<?php
+      require_once('BL/consultas_tienda.php');
+      $consulta = new Consulta_producto();
       $products = $consulta->listarProductos($conexion);
       $categories = $consulta->listarCategorias($conexion);
 
@@ -115,20 +123,12 @@ if ($logueado == 'false') {
             </div>
          </div>
       </div>
-
-   <?php
-   } else {
-   ?>
-      <div class="alert alert-danger" role="alert">
-         Su rol actual no tiene permiso para acceder a esta pagina
-      </div>
-   <?php
-   }
+<?php 
 } else {
-   ?>
-   <div class="alert alert-danger" role="alert">
-      No tiene activado el rol de Cliente
-   </div>
+?>
+<div class="alert alert-danger" role="alert">
+         <?php echo $error; ?>
+      </div>
 <?php
 }
 ?>
