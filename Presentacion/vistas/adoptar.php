@@ -1,12 +1,9 @@
 <?php
 require_once('BL/consultas_adopcion.php');
 require_once('DAL/conexion.php');
-require_once('ENTIDADES/img_perritos.php');
-require_once('ENTIDADES/perritos.php');
 
 $conexion = conexion::conectar();
 $consulta = new Consulta_perro();
-
 $imgPerro = $consulta->listarImagen_perro($conexion);
 
 ?>
