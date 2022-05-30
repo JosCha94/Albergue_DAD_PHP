@@ -30,5 +30,18 @@ class autorizacion
         }
         return $per;
     }
+
+    public function permisosActivos($conexion)
+    {
+        try{
+            $sql = "CALL SP_select_permisos_activos()";
+            $consulta = $conexion->prepare($sql);
+            $consulta->execute();
+            $permisos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+            return $permisos;
+        } catch (PDOException $e) {
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        }
+    }
 }
 ?>

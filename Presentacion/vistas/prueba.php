@@ -1,5 +1,7 @@
 <?php
 require_once 'SL/logueado.php';
+require_once('DAL/conexion.php');
+$conexion = conexion::conectar();
 $log = new autorizacion();
 $logueado = $log->logueado($mysesion);
 $rol = $log->activeRol($_SESSION['usuario'][2]);
@@ -16,16 +18,13 @@ switch ($error='SinError') {
       $error='Su rol actual no tiene permiso para acceder a esta pagina';
        break;
    break;
-}
+}  
 ?>
 <?php
 if ($error == 'SinError') {?>
 <?php
       require_once('BL/consultas_tienda.php');
-      require_once('DAL/conexion.php');
-      $conexion = conexion::conectar();
       $consulta = new Consulta_producto();
-
       $products = $consulta->listarProductos($conexion);
       $categories = $consulta->listarCategorias($conexion);
 
