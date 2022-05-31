@@ -20,7 +20,7 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
             <h3 class="mt-0 mb-5">Filtrar por:</h3>
             <div class="form-check">
                 <input type="radio" class="form-check-input filtro" id="All" tamano="All" sexo="All" actividad="All" name="filtro" checked>
-                <label class="form-check-label" for="category-1">Mostrar todo</label>
+                <label class="form-check-label" for="All">Mostrar todo</label>
             </div>
             <div class="divider my-1 border-bottom border-secondary"></div>
 
@@ -47,26 +47,26 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
             <h6 class="text-uppercase font-weight-bold mb-3">EDAD</h6>
             <div class="form-check ">
                 <div class="custom-control custom-checkbox">
-                    <input type="radio" class="form-check-input filtroE" id="category-1" edad1="0" edad2="1" edad3="2" name="filtro">
-                    <label class="form-check-label" for="category-1">De 0 a 2 años</label>
+                    <input type="radio" class="form-check-input filtroE" id="category-4" edad1="0" edad2="1" edad3="2" name="filtro">
+                    <label class="form-check-label" for="category-4">De 0 a 2 años</label>
                 </div>
             </div>
             <div class=" form-check ">
                 <div class="custom-control custom-checkbox">
-                    <input type="radio" class="form-check-input filtroE" id="category-2" name="filtro" edad1="3" edad2="4" edad3="5">
-                    <label class="form-check-label" for="category-2">De 3 a 5 años</label>
+                    <input type="radio" class="form-check-input filtroE" id="category-5" name="filtro" edad1="3" edad2="4" edad3="5">
+                    <label class="form-check-label" for="category-5">De 3 a 5 años</label>
                 </div>
             </div>
             <div class="form-check ">
                 <div class="custom-control custom-checkbox">
-                    <input type="radio" class="form-check-input filtroE" id="category-3" name="filtro" edad1="6" edad2="7" edad3="8">
-                    <label class="form-check-label" for="category-3">De 6 a 8 años</label>
+                    <input type="radio" class="form-check-input filtroE" id="category-6" name="filtro" edad1="6" edad2="7" edad3="8">
+                    <label class="form-check-label" for="category-6">De 6 a 8 años</label>
                 </div>
             </div>
             <div class="form-check ">
                 <div class="custom-control custom-checkbox">
-                    <input type="radio" class="form-check-input filtroE" id="category-3" name="filtro" edad1="9" edad2="10" edad3="11">
-                    <label class="form-check-label" for="category-3">De 9 a más años</label>
+                    <input type="radio" class="form-check-input filtroE" id="category-7" name="filtro" edad1="9" edad2="10" edad3="11">
+                    <label class="form-check-label" for="category-7">De 9 a más años</label>
                 </div>
             </div>
             <div class="divider my-1 border-bottom border-secondary"></div>
@@ -87,23 +87,23 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
             <h6 class="text-uppercase  font-weight-bold">NIVEL DE ACTIVIDAD</h6>
             <div class="form-check mt-2 mb-2">
                 <div class="custom-control custom-checkbox">
-                    <input type="radio" class="form-check-input filtroA" id="category-1" actividad="Ligera" name="filtro">
-                    <label class="form-check-label" for="category-1">Ligera</label>
+                    <input type="radio" class="form-check-input filtroA" id="category-8" actividad="Ligera" name="filtro">
+                    <label class="form-check-label" for="category-8">Ligera</label>
                 </div>
             </div>
             <div class="form-check">
                 <div class="custom-control custom-checkbox">
-                    <input type="radio" class="form-check-input filtroA" id="category-2" actividad="Moderada" name="filtro">
-                    <label class="form-check-label" for="category-2">Moderada</label>
+                    <input type="radio" class="form-check-input filtroA" id="category-9" actividad="Moderada" name="filtro">
+                    <label class="form-check-label" for="category-9">Moderada</label>
                 </div>
             </div>
             <div class="form-check ">
                 <div class="custom-control custom-checkbox">
-                    <input type="radio" class="form-check-input filtroA" id="category-3" actividad="Intensa" name="filtro">
-                    <label class="form-check-label" for="category-3">Intensa</label>
+                    <input type="radio" class="form-check-input filtroA" id="category-10" actividad="Intensa" name="filtro">
+                    <label class="form-check-label" for="category-10">Intensa</label>
                 </div>
             </div>
-        </div>
+         </div>
 
         <div class="col-md-10">
             <!-- perritos -->
