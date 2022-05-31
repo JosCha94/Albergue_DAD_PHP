@@ -28,7 +28,7 @@
 }
 
 #nav_principal .navbar .collapse .nav-link{
-  color:#FCD900
+  color:#E8630A
 }
 
 .btn-login{
@@ -107,6 +107,13 @@
   padding: 20px;
 
 }
+
+/**************filtros***********/
+
+.sidebar-filter{
+  font-size: 14px;
+}
+
 /*============FOTOS PERRITOS=============*/
 .wrapper-gallery {
   text-align: center;
@@ -275,6 +282,7 @@ color: #E8630A ;
   font-size: small;
   padding: 0;
 }
+
 
 
 /*===============ADOPTAR-SINGLE-END================*/
