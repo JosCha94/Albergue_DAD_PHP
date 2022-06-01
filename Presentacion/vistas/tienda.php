@@ -112,7 +112,7 @@ if(isset($_POST['carrito'])){
             <div class="col-8">
                <a class="btn btn-light scroll_up"><i class="fas fa-arrow-up mr-2 scroll_up"></i> Regresar</a>
             </div>
-            <div class="col-4">
+            <!-- <div class="col-4">
                <div class="dropdown float-md-right">
                   <label class="mr-2">View:</label>
                   <a class="btn btn-light btn-lg dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">12 <span class="caret"></span></a>
@@ -127,7 +127,7 @@ if(isset($_POST['carrito'])){
                      <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
                   </div>
                </div>
-            </div>
+            </div> -->
          </div>
       </div>
    </div>

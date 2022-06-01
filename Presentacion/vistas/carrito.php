@@ -93,7 +93,18 @@ $idx = 1;
 
                     </tbody>
                 </table>
-                <h2>Total: S/ <?php echo $total ?></h2>
+                <?php
+                if($total==''){?>
+
+                <MARQUEE SCROLLAMOUNT=10><h2>El carrito esta vacio</h2></MARQUEE>
+                    
+                <?php 
+                }else{?>
+                    <h2>Total: S/ <?php echo $total ?></h2>
+                <?php
+                }
+                ?>
+    
             </div>
             <!-- END CARD -->
             <div class="row sorting mb-5 mt-5">
