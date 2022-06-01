@@ -98,7 +98,7 @@
 
                             </div>
                             <div class="d-grid justify-content-center btns">
-                                <a href="index.php?modulo=adoptar-formulario" class="btn btn-adopt mt-3">¡Adóptalo ahora!</a><br>
+                                <a href="index.php?modulo=adoptar-formulario&id=<?= $value['perro_id']; ?>"" class="btn btn-adopt mt-3">¡Adóptalo ahora!</a><br>
                                 <a href="index.php?modulo=apadrinar"><span>Si no puedes adoptarlo, ¡apadrínalo!</span> </a>
                             </div>
                         </div>

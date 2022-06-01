@@ -1,6 +1,8 @@
 *{
   font-family: 'Baloo Thambi 2', cursive;
 }
+
+
 /* MENU */
 .nav-link:hover {
   transition: 0.5s;
@@ -28,7 +30,10 @@
 }
 
 #nav_principal .navbar .collapse .nav-link{
-  color:#FCD900
+  color:white
+}
+#nav_principal .navbar .collapse .nav-link:hover{
+  color:#E8630a
 }
 
 .btn-login{
@@ -107,6 +112,13 @@
   padding: 20px;
 
 }
+
+/**************filtros***********/
+
+.sidebar-filter{
+  font-size: 14px;
+}
+
 /*============FOTOS PERRITOS=============*/
 .wrapper-gallery {
   text-align: center;
@@ -275,6 +287,42 @@ color: #E8630A ;
   font-size: small;
   padding: 0;
 }
+
+/********formulario adopcion**************/
+
+.body{
+  text-align: center;
+  background: url(../images/huesoPatron.png);
+  background-repeat: repeat;
+  background-size:contain;
+  background-position:center;
+}
+
+/* .form-adopt{
+ margin-top: 80px ;
+ box-shadow: -3px -3px 9px #aaa9a9a2,
+              3px 3px 7px rgba(147, 149, 151, 0.671);
+  
+} */
+.card.text-black{
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  background-color: transparent;
+}
+h1.text-center{
+  color: #E8630A;
+}
+
+
+
+
+
+
+/********formulario adopcion**************/
+
 
 
 /*===============ADOPTAR-SINGLE-END================*/
