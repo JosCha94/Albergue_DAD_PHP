@@ -53,6 +53,10 @@ class Consulta_producto
         }
     }
 
+    // -------------------------------------------------
+    //                    CARRITO
+    // --------------------------------------------------
+
     public function agregarProductoAlCarrito($bd,$idUser,$idProducto,$cantidad)
     {
         try {
@@ -65,6 +69,7 @@ class Consulta_producto
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
     }
+
     public function listarProductosCarrito($conexion, $id)
     {
         try {
@@ -77,24 +82,35 @@ class Consulta_producto
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
     }
+
+    public function borrarDeCarrito($conexion, $idUser, $idProduct)
+    {
+        try {
+            $sql = "CALL SP_eliminar_producto_carrito($idUser, $idProduct)";
+            $consulta = $conexion->prepare($sql);
+            $consulta->execute();
+            $products = $consulta->fetchAll(PDO::FETCH_ASSOC);
+            return $products;
+        } catch (PDOException $e) {
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        }
+    }
+
+    public function cambiarCantidadCarrito($bd,$idUser,$idProducto,$cantidad)
+    {
+        try {
+            $sql = "CALL SP_agregar_al_carrito2($idUser,$idProducto,$cantidad)";
+            $consulta = $bd->prepare($sql);
+            $consulta->execute();
+            $product = $consulta->fetch(PDO::FETCH_ASSOC);
+            return $product;
+        } catch (PDOException $e) {
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        }
+    }
+
+
 }
 
 
 ?>
-
-<!-- public function listarProductos($conexion) {
-         // $sql = "SELECT * FROM $productos";
-             $sql = "CALL SP_listar_productos()";
-             $resultado = $conexion->query($sql);
-             $productos = $resultado->fetchAll(PDO::FETCH_ASSOC);
-             return $productos;
-
-         } -->
-
-<!-- public function listarCategorias($conexion) {
-         // $sql = "CALL SP_select_categorias()";
-        // $consulta = $conexion->prepare($sql);
-        // $consulta->execute();
-        // $categories = $consulta->fetchAll(PDO::FETCH_ASSOC);
-        // return $categories;
-    } -->
