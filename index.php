@@ -5,6 +5,7 @@ session_regenerate_id(true);
 $mysesion = $_SESSION['usuario'];
 
 $modulo = $_GET['modulo'] ?? '';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,7 +28,7 @@ $modulo = $_GET['modulo'] ?? '';
 
     <title>Albergue de perritos<?php echo ($modulo == "adoptar" || "adoptar-single") ? " - Adopción " : " ";
                                 echo ($modulo == "apadrinar") ? " - Apadrinar " : " ";
-                                echo ($modulo == "tienda" || "product_detail") ? " - Tienda " : " ";
+                                echo ($modulo == "tienda" || "product_detail" || "carrito") ? " - Tienda " : " ";
                                 echo ($modulo == "donar") ? " - Donación " : " ";
                                 echo ($modulo == "blog" || "blog-single") ? " - Blog " : " ";
                                 echo ($modulo == "registro") ? " - Registro de usuario " : " "; ?>
@@ -56,7 +57,7 @@ $modulo = $_GET['modulo'] ?? '';
                         <a class="nav-link <?php echo ($modulo == "apadrinar") ? " active " : " " ?> mx-2" href="index.php?modulo=apadrinar">Apadrinar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($modulo == "tienda" || $modulo == "product_detail") ? " active " : " " ?> mx-2" href="index.php?modulo=tienda">Tienda</a>
+                        <a class="nav-link <?php echo ($modulo == "tienda" || $modulo == "product_detail" || $modulo == "carrito") ? " active " : " " ?> mx-2" href="index.php?modulo=tienda">Tienda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($modulo == "donar") ? " active " : " " ?> mx-2" href="index.php?modulo=donar">Donar</a>
@@ -184,6 +185,9 @@ $modulo = $_GET['modulo'] ?? '';
         if ($modulo == "product_detail") {
             include_once "Presentacion/vistas/detalle_producto.php";
         }
+        if ($modulo == "carrito") {
+            include_once "Presentacion/vistas/carrito.php";
+        }
         if ($modulo == "adoptar-formulario") {
             include_once "Presentacion/vistas/adoptar-formulario.php";
         }
@@ -203,7 +207,7 @@ $modulo = $_GET['modulo'] ?? '';
 </body>
 <!-- LINKS SCRIPT -->
 <script src="Presentacion/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="https://kit.fontawesome.com/f52de5d372.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
 <script src="Presentacion/libs/javascript/jquery-3.6.0.min.js"></script>
 <script src="Presentacion/libs/javascript/script.js"></script>
 
