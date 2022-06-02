@@ -1,10 +1,4 @@
 <?php
-
-    session_start();
-    error_reporting(0);
-    session_regenerate_id(true);
-    $mysesion = $_SESSION['usuario'];   
-
     require_once('DAL/conexion.php');
     require_once('BL/consultas_adopcion.php');
     $conexion = conexion::conectar();

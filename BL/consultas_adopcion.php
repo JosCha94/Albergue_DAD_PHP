@@ -59,13 +59,12 @@ class Consulta_adopcion{
             $consulta -> bindValue(':idPerro', $adop->getPerro_id());
             $consulta -> bindValue(':razonAdo', $adop->getAdop_razon());
             $consulta -> execute();
-            $result = 'Correcto';
-
         }catch (PDOExeption $e){
            echo "Ocurrio un error en la base de atos: " . $e -> getMessage();
         }
-
+        
     }
+
 }
     
 

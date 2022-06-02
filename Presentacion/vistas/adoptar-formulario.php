@@ -9,21 +9,18 @@ $id = $_GET['id'];
 $imgPerro = $consulta ->mostarImagenes_perro($conexion,$id);
 $perro = $consulta->listarPerro($conexion, $id);
 
-/***revisar variables POST */
+
 if(isset($_POST['adopt_submit'])){
-    $usrId = $_SESSION['usuario'][0];
     $id = $_GET['id'];
+    $usrId = $_SESSION['usuario'][0];
     $razon = $_POST['tex_adop'];
-    $adop = new Adopcion($usrId, $id, $razon );
     $consulta = new Consulta_adopcion();
-    $result = $consulta ->insertarForm_adopcion($conexion, $adop);
-
+    $adop = new adopcion ( $usrId, $id, $razon);
+    $insertForm = $consulta -> insertarForm_adopcion($conexion, $adop );
 }
-echo $usrId;
-echo $id;
 
 
- ?>
+?>
 
  <body class="body">
     <div class="container form-adopt">
