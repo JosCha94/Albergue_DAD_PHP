@@ -16,11 +16,9 @@ try {
         $_SESSION['usuario'] = array();
         $_SESSION['usuario'][0] = $usuarios['usr_id'];
         $_SESSION['usuario'][1] = $usuarios['usuario'];
-        $_SESSION['usuario'][2] = $usuarios['estado'];
-        $_SESSION['usuario'][3] = $usuarios['adop'];
-        $_SESSION['usuario'][4] = $usuarios['padrino'];
-        $_SESSION['usuario'][5] = $usuarios['tienda'];
-        $_SESSION['usuario'][6] = $usuarios['blog'];
+        $_SESSION['usuario'][2] = $usuarios['rol_estado'];
+        $_SESSION['usuario'][3] = $usuarios['per_rol'];
+        $_SESSION['usuario'][4] = $usuarios['per_esp'];
         header("location: ../index.php");
     } else {
 

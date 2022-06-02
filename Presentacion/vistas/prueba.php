@@ -5,16 +5,19 @@ $conexion = conexion::conectar();
 $log = new autorizacion();
 $logueado = $log->logueado($mysesion);
 $rol = $log->activeRol($_SESSION['usuario'][2]);
-$permiso = $log->activePermi($_SESSION['usuario'][5]);
+$permisosRol = $log->activeRolPermi($_SESSION['usuario'][3],3);
+$permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4],3);
 
 switch ($error='SinError') {
+   case ($permisoEsp == 'true'):
+       break;
    case ($logueado == 'false'):
       $error='Deve iniciar sesión para poder visualizar este pagina';
        break;
    case ($rol != 'true'):
       $error='No tiene activado el rol de Cliente';
        break;
-   case ($permiso != 'true'):
+   case ($permisosRol != 'true'):
       $error='Su rol actual no tiene permiso para acceder a esta pagina';
        break;
    break;

@@ -21,27 +21,28 @@ class autorizacion
         return $res;
     }
 
-    public function activePermi($estado)
+    public function activeRolPermi($permisos, $id)
     {
-        if ($estado == 'Activado') {
-            $per = 'true';
-        } else {
-            $per = 'false';
-        }
+        $perRol = $permisos;
+        $array = json_decode($perRol, true);
+        foreach ($array as $key => $value) :
+            if ($value['id'] == $id) {
+                $per = 'true';
+            }
+        endforeach;
         return $per;
     }
 
-    public function permisosActivos($conexion)
+    public function permisosEspeciales($permisos, $id)
     {
-        try{
-            $sql = "CALL SP_select_permisos_activos()";
-            $consulta = $conexion->prepare($sql);
-            $consulta->execute();
-            $permisos = $consulta->fetchAll(PDO::FETCH_ASSOC);
-            return $permisos;
-        } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
-        }
+        $perEsp = $permisos;
+        $array = json_decode($perEsp, true);
+        foreach ($array as $key => $value) :
+            if ($value['id'] == $id) {
+                $per = 'true';
+            }
+        endforeach;
+        return $per;
     }
 }
 ?>
