@@ -1,5 +1,5 @@
 <?php
-require_once 'SL/logueado.php';
+require_once 'SL/permisos.php';
 require_once('DAL/conexion.php');
 $conexion = conexion::conectar();
 $log = new autorizacion();
