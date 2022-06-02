@@ -1,7 +1,7 @@
 // AÑO-----------------------------------
 var anio = (new Date).getFullYear();
-$(document).ready(function() {
-      $(".anio").text( anio );
+$(document).ready(function () {
+    $(".anio").text(anio);
 });
 // ----------AÑO-------------
 
@@ -18,6 +18,10 @@ $('.categoria').click(function () {
         $('.producto[category="' + catego + '"]').show();
         $('.producto[category="' + catego + '"]').css('transform', 'scale(1)');
     } setTimeout(verProduct, 400);
+
+    // --------------------------------------------------
+
+    // --------------------------------------------------
 
     $('.categoria[category="All"]').click(function () {
         function showAll() {
@@ -47,9 +51,8 @@ $('.sizes').click(function () {
 // ---------FILTRO PRODUCTOS-----------------------        
 
 // SCROLL-----------------------------------
-$(".scroll_up").click(function()
-{
-    jQuery('html,body').animate({scrollTop:0},2000);
+$(".scroll_up").click(function () {
+    jQuery('html,body').animate({ scrollTop: 0 }, 2000);
 })
 // ------------------SCROLL-----------------
 
@@ -113,7 +116,7 @@ $('.filtroE').click(function () {
     var age1 = $(this).attr('edad1');
     var age2 = $(this).attr('edad2');
     var age3 = $(this).attr('edad3');
-   
+
     $('.perrito').css('transform', 'scale(0)');
     function ocultarEdad() {
         $('.perrito').hide();
@@ -134,6 +137,6 @@ $('.filtroE').click(function () {
         $('.perrito[edad3="' + age3 + '"]').css('transform', 'scale(1)');
     } setTimeout(verEdad3, 400);
 
-  
+
 });
 //--------------FILTRO PARA PAG. ADOPCIONES----------------//

@@ -13,19 +13,14 @@ if(isset($_POST['carrito'])){
    $cantidad = $_POST['cantidad'];
    $consulta->agregarProductoAlCarrito($conexion, $idUser, $idProducto, $cantidad);
 }
-
 ?>
 <div class="container adop-body mt-5">
    <div class="row">
       <div class="col-md-3 sidebar-filter">
-         <h3 class="mt-0 mb-5">Tienda <br> Productos</h3>
-         <h6 class="text-uppercase font-weight-bold mb-3">Categorias</h6>
-         <div class="form-check">
-            <input class="form-check-input categoria" category="All" type="radio" name="flexRadioProduct" id="flexRadioTodos" checked>
-            <label class="form-check-label" for="flexRadioTodos">
-               Todas
-            </label>
-         </div>
+         <h2 class="mt-0 mb-5">Tienda de<br> Productos</h2>
+         <h4 class="text-uppercase font-weight-bold mb-3">FILTRAR POR:</h4>
+         <div class="divider mb-1 mt-3 border-bottom border-secondary"></div>
+         <h6 class="text-uppercase font-weight-bold mb-3">Categorias:</h6>
          <?php foreach ($categories as $key => $value) : ?>
             <div class="form-check">
                <input class="form-check-input categoria" category="<?= $value['cat_id']; ?>" type="radio" name="flexRadioProduct" id="RadioProduct<?= $value['cat_nombre']; ?>">
@@ -34,13 +29,43 @@ if(isset($_POST['carrito'])){
                </label>
             </div>
          <?php endforeach; ?>
+         <div class="divider mb-1 mt-3 border-bottom border-secondary "></div>
+         <!-- ------------------------------------ -->
+         <h6 class="text-uppercase font-weight-bold mb-3">Segun el tamaño<br> del perrito:</h6>
+            <div class="form-check">
+               <input class="form-check-input sizes" size="Pequeno" type="radio" name="flexRadioProduct" id="RadioProductPequeno">
+               <label class="form-check-label" for="RadioProductPequeno">
+                  Pequeño
+               </label>
+            </div>
+            <div class="form-check">
+               <input class="form-check-input sizes" size="Mediano" type="radio" name="flexRadioProduct" id="RadioProductMediano">
+               <label class="form-check-label" for="RadioProductMediano">
+                  Mediano
+               </label>
+            </div>
+            <div class="form-check">
+               <input class="form-check-input sizes" size="Grande" type="radio" name="flexRadioProduct" id="RadioProductGrande">
+               <label class="form-check-label" for="RadioProductGrande">
+                  Grande
+               </label>
+            </div>
+            <!-- ------------------------------------ -->
+            <div class="divider mb-1 mt-3 border-bottom border-secondary "></div>
+            <div class="form-check">
+            <input class="form-check-input categoria" category="All" type="radio" name="flexRadioProduct" id="flexRadioTodos" checked>
+            <label class="form-check-label" for="flexRadioTodos">
+               Mostrar todo
+            </label>
+         </div>
 
-         <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+         <!-- <div class="divider mt-5 mb-5 border-bottom border-secondary"></div> -->
+
          <a href="index.php?modulo=carrito" class="btn btn-lg btn-block btn-primary mt-5">Carrito</a>
       </div>
 
       <div class="col-md-9">
-         <div class="row">
+         <!-- <div class="row">
             <div class="col-8">
                <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
                   <label class="mr-2 fs-4">Para Perritos:</label>
@@ -52,7 +77,7 @@ if(isset($_POST['carrito'])){
                   </ul>
                </div>
             </div>
-         </div>
+         </div> -->
 
          <!-- productos -->
          <div class="wrapper-gallery row magnific-popup mt-5">
@@ -66,10 +91,10 @@ if(isset($_POST['carrito'])){
                         <img src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid">
                         <p class="caption-gallery" data-aos="zoom-in"><?= $value['product_nombre']; ?></p>
                         <form action="" method="post" id="form_producto" name="form_producto">
-                           <div class="row">   
-                           
-                              <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">     
-                              <input type="hidden" name="cantidad" value="1">          
+                           <div class="row">
+
+                              <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
+                              <input type="hidden" name="cantidad" value="1">
                               <button class="btn btn-outline-danger" name="carrito">Añadir al carrito</button>
 
                            </div>
@@ -87,7 +112,7 @@ if(isset($_POST['carrito'])){
             <div class="col-8">
                <a class="btn btn-light scroll_up"><i class="fas fa-arrow-up mr-2 scroll_up"></i> Regresar</a>
             </div>
-            <div class="col-4">
+            <!-- <div class="col-4">
                <div class="dropdown float-md-right">
                   <label class="mr-2">View:</label>
                   <a class="btn btn-light btn-lg dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">12 <span class="caret"></span></a>
@@ -102,7 +127,7 @@ if(isset($_POST['carrito'])){
                      <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
                   </div>
                </div>
-            </div>
+            </div> -->
          </div>
       </div>
    </div>
