@@ -12,7 +12,7 @@ switch ($error='SinError') {
    case ($permisoEsp == 'true'):
        break;
    case ($logueado == 'false'):
-      $error='Deve iniciar sesión para poder visualizar este pagina';
+      $error='Debe iniciar sesión para poder visualizar este pagina';
        break;
    case ($rol != 'true'):
       $error='No tiene activado el rol de Cliente';

@@ -1,5 +1,5 @@
 <?php
-class Consulta_perro{
+class Consulta_adopcion{
     //Muestra todos los datos de los perritos
     public function listarPerro($conexion, $id) {
         try{
@@ -24,7 +24,6 @@ class Consulta_perro{
         } catch (PDOException $e) {
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
-
     }
     public function buscarImagen_perro($conexion, $id) {
         try{
@@ -39,7 +38,6 @@ class Consulta_perro{
         }
 
     }
-
     public function mostarImagenes_perro($conexion, $id) {
         try{
             $sql = "CALL SP_buscar_img_perrito($id)";
@@ -50,9 +48,23 @@ class Consulta_perro{
         } catch (PDOException $e) {
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
-
     }
-      
+
+    public function insertarForm_adopcion($conexion, $adop)
+    {
+        try {
+            $sql = "CALL SP_insert_formulario_adopcion(:idUsuario, :idPerro, :razonAdo)";
+            $consulta = $conexion->prepare($sql);
+            $consulta -> bindValue(':idUsuario', $adop->getUsr_id());
+            $consulta -> bindValue(':idPerro', $adop->getPerro_id());
+            $consulta -> bindValue(':razonAdo', $adop->getAdop_razon());
+            $consulta -> execute();
+        }catch (PDOExeption $e){
+           echo "Ocurrio un error en la base de atos: " . $e -> getMessage();
+        }
+        
+    }
+
 }
     
 

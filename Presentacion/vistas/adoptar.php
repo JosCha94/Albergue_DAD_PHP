@@ -3,7 +3,7 @@ require_once('BL/consultas_adopcion.php');
 require_once('DAL/conexion.php');
 
 $conexion = conexion::conectar();
-$consulta = new Consulta_perro();
+$consulta = new Consulta_adopcion();
 $imgPerro = $consulta->listarImagen_perro($conexion);
 
 
