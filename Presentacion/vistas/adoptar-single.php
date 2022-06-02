@@ -1,9 +1,14 @@
 <?php
+
+    session_start();
+    error_reporting(0);
+    session_regenerate_id(true);
+    $mysesion = $_SESSION['usuario'];   
+
     require_once('DAL/conexion.php');
     require_once('BL/consultas_adopcion.php');
-
     $conexion = conexion::conectar();
-    $consulta = new Consulta_perro();
+    $consulta = new Consulta_adopcion();
     $id = $_GET['id'];
     $imgActive = $consulta ->mostarImagenes_perro($conexion,$id);
     $perro = $consulta->listarPerro($conexion, $id);
@@ -98,7 +103,15 @@
 
                             </div>
                             <div class="d-grid justify-content-center btns">
-                                <a href="index.php?modulo=adoptar-formulario&id=<?= $value['perro_id']; ?>"" class="btn btn-adopt mt-3">¡Adóptalo ahora!</a><br>
+                            <?php if ($mysesion == null || $mysesion = ''){ ?>
+                                <a href="index.php?modulo=prueba" class="btn btn-adopt mt-3">¡Adóptalo ahora!</a><br>
+                            <?php
+                            }else{
+                            ?>    
+                                <a href="index.php?modulo=adoptar-formulario&id=<?= $value['perro_id']; ?>" class="btn btn-adopt mt-3">¡Adóptalo ahora!</a><br>
+                            <?php
+                            }
+                            ?>    
                                 <a href="index.php?modulo=apadrinar"><span>Si no puedes adoptarlo, ¡apadrínalo!</span> </a>
                             </div>
                         </div>

@@ -9,7 +9,7 @@ $permiso = $log->activePermi($_SESSION['usuario'][5]);
 
 switch ($error='SinError') {
    case ($logueado == 'false'):
-      $error='Deve iniciar sesión para poder visualizar este pagina';
+      $error='Debe iniciar sesión para poder visualizar este pagina';
        break;
    case ($rol != 'true'):
       $error='No tiene activado el rol de Cliente';
