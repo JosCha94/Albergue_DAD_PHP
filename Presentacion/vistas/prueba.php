@@ -1,10 +1,4 @@
 <?php
-require_once 'SL/permisos.php';
-require_once('DAL/conexion.php');
-$conexion = conexion::conectar();
-$log = new autorizacion();
-$logueado = $log->logueado($mysesion);
-$rol = $log->activeRol($_SESSION['usuario'][2]);
 $permisosRol = $log->activeRolPermi($_SESSION['usuario'][3],3);
 $permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4],3);
 

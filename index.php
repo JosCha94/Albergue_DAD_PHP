@@ -2,7 +2,12 @@
 session_start();
 error_reporting(0);
 session_regenerate_id(true);
-$mysesion = $_SESSION['usuario'];
+require_once 'SL/permisos.php';
+require_once('DAL/conexion.php');
+$conexion = conexion::conectar();
+$log = new autorizacion();
+$logueado = $log->logueado($_SESSION['usuario']);
+$rol = $log->activeRol($_SESSION['usuario'][2]);
 
 $modulo = $_GET['modulo'] ?? '';
 
@@ -69,7 +74,7 @@ $modulo = $_GET['modulo'] ?? '';
                         <a class="nav-link <?php echo ($modulo == "prueba") ? " active " : " " ?> mx-2" href="index.php?modulo=prueba">Prueba</a>
                     </li>
                 </ul>
-                <?php if ($mysesion == null || $mysesion == '') {
+                <?php if ($logueado == null || $logueado == 'false') {
                 ?>
                     <button type="button" class="btn btn-login m-3" data-bs-toggle="modal" data-bs-target="#ModalLogin">Iniciar Sesion</button>
                 <?php
