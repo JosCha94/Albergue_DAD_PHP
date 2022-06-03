@@ -50,20 +50,52 @@ class Consulta_adopcion{
         }
     }
 
+    // public function insertarForm_adopcion($conexion, $adop)
+    // {
+    //     try {
+    //         $sql = "CALL SP_insert_formulario_adopcion(:idUsuario, :idPerro, :razonAdo)";
+    //         $consulta = $conexion->prepare($sql);
+    //         $consulta -> bindValue(':idUsuario', $adop->getUsr_id());
+    //         $consulta -> bindValue(':idPerro', $adop->getPerro_id());
+    //         $consulta -> bindValue(':razonAdo', $adop->getAdop_razon());
+    //         $consulta -> execute();
+    //     }catch (PDOExeption $e){
+    //        echo "Ocurrio un error en la base de atos: " . $e -> getMessage();
+    //     }
+        
+    // }
+
     public function insertarForm_adopcion($conexion, $adop)
     {
         try {
-            $sql = "CALL SP_insert_formulario_adopcion(:idUsuario, :idPerro, :razonAdo)";
+            $sql = "CALL SP_insert_formulario_adopcion(:idUsuario, :rolId,  :idPerro, :adopDueño, :razonAdo)";
             $consulta = $conexion->prepare($sql);
             $consulta -> bindValue(':idUsuario', $adop->getUsr_id());
+            $consulta -> bindValue(':rolId', $adop->getRol_id());
             $consulta -> bindValue(':idPerro', $adop->getPerro_id());
+            $consulta -> bindValue(':adopDueño', $adop->getAdop_dueño());
             $consulta -> bindValue(':razonAdo', $adop->getAdop_razon());
             $consulta -> execute();
+            $estado = "Correcto";
         }catch (PDOExeption $e){
-           echo "Ocurrio un error en la base de atos: " . $e -> getMessage();
+            echo "Ocurrio un error en la base de atos: " . $e -> getMessage();
+            $estado = "Falló";
         }
-        
+        return $estado;
+    } 
+
+    public function mostrarUsuario_adopcion($conexion, $id) {
+        try{
+            $sql = "CALL SP_select_userAdopcion($id)";
+            $consulta = $conexion->prepare($sql);
+            $consulta->execute();
+            $usr_adop = $consulta->fetch(PDO::FETCH_ASSOC);
+            return $usr_adop;
+        } catch (PDOException $e) {
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        }
     }
+
 
 }
     

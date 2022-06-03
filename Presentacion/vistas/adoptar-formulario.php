@@ -6,19 +6,27 @@ require_once('BL/consultas_adopcion.php');
 $conexion = conexion::conectar();
 $consulta = new Consulta_adopcion();
 $id = $_GET['id'];
-$imgPerro = $consulta ->mostarImagenes_perro($conexion,$id);
-$perro = $consulta->listarPerro($conexion, $id);
+$usrId = $_SESSION['usuario'][0];
+$imgPerro = $consulta ->mostarImagenes_perro($conexion,$id); //muestra la imagen del perro seleccionado
+$perro = $consulta->listarPerro($conexion, $id); //muestra los datos del perro seleccionado
+$usr_ado = $consulta -> mostrarUsuario_adopcion($conexion, $usrId); //select de los datos necesarios para llenar los campos del formulario
 
 
 if(isset($_POST['adopt_submit'])){
-    $id = $_GET['id'];
-    $usrId = $_SESSION['usuario'][0];
+    $uId = $_POST['usrId'];
+    $rolId = $_POST['rolId'];
+    $perro_id = $_POST['perroId'];
+    $dueño = $_POST['dueño'];
     $razon = $_POST['tex_adop'];
+    $adop = new adopcion ($uId, $rolId, $perro_id, $dueño, $razon );
     $consulta = new Consulta_adopcion();
-    $adop = new adopcion ( $usrId, $id, $razon);
-    $insertForm = $consulta -> insertarForm_adopcion($conexion, $adop );
-}
+    $estado = $consulta -> insertarForm_adopcion($conexion, $adop );
+    if($estado == 'mal'){
 
+    }else{
+        echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=inicio&mensaje=La solicitud de adopción se mandó con exito" />';
+    }
+}
 
 ?>
 
@@ -31,39 +39,39 @@ if(isset($_POST['adopt_submit'])){
                     <div class="row justify-content-center">
                         <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                             <p class="text-center h1 mb-5 mx-1 mx-md-4 mt-4">Formulario de adopcion</p>
-                            <form method="post" action="" class="mx-1 mx-md-4">
+                            <form action="" method="post"  class="mx-1 mx-md-4">
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
-                                    <input type="text" id="nom_adop" class="form-control" name="nom_adop">
+                                    <input type="text" id="nom_adop" class="form-control" name="nom_adop" value="<?= $usr_ado['usr_nombre']?>" disabled>
                                     <label class="form-label" for="nom_adop">Nombres</label>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
-                                    <input type="text" id="ape_adop" class="form-control" name="ape_adop">
+                                    <input type="text" id="ape_adop" class="form-control" name="ape_adop" value="<?=  $usr_ado['usr_apellido_paterno']?> <?= $usr_ado['usr_apellido_materno']?> " disabled>
                                     <label class="form-label" for="ape_adop">Apellidos</label>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
-                                    <input type="email" id="corr_adop" class="form-control" name="corr_adop">
+                                    <input type="email" id="corr_adop" class="form-control" name="corr_adop" value="<?= $usr_ado['usr_email']?>" disabled>
                                     <label class="form-label" for="corr_adop">Correo electrónico</label>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
-                                    <input type="tel" id="tel_adop" class="form-control" name="tel_adop">
+                                    <input type="tel" id="tel_adop" class="form-control" name="tel_adop" value="<?= $usr_ado['usr_celular']?>" disabled>
                                     <label class="form-label" for="tel_adop">Teléfono</label>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
-                                    <textarea class="form-control" id="tex_adop" rows="5" name="tex_adop"></textarea>
+                                    <textarea class="form-control" id="tex_adop" rows="5" name="tex_adop" placeholder="Por favor, sea especifico..." required></textarea>
                                     <label class="form-label" for="tex_adop">Explícanos, ¿Por qué quieres adoptar a <?php echo ($perro['perro_nombre']) ?>?</label>
                                     </div>
                                 </div>
                                 <div class="form-check d-flex justify-content-center mb-5">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" required />
                                     <label class="form-check-label" for="form2Example3">
                                     Estoy de acuerdo con los <a href="#">Terminos de la adopción</a>
                                     </label>
@@ -71,6 +79,11 @@ if(isset($_POST['adopt_submit'])){
                                 <div class="d-grid btns">
                                    <button type="submit" class="btn btn-adopt" name="adopt_submit">Enviar</button>
                                 </div>
+                                <input type="hidden" name="dueño" value="<?= $usr_ado['usr_nombre']?> <?=  $usr_ado['usr_apellido_paterno']?> <?= $usr_ado['usr_apellido_materno']?> ">
+                                <input type="hidden" name="usrId" value="<?php echo $_SESSION['usuario'][0]; ?>">
+                                <input type="hidden" name="rolId" value="<?= $usr_ado['rol_id']?>">
+                                <input type="hidden" name="perroId" value="<?php echo $_GET['id']?>">
+
                             </form>
                         </div>
                         <div class="col-md-10 col-lg-6 col-xl-7 mt-3 align-items-center order-1 order-lg-2" >
