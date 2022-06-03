@@ -68,12 +68,12 @@ class Consulta_adopcion{
     public function insertarForm_adopcion($conexion, $adop)
     {
         try {
-            $sql = "CALL SP_insert_formulario_adopcion(:idUsuario, :rolId,  :idPerro, :adopDueño, :razonAdo)";
+            $sql = "CALL SP_insert_formAdopcion(:idUsuario, :rolId,  :idPerro, :adopDueno, :razonAdo)";
             $consulta = $conexion->prepare($sql);
             $consulta -> bindValue(':idUsuario', $adop->getUsr_id());
             $consulta -> bindValue(':rolId', $adop->getRol_id());
             $consulta -> bindValue(':idPerro', $adop->getPerro_id());
-            $consulta -> bindValue(':adopDueño', $adop->getAdop_dueño());
+            $consulta -> bindValue(':adopDueno', $adop->getAdop_dueno());
             $consulta -> bindValue(':razonAdo', $adop->getAdop_razon());
             $consulta -> execute();
             $estado = "Correcto";

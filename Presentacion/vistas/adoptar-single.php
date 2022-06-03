@@ -97,7 +97,7 @@
 
                             </div>
                             <div class="d-grid justify-content-center btns">
-                            <?php if ($mysesion == null || $mysesion = ''){ ?>
+                                <?php if ($logueado == null || $logueado == 'false'){ ?>
                                 <a href="index.php?modulo=prueba" class="btn btn-adopt mt-3">¡Adóptalo ahora!</a><br>
                             <?php
                             }else{
