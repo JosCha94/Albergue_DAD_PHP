@@ -49,7 +49,7 @@ $idx = 1;
                                 <td><?= $value['product_nombre']; ?></td>
                                 <td>S/ <?= $value['Precio']; ?></td>
                                 <!-- <td><?php echo $value['product_stock']; ?></td> -->
-                                <td><?= $value['cantidad']; ?></td>
+                                <td><?php if($value['cantidad'] <= $value['product_stock']){ echo $value['cantidad'];}else{echo $value['cantidad']," <font color='red'>excede stock</font>";} ?></td>
                                 <td>S/ <?= $value['Total']; ?></td>
                                 <td>
                                     <div class="d-flex justify-content-center">
@@ -81,7 +81,7 @@ $idx = 1;
                                                 <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                 <button type="submit" class="btn btn-primary" name="cambiarCantidad">Cambiar</button>
                                             </div>
                                         </form>

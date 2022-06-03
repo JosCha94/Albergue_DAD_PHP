@@ -99,7 +99,7 @@ class Consulta_producto
     public function cambiarCantidadCarrito($bd,$idUser,$idProducto,$cantidad)
     {
         try {
-            $sql = "CALL SP_agregar_al_carrito2($idUser,$idProducto,$cantidad)";
+            $sql = "CALL SP_update_carrito($idUser,$idProducto,$cantidad)";
             $consulta = $bd->prepare($sql);
             $consulta->execute();
             $product = $consulta->fetch(PDO::FETCH_ASSOC);
