@@ -15,12 +15,12 @@
    }
    ?>
    <?php if ($logueado == 'false') { ?>
-      <div class="alert alert-danger mt-5" role="alert">
-         <h4 class="alert-heading">¡Atención!</h4>
+      <div class="alert alert-danger mt-5" role="alert">   
+            <h4 class="alert-heading">¡Atención!</h4>
          <p>Para poder comprar debes estar registrado y logueado</p>
          <hr>
          <p class="mb-0 h6">¡Gracias!</p>
-      </div>      
+      </div>
    <?php }  ?>
 
    <div class="container adop-body mt-5">
@@ -101,6 +101,7 @@
                         <a href="index.php?modulo=product_detail&id=<?= $value['product_id']; ?>">
                            <img src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid">
                            <p class="caption-gallery" data-aos="zoom-in"><?= $value['product_nombre']; ?></p>
+                           <p class="h5 text-dark" data-aos="zoom-in">S/ <?= $value['product_igv'] + $value['product_precio']; ?></p>
                            <?php if ($logueado == 'false') {
                            } else { ?>
                               <form action="" method="post" id="form_producto" name="form_producto">

@@ -6,6 +6,13 @@ $consulta = new Consulta_producto();
 $id = $_GET['id'];
 $product = $consulta->detalleProducto($conexion, $id);
 $imgproduct = $consulta->listarImgProducto($conexion, $id);
+
+if (isset($_POST['carrito'])) {
+    $idUser = $_SESSION['usuario'][0];
+    $idProducto = $id;
+    $cantidad = $_POST['cantidad'];
+    $consulta->agregarProductoAlCarrito($conexion, $idUser, $idProducto, $cantidad);
+}
 ?>
 <div class="container margin1 mt-5">
     <div class="row">
@@ -13,13 +20,11 @@ $imgproduct = $consulta->listarImgProducto($conexion, $id);
             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="data:image/<?php echo ($product['img_product_tipo']); ?>;base64,<?php echo base64_encode($product['img_product_foto']); ?>" 
-                        class="d-block w-100" alt="<?= $product['product_nombre']; ?>">
+                        <img src="data:image/<?php echo ($product['img_product_tipo']); ?>;base64,<?php echo base64_encode($product['img_product_foto']); ?>" class="d-block w-100" alt="<?= $product['product_nombre']; ?>">
                     </div>
                     <?php foreach ($imgproduct as $key => $value) : ?>
                         <div class="carousel-item">
-                            <img src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>"
-                             class="d-block w-100" alt="<?= $value['img_product_nombre']; ?>">
+                            <img src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" class="d-block w-100" alt="<?= $value['img_product_nombre']; ?>">
                         </div>
                     <?php endforeach; ?>
 
@@ -50,10 +55,22 @@ $imgproduct = $consulta->listarImgProducto($conexion, $id);
                     <li class="list-group-item "><strong>Stock disponible:</strong> <?= $product['product_stock']; ?></li>
                 </ul>
                 <div class="mt-3 d-flex justify-content-around">
-                <?php if($logueado == 'false'){}else{ ?>
-                    <a href="#" class="btn btn-adopt mt-5">¡Añadir al Carrito!</a>
-                <?php } ?>
-                    <a href="index.php?modulo=tienda" class="btn btn-danger mt-5 ">Volver</a>
+                    <?php if ($logueado == 'false') {
+                    } else { ?>
+
+                        <div class="row">
+                            <form action="" method="post" id="detail_producto" name="detail_producto" class="mt-5">
+                                <input type="number" name="cantidad" min="1" max="<?= $product['product_stock']; ?>" value="1">
+                                <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
+                                <button class="btn btn-adopt" name="carrito">¡Añadir al Carrito!</button>
+                            </form>
+                        <?php } ?>
+                        
+                        </div>
+<a href="index.php?modulo=tienda" class="btn btn-danger mt-5 ">Volver</a>
+                        <!-- <a href="#" class="btn btn-adopt mt-5">¡Añadir al Carrito!</a> -->
+
+
                 </div>
                 <div class="row">
 
