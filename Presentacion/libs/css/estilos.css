@@ -572,3 +572,6 @@ h2.text-uppercase{
   -ms-transform: scale(1.05);
   -o-transform: scale(1.05);
 }
+.p-4 h4,li{
+  color: #001E6C;
+}

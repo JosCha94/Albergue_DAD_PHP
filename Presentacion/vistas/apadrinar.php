@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="sus-title ps-5 mb-5" style="max-width: 600px;">
-                        <h6 class=" text-uppercase">Planes de suscripciones</h6>
+                        <h6 class=" text-uppercase">Planes de suscripción</h6>
                         <h1 class="display-5 text-uppercase mb-0">apadrina y apoya a los perrtitos del albergue</h1>
                     </div>
                     <div class="sus-p text-center">
@@ -20,7 +20,7 @@
                 <div class="sus-lado col-lg-4">
                     <div class="text-center pt-5 mt-lg-5">
                         <h2 class="text-uppercase">Basico</h2>
-                        <h6 class="text-body mb-5">The Best Choice</h6>
+                        <h6 class="text-body mb-5">El plan más económico</h6>
                         <div class="text-center precio p-4 mb-2">
                             <h1 class="display-4 text-white mb-0">
                                 <small class="align-top"
@@ -29,31 +29,25 @@
                                     Mes</small>
                             </h1>
                         </div>
-                        <div class="text-center p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>HTML5 & CSS3</span>
-                                <i class="bi bi-check2 fs-4 text-primary"></i>
+                        <div class="p-4">
+                            <h4 class="text-center mb-4">Tu ayuda nos servirá para:</h4>
+                            <div class="d-flex justify-content-start mb-1">
+                                <li>Comida para nuestros perritos</li>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>Bootstrap v5</span>
-                                <i class="bi bi-check2 fs-4 text-primary"></i>
+                            <div class="d-flex justify-content-start mb-1">
+                                <li>Limpieza del albergue</li>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>Responsive Layout</span>
-                                <i class="bi bi-x fs-4 text-danger"></i>
+                            <div class="d-flex justify-content-start mb-1">
+                                <li>Cuidado de los perritos</li>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>Browsers Compatibility</span>
-                                <i class="bi bi-x fs-4 text-danger"></i>
-                            </div>
-                            <a href="" class="btn btn-adopt text-uppercase py-2 px-4 my-3">Order Now</a>
+                            <a href="" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</a>
                         </div>
                     </div>
                 </div>
                 <div class="sus-centro col-lg-4">
                     <div class="text-center pt-5">
                         <h2 class="text-uppercase">Standard</h2>
-                        <h6 class="text-body mb-5">The Best Choice</h6>
+                        <h6 class="text-body mb-5">Plan intermedio</h6>
                         <div class="text-center precio p-4 mb-2">
                             <h1 class="display-4  text-white mb-0">
                                 <small class="align-top"
@@ -62,28 +56,28 @@
                                     Mes</small>
                             </h1>
                         </div>
-                        <div class="text-center p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>HTML5 & CSS3</span>
-                                
+                        <div class="p-4">
+                            <h4 class="text-center mb-4">Tu ayuda nos servirá para:</h4>
+                            <div class="d-flex justify-content-start mb-1">
+                                <li>Comida para nuestros perritos</li>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>Bootstrap v5</span>
+                            <div class="d-flex justify-content-start mb-1">
+                                <li>Limpieza del albergue</li>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>Responsive Layout</span>
+                            <div class="d-flex justify-content-start mb-1">
+                                <li>Cuidado de los perritos</li>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>Browsers Compatibility</span>
+                            <div class="d-flex justify-content-start mb-1">
+                                <li>Apoyo para nuestro voluntarios</li>
                             </div>
-                            <a href="" class="btn btn-adopt text-uppercase py-2 px-4 my-3">Order Now</a>
+                            <a href="" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</a>
                         </div>
                     </div>
                 </div>
                 <div class="sus-lado col-lg-4">
                     <div class="text-center pt-5 mt-lg-5">
                         <h2 class="text-uppercase">Premium</h2>
-                        <h6 class="text-body mb-5">The Best Choice</h6>
+                        <h6 class="text-body mb-5">¡La mejor opcion!</h6>
                         <div class="text-center precio p-4 mb-2">
                             <h1 class="display-4 text-white mb-0">
                                 <small class="align-top"
@@ -92,24 +86,24 @@
                                     Mes</small>
                             </h1>
                         </div>
-                        <div class="text-center p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>HTML5 & CSS3</span>
-                                <i class="bi bi-check2 fs-4 text-primary"></i>
+                        <div class="p-4 ">
+                            <h4 class="text-center mb-4">Tu ayuda nos servirá para:</h4>
+                            <div class="d-flex justify-content-start mb-1">
+                                <li>Comida para nuestros perritos</li>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>Bootstrap v5</span>
-                                <i class="bi bi-check2 fs-4 text-primary"></i>
+                            <div class="d-flex justify-content-start mb-1">
+                                <li>Limpieza del albergue</li>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>Responsive Layout</span>
-                                <i class="bi bi-check2 fs-4 text-primary"></i>
+                            <div class="d-flex justify-content-start mb-1">
+                                <li>Cuidado de los perritos</li>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span>Browsers Compatibility</span>
-                                <i class="bi bi-check2 fs-4 text-primary"></i>
+                            <div class="d-flex justify-content-start mb-1">
+                                <li>Apoyo para nuestros voluntarios</li>
                             </div>
-                            <a href="" class="btn btn-adopt text-uppercase py-2 px-4 my-3">Order Now</a>
+                            <div class=" d-flex justify-content-startmb-1">
+                                <li>Campañas de salud y adopcion</li>
+                            </div>
+                            <a href="" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</a>
                         </div>
                     </div>
                 </div>
