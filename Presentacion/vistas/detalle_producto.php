@@ -50,7 +50,9 @@ $imgproduct = $consulta->listarImgProducto($conexion, $id);
                     <li class="list-group-item "><strong>Stock disponible:</strong> <?= $product['product_stock']; ?></li>
                 </ul>
                 <div class="mt-3 d-flex justify-content-around">
+                <?php if($logueado == 'false'){}else{ ?>
                     <a href="#" class="btn btn-adopt mt-5">¡Añadir al Carrito!</a>
+                <?php } ?>
                     <a href="index.php?modulo=tienda" class="btn btn-danger mt-5 ">Volver</a>
                 </div>
                 <div class="row">

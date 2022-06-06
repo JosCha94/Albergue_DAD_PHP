@@ -1,24 +1,3 @@
-<?php
-$permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], 3);
-$permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], 3);
-
-switch ($error = 'SinError') {
-   case ($permisoEsp == 'true'):
-      break;
-   case ($logueado == 'false'):
-      $error = 'Debe iniciar sesión para poder visualizar este pagina';
-      break;
-   case ($rol != 'true'):
-      $error = 'No tiene activado el rol de Cliente';
-      break;
-   case ($permisosRol != 'true'):
-      $error = 'Su rol actual no tiene permiso para acceder a esta pagina';
-      break;
-      break;
-}
-?>
-<?php
-if ($error == 'SinError') { ?>
    <?php
    require_once('BL/consultas_tienda.php');
    require_once('DAL/conexion.php');
@@ -35,6 +14,15 @@ if ($error == 'SinError') { ?>
       $consulta->agregarProductoAlCarrito($conexion, $idUser, $idProducto, $cantidad);
    }
    ?>
+   <?php if ($logueado == 'false') { ?>
+      <div class="alert alert-danger mt-5" role="alert">
+         <h4 class="alert-heading">¡Atención!</h4>
+         <p>Para poder comprar debes estar registrado y logueado</p>
+         <hr>
+         <p class="mb-0 h6">¡Gracias!</p>
+      </div>      
+   <?php }  ?>
+
    <div class="container adop-body mt-5">
       <div class="row">
          <div class="col-md-3 sidebar-filter">
@@ -81,8 +69,10 @@ if ($error == 'SinError') { ?>
             </div>
 
             <!-- <div class="divider mt-5 mb-5 border-bottom border-secondary"></div> -->
-
-            <a href="index.php?modulo=carrito" class="btn btn-lg btn-block btn-primary mt-5">Carrito</a>
+            <?php if ($logueado == 'false') {
+            } else { ?>
+               <a href="index.php?modulo=carrito" class="btn btn-lg btn-block btn-primary mt-5">Carrito</a>
+            <?php } ?>
          </div>
 
          <div class="col-md-9">
@@ -111,15 +101,18 @@ if ($error == 'SinError') { ?>
                         <a href="index.php?modulo=product_detail&id=<?= $value['product_id']; ?>">
                            <img src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid">
                            <p class="caption-gallery" data-aos="zoom-in"><?= $value['product_nombre']; ?></p>
-                           <form action="" method="post" id="form_producto" name="form_producto">
-                              <div class="row">
+                           <?php if ($logueado == 'false') {
+                           } else { ?>
+                              <form action="" method="post" id="form_producto" name="form_producto">
+                                 <div class="row">
 
-                                 <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
-                                 <input type="hidden" name="cantidad" value="1">
-                                 <button class="btn btn-outline-danger" name="carrito">Añadir al carrito</button>
+                                    <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
+                                    <input type="hidden" name="cantidad" value="1">
+                                    <button class="btn btn-outline-danger" name="carrito">Añadir al carrito</button>
 
-                              </div>
-                           </form>
+                                 </div>
+                              </form>
+                           <?php } ?>
                         </a>
                      </div>
 
@@ -153,12 +146,3 @@ if ($error == 'SinError') { ?>
          </div>
       </div>
    </div>
-<?php
-} else {
-?>
-   <div class="alert alert-danger" role="alert">
-      <?php echo $error; ?>
-   </div>
-<?php
-}
-?>

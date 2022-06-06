@@ -198,12 +198,15 @@ $modulo = $_GET['modulo'] ?? '';
 
     <!-- FOOTER -->
     <footer class="footer">
-        <!-- <div class="container-fluid <?php echo($logueado == 'false')?"position-absolute bottom-0":"" ?>"> -->
-        <div class="container-fluid <?php echo($logueado == 'false')?"position-absolute bottom-10":"" ?>">
-        <!-- <div class="container-fluid <?php if($logueado == 'false')
-        {if($modulo == "adoptar" || $modulo == "adoptar-single"){
-            "";
-        }else{echo "position-absolute bottom-0";}}?>"> -->
+        <div class="container-fluid 
+        <?php if ($logueado == 'false') {
+            if ($modulo == "carrito" || $modulo == "adoptar-formulario" ) {
+                echo "position-absolute bottom-0";
+            } elseif ($modulo == "tienda") {
+                echo "position-absolute bottom-10";
+            }
+        }
+        ?>">
             <div class="row bg-light">
                 <p class="text-center mt-3">© <span class="anio"></span> PlanetDog.com by FJF WEB SAC</p>
             </div>
