@@ -16,15 +16,15 @@ if(isset($_POST['adopt_submit'])){
     $uId = $_POST['usrId'];
     $rolId = $_POST['rolId'];
     $perro_id = $_POST['perroId'];
-    $dueño = $_POST['dueño'];
+    $dueno = $_POST['dueno'];
     $razon = $_POST['tex_adop'];
-    $adop = new adopcion ($uId, $rolId, $perro_id, $dueño, $razon );
+    $adop = new adopcion ($uId, $rolId, $perro_id, $dueno, $razon );
     $consulta = new Consulta_adopcion();
     $estado = $consulta -> insertarForm_adopcion($conexion, $adop );
     if($estado == 'mal'){
 
     }else{
-        echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=inicio&mensaje=La solicitud de adopción se mandó con exito" />';
+        echo '<div class="alert alert-success">Solicitud de enviada con exito. Ahora, por favor espere un maximo de 48 horas para una respuesta.</div>';
     }
 }
 
@@ -79,7 +79,7 @@ if(isset($_POST['adopt_submit'])){
                                 <div class="d-grid btns">
                                    <button type="submit" class="btn btn-adopt" name="adopt_submit">Enviar</button>
                                 </div>
-                                <input type="hidden" name="dueño" value="<?= $usr_ado['usr_nombre']?> <?=  $usr_ado['usr_apellido_paterno']?> <?= $usr_ado['usr_apellido_materno']?> ">
+                                <input type="hidden" name="dueno" value="<?= $usr_ado['usr_nombre']?> <?=  $usr_ado['usr_apellido_paterno']?> <?= $usr_ado['usr_apellido_materno']?> ">
                                 <input type="hidden" name="usrId" value="<?php echo $_SESSION['usuario'][0]; ?>">
                                 <input type="hidden" name="rolId" value="<?= $usr_ado['rol_id']?>">
                                 <input type="hidden" name="perroId" value="<?php echo $_GET['id']?>">
