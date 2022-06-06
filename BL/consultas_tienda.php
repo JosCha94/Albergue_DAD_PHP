@@ -57,7 +57,7 @@ class Consulta_producto
     //                    CARRITO
     // --------------------------------------------------
 
-    public function agregarProductoAlCarrito($bd,$idUser,$idProducto,$cantidad)
+    public function agregarProductoAlCarrito($bd, $idUser, $idProducto, $cantidad)
     {
         try {
             $sql = "CALL SP_agregar_al_carrito($idUser,$idProducto,$cantidad)";
@@ -96,7 +96,7 @@ class Consulta_producto
         }
     }
 
-    public function cambiarCantidadCarrito($bd,$idUser,$idProducto,$cantidad)
+    public function cambiarCantidadCarrito($bd, $idUser, $idProducto, $cantidad)
     {
         try {
             $sql = "CALL SP_update_carrito($idUser,$idProducto,$cantidad)";
@@ -109,8 +109,25 @@ class Consulta_producto
         }
     }
 
+    // -------------------------------------------------
+    //                    COMPRA
+    // --------------------------------------------------
 
+    public function cambiarCantidadProducto($bd, $usrid)
+    {
+        try {
+            // $bd->beginTransaction();
+            $sql = "CALL SP_update_cantidad_producto($usrid)";
+            $consulta = $bd->prepare($sql);
+            $consulta->execute();
+            $product = $consulta->fetch(PDO::FETCH_ASSOC);
+
+            // $bd->commit();
+            
+        } catch (PDOException $e) {
+            // $bd->rollBack();
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        }
+        return $product;
+    }
 }
-
-
-?>

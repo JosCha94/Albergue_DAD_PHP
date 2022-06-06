@@ -10,16 +10,25 @@ if (isset($_POST['borrarCarrito'])) {
     $consulta->borrarDeCarrito($conexion, $idUser, $idProducto);
 }
 
-if(isset($_POST['cambiarCantidad'])){
+if (isset($_POST['cambiarCantidad'])) {
     $idUser = $_SESSION['usuario'][0];
     $idProducto = $_POST['product_id'];
     $cantidad = $_POST['product_cantidad'];
     $consulta->cambiarCantidadCarrito($conexion, $idUser, $idProducto, $cantidad);
- }
+}
+
+if (isset($_POST['btn-pagar'])) {
+    $idUser = $_SESSION['usuario'][0];
+    $consulta->cambiarCantidadProducto($conexion, $idUser);
+}
 
 $products = $consulta->listarProductosCarrito($conexion, $_SESSION['usuario'][0]);
-$categories = $consulta->listarCategorias($conexion);
 $idx = 1;
+$error = 0;
+$compra = array();
+
+
+
 
 ?>
 <div class="container adop-body mt-5">
@@ -48,8 +57,12 @@ $idx = 1;
                                 <td><img width="100px" src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid"></td>
                                 <td><?= $value['product_nombre']; ?></td>
                                 <td>S/ <?= $value['Precio']; ?></td>
-                                <!-- <td><?php echo $value['product_stock']; ?></td> -->
-                                <td><?php if($value['cantidad'] <= $value['product_stock']){ echo $value['cantidad'];}else{echo $value['cantidad']," <font color='red'>excede stock</font>";} ?></td>
+                                <td><?php if ($value['cantidad'] <= $value['product_stock']) {
+                                        echo $value['cantidad'];
+                                    } else {
+                                        $error = $errror + 1;
+                                        echo $value['cantidad'], " <font color='red'>excede stock</font>";
+                                    } ?></td>
                                 <td>S/ <?= $value['Total']; ?></td>
                                 <td>
                                     <div class="d-flex justify-content-center">
@@ -63,16 +76,30 @@ $idx = 1;
                                     </div>
                                 </td>
                             </tr>
-                            <?php $total = $total + $value['Total']; ?>
+                            <?php $total = $total + $value['Total'];
+                            $resErr = $error;
+
+                            // $compr2[]=array($value['product_id'], $_SESSION['usuario'][0],$value['cantidad']);
+                            $compra[] = array('pid' => (int)$value['product_id'], 'uid' => (int)$_SESSION['usuario'][0], 'ctd' => (int)$value['cantidad']);
+                            ?>
 
                         <?php endforeach; ?>
-                        <!-- Modal -->
+                        <?php $databuy = json_encode($compra); ?>
+
+                        <!-- <?php var_dump($compra); ?>
+                        <?php var_dump($products); ?> -->
+
+                        <!-- <?php echo '----------------------------------'; ?>
+                        <?php var_dump($compra2); ?> -->
+
+
+                        <!-- Modal Cantidad -->
                         <?php foreach ($products as $key => $value) : ?>
                             <div class="modal fade" id="modalCantidad_<?= $value['product_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"><?= $value['product_nombre']; ?> Cantidad</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Cantidad <?= $value['product_nombre']; ?></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <form action="" method="post">
@@ -94,17 +121,19 @@ $idx = 1;
                     </tbody>
                 </table>
                 <?php
-                if($total==''){?>
+                if ($total == '') { ?>
 
-                <MARQUEE SCROLLAMOUNT=10><h2>El carrito esta vacio</h2></MARQUEE>
-                    
-                <?php 
-                }else{?>
+                    <MARQUEE SCROLLAMOUNT=10>
+                        <h2>El carrito esta vacio</h2>
+                    </MARQUEE>
+
+                <?php
+                } else { ?>
                     <h2>Total: S/ <?php echo $total ?></h2>
                 <?php
                 }
                 ?>
-    
+
             </div>
             <!-- END CARD -->
             <div class="row sorting mb-5 mt-5">
@@ -113,17 +142,62 @@ $idx = 1;
                 </div>
                 <div class="col-4">
                     <div class="dropdown float-md-right">
-                        <label class="mr-2">View:</label>
-                        <a class="btn btn-light btn-lg dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">12 <span class="caret"></span></a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">12</a>
-                            <a class="dropdown-item" href="#">24</a>
-                            <a class="dropdown-item" href="#">48</a>
-                            <a class="dropdown-item" href="#">96</a>
-                        </div>
-                        <div class="btn-group float-md-right ml-3">
-                            <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
-                            <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
+                        <?php if ($total == '' || $resErr != 0) { ?>
+                        <?php
+                        } else { ?>
+                            <button type="button" class="btn btn-login btn-lg m-3" data-bs-toggle="modal" data-bs-target="#ModalCompra">Continuar compra</button>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+                <!-- Modal Compra -->
+                <div class="modal fade" id="ModalCompra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Compra electronica</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <main class="form-signin">
+                                    <!-- <form action="BL/valida_user.php" method="post"> -->
+                                        <div class="text-center">
+                                            <img src="Presentacion/libs/images/doglogo.png" alt="logo" width="80em" class="ms-auto">
+                                            <h5 class="h3 my-3 fw-normal text-center">PlanetDog SAC</h5>
+                                        </div>
+                                        <?php foreach ($products as $key => $value) : ?>
+
+                                            <div class="row border border-secondary">
+                                                <div class="col-6">
+                                                    <img width="100px" src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid me-2">
+                                                    <!-- <br> -->
+                                                    <?= $value['product_nombre']; ?>
+                                                    <br>
+                                                    <?= $value['cantidad'], "un."; ?>
+                                                </div>
+                                                <div class="col-4 position-relative">
+                                                    <div class="position-absolute top-50 start-50 translate-middle">
+                                                        S/ <?= $value['Total']; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <?php endforeach; ?>
+
+                                        <div class="form-floating text-end mt-2">
+                                            <h2 class="me-2">Total: S/ <?php echo $total ?></h2>
+                                        </div>
+
+                                    <!-- </form> -->
+                                </main>
+                            </div>
+                            <div class="modal-footer">
+                                    <form action="" method="post">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-login" name="btn-pagar">Pagar</a>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
