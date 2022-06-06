@@ -1,6 +1,6 @@
 <?php
 session_start();
-// error_reporting(0);
+error_reporting(0);
 session_regenerate_id(true);
 require_once 'SL/permisos.php';
 require_once('DAL/conexion.php');
@@ -69,9 +69,6 @@ $modulo = $_GET['modulo'] ?? '';
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($modulo == "blog" || $modulo == "blog-single") ? " active " : " " ?> mx-2" href="index.php?modulo=blog">Blog</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link <?php echo ($modulo == "prueba") ? " active " : " " ?> mx-2" href="index.php?modulo=prueba">Prueba</a>
                     </li>
                 </ul>
                 <?php if ($logueado == null || $logueado == 'false') {
@@ -182,9 +179,6 @@ $modulo = $_GET['modulo'] ?? '';
         }
         if ($modulo == "blog-single") {
             include_once "Presentacion/vistas/blog-single.php";
-        }
-        if ($modulo == "prueba") {
-            include_once "Presentacion/vistas/prueba.php";
         }
         if ($modulo == "registro") {
             include_once "Presentacion/vistas/registro_user.php";
