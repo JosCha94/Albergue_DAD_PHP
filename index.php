@@ -192,7 +192,10 @@ $modulo = $_GET['modulo'] ?? '';
         if ($modulo == "adoptar-formulario") {
             include_once "Presentacion/vistas/adoptar-formulario.php";
         }
-
+        if ($modulo == "apadrinar-detalles") {
+            include_once "Presentacion/vistas/apadrinar-detalles.php";
+        }
+        
         ?>
     </div>
 
