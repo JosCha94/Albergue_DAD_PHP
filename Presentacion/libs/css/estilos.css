@@ -575,3 +575,16 @@ h2.text-uppercase{
 .p-4 h4,li{
   color: #001E6C;
 }
+
+/*********APADRINAR DETALLES *************/
+.card-sus{
+  margin-top: 15px;
+  box-shadow: -3px -3px 9px #aaa9a9a2,
+              3px 3px 7px rgba(147, 149, 151, 0.671);
+
+}
+#sus-title{
+  color: #001E6C;
+  font-size: 20px;
+  padding: 20px;
+}
