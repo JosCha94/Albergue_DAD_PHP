@@ -1,3 +1,15 @@
+<?php
+require_once('DAL/conexion.php');
+require_once('BL/consultas_apadrinar.php');
+$conexion = conexion::conectar();
+$consulta = new Consulta_apadrinar();
+
+$id = $_GET['id'];
+$susTipoId = $consulta -> listarTipoSuscrip_id($conexion,$id);
+$usrId = $_SESSION['usuario'][0];
+
+?>
+
 <div class="container c-card d-flex justify-content-center mt-5 mb-5">
     <div class="row g-3">
         <div class="col-md-6">  
@@ -71,24 +83,33 @@
             <div class="card card-sus">
                 <div class="d-flex justify-content-between p-3">
                     <div class="d-flex flex-column">
-                        <span>Tipo de suscripcion</span>
+                        <span>Suscripcion : <?=$susTipoId['s_tipo_nombre'] ?></span>
                     </div>
                     <div class="mt-1">
-                        <sup class="super-price">$9.99</sup>
+                        <sup class="super-price"><?=$susTipoId['s_tipo_precio'] ?></sup>
                         <span class="super-month">/Mes</span>
                     </div>
                 </div>
                 <hr class="mt-0 line">
+                <div class="d-flex flex-column p-3">
+                    <span>Tiempo de suscripcion</span>
+                </div>  
+                <div class="select-tiempo p-3 mb-3">
+                    <select class="form-select" aria-label="Default select example" name="sus_tiempo">
+                        <option selected>Selecciona un tiempo para tu suscripcion</option>
+                        <option value="1">Trimestral</option>
+                        <option value="2">Semestral</option>
+                        <option value="3">Anual</option>
+                        <option value="4">Indefinida</option>
+                    </select>
+                </div>
+                <hr class="mt-0 line">
                 <div class="p-3 d-flex justify-content-between">
-                    <div class="d-flex flex-column">
-                        <span>Hoy pagarás: 9.99</span>
-                        <small>Después de 30 dias, se te volverá a cobrar:</small>
-                    </div>
-                    <span>$0</span>
+                    <span>Total a pagar ahora:</span>
+                    <span>S/<?=$susTipoId['s_tipo_precio'] ?></span>
                 </div>
                 <div class="p-3 mt-3 d-flex justify-content-end free-button">
-                    <button class="btn btn-adopt">Suscribir</button> 
-                    
+                    <button class="btn btn-adopt btn-lg"type="submit" name="suscrip">Suscribir</button> 
                 </div>
             </div>
         </div>

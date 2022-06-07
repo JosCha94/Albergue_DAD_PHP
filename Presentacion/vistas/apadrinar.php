@@ -1,3 +1,13 @@
+<?php
+require_once('DAL/conexion.php');
+require_once('BL/consultas_apadrinar.php');
+$conexion = conexion::conectar();
+$consulta = new Consulta_apadrinar();
+
+$susTipo = $consulta -> listarTipoSuscrip($conexion);
+
+?>
+
 <div class="container-fluid py-5">
     <div class="container">
         <div class="row">
@@ -19,12 +29,12 @@
         <div class="row g-5">
             <div class="sus-lado col-lg-4">
                 <div class="text-center pt-5 mt-lg-5">
-                    <h2 class="text-uppercase">Basico</h2>
+                    <h2 class="text-uppercase"><?=$susTipo[0]['s_tipo_nombre']; ?></h2>
                     <h6 class="text-body mb-5">El plan más económico</h6>
                     <div class="text-center precio p-4 mb-2">
                         <h1 class="display-4 text-white mb-0">
                             <small class="align-top"
-                                style="font-size: 22px; line-height: 45px;">S/</small>9.90<small
+                                style="font-size: 22px; line-height: 45px;">S/</small><?=$susTipo[0]['s_tipo_precio']; ?><small
                                 class="align-bottom" style="font-size: 16px; line-height: 40px;">/
                                 Mes</small>
                         </h1>
@@ -40,18 +50,18 @@
                         <div class="d-flex justify-content-start mb-1">
                             <li>Cuidado de los perritos</li>
                         </div>
-                        <a href="index.php?modulo=apadrinar-detalles" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</a>
+                        <a href="index.php?modulo=apadrinar-detalles&id=<?= $susTipo[0]['s_tipo_id']; ?>" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</a>
                     </div>
                 </div>
             </div>
             <div class="sus-centro col-lg-4">
                 <div class="text-center pt-5">
-                    <h2 class="text-uppercase">Standard</h2>
+                    <h2 class="text-uppercase"><?=$susTipo[1]['s_tipo_nombre']; ?></h2>
                     <h6 class="text-body mb-5">Plan intermedio</h6>
                     <div class="text-center precio p-4 mb-2">
                         <h1 class="display-4  text-white mb-0">
                             <small class="align-top"
-                                style="font-size: 22px; line-height: 45px;">S/</small>29.90<small
+                                style="font-size: 22px; line-height: 45px;">S/</small><?=$susTipo[1]['s_tipo_precio']; ?><small
                                 class="align-bottom" style="font-size: 16px; line-height: 40px;">/
                                 Mes</small>
                         </h1>
@@ -70,18 +80,18 @@
                         <div class="d-flex justify-content-start mb-1">
                             <li>Apoyo para nuestro voluntarios</li>
                         </div>
-                        <a href="index.php?modulo=apadrinar-detalles" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</a>
+                        <a href="index.php?modulo=apadrinar-detalles&id=<?= $susTipo[1]['s_tipo_id']; ?>" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</a>
                     </div>
                 </div>
             </div>
             <div class="sus-lado col-lg-4">
                 <div class="text-center pt-5 mt-lg-5">
-                    <h2 class="text-uppercase">Premium</h2>
+                    <h2 class="text-uppercase"><?=$susTipo[2]['s_tipo_nombre']; ?></h2>
                     <h6 class="text-body mb-5">¡La mejor opcion!</h6>
                     <div class="text-center precio p-4 mb-2">
                         <h1 class="display-4 text-white mb-0">
                             <small class="align-top"
-                                style="font-size: 22px; line-height: 45px;">S/</small>59.90<small
+                                style="font-size: 22px; line-height: 45px;">S/</small><?=$susTipo[2]['s_tipo_precio']; ?><small
                                 class="align-bottom" style="font-size: 16px; line-height: 40px;">/
                                 Mes</small>
                         </h1>
@@ -103,7 +113,7 @@
                         <div class=" d-flex justify-content-startmb-1">
                             <li>Campañas de salud y adopcion</li>
                         </div>
-                        <button href="index.php?modulo=apadrinar-detalles" type="button" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</button>
+                        <button href="index.php?modulo=apadrinar-detalles&id=<?= $susTipo[2]['s_tipo_id']; ?>" type="button" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</button>
                     </div>
                 </div>
             </div>

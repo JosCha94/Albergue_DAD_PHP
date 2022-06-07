@@ -533,6 +533,7 @@ color: #E8630a;
   background-color: #dfdbdb;
   box-shadow: -3px -3px 9px #aaa9a9a2,
               3px 3px 7px rgba(147, 149, 151, 0.671);
+  height: 650px;
 }
 .sus-lado .text-center.precio{
   background-color: #001E6C;
@@ -542,6 +543,8 @@ color: #E8630a;
   background-color: #dfdbdb;
   box-shadow: -3px -3px 9px #aaa9a9a2,
               3px 3px 7px rgba(147, 149, 151, 0.671);
+  height: 650px;
+  
 }
 .sus-centro .text-center.precio{
   background-color: #E8630a ;
@@ -581,10 +584,14 @@ h2.text-uppercase{
   margin-top: 15px;
   box-shadow: -3px -3px 9px #aaa9a9a2,
               3px 3px 7px rgba(147, 149, 151, 0.671);
+ 
 
 }
 #sus-title{
   color: #001E6C;
   font-size: 20px;
   padding: 20px;
+}
+.c-card{
+  color: #001E6C;
 }
