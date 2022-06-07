@@ -106,5 +106,18 @@ class Consulta_usuario
         }
         return $errores;
     }
+
+    public function detalleUsuario($conexion, $id)
+    {
+        try {
+            $sql = "CALL SP_detalle_usuario($id)";
+            $consulta = $conexion->prepare($sql);
+            $consulta->execute();
+            $user = $consulta->fetch(PDO::FETCH_ASSOC);
+            return $user;
+        } catch (PDOException $e) {
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        }
+    }
 }
 ?>

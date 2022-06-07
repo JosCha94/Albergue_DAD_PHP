@@ -594,4 +594,8 @@ h2.text-uppercase{
 }
 .c-card{
   color: #001E6C;
+
+/*********PERFIL DE USUARIO *************/
+.img-circle{
+  border-radius: 50%;
 }
