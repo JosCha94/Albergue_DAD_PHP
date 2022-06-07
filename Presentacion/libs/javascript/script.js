@@ -140,3 +140,33 @@ $('.filtroE').click(function () {
 
 });
 //--------------FILTRO PARA PAG. ADOPCIONES----------------//
+
+//FORMULARIOS PERFIL USUARIO----------------//
+
+function formPass() {
+  
+    if ($('#btn-changepass').text() === "Cambiar contraseña") {
+        $('#formPass').removeClass('d-none');
+        $('#btn-changepass').text("Cerrar Formulario");
+        $('#btn-changedata').attr('disabled', true);
+    }else if ($('#btn-changepass').text() === "Cerrar Formulario"){
+        $('#formPass').addClass('d-none');
+        $('#btn-changepass').text("Cambiar contraseña");
+        $('#btn-changedata').attr('disabled', false);
+    }    
+};
+
+function formData() {
+  
+    if ($('#btn-changedata').text() === "Actualizar datos") {
+        $('#formData').removeClass('d-none');
+        $('#btn-changedata').text("Cerrar Formulario");
+        $('#btn-changepass').attr('disabled', true);
+    }else if ($('#btn-changedata').text() === "Cerrar Formulario"){
+        $('#formData').addClass('d-none');
+        $('#btn-changedata').text("Actualizar datos");
+        $('#btn-changepass').attr('disabled', false);
+    }
+    
+};
+//--------------FORMULARIOS PERFIL USUARIO----------------//

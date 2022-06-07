@@ -31,12 +31,20 @@ $modulo = $_GET['modulo'] ?? '';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&display=swap" rel="stylesheet">
 
-    <title>Albergue de perritos<?php echo ($modulo == "adoptar" || "adoptar-single") ? " - Adopción " : " ";
-                                echo ($modulo == "apadrinar") ? " - Apadrinar " : " ";
-                                echo ($modulo == "tienda" || "product_detail" || "carrito") ? " - Tienda " : " ";
-                                echo ($modulo == "donar") ? " - Donación " : " ";
-                                echo ($modulo == "blog" || "blog-single") ? " - Blog " : " ";
-                                echo ($modulo == "registro") ? " - Registro de usuario " : " "; ?>
+    <title>Albergue de perritos<?php
+                                switch ($modulo) {
+                                    case ("adoptar"): echo " - Adopción "; break;
+                                    case ("adoptar-single"): echo " - Adopción "; break;
+                                    case ("apadrinar"): echo " - Apadrinar "; break;
+                                    case ("tienda") : echo " - Tienda "; break;
+                                    case ("product_detail") : echo " - Tienda "; break;
+                                    case ("carrito") : echo " - Tienda "; break;
+                                    case ("donar") : echo " - Donación "; break;
+                                    case ("blog") : echo " - Blog "; break;
+                                    case ("registro") : echo " - Registro de usuario "; break;
+                                    case ("perfil-usuario") : echo " - Perfil de usuario "; break;
+                                }
+                                ?>
 
     </title>
 </head>
@@ -82,6 +90,9 @@ $modulo = $_GET['modulo'] ?? '';
                             <?php echo $_SESSION['usuario'][1] ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuUser">
+                            <li>
+                                <a href="index.php?modulo=perfil-usuario">Mi perfil</a>
+                            </li>
                             <li>
                                 <a href="BL/cerrar_sesion.php?modulo=&sesion=cerrar">Cerrar Sesión</a>
                             </li>
@@ -183,6 +194,9 @@ $modulo = $_GET['modulo'] ?? '';
         if ($modulo == "registro") {
             include_once "Presentacion/vistas/registro_user.php";
         }
+        if ($modulo == "perfil-usuario") {
+            include_once "Presentacion/vistas/perfil-usuario.php";
+        }
         if ($modulo == "product_detail") {
             include_once "Presentacion/vistas/detalle_producto.php";
         }
@@ -195,7 +209,7 @@ $modulo = $_GET['modulo'] ?? '';
         if ($modulo == "apadrinar-detalles") {
             include_once "Presentacion/vistas/apadrinar-detalles.php";
         }
-        
+
         ?>
     </div>
 
@@ -203,7 +217,7 @@ $modulo = $_GET['modulo'] ?? '';
     <footer class="footer">
         <div class="container-fluid 
         <?php if ($logueado == 'false') {
-            if ($modulo == "carrito" || $modulo == "adoptar-formulario" ) {
+            if ($modulo == "carrito" || $modulo == "adoptar-formulario") {
                 echo "position-absolute bottom-0";
             } elseif ($modulo == "tienda") {
                 echo "position-absolute bottom-10";
