@@ -11,13 +11,15 @@ class autorizacion
         return $log;
     }
 
-    public function activeRol($estado)
+    public function activeRol($estado, $id)
     {
-        if ($estado == 'Activado') {
-            $res = 'true';
-        } else {
-            $res = 'false';
-        }
+        $Rol = $estado;
+        $array = json_decode($Rol, true);
+        foreach ($array as $key => $value) :
+            if (in_array($value['id'] , $id)) {
+                $res = 'true';
+            }
+        endforeach;
         return $res;
     }
 
@@ -26,7 +28,7 @@ class autorizacion
         $perRol = $permisos;
         $array = json_decode($perRol, true);
         foreach ($array as $key => $value) :
-            if ($value['id'] == $id) {
+            if (in_array($value['id'] , $id)) {
                 $per = 'true';
             }
         endforeach;
@@ -38,7 +40,7 @@ class autorizacion
         $perEsp = $permisos;
         $array = json_decode($perEsp, true);
         foreach ($array as $key => $value) :
-            if ($value['id'] == $id) {
+            if (in_array($value['id'] , $id)) {
                 $per = 'true';
             }
         endforeach;

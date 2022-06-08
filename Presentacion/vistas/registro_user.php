@@ -44,13 +44,9 @@ if (isset($_POST['registro_usr'])) {
                                 <ul class="alert alert-danger mt-3">
                                     <h1>Corregir</h1>
                                     <?php foreach ($errores as  $error) : ?>
-                                        <li><?= $error; ?></li>
+                                        <li class="ms-2"><?= $error; ?></li>
                                     <?php endforeach; ?>
                                 </ul>
-                            <?php else : ?>
-                                <!-- <div class="alert alert-success mt-3">
-                                <p>¡Registro exitoso!</p>
-                            </div> -->
                             <?php endif; ?>
                         <?php endif; ?>
                         <div class="row">

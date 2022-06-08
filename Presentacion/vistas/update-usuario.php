@@ -1,32 +1,43 @@
 <?php
-require_once('BL/consultas_usuario.php');
-require_once 'ENTIDADES/usuario.php';
-require_once('DAL/conexion.php');
-$formTipo = $_GET['formTipo'] ?? '';
-$conexion = conexion::conectar();
-$consulta = new Consulta_usuario();
-$id = $_SESSION['usuario'][0];
-$usuario = $consulta->detalleUsuario($conexion, $id);
-if (isset($_POST['actualizar_data'])) {
-    $user = $_POST['nick_user'];
-    $pass = 123456789;
-    $name = $_POST['usr_nombre'];
-    $ape_p = $_POST['usr_apellido_paterno'];
-    $ape_m = $_POST['usr_apellido_materno'];
-    $email = $_POST['usr_email'];
-    $celu = $_POST['usr_celular'];
-    $usu = new usuario($user, $pass,  $name, $ape_p, $ape_m, $email, $celu);
+switch ($error = 'SinError') {
+    case ($logueado == 'false'):
+        $error = 'Debe iniciar sesión para poder visualizar este pagina';
+        break;
+    case ($rol != 'true'):
+        $error = 'No tiene activado el rol de Cliente';
+        break;
+}
+?>
+<?php if ($error == 'SinError'): ?>
+<?php
+    require_once('BL/consultas_usuario.php');
+    require_once 'ENTIDADES/usuario.php';
+    require_once('DAL/conexion.php');
+    $formTipo = $_GET['formTipo'] ?? '';
+    $conexion = conexion::conectar();
     $consulta = new Consulta_usuario();
-    $errores = $consulta->Validar_registro($usu);
-    if (count($errores) == 0) {
-        // $estado = $consulta->insetar_usuario($conexion, $usu);
+    $id = $_SESSION['usuario'][0];
+    $usuario = $consulta->detalleUsuario($conexion, $id);
+    if (isset($_POST['actualizar_data'])) {
+        $user = $_POST['nick_user'];
+        $pass = 123456789;
+        $name = $_POST['usr_nombre'];
+        $ape_p = $_POST['usr_apellido_paterno'];
+        $ape_m = $_POST['usr_apellido_materno'];
+        $email = $_POST['usr_email'];
+        $celu = $_POST['usr_celular'];
+        $usu = new usuario($user, $pass,  $name, $ape_p, $ape_m, $email, $celu);
+        $consulta = new Consulta_usuario();
+        $errores = $consulta->Validar_registro($usu);
+        if (count($errores) == 0) {
+            // $estado = $consulta->insetar_usuario($conexion, $usu);
 
-        if ($estado == 'mal') {
-        } else {
-            echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=inicio&mensaje=El Usuario se registro correctamente" />';
+            if ($estado == 'mal') {
+            } else {
+                echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=inicio&mensaje=El Usuario se registro correctamente" />';
+            }
         }
     }
-}
 ?>
 <?php if ($formTipo == 'dataUser') : ?>
         <div class="col-12 col-md-8 border border-dark p-5 mx-auto my-4" id="formData">
@@ -37,13 +48,9 @@ if (isset($_POST['actualizar_data'])) {
                         <ul class="alert alert-danger mt-3">
                             <h1>Corregir</h1>
                             <?php foreach ($errores as  $error) : ?>
-                                <li><?= $error; ?></li>
+                                <li class="ms-2"><?= $error; ?></li>
                             <?php endforeach; ?>
                         </ul>
-                    <?php else : ?>
-                        <!-- <div class="alert alert-success mt-3">
-                                <p>¡Registro exitoso!</p>
-                            </div> -->
                     <?php endif; ?>
                 <?php endif; ?>
                 <div class="form-group">
@@ -97,3 +104,10 @@ if (isset($_POST['actualizar_data'])) {
         </div>
 
     <?php endif; ?>
+<?php else : ?>
+    
+    <div class="alert alert-danger" role="alert">
+        <?php echo $error; ?>
+    </div>
+
+<?php endif; ?>

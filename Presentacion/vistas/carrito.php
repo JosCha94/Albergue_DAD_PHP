@@ -1,12 +1,12 @@
 <?php
-$permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], 3);
-$permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], 3);
+$permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], [3]);
+$permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], [3]);
 
 switch ($error = 'SinError') {
-    case ($permisoEsp == 'true'):
-        break;
     case ($logueado == 'false'):
         $error = 'Debe iniciar sesión para poder visualizar este pagina';
+        break;
+    case ($permisoEsp == 'true'):
         break;
     case ($rol != 'true'):
         $error = 'No tiene activado el rol de Cliente';
@@ -14,11 +14,9 @@ switch ($error = 'SinError') {
     case ($permisosRol != 'true'):
         $error = 'Su rol actual no tiene permiso para acceder a esta pagina';
         break;
-        break;
 }
 ?>
-<?php
-if ($error == 'SinError') { ?>
+<?php if ($error == 'SinError') : ?>
     <?php
     require_once('BL/consultas_tienda.php');
     require_once('DAL/conexion.php');
@@ -226,12 +224,10 @@ if ($error == 'SinError') { ?>
             </div>
         </div>
     </div>
-<?php
-} else {
-?>
+<?php else : ?>
+
     <div class="alert alert-danger" role="alert">
         <?php echo $error; ?>
     </div>
-<?php
-}
-?>
+
+<?php endif; ?>

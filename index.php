@@ -1,13 +1,13 @@
 <?php
 session_start();
-// error_reporting(0);
+error_reporting(0);
 session_regenerate_id(true);
 require_once 'SL/permisos.php';
 require_once('DAL/conexion.php');
 $conexion = conexion::conectar();
 $log = new autorizacion();
 $logueado = $log->logueado($_SESSION['usuario']);
-$rol = $log->activeRol($_SESSION['usuario'][2]);
+$rol = $log->activeRol($_SESSION['usuario'][2],[1]);
 
 $modulo = $_GET['modulo'] ?? '';
 
