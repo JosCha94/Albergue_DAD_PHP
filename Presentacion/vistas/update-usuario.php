@@ -18,6 +18,7 @@ switch ($error = 'SinError') {
     $consulta = new Consulta_usuario();
     $id = $_SESSION['usuario'][0];
     $usuario = $consulta->detalleUsuario($conexion, $id);
+
     if (isset($_POST['actualizar_data'])) {
         $user = $_POST['nick_user'];
         $pass = 123456789;
@@ -30,17 +31,17 @@ switch ($error = 'SinError') {
         $consulta = new Consulta_usuario();
         $errores = $consulta->Validar_registro($usu);
         if (count($errores) == 0) {
-            // $estado = $consulta->insetar_usuario($conexion, $usu);
+              $estado = $consulta->actualizar_usuario($conexion, $id, $usu);
 
             if ($estado == 'mal') {
             } else {
-                echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=inicio&mensaje=El Usuario se registro correctamente" />';
+                echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=update-user&formTipo=dataUser&mensaje=El Usuario se actualizo correctamente" />';
             }
         }
     }
 ?>
 <?php if ($formTipo == 'dataUser') : ?>
-        <div class="col-12 col-md-8 border border-dark p-5 mx-auto my-4" id="formData">
+        <div class="col-12 col-md-8 border border-dark p-5 mx-auto my-4 bg-primary" id="formData">
             <h3>INGRESA TUS DATOS PARA CAMBIAR</h3>
             <form action="" method="POST">
                 <?php if (isset($errores)) : ?>
@@ -55,32 +56,33 @@ switch ($error = 'SinError') {
                 <?php endif; ?>
                 <div class="form-group">
                     <label for="usr_nombre">NICK DE USUARIO</label>
-                    <input type="text" class="form-control" id="nick_user" name="nick_user" value="<?php if (isset($user)) {
+                    <input type="text" class="form-control" id="nick_user" name="nick_user" maxlength="15" minlength="5" value="<?php if (isset($user)) {
                     echo $user;} else {echo ($usuario['usuario']);} ?>">
                 </div>
                 <div class="form-group">
                     <label for="usr_nombre">Nombre</label>
-                    <input type="text" class="form-control" id="usr_nombre" name="usr_nombre" value="<?php if (isset($name)) {
+                    <input type="text" class="form-control" id="usr_nombre" name="usr_nombre" minlength="4" maxlength="20" value="<?php if (isset($name)) {
                     echo $name;} else {echo ($usuario['usr_nombre']); } ?>">
                 </div>
                 <div class="form-group">
                     <label for="usr_apellido_paterno">Apellido Paterno</label>
-                    <input type="text" class="form-control" id="usr_apellido_paterno" name="usr_apellido_paterno" value="<?php if (isset($ape_p)) {echo $ape_p;} else {echo ($usuario['usr_apellido_paterno']);} ?>">
+                    <input type="text" class="form-control" id="usr_apellido_paterno" name="usr_apellido_paterno" minlength="4" maxlength="20" value="<?php if (isset($ape_p)) {echo $ape_p;} else {echo ($usuario['usr_apellido_paterno']);} ?>">
                 </div>
                 <div class="form-group">
                     <label for="usr_apellido_materno">Apellido Materno</label>
-                    <input type="text" class="form-control" id="usr_apellido_materno" name="usr_apellido_materno" value="<?php if (isset($ape_m)) {echo $ape_m;} else {echo ($usuario['usr_apellido_materno']);} ?>">
-                </div>
-                <div class="form-group">
-                    <label for="usr_celular">Celular</label>
-                    <input type="text" class="form-control" id="usr_celular" name="usr_celular" value="<?php if (isset($celu)) {
-                    echo $celu;} else {echo ($usuario['usr_celular']);} ?>">
+                    <input type="text" class="form-control" id="usr_apellido_materno" name="usr_apellido_materno" minlength="4" maxlength="20" value="<?php if (isset($ape_m)) {echo $ape_m;} else {echo ($usuario['usr_apellido_materno']);} ?>">
                 </div>
                 <div class="form-group">
                     <label for="usr_email">E-mail</label>
-                    <input type="text" class="form-control" id="usr_email" name="usr_email" value="<?php if (isset($email)) {
+                    <input type="text" class="form-control" id="usr_email" name="usr_email" maxlength="30" value="<?php if (isset($email)) {
                     echo $email;} else {echo ($usuario['usr_email']);} ?>">
                 </div>
+                <div class="form-group">
+                    <label for="usr_celular">Celular</label>
+                    <input type="text" class="form-control" id="usr_celular" name="usr_celular" maxlength="9" minlength="9" value="<?php if (isset($celu)) {
+                    echo $celu;} else {echo ($usuario['usr_celular']);} ?>">
+                </div>
+                
                 <button class="btn btn-primary my-3" name="actualizar_data">Actualizar</button>
                 <button type="reset" class="btn btn-danger my-3 mx-3" id="btn-cleanFormData">Limpiar</button>
             </form>
