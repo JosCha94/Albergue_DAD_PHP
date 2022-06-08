@@ -50,6 +50,54 @@ body{
 }
 /*NAVBAR END*/
 /* MENU */
+/*inicio  */
+.bg-icon{
+  background-color: #E8630A;
+}
+.icon-wrapper{
+  display: inline-block;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  margin-bottom:20px;
+  transition: all 0.2s ease-in-out;
+}
+.icon-box{
+ padding:30px 20px 0px 20px;
+ z-index:99;
+}
+
+.icon-box:hover .icon-wrapper{
+  transform:scale(1.2);
+}
+.icon-wrapper i {
+  color:#fff;
+  font-size: 80px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+/* custom ul */
+ul.custom {
+  list-style: none;
+  margin-bottom:0;
+}
+ul.custom li {
+  padding: 5px 0px;
+  font-size: 16px;
+  line-height: 24px;
+}
+ul.custom li:before {
+  font-family: "Flaticon";
+  content: "\f111";
+  padding-right: 7px;
+  font-weight: normal;
+  font-size: 15px;
+}
+.text-light ul.custom li:before {
+  color:#fff!important;
+}
+/*inicio  */
 
 /* VAINA DE LOADING */
 .lds-facebook {
@@ -594,7 +642,7 @@ h2.text-uppercase{
 }
 .c-card{
   color: #001E6C;
-
+}
 /*********PERFIL DE USUARIO *************/
 .img-circle{
   border-radius: 50%;
