@@ -11,6 +11,7 @@ $rol = $log->activeRol($_SESSION['usuario'][2]);
 
 $modulo = $_GET['modulo'] ?? '';
 
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -196,6 +197,9 @@ $modulo = $_GET['modulo'] ?? '';
         }
         if ($modulo == "perfil-usuario") {
             include_once "Presentacion/vistas/perfil-usuario.php";
+        }
+        if ($modulo == "update-user") {
+            include_once "Presentacion/vistas/update-usuario.php";
         }
         if ($modulo == "product_detail") {
             include_once "Presentacion/vistas/detalle_producto.php";

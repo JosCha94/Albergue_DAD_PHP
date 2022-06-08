@@ -142,7 +142,7 @@ $('.filtroE').click(function () {
 //--------------FILTRO PARA PAG. ADOPCIONES----------------//
 
 //FORMULARIOS PERFIL USUARIO----------------//
-
+//////// NOOO VANNNN
 function formPass() {
   
     if ($('#btn-changepass').text() === "Cambiar contraseña") {
