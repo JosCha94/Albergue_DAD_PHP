@@ -11,7 +11,16 @@
       $idUser = $_SESSION['usuario'][0];
       $idProducto = $_POST['product_id'];
       $cantidad = $_POST['cantidad'];
-      $consulta->agregarProductoAlCarrito($conexion, $idUser, $idProducto, $cantidad);
+      $res = $consulta->validarProductosCarrito($idProducto, $_SESSION['usuario'][5]);
+      // $consulta->agregarProductoAlCarrito($conexion, $idUser, $idProducto, $cantidad);
+      if($res !='true'){
+         $Carrito = $_SESSION['usuario'][5];
+         $array = json_decode($Carrito, true);
+         $prodt = ['id' => (int)$idProducto];
+         array_push($array, $prodt);
+         $_SESSION['usuario'][5] = json_encode($array);
+         $consulta->agregarProductoAlCarrito($conexion, $idUser, $idProducto, $cantidad);
+      }
    }
    ?>
    <?php if ($logueado == 'false') { ?>
@@ -22,7 +31,7 @@
          <p class="mb-0 h6">¡Gracias!</p>
       </div>
    <?php }  ?>
-
+   <?php echo  $_SESSION['usuario'][5] ?>
    <div class="container adop-body mt-5">
       <div class="row">
          <div class="col-md-3 sidebar-filter">

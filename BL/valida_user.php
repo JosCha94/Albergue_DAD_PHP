@@ -8,7 +8,7 @@ $pass = $_POST['pass'];
 
 try {
     // $SQLQuery = "SELECT * FROM usuarios WHERE nombre = '$user' AND contrasena = '$pass' ";
-    $SQLQuery = "CALL SP_valida_usuario('$user','$pass') ";
+    $SQLQuery = "CALL SP_valida_usuario2('$user','$pass') ";
     $result = $bd->query($SQLQuery);
     $usuarios = $result->fetch(PDO::FETCH_ASSOC);
     // VALIDA Q LA VARIABLE TENGA ALGO
@@ -19,6 +19,7 @@ try {
         $_SESSION['usuario'][2] = $usuarios['rol_estado'];
         $_SESSION['usuario'][3] = $usuarios['per_rol'];
         $_SESSION['usuario'][4] = $usuarios['per_esp'];
+        $_SESSION['usuario'][5] = $usuarios['car'];
         header("location: ../index.php");
     } else {
 

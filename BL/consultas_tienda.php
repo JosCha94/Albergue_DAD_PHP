@@ -57,6 +57,25 @@ class Consulta_producto
     //                    CARRITO
     // --------------------------------------------------
 
+    public function validarProductosCarrito($idProducto, $carrito){
+        try{
+        $carro = $carrito;
+        $array = json_decode($carro, true);
+        foreach ($array as $key => $value) :
+            if (in_array($value['id'] , [$idProducto])) {
+                $res = 'true';
+            }
+        endforeach;
+
+        return $res;  
+        }
+        catch (PDOException $e) {
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        }
+        
+
+    }
+
     public function agregarProductoAlCarrito($bd, $idUser, $idProducto, $cantidad)
     {
         try {
