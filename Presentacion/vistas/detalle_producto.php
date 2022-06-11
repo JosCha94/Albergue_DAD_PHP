@@ -74,7 +74,7 @@ if (isset($_POST['carrito'])) {
                                 <input type="hidden" name="product_id" value="<?= $product['product_id']; ?>">
   
                                 <?php if ($consulta->validarProductosCarrito($product['product_id'], $_SESSION['usuario'][5])) : ?>
-                                    <button class="btn btn-adopt" name="" disabled>Producto en el carrito</button>
+                                    <button class="btn btn-adopt" name="" disabled>Producto añadido al carrito</button>
                                     <?php else : ?>
                                     <button class="btn btn-adopt" name="carrito">¡Añadir al Carrito!</button>
                                 <?php endif; ?>

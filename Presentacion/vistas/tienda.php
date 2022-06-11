@@ -121,7 +121,7 @@
                                     <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
                                     <input type="hidden" name="cantidad" value="1">
                                     <?php if ($consulta->validarProductosCarrito($value['product_id'], $_SESSION['usuario'][5])) : ?>
-                                       <button class="btn btn-outline-danger" name="" disabled>Producto en el carrito</button>
+                                       <button class="btn btn-outline-danger" name="" disabled>Producto añadido al carrito</button>
                                     <?php else : ?>
                                        <button class="btn btn-outline-danger" name="carrito">Añadir al carrito</button>
                                     <?php endif; ?>
