@@ -4,6 +4,10 @@
 body{
   background-image: url(../images/huesoPatron.png);
   background-color: #fafbfd;
+  min-height: 100vh; 
+  margin: 0; 
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 /* MENU */
@@ -138,6 +142,21 @@ ul.custom li:before {
     }
   }
 /* VAINA DE LOADING END*/
+
+/* FOOTER   */
+footer{
+  background-color:#dfdbdb;
+  min-height:50px; 
+  color:#001E6C;
+}
+footer a{
+  text-decoration: none;
+  color: #E8630a;
+}
+footer a:hover{
+  color: #001E6C; 
+}
+
 
 /* REGISTRO USER */
 .size-btn{
@@ -648,3 +667,4 @@ h2.text-uppercase{
 .img-circle{
   border-radius: 50%;
 }
+
