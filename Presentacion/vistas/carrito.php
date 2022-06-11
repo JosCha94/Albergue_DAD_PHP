@@ -99,17 +99,12 @@ switch ($error = 'SinError') {
                                 $resErr = $error;
 
                                 // $compr2[]=array($value['product_id'], $_SESSION['usuario'][0],$value['cantidad']);
-                                $compra[] = array('pid' => (int)$value['product_id'], 'uid' => (int)$_SESSION['usuario'][0], 'ctd' => (int)$value['cantidad']);
+                                // $compra[] = array('pid' => (int)$value['product_id'], 'uid' => (int)$_SESSION['usuario'][0], 'ctd' => (int)$value['cantidad']);
                                 ?>
 
                             <?php endforeach; ?>
-                            <?php $databuy = json_encode($compra); ?>
+                            <!-- <?php $databuy = json_encode($compra); ?> -->
 
-                            <!-- <?php var_dump($compra); ?>
-                        <?php var_dump($products); ?> -->
-
-                            <!-- <?php echo '----------------------------------'; ?>
-                        <?php var_dump($compra2); ?> -->
 
 
                             <!-- Modal Cantidad -->

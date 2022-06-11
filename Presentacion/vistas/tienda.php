@@ -11,8 +11,12 @@
       $idUser = $_SESSION['usuario'][0];
       $idProducto = $_POST['product_id'];
       $cantidad = $_POST['cantidad'];
+
+      if($_SESSION['usuario'][5] == ''){
+         $_SESSION['usuario'][5] = json_encode(array());
+      }
       $res = $consulta->validarProductosCarrito($idProducto, $_SESSION['usuario'][5]);
-      // $consulta->agregarProductoAlCarrito($conexion, $idUser, $idProducto, $cantidad);
+      
       if($res !='true'){
          $Carrito = $_SESSION['usuario'][5];
          $array = json_decode($Carrito, true);
