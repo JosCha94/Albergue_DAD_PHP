@@ -5,7 +5,7 @@
    $consulta = new Consulta_producto();
 
    $products = $consulta->listarProductos($conexion);
-   $categories = $consulta->listarCategorias($conexion);   
+   $categories = $consulta->listarCategorias($conexion);
 
 
    if (isset($_POST['carrito'])) {
@@ -14,8 +14,8 @@
       $cantidad = $_POST['cantidad'];
 
       $res = $consulta->validarProductosCarrito($idProducto, $_SESSION['usuario'][5]);
-      
-      if($res !='true'){
+
+      if ($res != 'true') {
          $Carrito = $_SESSION['usuario'][5];
          $array = json_decode($Carrito, true);
          $prodt = ['id' => (int)$idProducto];
@@ -26,8 +26,8 @@
    }
    ?>
    <?php if ($logueado == 'false') { ?>
-      <div class="alert alert-danger mt-5" role="alert">   
-            <h4 class="alert-heading">¡Atención!</h4>
+      <div class="alert alert-danger mt-5" role="alert">
+         <h4 class="alert-heading">¡Atención!</h4>
          <p>Para poder comprar debes estar registrado y logueado</p>
          <hr>
          <p class="mb-0 h6">¡Gracias!</p>
@@ -120,8 +120,11 @@
 
                                     <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
                                     <input type="hidden" name="cantidad" value="1">
-                                    <button class="btn btn-outline-danger" name="carrito">Añadir al carrito</button>
-
+                                    <?php if ($consulta->validarProductosCarrito($value['product_id'], $_SESSION['usuario'][5])) : ?>
+                                       <button class="btn btn-outline-danger" name="" disabled>Producto en el carrito</button>
+                                    <?php else : ?>
+                                       <button class="btn btn-outline-danger" name="carrito">Añadir al carrito</button>
+                                    <?php endif; ?>
                                  </div>
                               </form>
                            <?php } ?>

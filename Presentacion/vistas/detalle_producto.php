@@ -71,14 +71,22 @@ if (isset($_POST['carrito'])) {
                         <div class="row">
                             <form action="" method="post" id="detail_producto" name="detail_producto" class="mt-5">
                                 <input type="number" name="cantidad" min="1" max="<?= $product['product_stock']; ?>" value="1">
-                                <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
-                                <button class="btn btn-adopt" name="carrito">¡Añadir al Carrito!</button>
+                                <input type="hidden" name="product_id" value="<?= $product['product_id']; ?>">
+  
+                                <?php if ($consulta->validarProductosCarrito($product['product_id'], $_SESSION['usuario'][5])) : ?>
+                                    <button class="btn btn-adopt" name="" disabled>Producto en el carrito</button>
+                                    <?php else : ?>
+                                    <button class="btn btn-adopt" name="carrito">¡Añadir al Carrito!</button>
+                                <?php endif; ?>
+  
+                                    
                             </form>
+                        </div>    
                         <?php } ?>
+
                         
-                        </div>
-<a href="index.php?modulo=tienda" class="btn btn-danger mt-5 ">Volver</a>
-                        <!-- <a href="#" class="btn btn-adopt mt-5">¡Añadir al Carrito!</a> -->
+                        <a href="index.php?modulo=tienda" class="btn btn-danger mt-5 ">Volver</a>
+
 
 
                 </div>
