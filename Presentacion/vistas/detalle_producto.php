@@ -11,7 +11,17 @@ if (isset($_POST['carrito'])) {
     $idUser = $_SESSION['usuario'][0];
     $idProducto = $id;
     $cantidad = $_POST['cantidad'];
-    $consulta->agregarProductoAlCarrito($conexion, $idUser, $idProducto, $cantidad);
+
+    $res = $consulta->validarProductosCarrito($idProducto, $_SESSION['usuario'][5]);
+
+    if ($res != 'true') {
+        $Carrito = $_SESSION['usuario'][5];
+        $array = json_decode($Carrito, true);
+        $prodt = ['id' => (int)$idProducto];
+        array_push($array, $prodt);
+        $_SESSION['usuario'][5] = json_encode($array);
+        $consulta->agregarProductoAlCarrito($conexion, $idUser, $idProducto, $cantidad);
+    }
 }
 ?>
 <div class="container margin1 mt-5">
