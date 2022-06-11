@@ -18,10 +18,13 @@ switch ($error = 'SinError') {
 ?>
 <?php if ($error == 'SinError') : ?>
     <?php
+    require_once('BL/consultas_usuario.php');
     require_once('BL/consultas_tienda.php');
     require_once('DAL/conexion.php');
     $conexion = conexion::conectar();
     $consulta = new Consulta_producto();
+    $consulta2 = new Consulta_usuario();
+    $usuario = $consulta2->detalleUsuario($conexion, $_SESSION['usuario'][0]);
 
     if (isset($_POST['borrarCarrito'])) {
         $idUser = $_SESSION['usuario'][0];
@@ -104,6 +107,7 @@ switch ($error = 'SinError') {
 
                             <?php endforeach; ?>
                             <!-- <?php $databuy = json_encode($compra); ?> -->
+
 
 
 
@@ -202,15 +206,45 @@ switch ($error = 'SinError') {
                                         <div class="form-floating text-end mt-2">
                                             <h2 class="me-2">Total: S/ <?php echo $total ?></h2>
                                         </div>
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input type="text" id="nombre" class="form-control" name="nombre" value="<?= $usuario['usr_nombre'] ?>" disabled>
+                                                <label class="form-label" for="nombre">Nombres</label>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input type="text" id="apellidos" class="form-control" name="apellidos" value="<?= $usuario['usr_apellido_paterno'] . ' ' . $usuario['usr_apellido_materno'] ?> " disabled>
+                                                <label class="form-label" for="apellidos">Apellidos</label>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input type="email" id="correo" class="form-control" name="correo" value="<?= $usuario['usr_email'] ?>" disabled>
+                                                <label class="form-label" for="correo">Correo electrónico</label>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input type="tel" id="celu" class="form-control" name="celu" value="<?= $usuario['usr_celular'] ?>" disabled>
+                                                <label class="form-label" for="celu">Teléfono</label>
+                                            </div>
+                                        </div>
+                                        <form action="" method="post">
+                                            <div class="d-flex flex-row align-items-center mb-2">
+                                                <div class="form-outline flex-fill mb-0">
+                                                    <input type="tel" id="dni" class="form-control" placeholder="Ingrese su número de DNI" name="dni" pattern="[0-9]{8}" title="El formato del DNI no es el correcto" value="" required>
+                                                    <label class="form-label" for="dni">DNI</label>
+                                                </div>
+                                            </div>
 
-                                        <!-- </form> -->
+                                            <!-- </form> -->
                                     </main>
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="" method="post">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="submit" class="btn btn-login" name="btn-pagar">Pagar</a>
-                                    </form>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-login" name="btn-pagar">Pagar</a>
+                                        </form>
                                 </div>
                             </div>
                         </div>
