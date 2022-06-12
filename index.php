@@ -10,9 +10,6 @@ $logueado = $log->logueado($_SESSION['usuario']);
 $rol = $log->activeRol($_SESSION['usuario'][2],[1]);
 
 $modulo = $_GET['modulo'] ?? '';
-if($_SESSION['usuario'][5] == ''){
-    $_SESSION['usuario'][5] = json_encode(array());
- }
 
 
 ?>

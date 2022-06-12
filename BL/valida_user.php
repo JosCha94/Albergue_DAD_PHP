@@ -20,6 +20,9 @@ try {
         $_SESSION['usuario'][3] = $usuarios['per_rol'];
         $_SESSION['usuario'][4] = $usuarios['per_esp'];
         $_SESSION['usuario'][5] = $usuarios['car'];
+        if ($_SESSION['usuario'][5] == '') {
+            $_SESSION['usuario'][5] = json_encode(array());
+        }
         header("location: ../index.php");
     } else {
 

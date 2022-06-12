@@ -77,7 +77,7 @@ class Consulta_adopcion{
             $consulta -> bindValue(':razonAdo', $adop->getAdop_razon());
             $consulta -> execute();
             $estado = "Correcto";
-        }catch (PDOExeption $e){
+        }catch (PDOException $e){
             echo "Ocurrio un error en la base de atos: " . $e -> getMessage();
             $estado = "Falló";
         }
