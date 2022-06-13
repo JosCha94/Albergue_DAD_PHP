@@ -113,7 +113,7 @@ $susTipo = $consulta -> listarTipoSuscrip($conexion);
                         <div class=" d-flex justify-content-startmb-1">
                             <li>Campañas de salud y adopcion</li>
                         </div>
-                        <button href="index.php?modulo=apadrinar-detalles&id=<?= $susTipo[2]['s_tipo_id']; ?>" type="button" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</button>
+                        <a href="index.php?modulo=apadrinar-detalles&id=<?= $susTipo[2]['s_tipo_id']; ?>" type="button" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</a>
                     </div>
                 </div>
             </div>

@@ -40,6 +40,36 @@ class Consulta_apadrinar
         }
     }
 
+    public function datosUsuario_apadrinar($conexion, $id) {
+        try{
+            $sql = "CALL SP_select_userAdopcion($id)";
+            $consulta = $conexion->prepare($sql);
+            $consulta->execute();
+            $usr_adop = $consulta->fetch(PDO::FETCH_ASSOC);
+            return $usr_adop;
+        } catch (PDOException $e) {
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        }
+    }
+
+    public function insertar_Suscripcion($conexion, $suscri)
+    {
+        try {
+            $sql = "CALL SP_insertar_suscripcion(:idUsuario, :rolId,  :idTipoSus, :tiempoSus)";
+            $consulta = $conexion->prepare($sql);
+            $consulta -> bindValue(':idUsuario', $suscri->getUsr_id());
+            $consulta -> bindValue(':rolId', $suscri->getRol_id());
+            $consulta -> bindValue(':idTipoSus', $suscri->getTipo_id());
+            $consulta -> bindValue(':tiempoSus', $suscri->getSuscrip_tiempo());
+            $consulta -> execute();
+            $estado = "Correcto";
+        }catch (PDOException $e){
+            echo "Ocurrio un error en la base de atos: " . $e -> getMessage();
+            $estado = "Falló";
+        }
+        return $estado;
+    } 
+
 
 
 
