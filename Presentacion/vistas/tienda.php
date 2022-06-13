@@ -33,7 +33,6 @@
          <p class="mb-0 h6">¡Gracias!</p>
       </div>
    <?php }  ?>
-   <?php echo  $_SESSION['usuario'][5] ?>
    <div class="container adop-body mt-5">
       <div class="row">
          <div class="col-md-3 sidebar-filter">

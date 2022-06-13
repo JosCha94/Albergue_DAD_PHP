@@ -30,6 +30,14 @@ switch ($error = 'SinError') {
         $idUser = $_SESSION['usuario'][0];
         $idProducto = $_POST['product_id'];
         $consulta->borrarDeCarrito($conexion, $idUser, $idProducto);
+        $num = 0;
+        $array = json_decode($_SESSION['usuario'][5], true);        
+        foreach ($array as $key => $value) :
+            if ($value['id'] == $idProducto) {
+                unset($array[$key]);
+            }
+        endforeach;
+        $_SESSION['usuario'][5] = json_encode($array);
     }
 
     if (isset($_POST['cambiarCantidad'])) {
