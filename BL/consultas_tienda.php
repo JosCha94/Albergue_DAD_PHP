@@ -139,14 +139,14 @@ class Consulta_producto
             $sql = "CALL SP_update_cantidad_producto($usrid)";
             $consulta = $bd->prepare($sql);
             $consulta->execute();
-            $product = $consulta->fetch(PDO::FETCH_ASSOC);
+            // $product = $consulta->fetch(PDO::FETCH_ASSOC);
 
             // $bd->commit();
-            
+            $res='true';
         } catch (PDOException $e) {
             // $bd->rollBack();
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
-        return $product;
+        return $res;
     }
 }

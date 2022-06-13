@@ -49,7 +49,10 @@ switch ($error = 'SinError') {
 
     if (isset($_POST['btn-pagar'])) {
         $idUser = $_SESSION['usuario'][0];
-        $consulta->cambiarCantidadProducto($conexion, $idUser);
+        $res= $consulta->cambiarCantidadProducto($conexion, $idUser);
+        if ($res == 'true') {
+            $_SESSION['usuario'][5] = json_encode(array());
+        }
     }
 
     $products = $consulta->listarProductosCarrito($conexion, $_SESSION['usuario'][0]);
