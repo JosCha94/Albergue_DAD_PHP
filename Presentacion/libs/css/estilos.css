@@ -175,12 +175,14 @@ footer a:hover{
   background-image: url(../images/huesoPatron.png);
   color: #E8630A;
   margin: 10px;
-  border: 2px solid;  
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
+  border: 2px solid;
+  border-radius: 20px;
   border-color: #E8630A;
   padding: 20px;
-
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
 /**************filtros***********/
