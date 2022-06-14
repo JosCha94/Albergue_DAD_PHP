@@ -132,21 +132,27 @@ class Consulta_producto
     //                    COMPRA
     // --------------------------------------------------
 
-    public function cambiarCantidadProducto($bd, $usrid)
+    public function pedidoTienda($bd, $pedido)
     {
         try {
-            // $bd->beginTransaction();
-            $sql = "CALL SP_update_cantidad_producto($usrid)";
-            $consulta = $bd->prepare($sql);
-            $consulta->execute();
-            // $product = $consulta->fetch(PDO::FETCH_ASSOC);
 
-            // $bd->commit();
+            $sql = "CALL SP_pedido_tienda(:idUser, :idRol, :cliente, :dni, :correo, :monto)";
+            $consulta = $bd->prepare($sql);
+            $consulta->bindParam(':idUser', $pedido->getUsr_id());
+            $consulta->bindParam(':idRol', $pedido->getRol_id());
+            $consulta->bindParam(':cliente', $pedido->getCliente());
+            $consulta->bindParam(':dni', $pedido->getDni());
+            $consulta->bindParam(':correo', $pedido->getCorreo());
+            $consulta->bindParam(':monto', $pedido->getTotal());
+            $consulta->execute();
+
             $res='true';
         } catch (PDOException $e) {
-            // $bd->rollBack();
+
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
         return $res;
     }
+
+
 }

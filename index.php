@@ -118,11 +118,11 @@ $Rol = $_SESSION['usuario'][2];
 
         </nav>
     </div>
-    <h1>HI</h1>
+    <!-- <h1>HI</h1>
     <?php
     echo $rolUs;
 
-    ?>
+    ?> -->
     <!-- Modal -->
     <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
