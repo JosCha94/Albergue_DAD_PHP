@@ -1,15 +1,26 @@
 <?php
 session_start();
-// error_reporting(0);
+error_reporting(0);
 session_regenerate_id(true);
 require_once 'SL/permisos.php';
 require_once('DAL/conexion.php');
 $conexion = conexion::conectar();
 $log = new autorizacion();
 $logueado = $log->logueado($_SESSION['usuario']);
-$rol = $log->activeRol($_SESSION['usuario'][2],[1]);
+$rolActi = $log->activeRol($_SESSION['usuario'][2],[1,2]);
 
 $modulo = $_GET['modulo'] ?? '';
+
+$Rol = $_SESSION['usuario'][2];
+    $array = json_decode($Rol, true);
+    foreach ($array as $key => $value) :
+        if ($value['id'] == 1) {
+            $res=$value['id'];
+        }elseif($value['id'] == 2){
+            $res=$value['id'];
+        }
+    endforeach;
+ $rolUs = $res;
 
 
 ?>
@@ -107,6 +118,11 @@ $modulo = $_GET['modulo'] ?? '';
 
         </nav>
     </div>
+    <h1>HI</h1>
+    <?php
+    echo $rolUs;
+
+    ?>
     <!-- Modal -->
     <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

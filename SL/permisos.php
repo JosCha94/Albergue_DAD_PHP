@@ -20,11 +20,6 @@ class autorizacion
                 $res = 'true';
             }
         endforeach;
-        // foreach ($array as $key => $value) :
-        //     if (in_array($value['id'] , $id)) {
-        //         $res = 'true';
-        //     }
-        // endforeach;
         return $res;
     }
 

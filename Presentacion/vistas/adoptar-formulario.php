@@ -8,7 +8,7 @@ switch ($error = 'SinError') {
         break;
     case ($permisoEsp == 'true'):
         break;
-    case ($rol != 'true'):
+    case ($rolActi != 'true'):
         $error = 'No tiene activado el rol de Cliente';
         break;
     case ($permisosRol != 'true'):
