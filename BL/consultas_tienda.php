@@ -154,5 +154,4 @@ class Consulta_producto
         return $res;
     }
 
-
 }

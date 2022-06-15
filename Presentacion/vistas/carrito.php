@@ -244,7 +244,7 @@ switch ($error = 'SinError') {
                                         <form action="" method="post">
                                             <div class="d-flex flex-row align-items-center mb-2">
                                                 <div class="form-outline flex-fill mb-0">
-                                                    <input type="tel" id="dni" class="form-control" placeholder="Ingrese su número de DNI" name="dni" pattern="[0-9]{8}" title="El formato del DNI no es el correcto" value="70664952" required>
+                                                    <input type="tel" id="dni" class="form-control" placeholder="Ingrese su número de DNI" name="dni" pattern="[0-9]{8}" title="El formato del DNI no es el correcto" value="" required>
                                                     <label class="form-label" for="dni">DNI</label>
                                                 </div>
                                             </div>
