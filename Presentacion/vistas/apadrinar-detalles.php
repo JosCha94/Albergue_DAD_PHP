@@ -19,19 +19,21 @@ if (isset($_POST['suscrip'])) {
     $suscri = new suscripcion($uId, $rolId, $idTipoSus, $tiempoSus);
     $consulta = new Consulta_apadrinar();
     $estado = $consulta->insertar_Suscripcion($conexion, $suscri);
+
     if ($estado == 'mal') {
     } else {
         echo '<div class="alert alert-success text-center">Suscripcion realizada con éxito, el próximo cobro se realizará el día <strong>' .$newdate. '</strong>
-         y la fecha del fin de su suscripción es <strong>'?> <?php if($tiempoSus == '1'){
-                                                echo date('d-m-Y', strtotime('+3 month'));
-                                            }elseif($tiempoSus == '2'){
-                                                echo date('d-m-Y', strtotime('+6 month'));
-                                            }elseif($tiempoSus == '3'){
-                                                echo date('d-m-Y', strtotime('+12 month'));
-                                            }elseif($tiempoSus == '4'){
-                                                echo 'Indefinida';
-                                            }?> 
-                                            <?php echo ' </strong></div>';
+         y la fecha del fin de su suscripción es <strong>'
+         ?> <?php if($tiempoSus == '1'){
+                        echo date('d-m-Y', strtotime('+3 month'));
+                    }elseif($tiempoSus == '2'){
+                        echo date('d-m-Y', strtotime('+6 month'));
+                    }elseif($tiempoSus == '3'){
+                        echo date('d-m-Y', strtotime('+12 month'));
+                    }elseif($tiempoSus == '4'){
+                        echo 'Indefinida';
+                    }?> 
+                    <?php echo ' </strong></div>';
     }
 }
 ?>
@@ -136,11 +138,11 @@ if (isset($_POST['suscrip'])) {
                             </div>
                         </div>
                     </div>
-                    <input type="text" name="tipoId" value="<?= $_GET['id'];?>">
-                    <input type="text" name="usrId" value="<?php echo $_SESSION['usuario'][0]; ?>">
-                    <input type="text" name="rolId" value="<?= $usr_data['rol_id'] ?>">
+                    <input type="hidden" name="tipoId" value="<?= $_GET['id'];?>">
+                    <input type="hidden" name="usrId" value="<?php echo $_SESSION['usuario'][0]; ?>">
+                    <input type="hidden" name="rolId" value="<?= $usr_data['rol_id'] ?>">
                     <div class="p-3 mt-3 d-flex justify-content-end free-button">
-                        <button class="btn btn-adopt btn-lg"type="submit" name="suscrip">Suscribir</button> 
+                        <button class="btn btn-adopt btn-lg"type="submit" name="suscrip">Suscribir</button>                  
                     </div>
                 </div>            
             </div>
