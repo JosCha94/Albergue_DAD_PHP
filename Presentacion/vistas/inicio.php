@@ -8,6 +8,41 @@
    <div></div>
 </div>
 </div>
+<section id="aboutus" class="container-fluid bg-light m-5">
+         <div class="container pt-0">
+            <!-- section heading -->  
+            <div class="section-heading">
+               <h2>Acerca de nosotros</h2>
+            </div>
+            <!-- /section heading -->
+            <div class="row">
+               <div class="col-lg-7">
+                  <p class="lead">Somos un albergue que acoge a decenas de perritos, que han sufrido malos tratos y abandono,
+				         que han sido queridos pero ya no pueden ser cuidados y los que simplemente no son deseados.
+				         Acogemos a los perritos hasta que podamos encontrarles un hogar permanente y cariñoso.</p>
+                  <!-- list -->
+                  <h3>¿Por qué adoptar un perrito del albergue?</h3>
+                  <ul class="custom pl-0 font-weight-bold">
+                     <li>Te brindan amor incondicional.</li>
+                     <li>Salvas una vida.</li>
+                     <li>Te mantienen activo.</li>
+                     <li>Te hacen compañía.</li>
+                  </ul>
+               </div>
+               <!-- /col-lg -->
+               <div class="col-lg-5 ">
+                  <!-- image -->
+                  <img src="Presentacion/libs/images/inicio1.jpg" alt="perro-albergue" class="rounded-circle img-fluid res-margin d-block mx-auto" data-aos="zoom-in">
+               </div>
+               <!-- /col-lg -->
+               <!-- /col-lg -->
+            </div>
+            <!-- /row -->
+         </div>
+         <!-- /container -->
+      </section>
+      <!-- /section ends -->
+  <!-- section -->
 <!-- section -->
 <section  class="container-fluid">
          <!-- container -->  

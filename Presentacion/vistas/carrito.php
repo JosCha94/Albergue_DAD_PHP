@@ -18,6 +18,7 @@ switch ($error = 'SinError') {
 ?>
 <?php if ($error == 'SinError') : ?>
     <?php
+    require_once 'ENTIDADES/pedido.php';
     require_once('BL/consultas_usuario.php');
     require_once('BL/consultas_tienda.php');
     require_once('DAL/conexion.php');
@@ -25,6 +26,7 @@ switch ($error = 'SinError') {
     $consulta = new Consulta_producto();
     $consulta2 = new Consulta_usuario();
     $usuario = $consulta2->detalleUsuario($conexion, $_SESSION['usuario'][0]);
+
 
     if (isset($_POST['borrarCarrito'])) {
         $idUser = $_SESSION['usuario'][0];
@@ -49,7 +51,13 @@ switch ($error = 'SinError') {
 
     if (isset($_POST['btn-pagar'])) {
         $idUser = $_SESSION['usuario'][0];
-        $res= $consulta->cambiarCantidadProducto($conexion, $idUser);
+        $idRol =  $rolUs;
+        $cliente = $usuario['usr_nombre'].' '.$usuario['usr_apellido_paterno'].' '.$usuario['usr_apellido_materno'];
+        $dni = $_POST['dni'];        
+        $correo = $usuario['usr_email'];
+        $montoTotal = $_POST['total'];
+        $pedido = new Pedido($idUser, $idRol, $cliente, $dni, $correo, $montoTotal);
+        $res= $consulta->pedidoTienda($conexion, $pedido);
         if ($res == 'true') {
             $_SESSION['usuario'][5] = json_encode(array());
         }
@@ -59,9 +67,6 @@ switch ($error = 'SinError') {
     $idx = 1;
     $error = 0;
     $compra = array();
-
-
-
 
     ?>
     <div class="container adop-body mt-5">
@@ -235,12 +240,7 @@ switch ($error = 'SinError') {
                                                 <label class="form-label" for="correo">Correo electrónico</label>
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-row align-items-center mb-2">
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="tel" id="celu" class="form-control" name="celu" value="<?= $usuario['usr_celular'] ?>" disabled>
-                                                <label class="form-label" for="celu">Teléfono</label>
-                                            </div>
-                                        </div>
+                                        <!-- <form> -->
                                         <form action="" method="post">
                                             <div class="d-flex flex-row align-items-center mb-2">
                                                 <div class="form-outline flex-fill mb-0">
@@ -248,14 +248,15 @@ switch ($error = 'SinError') {
                                                     <label class="form-label" for="dni">DNI</label>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="total" value="<?= $total ?>">
 
-                                            <!-- </form> -->
                                     </main>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                     <button type="submit" class="btn btn-login" name="btn-pagar">Pagar</a>
                                         </form>
+                                    <!-- </form> -->
                                 </div>
                             </div>
                         </div>
