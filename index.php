@@ -15,12 +15,12 @@ $Rol = $_SESSION['usuario'][2];
     $array = json_decode($Rol, true);
     foreach ($array as $key => $value) :
         if ($value['id'] == 1) {
-            $res=$value['id'];
+            $resRol=$value['id'];
         }elseif($value['id'] == 2){
-            $res=$value['id'];
+            $resRol=$value['id'];
         }
     endforeach;
- $rolUs = $res;
+ $rolUs = $resRol;
 
 
 ?>
