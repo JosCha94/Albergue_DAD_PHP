@@ -70,7 +70,6 @@ switch ($error = 'SinError') {
     $products = $consulta->listarProductosCarrito($conexion, $_SESSION['usuario'][0]);
     $idx = 1;
     $error = 0;
-    $compra = array();
 
     ?>
     <div class="container adop-body mt-5">
@@ -118,18 +117,12 @@ switch ($error = 'SinError') {
                                         </div>
                                     </td>
                                 </tr>
-                                <?php $total = $total + $value['Total'];
+                                <?php 
+                                $total = $total + $value['Total'];
                                 $resErr = $error;
-
-                                // $compr2[]=array($value['product_id'], $_SESSION['usuario'][0],$value['cantidad']);
-                                // $compra[] = array('pid' => (int)$value['product_id'], 'uid' => (int)$_SESSION['usuario'][0], 'ctd' => (int)$value['cantidad']);
                                 ?>
 
                             <?php endforeach; ?>
-                            <!-- <?php $databuy = json_encode($compra); ?> -->
-
-
-
 
                             <!-- Modal Cantidad -->
                             <?php foreach ($products as $key => $value) : ?>
