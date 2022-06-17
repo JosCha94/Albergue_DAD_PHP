@@ -357,7 +357,8 @@ switch ($error = 'SinError') {
 <?php endif; ?>
 <!-- LINKS SCRIPT -->
 <script src="Presentacion/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
+<script src="Presentacion\libs\fontawesome\js\all.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script> -->
 <script src="Presentacion/libs/javascript/jquery-3.6.0.min.js"></script>
 <script src="Presentacion/libs/javascript/script.js"></script>
 
