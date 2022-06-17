@@ -57,10 +57,14 @@ switch ($error = 'SinError') {
         $correo = $usuario['usr_email'];
         $montoTotal = $_POST['total'];
         $pedido = new Pedido($idUser, $idRol, $cliente, $dni, $correo, $montoTotal);
-        $res= $consulta->pedidoTienda($conexion, $pedido);
-        if ($res == 'true') {
+        $resp= $consulta->pedidoTienda($conexion, $pedido);
+        if ($resp == 1) {
             $_SESSION['usuario'][5] = json_encode(array());
+            echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=carrito&mensaje=Se ejecuto correctamente la compra" />';
+        }else{
+            echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=carrito&error=No se pudo realizar la compra" />';
         }
+
     }
 
     $products = $consulta->listarProductosCarrito($conexion, $_SESSION['usuario'][0]);

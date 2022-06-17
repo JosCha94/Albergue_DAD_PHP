@@ -136,7 +136,7 @@ class Consulta_producto
     {
         try {
 
-            $sql = "CALL SP_pedido_tienda(:idUser, :idRol, :cliente, :dni, :correo, :monto)";
+            $sql = "CALL SP_pedido_tienda(:idUser, :idRol, :cliente, :dni, :correo, :monto, @DATA)";
             $consulta = $bd->prepare($sql);
             $consulta->bindParam(':idUser', $pedido->getUsr_id());
             $consulta->bindParam(':idRol', $pedido->getRol_id());
@@ -145,13 +145,16 @@ class Consulta_producto
             $consulta->bindParam(':correo', $pedido->getCorreo());
             $consulta->bindParam(':monto', $pedido->getTotal());
             $consulta->execute();
-
-            $res='true';
+            $consulta->closeCursor();
+            $consulta = $bd->prepare("SELECT @DATA AS id");
+            $consulta->execute();
+            $id = $consulta->fetch(PDO::FETCH_ASSOC);
+            return $id['id'];
         } catch (PDOException $e) {
 
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
-        return $res;
+
     }
 
 }
