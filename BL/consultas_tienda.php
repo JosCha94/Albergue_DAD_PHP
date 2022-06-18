@@ -10,7 +10,14 @@ class Consulta_producto
             $products = $consulta->fetchAll(PDO::FETCH_ASSOC);
             return $products;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR con la base de datos y no se puede mostrar los productos
+
+            </div>
+
+        <?php
         }
     }
 
@@ -21,10 +28,19 @@ class Consulta_producto
             $consulta = $conexion->prepare($sql);
             $consulta->execute();
             $categorias = $consulta->fetchAll(PDO::FETCH_ASSOC);
-            return $categorias;
+            
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            $categorias = 'falloCatego';
+        ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR y no se puede mostrar los filtros
+
+            </div>
+
+        <?php
         }
+        return $categorias;
     }
 
     public function detalleProducto($conexion, $id)
@@ -36,7 +52,14 @@ class Consulta_producto
             $product = $consulta->fetch(PDO::FETCH_ASSOC);
             return $product;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR con la base de datos y no se puede mostrar los detalles del producto
+
+            </div>
+
+        <?php
         }
     }
 
@@ -49,7 +72,14 @@ class Consulta_producto
             $imgproduct = $consulta->fetchAll(PDO::FETCH_ASSOC);
             return $imgproduct;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+        ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR con la base de datos y no se puede mostrar todas las imagenes del producto
+
+            </div>
+
+        <?php
         }
     }
 
@@ -57,23 +87,21 @@ class Consulta_producto
     //                    CARRITO
     // --------------------------------------------------
 
-    public function validarProductosCarrito($idProducto, $carrito){
-        try{
-        $carro = $carrito;
-        $array = json_decode($carro, true);
-        foreach ($array as $key => $value) :
-            if (in_array($value['id'] , [$idProducto])) {
-                $res = 'true';
-            }
-        endforeach;
+    public function validarProductosCarrito($idProducto, $carrito)
+    {
+        try {
+            $carro = $carrito;
+            $array = json_decode($carro, true);
+            foreach ($array as $key => $value) :
+                if (in_array($value['id'], [$idProducto])) {
+                    $res = 'true';
+                }
+            endforeach;
 
-        return $res;  
-        }
-        catch (PDOException $e) {
+            return $res;
+        } catch (PDOException $e) {
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
-        
-
     }
 
     public function agregarProductoAlCarrito($bd, $idUser, $idProducto, $cantidad)
@@ -83,10 +111,19 @@ class Consulta_producto
             $consulta = $bd->prepare($sql);
             $consulta->execute();
             $product = $consulta->fetch(PDO::FETCH_ASSOC);
-            return $product;
+            
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            $product = 'errorAdd';
+        ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR, no se ha podido agregar el producto al carrito
+
+            </div>
+
+<?php
         }
+        return $product;
     }
 
     public function listarProductosCarrito($conexion, $id)
@@ -98,7 +135,14 @@ class Consulta_producto
             $products = $consulta->fetchAll(PDO::FETCH_ASSOC);
             return $products;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong class="fs-3">Error!</strong><br>Ocurrió un ERROR con la base de datos y no se ha podido mostrar los productos en su carrito
+
+            </div>
+
+<?php
         }
     }
 
@@ -111,8 +155,16 @@ class Consulta_producto
             $products = $consulta->fetchAll(PDO::FETCH_ASSOC);
             return $products;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            $products='fallo';
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+            <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR y no es posible eliminar el producto de su carrito por el momento
+            </div>
+
+<?php
         }
+        return $products;
     }
 
     public function cambiarCantidadCarrito($bd, $idUser, $idProducto, $cantidad)
@@ -124,7 +176,13 @@ class Consulta_producto
             $product = $consulta->fetch(PDO::FETCH_ASSOC);
             return $product;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+            <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR y no es posible cambiar la cantidad del producto en su carrito por el momento
+            </div>
+
+<?php
         }
     }
 
@@ -154,7 +212,5 @@ class Consulta_producto
 
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
-
     }
-
 }

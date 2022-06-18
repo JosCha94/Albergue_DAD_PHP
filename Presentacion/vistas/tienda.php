@@ -5,7 +5,7 @@
    $consulta = new Consulta_producto();
 
    $products = $consulta->listarProductos($conexion);
-   $categories = $consulta->listarCategorias($conexion);
+   $resCatego = $categories = $consulta->listarCategorias($conexion);
 
 
    if (isset($_POST['carrito'])) {
@@ -16,12 +16,14 @@
       $res = $consulta->validarProductosCarrito($idProducto, $_SESSION['usuario'][5]);
 
       if ($res != 'true') {
-         $Carrito = $_SESSION['usuario'][5];
-         $array = json_decode($Carrito, true);
-         $prodt = ['id' => (int)$idProducto];
-         array_push($array, $prodt);
-         $_SESSION['usuario'][5] = json_encode($array);
-         $consulta->agregarProductoAlCarrito($conexion, $idUser, $idProducto, $cantidad);
+         $resAdd = $consulta->agregarProductoAlCarrito($conexion, $idUser, $idProducto, $cantidad);
+         if ($resAdd != 'errorAdd') {
+            $Carrito = $_SESSION['usuario'][5];
+            $array = json_decode($Carrito, true);
+            $prodt = ['id' => (int)$idProducto];
+            array_push($array, $prodt);
+            $_SESSION['usuario'][5] = json_encode($array);
+         }
       }
    }
    ?>
@@ -33,51 +35,53 @@
          <p class="mb-0 h6">¡Gracias!</p>
       </div>
    <?php }  ?>
-   <!-- <?php echo $_SESSION['usuario'][5];?> -->
+   <!-- <?php echo $_SESSION['usuario'][5]; ?> -->
    <div class="container adop-body mt-5">
       <div class="row">
          <div class="col-md-3 sidebar-filter">
             <h2 class="mt-0 mb-5">Tienda de<br> Productos</h2>
             <h4 class="text-uppercase font-weight-bold mb-3">FILTRAR POR:</h4>
             <div class="divider mb-1 mt-3 border-bottom border-secondary"></div>
-            <h6 class="text-uppercase font-weight-bold mb-3">Categorias:</h6>
-            <?php foreach ($categories as $key => $value) : ?>
+            <?php if ($resCatego != 'falloCatego') : ?>
+               <h6 class="text-uppercase font-weight-bold mb-3">Categorias:</h6>
+               <?php foreach ($categories as $key => $value) : ?>
+                  <div class="form-check">
+                     <input class="form-check-input categoria" category="<?= $value['cat_id']; ?>" type="radio" name="flexRadioProduct" id="RadioProduct<?= $value['cat_nombre']; ?>">
+                     <label class="form-check-label" for="RadioProduct<?= $value['cat_nombre']; ?>">
+                        <?= $value['cat_nombre']; ?>
+                     </label>
+                  </div>
+               <?php endforeach; ?>
+               <div class="divider mb-1 mt-3 border-bottom border-secondary "></div>
+               <!-- ------------------------------------ -->
+               <h6 class="text-uppercase font-weight-bold mb-3">Segun el tamaño<br> del perrito:</h6>
                <div class="form-check">
-                  <input class="form-check-input categoria" category="<?= $value['cat_id']; ?>" type="radio" name="flexRadioProduct" id="RadioProduct<?= $value['cat_nombre']; ?>">
-                  <label class="form-check-label" for="RadioProduct<?= $value['cat_nombre']; ?>">
-                     <?= $value['cat_nombre']; ?>
+                  <input class="form-check-input sizes" size="Pequeno" type="radio" name="flexRadioProduct" id="RadioProductPequeno">
+                  <label class="form-check-label" for="RadioProductPequeno">
+                     Pequeño
                   </label>
                </div>
-            <?php endforeach; ?>
-            <div class="divider mb-1 mt-3 border-bottom border-secondary "></div>
-            <!-- ------------------------------------ -->
-            <h6 class="text-uppercase font-weight-bold mb-3">Segun el tamaño<br> del perrito:</h6>
-            <div class="form-check">
-               <input class="form-check-input sizes" size="Pequeno" type="radio" name="flexRadioProduct" id="RadioProductPequeno">
-               <label class="form-check-label" for="RadioProductPequeno">
-                  Pequeño
-               </label>
-            </div>
-            <div class="form-check">
-               <input class="form-check-input sizes" size="Mediano" type="radio" name="flexRadioProduct" id="RadioProductMediano">
-               <label class="form-check-label" for="RadioProductMediano">
-                  Mediano
-               </label>
-            </div>
-            <div class="form-check">
-               <input class="form-check-input sizes" size="Grande" type="radio" name="flexRadioProduct" id="RadioProductGrande">
-               <label class="form-check-label" for="RadioProductGrande">
-                  Grande
-               </label>
-            </div>
-            <!-- ------------------------------------ -->
-            <div class="divider mb-1 mt-3 border-bottom border-secondary "></div>
-            <div class="form-check">
-               <input class="form-check-input categoria" category="All" type="radio" name="flexRadioProduct" id="flexRadioTodos" checked>
-               <label class="form-check-label" for="flexRadioTodos">
-                  Mostrar todo
-               </label>
-            </div>
+               <div class="form-check">
+                  <input class="form-check-input sizes" size="Mediano" type="radio" name="flexRadioProduct" id="RadioProductMediano">
+                  <label class="form-check-label" for="RadioProductMediano">
+                     Mediano
+                  </label>
+               </div>
+               <div class="form-check">
+                  <input class="form-check-input sizes" size="Grande" type="radio" name="flexRadioProduct" id="RadioProductGrande">
+                  <label class="form-check-label" for="RadioProductGrande">
+                     Grande
+                  </label>
+               </div>
+               <!-- ------------------------------------ -->
+               <div class="divider mb-1 mt-3 border-bottom border-secondary "></div>
+               <div class="form-check">
+                  <input class="form-check-input categoria" category="All" type="radio" name="flexRadioProduct" id="flexRadioTodos" checked>
+                  <label class="form-check-label" for="flexRadioTodos">
+                     Mostrar todo
+                  </label>
+               </div>
+            <?php endif; ?>
 
             <!-- <div class="divider mt-5 mb-5 border-bottom border-secondary"></div> -->
             <?php if ($logueado == 'false') {

@@ -31,7 +31,7 @@ switch ($error = 'SinError') {
     if (isset($_POST['borrarCarrito'])) {
         $idUser = $_SESSION['usuario'][0];
         $idProducto = $_POST['product_id'];
-        $consulta->borrarDeCarrito($conexion, $idUser, $idProducto);
+        $deleteCar=$consulta->borrarDeCarrito($conexion, $idUser, $idProducto);
         $num = 0;
         $array = json_decode($_SESSION['usuario'][5], true);        
         foreach ($array as $key => $value) :
@@ -39,7 +39,9 @@ switch ($error = 'SinError') {
                 unset($array[$key]);
             }
         endforeach;
+        if($deleteCar != 'fallo'){
         $_SESSION['usuario'][5] = json_encode($array);
+    }
     }
 
     if (isset($_POST['cambiarCantidad'])) {
