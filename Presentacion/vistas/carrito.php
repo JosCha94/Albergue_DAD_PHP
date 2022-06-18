@@ -60,9 +60,9 @@ switch ($error = 'SinError') {
         $resp= $consulta->pedidoTienda($conexion, $pedido);
         if ($resp == 1) {
             $_SESSION['usuario'][5] = json_encode(array());
-            echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=carrito&mensaje=Se ejecuto correctamente la compra" />';
+            echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=carrito&mensaje=Se ejecuto correctamente la compra" />';
         }else{
-            echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=carrito&error=No se pudo realizar la compra" />';
+            echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=carrito&error=No se pudo realizar la compra" />';
         }
 
     }
