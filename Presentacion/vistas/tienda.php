@@ -116,7 +116,7 @@
                         <a href="index.php?modulo=product_detail&id=<?= $value['product_id']; ?>">
                            <img src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid">
                            <p class="caption-gallery" data-aos="zoom-in"><?= $value['product_nombre']; ?></p>
-                           <p class="h5 text-dark" data-aos="zoom-in">S/ <?= $value['product_igv'] + $value['product_precio']; ?></p>
+                           <p class="h5 text-dark" data-aos="zoom-in">S/ <?= $value['product_precio']; ?></p>
                            <?php if ($logueado == 'false') {
                            } else { ?>
                               <form action="" method="post" id="form_producto" name="form_producto">
