@@ -194,7 +194,7 @@ class Consulta_producto
     {
         try {
 
-            $sql = "CALL SP_pedido_tienda(:idUser, :idRol, :cliente, :dni, :correo, :monto, @DATA)";
+            $sql = "CALL SP_pedido_tienda(:idUser, :idRol, :cliente, :dni, :correo, :monto, :igv, @DATA)";
             $consulta = $bd->prepare($sql);
             $consulta->bindParam(':idUser', $pedido->getUsr_id());
             $consulta->bindParam(':idRol', $pedido->getRol_id());
@@ -202,6 +202,8 @@ class Consulta_producto
             $consulta->bindParam(':dni', $pedido->getDni());
             $consulta->bindParam(':correo', $pedido->getCorreo());
             $consulta->bindParam(':monto', $pedido->getTotal());
+            $consulta->bindParam(':igv', $pedido->getIgv());
+
             $consulta->execute();
             $consulta->closeCursor();
             $consulta = $bd->prepare("SELECT @DATA AS id");

@@ -6,14 +6,16 @@ class Pedido{
     private $dni;
     private $correo;
     private $total;
+    private $igv;
 
-    public function __construct($usr_id, $rol_id, $cliente, $dni, $correo, $total){
+    public function __construct($usr_id, $rol_id, $cliente, $dni, $correo, $total, $igv){
         $this->usr_id = $usr_id;
         $this->rol_id = $rol_id;
         $this->cliente = $cliente;
         $this->dni = $dni;
         $this->correo = $correo;
         $this->total = $total;
+        $this->igv = $igv;
     }
 
     public function getUsr_id(){
@@ -34,6 +36,9 @@ class Pedido{
     public function getTotal(){
         return $this->total;
     }
+    public function getIgv(){
+        return $this->igv;
+    }
 
     public function setUsr_id($usr_id){
         $this->usr_id = $usr_id;
@@ -52,6 +57,9 @@ class Pedido{
     }
     public function setTotal($total){
         $this->total = $total;
+    }
+    public function setIgv($igv){
+        $this->igv = $igv;
     }
 }
 ?>

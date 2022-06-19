@@ -27,6 +27,8 @@ switch ($error = 'SinError') {
     $consulta2 = new Consulta_usuario();
     $usuario = $consulta2->detalleUsuario($conexion, $_SESSION['usuario'][0]);
 
+    $igv = 0.18;
+
 
     if (isset($_POST['borrarCarrito'])) {
         $idUser = $_SESSION['usuario'][0];
@@ -57,8 +59,9 @@ switch ($error = 'SinError') {
         $cliente = $usuario['usr_nombre'].' '.$usuario['usr_apellido_paterno'].' '.$usuario['usr_apellido_materno'];
         $dni = $_POST['dni'];        
         $correo = $usuario['usr_email'];
-        $montoTotal = $_POST['total'];
-        $pedido = new Pedido($idUser, $idRol, $cliente, $dni, $correo, $montoTotal);
+        $montoTotal = $_POST['total'];   
+        $IGV = ($igv*100).'%';  
+        $pedido = new Pedido($idUser, $idRol, $cliente, $dni, $correo, $montoTotal, $IGV);
         $resp= $consulta->pedidoTienda($conexion, $pedido);
         if ($resp == 1) {
             $_SESSION['usuario'][5] = json_encode(array());
@@ -99,7 +102,7 @@ switch ($error = 'SinError') {
                                     <th scope="row"><?php echo $idx++ ?></th>
                                     <td><img width="100px" src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid"></td>
                                     <td><?= $value['product_nombre']; ?></td>
-                                    <td>S/ <?= $value['Precio']; ?></td>
+                                    <td>S/ <?= $value['product_precio']; ?></td>
                                     <td><?php if ($value['cantidad'] <= $value['product_stock']) {
                                             echo $value['cantidad'];
                                         } else {
@@ -210,6 +213,7 @@ switch ($error = 'SinError') {
                                                     <?= $value['cantidad'], "un."; ?>
                                                 </div>
                                                 <div class="col-4 position-relative">
+                                                    
                                                     <div class="position-absolute top-50 start-50 translate-middle">
                                                         S/ <?= $value['Total']; ?>
                                                     </div>
@@ -218,8 +222,10 @@ switch ($error = 'SinError') {
 
                                         <?php endforeach; ?>
 
-                                        <div class="form-floating text-end mt-2">
-                                            <h2 class="me-2">Total: S/ <?php echo $total ?></h2>
+                                        <div class="d-flex justify-content-between mt-2">
+                                        <p>IGV: <?php echo $igv*100 ?>%</p>
+                                       
+                                            <h2 class="me-2">Total: S/ <?php echo($total = $total*$igv+$total) ?></h2>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <div class="form-outline flex-fill mb-0">
