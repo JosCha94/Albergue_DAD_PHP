@@ -69,8 +69,8 @@ class Consulta_usuario
             $errores['name'] = "El Nombre deve tener de 4 a 20 letras, sin espacios en blanco";
         } elseif (lcfirst($nombre) == ($nombre)) {
             $errores['name'] = "La primera letra del Nombre debe estar en mayuscula";
-        } elseif (!preg_match("/^[A-Z][a-z]+$/", $nombre)) {
-            if(!preg_match("/^[A-Z][a-z]+(\s*[A-Z][a-z]*)$/", $nombre)){
+        } elseif (!preg_match("/^[A-Z][a-zñáéíóú]+$/", $nombre)) {
+            if(!preg_match("/^[A-Z][a-zñáéíóú]+(\s*[A-Z][a-zñáéíóú]*)$/", $nombre)){
                 $errores['name'] = "El Nombre debe tener solo letras";
             }
         }
@@ -80,8 +80,8 @@ class Consulta_usuario
             $errores['ape_p'] = "El Apellido Paterno deve tener de 4 a 20 letras, sin espacios en blanco";
         } elseif (lcfirst($ape_pat) == ($ape_pat)) {
             $errores['ape_p'] = "La primera letra del Apellido Paterno debe estar en mayuscula";
-        } elseif (!preg_match("/^[A-Z][a-z]+$/", $ape_pat)) {
-            if(!preg_match("/^[A-Z][a-z]+(\s*[A-Z][a-z]*)$/", $ape_pat)){
+        } elseif (!preg_match("/^[A-Z][a-zñáéíóú]+$/", $ape_pat)) {
+            if(!preg_match("/^[A-Z][a-zñáéíóú]+(\s*[A-Z][a-zñáéíóú]*)$/", $ape_pat)){
                 $errores['ape_p'] = "El Apellido Paterno solo puede tener letras";
             }
         }
@@ -91,8 +91,8 @@ class Consulta_usuario
             $errores['ape_m'] = "El Apellido Materno deve tener de 4 a 20 letras, sin espacios en blanco";
         } elseif (lcfirst($ape_mat) == ($ape_mat)) {
             $errores['ape_m'] = "La primera letra del Apellido Materno debe estar en mayuscula";
-        } elseif (!preg_match("/^[A-Z][a-z]+$/", $ape_mat)) {
-            if(!preg_match("/^[A-Z][a-z]+(\s*[A-Z][a-z]*)$/", $ape_mat)){
+        } elseif (!preg_match("/^[A-Z][a-zñáéíóú]+$/", $ape_mat)) {
+            if(!preg_match("/^[A-Z][a-zñáéíóú]+(\s*[A-Z][a-zñáéíóú]*)$/", $ape_mat)){
                 $errores['ape_m'] = "El Apellido Materno solo puede tener letras";
             }
         }
