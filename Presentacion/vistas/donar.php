@@ -56,7 +56,7 @@ if (isset($_POST['submit_btn_donacion'])) {
                   <h4 class="text-light">¡Muchas gracias por tu ayuda!</h4>
                   <!-- Form Starts -->
                   <div id="donation_form">
-                  <form action="" method="post">
+                  <form action="" method="post" enctype="multipart/form-data">
                      <div class="form-group">
                         <div class="row">
                            <div class="col-md-12 text-light">
