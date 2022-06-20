@@ -1,4 +1,35 @@
- <section id="donation" class="container-fluid mt-5">
+<?php
+require_once('BL/consultas_donacion.php');
+require_once 'ENTIDADES/donacion.php';
+require_once('DAL/conexion.php');
+$conexion = conexion::conectar();
+if (isset($_POST['submit_btn_donacion'])) {
+   $nombres = $_POST['nombres'];
+   $apellidos = $_POST['apellidos'];
+   $correo = $_POST['correo'];
+   $celular = $_POST['celular'];
+   // archivo temporal (ruta y nombre)
+   $tmp_name = $_FILES['vaucher']['tmp_name'];
+   // Obtenemos los datos de la imagen tamaño, tipo y nombre
+   $tamano = $_FILES['vaucher']['size'];  
+   $tipo = $_FILES['vaucher']['type'];   
+   $nombre = $_FILES['vaucher']["name"];  
+   //ruta completa
+   $archivo_temporal = $_FILES['vaucher']['tmp_name'];  
+   //leer el archivo(imagen) temporal en binario  
+   $fp = fopen($archivo_temporal, 'r+b');   
+   $vaucher = fread($fp, filesize($archivo_temporal)); 
+   $monto = $_POST['monto'];
+   $don = new Donacion($nombres, $apellidos,  $correo, $celular, $vaucher, $monto);
+   $consulta = new Consulta_donacion();
+   $estado = $consulta->SP_insertar_donacion($conexion, $don);
+   if ($estado == 'mal') {
+      echo '<div class="alert alert-success">Su donación fue enviada exitosamente.</div>';
+   }
+}
+?>
+
+<section id="donation" class="container-fluid mt-5">
          <div class="container">
 		  <div class="section-heading text-center">
                <h2>Donar</h2>
@@ -44,14 +75,14 @@
                               <label>Celular</label>
                               <input type="text" name="celular" class="form-control input-field" minlength="9" placeholder="Ingresa tu número de celular" required=""> 
                            </div>
-						         <div class="col-md-12 text-light">
-                              <label>DNI </label>
-                              <input type="text" name="dni" class="form-control input-field" minlength="9" placeholder="Ingresa tu DNI" required=""> 
-                           </div>
                            <div class="col-md-12 text-light">
                               <label>Sube tu váucher</label>
                               <input type="file" name="vaucher" class="form-control input-field"> 
-                           </div>                          
+                           </div> 
+                           <div class="col-md-12 text-light">
+                              <label>Monto donado </label>
+                              <input type="text" name="monto" class="form-control input-field" maxlength="4" placeholder="Ingresa el monto de tu donación" required=""> 
+                           </div>                           
                         </div>
                         <!-- button -->
                         <button type="submit" id="submit_btn" value="Submit" class="btn btn-donation mt-3"">Donar</button>
