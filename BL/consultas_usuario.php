@@ -67,28 +67,34 @@ class Consulta_usuario
             $errores['name'] = "El campo Nombre es requerido";
         } elseif (strlen($nombre) < 4 || strlen($nombre) > 20) {
             $errores['name'] = "El Nombre deve tener de 4 a 20 letras, sin espacios en blanco";
-        } elseif (ctype_alpha($nombre) == false) {
-            $errores['name'] = "El Nombre solo puede tener letras";
         } elseif (lcfirst($nombre) == ($nombre)) {
             $errores['name'] = "La primera letra del Nombre debe estar en mayuscula";
+        } elseif (!preg_match("/^[A-Z][a-z]+$/", $nombre)) {
+            if(!preg_match("/^[A-Z][a-z]+(\s*[A-Z][a-z]*)$/", $nombre)){
+                $errores['name'] = "El Nombre debe tener solo letras";
+            }
         }
         if (empty($ape_pat)) {
             $errores['ape_p'] = "El campo Apellido Paterno es requerido";
         } elseif (strlen($ape_pat) < 4 || strlen($ape_pat) > 20) {
             $errores['ape_p'] = "El Apellido Paterno deve tener de 4 a 20 letras, sin espacios en blanco";
-        } elseif (ctype_alpha($ape_pat) == false) {
-            $errores['ape_p'] = "El Apellido Paterno solo puede tener letras";
         } elseif (lcfirst($ape_pat) == ($ape_pat)) {
             $errores['ape_p'] = "La primera letra del Apellido Paterno debe estar en mayuscula";
+        } elseif (!preg_match("/^[A-Z][a-z]+$/", $ape_pat)) {
+            if(!preg_match("/^[A-Z][a-z]+(\s*[A-Z][a-z]*)$/", $ape_pat)){
+                $errores['ape_p'] = "El Apellido Paterno solo puede tener letras";
+            }
         }
         if (empty($ape_mat)) {
             $errores['ape_m'] = "El campo Apellido Materno es requerido";
         } elseif (strlen($ape_mat) < 4 || strlen($ape_mat) > 20) {
             $errores['ape_m'] = "El Apellido Materno deve tener de 4 a 20 letras, sin espacios en blanco";
-        } elseif (ctype_alpha($ape_mat) == false) {
-            $errores['ape_m'] = "El Apellido Materno solo puede tener letras";
         } elseif (lcfirst($ape_mat) == ($ape_mat)) {
             $errores['ape_m'] = "La primera letra del Apellido Materno debe estar en mayuscula";
+        } elseif (!preg_match("/^[A-Z][a-z]+$/", $ape_mat)) {
+            if(!preg_match("/^[A-Z][a-z]+(\s*[A-Z][a-z]*)$/", $ape_mat)){
+                $errores['ape_m'] = "El Apellido Materno solo puede tener letras";
+            }
         }
         if (empty($mail)) {
             $errores['mail'] = "El campo Correo electronico es requerido";
