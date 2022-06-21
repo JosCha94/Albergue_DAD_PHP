@@ -113,32 +113,36 @@
 
                   <div class="item-gallery col-lg-4 col-md-6 producto" category="<?= $value['cat_id']; ?>" dog_size="<?= $value['product_size_perro']; ?>">
                      <div class="polaroid-gallery">
-                        <a href="index.php?modulo=product_detail&id=<?= $value['product_id']; ?>">
-                           <img src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid">
-                           <p class="caption-gallery" data-aos="zoom-in"><?= $value['product_nombre']; ?></p>
-                           <p class="h5 text-dark" data-aos="zoom-in">S/ <?= $value['product_precio']; ?></p>
-                           <?php if ($logueado == 'false') {
-                           } else { ?>
-                              <form action="" method="post" id="form_producto" name="form_producto">
-                                 <div class="row">
+                        <form action="index.php?modulo=product_detail" method="post">
+                           <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
+                           <button class="border-0 btn btn-link text-decoration-none" name="cambiarDatosProducto" title="Detalles de <?= $value['product_nombre']; ?>">
+                              <img src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid">
+                           </button>
+                        </form>
+                        <p class="caption-gallery" data-aos="zoom-in"><?= $value['product_nombre']; ?></p>
+                        <p class="h5 text-dark" data-aos="zoom-in">S/ <?= $value['product_precio']; ?></p>
+                        <?php if ($logueado == 'false') {
+                        } else { ?>
+                           <form action="" method="post" id="form_producto" name="form_producto">
+                              <div class="row">
 
-                                    <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
-                                    <input type="hidden" name="cantidad" value="1">
-                                    <?php if ($consulta->validarProductosCarrito($value['product_id'], $_SESSION['usuario'][5])) : ?>
-                                       <button class="btn btn-outline-danger" name="" disabled>Producto añadido al carrito</button>
-                                    <?php else : ?>
-                                       <button class="btn btn-outline-danger" name="carrito">Añadir al carrito</button>
-                                    <?php endif; ?>
-                                 </div>
-                              </form>
-                           <?php } ?>
-                        </a>
+                                 <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
+                                 <input type="hidden" name="cantidad" value="1">
+                                 <?php if ($consulta->validarProductosCarrito($value['product_id'], $_SESSION['usuario'][5])) : ?>
+                                    <button class="btn btn-outline-danger" name="" disabled>Producto añadido al carrito</button>
+                                 <?php else : ?>
+                                    <button class="btn btn-outline-danger" name="carrito">Añadir al carrito</button>
+                                 <?php endif; ?>
+                              </div>
+                           </form>
+                        <?php } ?>
+
                      </div>
 
                   </div>
 
                <?php endforeach; ?>
-               <!--  -->
+
             </div>
             <!-- END CARD -->
             <div class="row sorting mb-5 mt-5">

@@ -3,7 +3,9 @@ require_once('DAL/conexion.php');
 require_once('BL/consultas_tienda.php');
 $conexion = conexion::conectar();
 $consulta = new Consulta_producto();
-$id = $_GET['id'];
+
+$idProducto = $_POST['product_id'];
+$id = $idProducto;
 $product = $consulta->detalleProducto($conexion, $id);
 $imgproduct = $consulta->listarImgProducto($conexion, $id);
 
