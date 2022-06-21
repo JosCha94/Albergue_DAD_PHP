@@ -82,7 +82,7 @@ switch ($error = 'SinError') {
                 <!-- productos -->
                 <h2 class="text-center">Carrito de compras</h2>
                 <div class="wrapper-gallery row magnific-popup mt-5">
-                    <div class="d-block d-md-none">
+                    <div class="d-block d-md-none mb-4">
                         <?php foreach ($products as $key => $value) : ?>
                             <div class="card mx-auto border border-secondary m-1" style="width: 18rem;">
                                 <img width="150px" src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid">
@@ -115,7 +115,7 @@ switch ($error = 'SinError') {
                     </div>
                     <!-- producto -->
                     <div class="d-none d-md-block">
-                        <table class="table" >
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -160,31 +160,6 @@ switch ($error = 'SinError') {
 
                                 <?php endforeach; ?>
 
-                                <!-- Modal Cantidad -->
-                                <?php foreach ($products as $key => $value) : ?>
-                                    <div class="modal fade" id="modalCantidad_<?= $value['product_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-sm">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Cantidad <?= $value['product_nombre']; ?></h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <form action="" method="post">
-                                                    <div class="modal-body">
-                                                        <input type="number" name="product_cantidad" min="1" max="<?= $value['product_stock']; ?>" value="<?= $value['cantidad']; ?>">
-                                                        <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                        <button type="submit" class="btn btn-primary" name="cambiarCantidad">Cambiar</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
-                                <!-- -----EndModal--------- -->
-
                             </tbody>
                         </table>
                     </div>
@@ -219,6 +194,30 @@ switch ($error = 'SinError') {
                             ?>
                         </div>
                     </div>
+                    <!-- Modal Cantidad -->
+                    <?php foreach ($products as $key => $value) : ?>
+                        <div class="modal fade" id="modalCantidad_<?= $value['product_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Cantidad <?= $value['product_nombre']; ?></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="" method="post">
+                                        <div class="modal-body">
+                                            <input type="number" name="product_cantidad" min="1" max="<?= $value['product_stock']; ?>" value="<?= $value['cantidad']; ?>">
+                                            <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-primary" name="cambiarCantidad">Cambiar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    <!-- -----EndModal--------- -->
                     <!-- Modal Compra -->
                     <div class="modal fade" id="ModalCompra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
