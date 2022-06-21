@@ -122,7 +122,14 @@ class Consulta_usuario
             $user = $consulta->fetch(PDO::FETCH_ASSOC);
             return $user;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+              <strong>Error!</strong> Devido a un error no se puede mostrar los datos del usuario por el momento
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php
+            $user = 'error';
         }
     }
 
@@ -195,7 +202,7 @@ class Consulta_usuario
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
               <div class="alert alert-danger alert-dismissible fade show " role="alert">
-              <strong>Error!</strong> Devido a un error en la base de datos, no se pudo actualizar la contraseña
+              <strong>Error!</strong> Devido a un error en la base de datos, no se pudo actualizar la contraseña por el momento
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 

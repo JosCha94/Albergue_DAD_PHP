@@ -93,8 +93,10 @@ switch ($error = 'SinError') {
                     <input type="text" class="form-control" id="usr_celular" name="usr_celular" maxlength="9" minlength="9" value="<?php if (isset($celu)) {echo $celu;} else {echo ($usuario['usr_celular']);} ?>">
                 </div>
 
+                                <?php if($usuario != ''): ?>
                 <button class="btn btn-primary my-3" name="actualizar_data">Actualizar</button>
                 <button type="reset" class="btn btn-danger my-3 mx-3" id="btn-cleanFormData">Limpiar</button>
+                <?php endif; ?>
             </form>
         </div>
 
