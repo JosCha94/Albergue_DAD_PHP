@@ -56,20 +56,19 @@ switch ($error = 'SinError') {
     if (isset($_POST['btn-pagar'])) {
         $idUser = $_SESSION['usuario'][0];
         $idRol =  $rolUs;
-        $cliente = $usuario['usr_nombre'].' '.$usuario['usr_apellido_paterno'].' '.$usuario['usr_apellido_materno'];
-        $dni = $_POST['dni'];        
+        $cliente = $usuario['usr_nombre'] . ' ' . $usuario['usr_apellido_paterno'] . ' ' . $usuario['usr_apellido_materno'];
+        $dni = $_POST['dni'];
         $correo = $usuario['usr_email'];
-        $montoTotal = $_POST['total'];   
-        $IGV = ($igv*100).'%';  
+        $montoTotal = $_POST['total'];
+        $IGV = ($igv * 100) . '%';
         $pedido = new Pedido($idUser, $idRol, $cliente, $dni, $correo, $montoTotal, $IGV);
-        $resp= $consulta->pedidoTienda($conexion, $pedido);
+        $resp = $consulta->pedidoTienda($conexion, $pedido);
         if ($resp == 1) {
             $_SESSION['usuario'][5] = json_encode(array());
             echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=carrito&mensaje=Se ejecuto correctamente la compra" />';
-        }else{
+        } else {
             echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=carrito&error=No se pudo realizar la compra" />';
         }
-
     }
 
     $products = $consulta->listarProductosCarrito($conexion, $_SESSION['usuario'][0]);
@@ -83,79 +82,112 @@ switch ($error = 'SinError') {
                 <!-- productos -->
                 <h2 class="text-center">Carrito de compras</h2>
                 <div class="wrapper-gallery row magnific-popup mt-5">
-                    <!-- producto -->
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">IMG</th>
-                                <th scope="col">Producto</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Subtotal</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($products as $key => $value) : ?>
-                                <tr>
-                                    <th scope="row"><?php echo $idx++ ?></th>
-                                    <td><img width="100px" src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid"></td>
-                                    <td><?= $value['product_nombre']; ?></td>
-                                    <td>S/ <?= $value['product_precio']; ?></td>
-                                    <td><?php if ($value['cantidad'] <= $value['product_stock']) {
-                                            echo $value['cantidad'];
-                                        } else {
-                                            $error = $errror + 1;
-                                            echo $value['cantidad'], " <font color='red'>excede stock</font>";
-                                        } ?></td>
-                                    <td>S/ <?= $value['Total']; ?></td>
-                                    <td>
-                                        <div class="d-flex justify-content-center">
-                                            <button class="btn btn-warning me-1" title="Cambiar cantidad" data-bs-toggle="modal" data-bs-target="#modalCantidad_<?= $value['product_id']; ?>">
+                    <div class="d-block d-md-none">
+                        <?php foreach ($products as $key => $value) : ?>
+                            <div class="card mx-auto border border-secondary m-1" style="width: 18rem;">
+                                <img width="150px" src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $value['product_nombre']; ?></h5>
+                                    <h6>S/ <?= $value['product_precio']; ?></h6>
+                                    <p class="card-text">Cantidad: <?php if ($value['cantidad'] <= $value['product_stock']) {
+                                                                        echo $value['cantidad'];
+                                                                    } else {
+                                                                        $error = $errror + 1;
+                                                                        echo $value['cantidad'], " <font color='red'>excede stock</font>";
+                                                                    } ?></p>
+                                    <p class="card-text">Subtotal: S/ <?= $value['Total']; ?></p>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button class="btn btn-warning me-1 w-100 my-2" title="Cambiar cantidad" data-bs-toggle="modal" data-bs-target="#modalCantidad_<?= $value['product_id']; ?>">
                                                 <i class="fa-solid fa-rotate"></i>
                                             </button>
+                                        </div>
+                                        <div class="col-12">
                                             <form action="" method="post">
                                                 <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
-                                                <button class="btn btn-danger" name="borrarCarrito" title="Eliminar del carrito"><i class="fa-solid fa-trash"></i></button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php 
-                                $total = $total + $value['Total'];
-                                $resErr = $error;
-                                ?>
-
-                            <?php endforeach; ?>
-
-                            <!-- Modal Cantidad -->
-                            <?php foreach ($products as $key => $value) : ?>
-                                <div class="modal fade" id="modalCantidad_<?= $value['product_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Cantidad <?= $value['product_nombre']; ?></h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <form action="" method="post">
-                                                <div class="modal-body">
-                                                    <input type="number" name="product_cantidad" min="1" max="<?= $value['product_stock']; ?>" value="<?= $value['cantidad']; ?>">
-                                                    <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                    <button type="submit" class="btn btn-primary" name="cambiarCantidad">Cambiar</button>
-                                                </div>
+                                                <button class="btn btn-danger w-100" name="borrarCarrito" title="Eliminar del carrito"><i class="fa-solid fa-trash"></i></button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                            <?php endforeach; ?>
-                            <!-- -----EndModal--------- -->
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <!-- producto -->
+                    <div class="d-none d-md-block">
+                        <table class="table" >
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">IMG</th>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Subtotal</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($products as $key => $value) : ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $idx++ ?></th>
+                                        <td><img width="100px" src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid"></td>
+                                        <td><?= $value['product_nombre']; ?></td>
+                                        <td>S/ <?= $value['product_precio']; ?></td>
+                                        <td><?php if ($value['cantidad'] <= $value['product_stock']) {
+                                                echo $value['cantidad'];
+                                            } else {
+                                                $error = $errror + 1;
+                                                echo $value['cantidad'], " <font color='red'>excede stock</font>";
+                                            } ?></td>
+                                        <td>S/ <?= $value['Total']; ?></td>
+                                        <td>
+                                            <div class="d-flex justify-content-center">
+                                                <button class="btn btn-warning me-1" title="Cambiar cantidad" data-bs-toggle="modal" data-bs-target="#modalCantidad_<?= $value['product_id']; ?>">
+                                                    <i class="fa-solid fa-rotate"></i>
+                                                </button>
+                                                <form action="" method="post">
+                                                    <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
+                                                    <button class="btn btn-danger" name="borrarCarrito" title="Eliminar del carrito"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $total = $total + $value['Total'];
+                                    $resErr = $error;
+                                    ?>
 
-                        </tbody>
-                    </table>
+                                <?php endforeach; ?>
+
+                                <!-- Modal Cantidad -->
+                                <?php foreach ($products as $key => $value) : ?>
+                                    <div class="modal fade" id="modalCantidad_<?= $value['product_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Cantidad <?= $value['product_nombre']; ?></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form action="" method="post">
+                                                    <div class="modal-body">
+                                                        <input type="number" name="product_cantidad" min="1" max="<?= $value['product_stock']; ?>" value="<?= $value['cantidad']; ?>">
+                                                        <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                        <button type="submit" class="btn btn-primary" name="cambiarCantidad">Cambiar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                                <!-- -----EndModal--------- -->
+
+                            </tbody>
+                        </table>
+                    </div>
                     <?php
                     if ($total == '') { ?>
 
@@ -181,7 +213,7 @@ switch ($error = 'SinError') {
                             <?php if ($total == '' || $resErr != 0) { ?>
                             <?php
                             } else { ?>
-                                <button type="button" class="btn btn-login btn-lg m-3" data-bs-toggle="modal" data-bs-target="#ModalCompra">Continuar compra</button>
+                                <button type="button" class="btn btn-login btn-lg me-5 m-md-3" data-bs-toggle="modal" data-bs-target="#ModalCompra">Comprar</button>
                             <?php
                             }
                             ?>
@@ -213,7 +245,7 @@ switch ($error = 'SinError') {
                                                     <?= $value['cantidad'], "un."; ?>
                                                 </div>
                                                 <div class="col-4 position-relative">
-                                                    
+
                                                     <div class="position-absolute top-50 start-50 translate-middle">
                                                         S/ <?= $value['Total']; ?>
                                                     </div>
@@ -223,9 +255,9 @@ switch ($error = 'SinError') {
                                         <?php endforeach; ?>
 
                                         <div class="d-flex justify-content-between mt-2">
-                                        <p>IGV: <?php echo $igv*100 ?>%</p>
-                                       
-                                            <h2 class="me-2">Total: S/ <?php echo($total = $total*$igv+$total) ?></h2>
+                                            <p>IGV: <?php echo $igv * 100 ?>%</p>
+
+                                            <h2 class="me-2">Total: S/ <?php echo ($total = $total * $igv + $total) ?></h2>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <div class="form-outline flex-fill mb-0">
@@ -261,7 +293,7 @@ switch ($error = 'SinError') {
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                     <button type="submit" class="btn btn-login" name="btn-pagar">Pagar</a>
                                         </form>
-                                    <!-- </form> -->
+                                        <!-- </form> -->
                                 </div>
                             </div>
                         </div>
