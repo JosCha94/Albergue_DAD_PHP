@@ -1,6 +1,6 @@
 <?php
 session_start();
-// error_reporting(0);
+error_reporting(0);
 session_regenerate_id(true);
 require_once 'SL/permisos.php';
 require_once('DAL/conexion.php');
@@ -90,7 +90,7 @@ switch ($error = 'SinError') {
     <body>
         <!-- HEADER -->
         <div class="container-fluid" id="nav_principal">
-            <nav class="navbar navbar-expand-lg navbar-light .bg-transparent container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent container-fluid">
 
                 <a class="navbar-brand" href="index.php?modulo=inicio">
                     <a href="index.php?modulo= "><img src="Presentacion/libs/images/doglogo.png" alt="logo" width="80em"></a>
