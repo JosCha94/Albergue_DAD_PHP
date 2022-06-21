@@ -1,9 +1,12 @@
 <?php
 require_once('DAL/conexion.php');
 require_once('BL/consultas_adopcion.php');
+
 $conexion = conexion::conectar();
 $consulta = new Consulta_adopcion();
-$id = $_GET['id'];
+
+$perroId = $_POST['idPerro'];
+$id = $perroId;
 $imgActive = $consulta->mostarImagenes_perro($conexion, $id);
 $perro = $consulta->listarPerro($conexion, $id);
 $imgPerro = $consulta->buscarImagen_perro($conexion, $id);

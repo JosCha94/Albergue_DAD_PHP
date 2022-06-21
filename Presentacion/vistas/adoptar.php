@@ -102,6 +102,7 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
                     <input type="radio" class="form-check-input filtroA" id="category-10" actividad="Intensa" name="filtro">
                     <label class="form-check-label" for="category-10">Intensa</label>
                 </div>
+              
             </div>
          </div>
 
@@ -109,13 +110,17 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
             <!-- perritos -->
             <div class="wrapper-gallery row magnific-popup mt-5">
                 <?php foreach ($imgPerro as $key => $value) : ?>
-               <div class="item-gallery col-lg-4 col-md-6 mb-5 perrito" tamano="<?= $value['perro_tamano']; ?>" sexo="<?= $value['perro_sexo']; ?>" actividad ="<?= $value['perro_actividad']; ?>" edad1="<?= $value['edad_perrito']; ?>" edad2="<?= $value['edad_perrito']; ?>" edad3="<?= $value['edad_perrito']; ?>"  >
-                  <div class="polaroid-gallery">
-                     <a href="index.php?modulo=adoptar-single&id=<?= $value['perro_id']; ?>">
-                        <img src="data:image/<?php echo($value['img_perro_tipo']);?>;base64,<?php echo base64_encode( $value['img_perro_foto']); ?>" alt="" class="img-fluid">
-                        <p class="caption-gallery" data-aos="zoom-in"><?=$value['perro_nombre'];?></p>
-                     </a>
+                <div class="item-gallery col-lg-4 col-md-6 mb-5 perrito" tamano="<?= $value['perro_tamano']; ?>" sexo="<?= $value['perro_sexo']; ?>" actividad ="<?= $value['perro_actividad']; ?>" edad1="<?= $value['edad_perrito']; ?>" edad2="<?= $value['edad_perrito']; ?>" edad3="<?= $value['edad_perrito']; ?>"  >
+                    <div class="polaroid-gallery">
+                    <form action="index.php?modulo=adoptar-single" method="post">
+                        <input type="hidden" value="<?php echo $value['perro_id'];?>" name="idPerro">
+                        <button class="border-0 btn btn-link text-decoration-none" name="verPerro">
+                            <img src="data:image/<?php echo($value['img_perro_tipo']);?>;base64,<?php echo base64_encode( $value['img_perro_foto']); ?>" alt="" class="img-fluid">
+                            <p class="caption-gallery" data-aos="zoom-in"><?=$value['perro_nombre'];?></p>
+                        </button>
+                    </form> 
                   </div>
+                  
                </div>
             <?php endforeach; ?>
             </div>   

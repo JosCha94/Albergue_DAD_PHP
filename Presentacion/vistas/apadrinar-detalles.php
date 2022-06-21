@@ -5,8 +5,9 @@ require_once('BL/consultas_apadrinar.php');
 $conexion = conexion::conectar();
 $consulta = new Consulta_apadrinar();
 
-$idSus = $_GET['id'];
-$usrId = $_SESSION['usuario'][0];
+$susId = $_POST['susId'];
+$idSus = $susId;
+$usrId = $_SESSION['usuario'][0]; 
 $usr_data = $consulta -> datosUsuario_apadrinar($conexion, $usrId );
 $susTipoId = $consulta -> listarTipoSuscrip_id($conexion, $idSus);
 $newdate = date('d-m-Y', strtotime('+1 month'));
@@ -138,9 +139,10 @@ if (isset($_POST['suscrip'])) {
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="tipoId" value="<?= $_GET['id'];?>">
+                    <input type="hidden" name="tipoId" value="<?= $_POST['susId'];?>">
                     <input type="hidden" name="usrId" value="<?php echo $_SESSION['usuario'][0]; ?>">
                     <input type="hidden" name="rolId" value="<?= $usr_data['rol_id'] ?>">
+                    <input type="hidden" name="susId" value ="<?= $_POST['susId'];?> ">
                     <div class="p-3 mt-3 d-flex justify-content-end free-button">
                         <button class="btn btn-adopt btn-lg"type="submit" name="suscrip">Suscribir</button>                  
                     </div>

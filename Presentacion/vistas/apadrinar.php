@@ -50,7 +50,10 @@ $susTipo = $consulta -> listarTipoSuscrip($conexion);
                         <div class="d-flex justify-content-start mb-1">
                             <li>Cuidado de los perritos</li>
                         </div>
-                        <a href="index.php?modulo=apadrinar-detalles&id=<?= $susTipo[0]['s_tipo_id']; ?>" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</a>
+                        <form action="index.php?modulo=apadrinar-detalles" method="post">
+                            <input type="hidden" name="susId" value="<?= $susTipo[0]['s_tipo_id']; ?>">
+                            <button class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -80,7 +83,10 @@ $susTipo = $consulta -> listarTipoSuscrip($conexion);
                         <div class="d-flex justify-content-start mb-1">
                             <li>Apoyo para nuestro voluntarios</li>
                         </div>
-                        <a href="index.php?modulo=apadrinar-detalles&id=<?= $susTipo[1]['s_tipo_id']; ?>" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</a>
+                        <form action="index.php?modulo=apadrinar-detalles" method="post">
+                            <input type="hidden" name="susId" value="<?= $susTipo[1]['s_tipo_id']; ?>">
+                            <button class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -113,7 +119,10 @@ $susTipo = $consulta -> listarTipoSuscrip($conexion);
                         <div class=" d-flex justify-content-startmb-1">
                             <li>Campañas de salud y adopcion</li>
                         </div>
-                        <a href="index.php?modulo=apadrinar-detalles&id=<?= $susTipo[2]['s_tipo_id']; ?>" type="button" class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</a>
+                        <form action="index.php?modulo=apadrinar-detalles" method="post">
+                            <input type="hidden" name="susId" value="<?= $susTipo[2]['s_tipo_id']; ?>">
+                            <button class="btn btn-adopt text-uppercase py-2 px-4 my-5">Suscribirme</button>
+                        </form>
                     </div>
                 </div>
             </div>
