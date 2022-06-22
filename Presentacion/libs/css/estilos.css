@@ -670,6 +670,21 @@ h2.text-uppercase{
 .img-circle{
   border-radius: 50%;
 }
+.btn-orange{
+  color: #fff;
+  background-color: #E8630a;
+  border-color: #E8630a;
+}
+
+.bg-orange{
+  opacity: 0.95;
+  background-color: #E8630a;
+}
+
+.bg-orange2{
+  opacity: 0.75;
+  background-color: #E8630a;
+}
 
 @media (max-width: 740px) { 
   .categoria,.sizes{ font-size: 1rem;}

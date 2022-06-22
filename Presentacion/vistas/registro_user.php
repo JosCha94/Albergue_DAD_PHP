@@ -32,9 +32,9 @@ if (isset($_POST['registro_usr'])) {
         <div class="row">
             <!-- donation box -->
 
-            <div class="col-lg-6 p-5 res-margin bg-secondary h-50 mx-auto">
+            <div class="col-lg-6 p-5 res-margin border border-dark bg-light bg-opacity-75 h-50 mx-auto">
 
-                <h4 class="text-light">¡Registrate!</h4>
+                <h4 class="">¡Registrate!</h4>
 
                 <!-- Form Starts -->
                 <div id="donation_form">
@@ -50,31 +50,31 @@ if (isset($_POST['registro_usr'])) {
                             <?php endif; ?>
                         <?php endif; ?>
                         <div class="row">
-                            <div class="col-md-12 text-light">
+                            <div class="col-md-12 mb-1">
                                 <label>Usuario</label>
                                 <input type="text" name="user" class="form-control input-field" maxlength="15" minlength="5" value="<?php if (isset($user)) echo $user ?>" required="">
                             </div>
-                            <div class="col-md-12 text-light">
+                            <div class="col-md-12 mb-1">
                                 <label>Contraseña</label>
                                 <input type="password" name="pass" class="form-control input-field" maxlength="15" minlength="8" value="<?php if (isset($pass)) echo $pass ?>" required="">
                             </div>
-                            <div class="col-md-12 text-light">
+                            <div class="col-md-12 mb-1">
                                 <label>Nombre </label>
                                 <input type="text" name="name" class="form-control input-field" minlength="4" maxlength="20" value="<?php if (isset($name)) echo $name ?>" required="">
                             </div>
-                            <div class="col-md-12 text-light">
+                            <div class="col-md-12 mb-1">
                                 <label>Apellido Paterno </label>
                                 <input type="text" name="ape_p" class="form-control input-field" minlength="4" maxlength="20" value="<?php if (isset($ape_p)) echo $ape_p ?>" required="">
                             </div>
-                            <div class="col-md-12 text-light">
+                            <div class="col-md-12 mb-1">
                                 <label>Apellido Materno </label>
                                 <input type="text" name="ape_m" class="form-control input-field" minlength="4" maxlength="20" value="<?php if (isset($ape_m)) echo $ape_m ?>" required="">
                             </div>
-                            <div class="col-md-12 text-light">
+                            <div class="col-md-12 mb-1">
                                 <label>Correo electronico </label>
                                 <input type="email" name="email" class="form-control input-field" maxlength="30" value="<?php if (isset($email)) echo $email ?>" required="">
                             </div>
-                            <div class="col-md-12 text-light">
+                            <div class="col-md-12 mb-1">
                                 <label>Telefono celular </label>
                                 <input type="tel" name="celu" class="form-control input-field" maxlength="9" minlength="9" value="<?php if (isset($celu)) echo $celu ?>" required="">
                             </div>

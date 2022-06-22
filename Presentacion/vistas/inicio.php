@@ -8,7 +8,7 @@
    <div></div>
 </div>
 </div>
-<section id="aboutus" class="container-fluid bg-light m-5">
+<section id="aboutus" class="container-fluid bg-light mx-auto">
          <div class="container pt-0">
             <!-- section heading -->  
             <div class="section-heading">

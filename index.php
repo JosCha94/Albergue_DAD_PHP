@@ -124,15 +124,15 @@ switch ($error = 'SinError') {
                     } else {
                     ?>
                         <div class="dropdown mx-4">
-                            <a class="dropdown-toggle text-uppercase" type="button" id="dropdownMenuUser" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="dropdown-toggle text-uppercase text-light text-decoration-none" type="button" id="dropdownMenuUser" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php echo $_SESSION['usuario'][1] ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuUser">
                                 <li>
-                                    <a href="index.php?modulo=perfil-usuario">Mi perfil</a>
+                                    <a href="index.php?modulo=perfil-usuario" class="text-decoration-none text-dark" title="Perfil usuario">Mi perfil</a>
                                 </li>
                                 <li>
-                                    <a href="BL/cerrar_sesion.php?modulo=&sesion=cerrar">Cerrar Sesión</a>
+                                    <a href="BL/cerrar_sesion.php?modulo=&sesion=cerrar" class="text-decoration-none text-dark" title="Cerrar Sessión">Cerrar Sesión</a>
                                 </li>
                             </ul>
                         </div>

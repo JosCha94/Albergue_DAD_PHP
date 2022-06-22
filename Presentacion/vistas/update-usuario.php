@@ -55,7 +55,7 @@ switch ($error = 'SinError') {
     }
     ?>
     <?php if ($formTipo == 'dataUser') : ?>
-        <div class="col-12 col-md-8 border border-dark p-5 mx-auto my-4 bg-primary" id="formData">
+        <div class="col-12 col-md-8 border border-dark p-5 mx-auto my-4 bg-light bg-opacity-75" id="formData">
             <h3>INGRESA TUS DATOS PARA CAMBIAR</h3>
             <form action="" method="POST">
                 <?php if (isset($errores)) : ?>
@@ -94,14 +94,14 @@ switch ($error = 'SinError') {
                 </div>
 
                                 <?php if($usuario != ''): ?>
-                <button class="btn btn-success my-3" name="actualizar_data">Actualizar</button>
+                <button class="btn btn-orange my-3" name="actualizar_data">Actualizar</button>
                 <button type="reset" class="btn btn-danger my-3 mx-3" id="btn-cleanFormData">Limpiar</button>
                 <?php endif; ?>
             </form>
         </div>
 
     <?php elseif ($formTipo == 'passUser') : ?>
-        <div class="col-12 col-md-8 border border-dark bg-primary bg-gradient p-5  my-4 mx-auto" id="formPass">
+        <div class="col-12 col-md-8 border border-dark bg-light bg-opacity-75 p-5  my-4 mx-auto" id="formPass">
             <h3>INGRESA TU NUEVA CONTRASEÑA</h3>
             <form action="" method="POST">
                 <?php if (isset($errores)) : ?>
@@ -122,8 +122,8 @@ switch ($error = 'SinError') {
                     <label for="usr2">Repite tu contraseña:</label>
                     <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Repite tu contraseña">
                 </div>
-                <button type="submit" class="btn btn-success my-3" name="cambiar_pass">Cambiar contraseña</button>
-                <button type="reset" class="btn btn-warning my-3 mx-3" id="btn-cleanFormPass">Limpiar</button>
+                <button type="submit" class="btn btn-orange my-3" name="cambiar_pass">Cambiar contraseña</button>
+                <button type="reset" class="btn btn-danger my-3 mx-3" id="btn-cleanFormPass">Limpiar</button>
             </form>
         </div>
     <?php endif; ?>

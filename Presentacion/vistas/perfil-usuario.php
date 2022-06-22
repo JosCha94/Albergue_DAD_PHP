@@ -19,15 +19,16 @@ switch ($error = 'SinError') {
     $usuario = $consulta->detalleUsuario($conexion, $id);
     $pedidos = $consulta->select_pedidos($conexion, $id);
     ?>
-    <div class="row my-md-4">
-        <h1 class="text-center my-4">HOLA <?php echo ($usuario['usuario']); ?></h1>
-        <div class="col-12 col-md-4 bg-primary p-3 position-relative">
-            <h3 class="text-center">Datos del usuario</h3>
+    <h1 class="text-center my-4">HOLA <?php echo ($usuario['usuario']); ?></h1>
+    <div class="row my-md-4 shadow-lg">
+        
+        <div class="col-12 col-md-4 bg-orange p-3 position-relative">
+            <h3 class="text-center text-success h1"> Mis Datos</h3>
 
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col-auto d-none d-lg-block">
                     <img class="img-circle mx-5 mt-3" src="Presentacion\libs\images\perrito_adopt.jpg" width="250" height="250" alt="">
-                    <h3 class="mb-0 text-center  mt-2"><?php echo ($usuario['usuario']); ?></h3>
+                    <h3 class="mb-0 text-center text-success  mt-2"><?php echo ($usuario['usuario']); ?></h3>
                 </div>
                 <div class="col p-4 mt-2 d-flex flex-column position-static">
                     <!-- <strong class="d-inline-block mb-2 text-white">Nombre: <?php echo ($usuario['usr_nombre']); ?></strong> -->
@@ -43,18 +44,18 @@ switch ($error = 'SinError') {
 
             </div>
             <div class="<?php echo ($section != '') ? 'position-absolute bottom-0' : '' ?>">
-                <h6>Fecha de creacion: <span class="h6 text-danger"><?php echo ($usuario['usr_fecha_creacion']); ?></span></h6>
+                <h6 class="text-success">Fecha de creacion: <span class="h6 text-light"><?php echo ($usuario['usr_fecha_creacion']); ?></span></h6>
                 <br>
-                <h6>Ultima actualización: <span class="h6 text-danger"><?php echo ($usuario['usr_fecha_modificacion']); ?></span></h6>
+                <h6 class="text-success">Ultima actualización: <span class="h6 text-light"><?php echo ($usuario['usr_fecha_modificacion']); ?></span></h6>
 
             </div>
         </div>
-        <div class="col-12 col-md-8 bg-primary bg-opacity-75 p-3">
+        <div class="col-12 col-md-8 bg-orange2 p-3">
             <div class="col-12 bg-danger p-5 my-1">
                 <h3 class="text-center">Adopcion</h3>
             </div>
             <div class="col-12 bg-warning p-5 my-1">
-                <h3 class="text-center">Suscripcion Padrino</h3>
+                <h3 class="text-center">Mis Suscripciones</h3>
             </div>
             <div class="col-12 bg-white bg-opacity-50 p-5 my-1">
                 <h3 class="text-center">Mis compras</h3>
