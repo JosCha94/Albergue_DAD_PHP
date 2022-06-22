@@ -45,31 +45,31 @@
             <?php if ($resCatego != 'falloCatego') : ?>
                <h6 class="text-uppercase font-weight-bold mb-3">Categorias:</h6>
                <?php foreach ($categories as $key => $value) : ?>
-                  <div class="form-check">
+                  <div class="form-check mb-3 mb-md-1">
                      <input class="form-check-input categoria" category="<?= $value['cat_id']; ?>" type="radio" name="flexRadioProduct" id="RadioProduct<?= $value['cat_nombre']; ?>">
-                     <label class="form-check-label" for="RadioProduct<?= $value['cat_nombre']; ?>">
+                     <label class="form-check-label textRadio" for="RadioProduct<?= $value['cat_nombre']; ?>">
                         <?= $value['cat_nombre']; ?>
                      </label>
                   </div>
                <?php endforeach; ?>
                <div class="divider mb-1 mt-3 border-bottom border-secondary "></div>
                <!-- ------------------------------------ -->
-               <h6 class="text-uppercase font-weight-bold mb-3">Segun el tamaño<br> del perrito:</h6>
+               <h6 class="text-uppercase font-weight-bold mb-3">Ideal para perritos<br> de tamaño:</h6>
                <div class="form-check">
                   <input class="form-check-input sizes" size="Pequeno" type="radio" name="flexRadioProduct" id="RadioProductPequeno">
-                  <label class="form-check-label" for="RadioProductPequeno">
+                  <label class="form-check-label textRadio" for="RadioProductPequeno">
                      Pequeño
                   </label>
                </div>
-               <div class="form-check">
+               <div class="form-check my-3 my-md-1">
                   <input class="form-check-input sizes" size="Mediano" type="radio" name="flexRadioProduct" id="RadioProductMediano">
-                  <label class="form-check-label" for="RadioProductMediano">
+                  <label class="form-check-label textRadio" for="RadioProductMediano">
                      Mediano
                   </label>
                </div>
                <div class="form-check">
                   <input class="form-check-input sizes" size="Grande" type="radio" name="flexRadioProduct" id="RadioProductGrande">
-                  <label class="form-check-label" for="RadioProductGrande">
+                  <label class="form-check-label textRadio" for="RadioProductGrande">
                      Grande
                   </label>
                </div>
@@ -77,7 +77,7 @@
                <div class="divider mb-1 mt-3 border-bottom border-secondary "></div>
                <div class="form-check">
                   <input class="form-check-input categoria" category="All" type="radio" name="flexRadioProduct" id="flexRadioTodos" checked>
-                  <label class="form-check-label" for="flexRadioTodos">
+                  <label class="form-check-label textRadio" for="flexRadioTodos">
                      Mostrar todo
                   </label>
                </div>
@@ -111,7 +111,7 @@
                <!--  -->
                <?php foreach ($products as $key => $value) : ?>
 
-                  <div class="item-gallery col-lg-4 col-md-6 producto" category="<?= $value['cat_id']; ?>" dog_size="<?= $value['product_size_perro']; ?>">
+                  <div class="item-gallery col-lg-4 col-md-6 producto " category="<?= $value['cat_id']; ?>" dog_size="<?= $value['product_size_perro']; ?>">
                      <div class="polaroid-gallery">
                         <form action="index.php?modulo=product_detail" method="post">
                            <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">

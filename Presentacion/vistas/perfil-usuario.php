@@ -56,11 +56,27 @@ switch ($error = 'SinError') {
             <div class="col-12 bg-warning p-5 my-1">
                 <h3 class="text-center">Suscripcion Padrino</h3>
             </div>
-            <div class="col-12 bg-success p-5 my-1">
+            <div class="col-12 bg-white bg-opacity-50 p-5 my-1">
                 <h3 class="text-center">Mis compras</h3>
                 <ul class="list-group">
                     <?php foreach ($pedidos as $key => $value) : ?>
-                        <li class="list-group-item"><a href="">Pedido: <?= $value['pedi_id']; ?></a></li>
+                        <form action="" method="post">
+                            <input type="hidden" name="" value="<?= $value['pedi_id']; ?>">
+                            <input type="hidden" name="" value="<?= $value['datos_cliente']; ?>">
+                            <input type="hidden" name="" value="<?= $value['pedi_fecha']; ?>">
+                            <input type="hidden" name="" value="<?= $value['pedi_monto']; ?>">
+                            <button type="button" class="btn btn-light w-100 d-flex justify-content-between my-2">
+                                <h5>Pedido: <?= $value['pedi_id']; ?></h5> <span class="h5"><?= $value['pedi_estado']; ?></span>
+                            </button>
+                        </form>
+
+
+                        <!-- <?php echo $value['datos_cliente'];
+                                $info = json_decode($value['datos_cliente']);
+                                echo $info->cliente; ?> 
+                        <?php echo $value['precioCantidad'];
+                        ?>  -->
+
                     <?php endforeach; ?>
                 </ul>
             </div>

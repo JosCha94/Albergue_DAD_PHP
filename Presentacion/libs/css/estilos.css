@@ -671,3 +671,8 @@ h2.text-uppercase{
   border-radius: 50%;
 }
 
+@media (max-width: 740px) { 
+  .categoria,.sizes{ font-size: 1rem;}
+  .textRadio{font-size: 1rem;}
+
+ }

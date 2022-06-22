@@ -68,33 +68,33 @@ switch ($error = 'SinError') {
                         </ul>
                     <?php endif; ?>
                 <?php endif; ?>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label for="usr_nombre">NICK DE USUARIO</label>
                     <input type="text" class="form-control" id="nick_user" name="nick_user" maxlength="15" minlength="5" value="<?php if (isset($user)) {echo $user;} else { echo ($usuario['usuario']);} ?>">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label for="usr_nombre">Nombre</label>
                     <input type="text" class="form-control" id="usr_nombre" name="usr_nombre" minlength="4" maxlength="20" value="<?php if (isset($name)) {echo $name; } else { echo ($usuario['usr_nombre']);} ?>">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label for="usr_apellido_paterno">Apellido Paterno</label>
                     <input type="text" class="form-control" id="usr_apellido_paterno" name="usr_apellido_paterno" minlength="4" maxlength="20" value="<?php if (isset($ape_p)) {echo $ape_p; } else {echo ($usuario['usr_apellido_paterno']);} ?>">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label for="usr_apellido_materno">Apellido Materno</label>
                     <input type="text" class="form-control" id="usr_apellido_materno" name="usr_apellido_materno" minlength="4" maxlength="20" value="<?php if (isset($ape_m)) {echo $ape_m;} else {echo ($usuario['usr_apellido_materno']);} ?>">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label for="usr_email">E-mail</label>
                     <input type="text" class="form-control" id="usr_email" name="usr_email" maxlength="30" value="<?php if (isset($email)) {echo $email;} else {echo ($usuario['usr_email']);} ?>">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label for="usr_celular">Celular</label>
                     <input type="text" class="form-control" id="usr_celular" name="usr_celular" maxlength="9" minlength="9" value="<?php if (isset($celu)) {echo $celu;} else {echo ($usuario['usr_celular']);} ?>">
                 </div>
 
                                 <?php if($usuario != ''): ?>
-                <button class="btn btn-primary my-3" name="actualizar_data">Actualizar</button>
+                <button class="btn btn-success my-3" name="actualizar_data">Actualizar</button>
                 <button type="reset" class="btn btn-danger my-3 mx-3" id="btn-cleanFormData">Limpiar</button>
                 <?php endif; ?>
             </form>
@@ -114,11 +114,11 @@ switch ($error = 'SinError') {
                         </ul>
                     <?php endif; ?>
                 <?php endif; ?>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label for="usr">Contraseña:</label>
                     <input type="password" class="form-control" id="pass" name="pass" placeholder="Ingresa tu contraseña">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-1">
                     <label for="usr2">Repite tu contraseña:</label>
                     <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Repite tu contraseña">
                 </div>
