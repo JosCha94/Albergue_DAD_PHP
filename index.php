@@ -128,7 +128,7 @@ switch ($error = 'SinError') {
                                 <?php echo $_SESSION['usuario'][1] ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuUser">
-                                <li>
+                                <li class="mb-2">
                                     <a href="index.php?modulo=perfil-usuario" class="text-decoration-none text-dark" title="Perfil usuario">Mi perfil</a>
                                 </li>
                                 <li>

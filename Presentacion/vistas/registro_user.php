@@ -32,7 +32,7 @@ if (isset($_POST['registro_usr'])) {
         <div class="row">
             <!-- donation box -->
 
-            <div class="col-lg-6 p-5 res-margin border border-dark bg-light bg-opacity-75 h-50 mx-auto">
+            <div class="col-lg-6 p-4 p-md-5 res-margin border border-dark bg-light bg-opacity-75 h-50 mx-auto">
 
                 <h4 class="">¡Registrate!</h4>
 
@@ -115,8 +115,8 @@ if (isset($_POST['registro_usr'])) {
 
                         <!-- button -->
                         <div class="mt-3 d-flex justify-content-around">
-                            <button type="submit" name="registro_usr" value="Submit" class="btn btn-donation mt-3">Registrase</button>
-                            <button type="reset" id="submit_btn" value="Submit" class="btn btn-danger size-btn mt-3">Limpiar</button>
+                            <button type="submit" name="registro_usr" value="Submit" class="btn btn-orange my-3">Registrase</button>
+                            <button type="reset" id="submit_btn" value="Submit" class="btn btn-danger my-3 mx-3">Limpiar</button>
                         </div>
 
                     </form>
