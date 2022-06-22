@@ -61,12 +61,6 @@ switch ($error = 'SinError') {
                 <ul class="list-group">
                     <?php foreach ($pedidos as $key => $value) : ?>
                         <li class="list-group-item"><a href="">Pedido: <?= $value['pedi_id']; ?></a></li>
-                        <!-- <?php echo $value['datos_cliente']; 
-                        $info = json_decode($value['datos_cliente']);
-                        echo $info->cliente;?> 
-                        <?php echo $value['precioCantidad']; 
-                        ?>  -->
-
                     <?php endforeach; ?>
                 </ul>
             </div>
