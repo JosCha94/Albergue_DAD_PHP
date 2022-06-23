@@ -10,8 +10,8 @@ $idSus = $susId;
 $usrId = $_SESSION['usuario'][0]; 
 $usr_data = $consulta -> datosUsuario_apadrinar($conexion, $usrId );
 $susTipoId = $consulta -> listarTipoSuscrip_id($conexion, $idSus);
-$newdate = date('d-m-Y', strtotime('+1 month'));
 
+$newdate = date('d-m-Y', strtotime('+1 month'));
 if (isset($_POST['suscrip'])) {
     $uId = $_POST['usrId'];
     $rolId = $_POST['rolId'];
@@ -144,7 +144,7 @@ if (isset($_POST['suscrip'])) {
                     <input type="hidden" name="rolId" value="<?= $usr_data['rol_id'] ?>">
                     <input type="hidden" name="susId" value ="<?= $_POST['susId'];?> ">
                     <div class="p-3 mt-3 d-flex justify-content-end free-button">
-                        <button class="btn btn-adopt btn-lg"type="submit" name="suscrip">Suscribir</button>                  
+                        <button class="btn btn-adopt btn-lg" type="submit" name="suscrip">Suscribir</button>                  
                     </div>
                 </div>            
             </div>
