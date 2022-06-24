@@ -36,7 +36,7 @@ $infoCli = json_decode($pedido['datos_cliente']);
                     </div>
                     <!-- <h5 class="card-title">Card title</h5> -->
                     <div class="text-center mt-2 border rounded-2 p-1">
-                        <p class="card-text">Fecha de Emision: <?php echo $pedido['pedi_fecha']; ?></p>
+                        <p class="card-text">Fecha de Emision: <?php echo date("d-M,Y", strtotime($pedido['pedi_fecha'])); ?>
                         <p class="card-text-md ">Cliente: <?php echo $infoCli->cliente;  ?></p>
                         <p class="card-text">DNI: <?php echo $infoCli->dni;  ?></p>
                     </div>
@@ -59,7 +59,7 @@ $infoCli = json_decode($pedido['datos_cliente']);
                             <?php foreach ($detallePedido as $key => $value) : ?>
                                 <?php $infoDeta = json_decode($value['precioCantidad']) ?>
                                 <tr>
-                                    <td><?php echo $infoDeta->Cantidad;  ?></td>
+                                    <td><?php echo $infoDeta->Cantidad;  ?> <?php echo($infoDeta->Cantidad == 1)? 'Ud.': 'Uds.' ?></td>
                                     <td><?php echo $value['product_nombre']; ?></td>
                                     <td><?php echo $infoDeta->Precio;  ?></td>
                                     <td><?php echo $infoDeta->Precio_Total;  ?></td>
