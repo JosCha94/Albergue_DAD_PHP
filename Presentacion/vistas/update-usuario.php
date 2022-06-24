@@ -55,7 +55,7 @@ switch ($error = 'SinError') {
     }
     ?>
     <?php if ($formTipo == 'dataUser') : ?>
-        <div class="col-12 col-md-8 border border-dark p-4 p-md-5 mx-auto my-4 bg-light bg-opacity-75" id="formData">
+        <div class="col-12 col-md-6 border border-dark p-4 p-md-5 my-4 bg-light bg-opacity-75 mx-auto" id="formData">
             <h3>INGRESA TUS DATOS PARA CAMBIAR</h3>
             <form action="" method="POST">
                 <?php if (isset($errores)) : ?>

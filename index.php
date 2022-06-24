@@ -255,6 +255,9 @@ switch ($error = 'SinError') {
             if ($modulo == "apadrinar-detalles") {
                 include_once "Presentacion/vistas/apadrinar-detalles.php";
             }
+            if ($modulo == "voucher") {
+                include_once "Presentacion/vistas/voucher.php";
+            }
 
             ?>
         </div>

@@ -115,7 +115,7 @@
                      <div class="polaroid-gallery">
                         <form action="index.php?modulo=product_detail" method="post">
                            <input type="hidden" name="product_id" value="<?= $value['product_id']; ?>">
-                           <button class="border-0 btn btn-link text-decoration-none" name="cambiarDatosProducto" title="Detalles de <?= $value['product_nombre']; ?>">
+                           <button class="border-0 btn btn-link text-decoration-none" name="verDatosProducto" title="Detalles de <?= $value['product_nombre']; ?>">
                               <img src="data:image/<?php echo ($value['img_product_tipo']); ?>;base64,<?php echo base64_encode($value['img_product_foto']); ?>" alt="<?= $value['product_nombre']; ?>" class="img-fluid">
                            </button>
                         </form>

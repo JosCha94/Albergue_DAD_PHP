@@ -60,7 +60,7 @@ switch ($error = 'SinError') {
         $dni = $_POST['dni'];
         $correo = $usuario['usr_email'];
         $montoTotal = $_POST['total'];
-        $IGV = ($igv * 100) . '%';
+        $IGV = $_POST['igv'];
         $pedido = new Pedido($idUser, $idRol, $cliente, $dni, $correo, $montoTotal, $IGV);
         $resp = $consulta->pedidoTienda($conexion, $pedido);
         if ($resp == 1) {
@@ -254,9 +254,9 @@ switch ($error = 'SinError') {
                                         <?php endforeach; ?>
 
                                         <div class="d-flex justify-content-between mt-2">
-                                            <p>IGV: <?php echo $igv * 100 ?>%</p>
+                                            <p>IGV: <?php echo ($igvPedi = $igv * $total) ?></p>
 
-                                            <h2 class="me-2">Total: S/ <?php echo ($total = $total * $igv + $total) ?></h2>
+                                            <h2 class="me-2">Total: S/ <?php echo ($total = $igvPedi + $total) ?></h2>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <div class="form-outline flex-fill mb-0">
@@ -284,6 +284,7 @@ switch ($error = 'SinError') {
                                                     <label class="form-label" for="dni">DNI</label>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="igv" value="<?= $igvPedi ?>">
                                             <input type="hidden" name="total" value="<?= $total ?>">
 
                                     </main>

@@ -11,13 +11,15 @@ switch ($error = 'SinError') {
 <?php if ($error == 'SinError') : ?>
     <?php
     require_once('BL/consultas_usuario.php');
+    require_once('BL/consultas_pedido.php');
     require_once 'ENTIDADES/usuario.php';
     require_once('DAL/conexion.php');
     $conexion = conexion::conectar();
     $consulta = new Consulta_usuario();
+    $consulta2 = new Consulta_pedido();
     $id = $_SESSION['usuario'][0];
     $usuario = $consulta->detalleUsuario($conexion, $id);
-    $pedidos = $consulta->select_pedidos($conexion, $id);
+    $pedidos = $consulta2->select_pedidos($conexion, $id);
     ?>
     <h1 class="text-center my-4">HOLA <?php echo ($usuario['usuario']); ?></h1>
     <div class="row my-md-4 shadow-lg">
@@ -61,23 +63,16 @@ switch ($error = 'SinError') {
                 <h3 class="text-center">Mis compras</h3>
                 <ul class="list-group">
                     <?php foreach ($pedidos as $key => $value) : ?>
-                        <form action="" method="post">
-                            <input type="hidden" name="" value="<?= $value['pedi_id']; ?>">
-                            <input type="hidden" name="" value="<?= $value['datos_cliente']; ?>">
-                            <input type="hidden" name="" value="<?= $value['pedi_fecha']; ?>">
-                            <input type="hidden" name="" value="<?= $value['pedi_monto']; ?>">
-                            <button type="button" class="btn btn-light w-100 d-flex justify-content-between my-2">
+                        <form action="index.php?modulo=voucher" method="post">
+                            <input type="hidden" name="idPedido" value="<?= $value['pedi_id']; ?>">
+                            <!-- <input type="hidden" name="dataClient" value="<?= $value['datos_cliente']; ?>">
+                            <input type="hidden" name="fecha" value="<?= $value['pedi_fecha']; ?>">
+                            <input type="hidden" name="total" value="<?= $value['pedi_monto']; ?>">
+                            <input type="hidden" name="impuesto" value="<?= $value['pedi_igv']; ?>"> -->
+                            <button name="verVoucher" class="btn btn-light w-100 d-flex justify-content-between my-2">
                                 <h5>Pedido: <?= $value['pedi_id']; ?></h5> <span class="h5"><?= $value['pedi_estado']; ?></span>
                             </button>
                         </form>
-
-
-                        <!-- <?php echo $value['datos_cliente'];
-                                $info = json_decode($value['datos_cliente']);
-                                echo $info->cliente; ?> 
-                        <?php echo $value['precioCantidad'];
-                        ?>  -->
-
                     <?php endforeach; ?>
                 </ul>
             </div>
