@@ -65,12 +65,8 @@ switch ($error = 'SinError') {
                     <?php foreach ($pedidos as $key => $value) : ?>
                         <form action="index.php?modulo=voucher" method="post">
                             <input type="hidden" name="idPedido" value="<?= $value['pedi_id']; ?>">
-                            <!-- <input type="hidden" name="dataClient" value="<?= $value['datos_cliente']; ?>">
-                            <input type="hidden" name="fecha" value="<?= $value['pedi_fecha']; ?>">
-                            <input type="hidden" name="total" value="<?= $value['pedi_monto']; ?>">
-                            <input type="hidden" name="impuesto" value="<?= $value['pedi_igv']; ?>"> -->
                             <button name="verVoucher" class="btn btn-light w-100 d-flex justify-content-between my-2">
-                                <h5>Pedido: <?= $value['pedi_id']; ?></h5> <span class="h5"><?= $value['pedi_estado']; ?></span>
+                                <h5>Pedido: <?= $value['pedi_id']; ?></h5> <span class="h5 <?php echo($value['pedi_estado'] == 'Recogido') ? 'text-success': 'text-danger' ?>"><?= $value['pedi_estado']; ?></span>
                             </button>
                         </form>
                     <?php endforeach; ?>
