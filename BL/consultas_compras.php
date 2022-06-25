@@ -5,7 +5,7 @@ class Consulta_compra
     //  VISTA DE COMPRA PERFIL DE USUARIO
     //  ---------------------------------------
 
-    public function select_pedidos($conexion, $uid)
+    public function listar_pedidos_user($conexion, $uid)
     {
         try {
             $sql = "CALL SP_select_pedidos_id($uid)";

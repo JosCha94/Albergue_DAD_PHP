@@ -19,7 +19,7 @@ switch ($error = 'SinError') {
     $consulta2 = new Consulta_compra();
     $id = $_SESSION['usuario'][0];
     $usuario = $consulta->detalleUsuario($conexion, $id);
-    $pedidos = $consulta2->select_pedidos($conexion, $id);
+    $pedidos = $consulta2->listar_pedidos_user($conexion, $id);
     ?>
     <h1 class="text-center my-4">HOLA <?php echo ($usuario['usuario']); ?></h1>
     <div class="row my-md-4 shadow-lg">
