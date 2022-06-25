@@ -172,3 +172,9 @@ function formData() {
 //--------------FORMULARIOS PERFIL USUARIO----------------//
 
 // -------------RETIRO COMPRA--------------------
+
+$(document).ready(function() {
+    $('#tablaVentasSin').DataTable({
+        // "scrollX": true
+    });
+});
