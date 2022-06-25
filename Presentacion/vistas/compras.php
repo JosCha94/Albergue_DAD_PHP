@@ -19,8 +19,8 @@ switch ($error = 'SinError') {
 ?>
 <?php if ($error == 'SinError') : ?>
 <?php
-require_once('BL/consultas_tienda.php');
-$consulta = new Consulta_producto();
+require_once('BL/consultas_compras.php');
+$consulta = new Consulta_compra();
 $ventas = $consulta->listarVentasSinRecoger($conexion);
 
 if (isset($_POST['cambiarEstadoPedido'])) {

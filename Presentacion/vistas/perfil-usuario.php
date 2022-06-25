@@ -11,12 +11,12 @@ switch ($error = 'SinError') {
 <?php if ($error == 'SinError') : ?>
     <?php
     require_once('BL/consultas_usuario.php');
-    require_once('BL/consultas_pedido.php');
+    require_once('BL/consultas_compras.php');
     require_once 'ENTIDADES/usuario.php';
     require_once('DAL/conexion.php');
     $conexion = conexion::conectar();
     $consulta = new Consulta_usuario();
-    $consulta2 = new Consulta_pedido();
+    $consulta2 = new Consulta_compra();
     $id = $_SESSION['usuario'][0];
     $usuario = $consulta->detalleUsuario($conexion, $id);
     $pedidos = $consulta2->select_pedidos($conexion, $id);

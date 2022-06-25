@@ -211,5 +211,6 @@ class Consulta_usuario
         }
         return $estado;
     }
+
 }
 ?>

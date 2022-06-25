@@ -19,8 +19,8 @@ switch ($error = 'SinError') {
 ?>
 <?php if ($error == 'SinError') : ?>
     <?php
-    require_once('BL/consultas_tienda.php');
-    $consulta = new Consulta_producto();
+    require_once('BL/consultas_compras.php');
+    $consulta = new Consulta_compra();
 
     $pedido = $_GET['pedido'] ?? '';
     $detalle = $consulta->detalleCompra($conexion, $pedido);

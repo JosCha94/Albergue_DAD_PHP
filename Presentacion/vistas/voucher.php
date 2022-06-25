@@ -1,7 +1,6 @@
 <?php
-require_once('BL/consultas_pedido.php');
-require_once 'ENTIDADES/usuario.php';
-$consulta = new Consulta_pedido();
+require_once('BL/consultas_compras.php');
+$consulta = new Consulta_compra();
 $idPedido = $_POST['idPedido'];
 $pedido = $consulta->select_pedido($conexion, $idPedido);
 $detallePedido = $consulta->select_detallePedido_id($conexion, $idPedido);
