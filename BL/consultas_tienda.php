@@ -13,7 +13,7 @@ class Consulta_producto
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
 ?>
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR con la base de datos y no se puede mostrar los productos
+                <strong class="fs-3">Error!</strong><br> Ocurrió un problema y no se puede mostrar los productos
 
             </div>
 
@@ -34,7 +34,7 @@ class Consulta_producto
             $categorias = 'falloCatego';
         ?>
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR y no se puede mostrar los filtros
+                <strong class="fs-3">Error!</strong><br> Debido a un problema no se puede mostrar los filtros
 
             </div>
 
@@ -55,7 +55,7 @@ class Consulta_producto
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         ?>
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR con la base de datos y no se puede mostrar los detalles del producto
+                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR y no se puede mostrar los detalles del producto
 
             </div>
 
@@ -75,7 +75,7 @@ class Consulta_producto
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         ?>
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR con la base de datos y no se puede mostrar todas las imagenes del producto
+                <strong class="fs-3">Error!</strong><br> Debido a un problema no se puede mostrar todas las imagenes del producto
 
             </div>
 
@@ -117,7 +117,7 @@ class Consulta_producto
             $product = 'errorAdd';
         ?>
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR, no se ha podido agregar el producto al carrito
+                <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR y no se ha podido agregar el producto al carrito
 
             </div>
 
@@ -138,7 +138,7 @@ class Consulta_producto
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                <strong class="fs-3">Error!</strong><br>Ocurrió un ERROR con la base de datos y no se ha podido mostrar los productos en su carrito
+                <strong class="fs-3">Error!</strong><br>Debido a un problema no se ha podido mostrar los productos en su carrito
 
             </div>
 
@@ -159,7 +159,7 @@ class Consulta_producto
             $products='fallo';
             ?>
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-            <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR y no es posible eliminar el producto de su carrito por el momento
+            <strong class="fs-3">Error!</strong><br> Debido a un problema no es posible eliminar el producto de su carrito por el momento
             </div>
 
 <?php
@@ -179,7 +179,7 @@ class Consulta_producto
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-            <strong class="fs-3">Error!</strong><br> Ocurrió un ERROR y no es posible cambiar la cantidad del producto en su carrito por el momento
+            <strong class="fs-3">Error!</strong><br> Debido a un problema no es posible cambiar la cantidad del producto en su carrito por el momento
             </div>
 
 <?php

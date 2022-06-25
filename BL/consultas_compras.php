@@ -18,7 +18,7 @@ class Consulta_compra
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
               <div class="alert alert-danger alert-dismissible fade show " role="alert">
-              <strong>Error!</strong> Devido a un error en la base de datos, no se pudo mostrar sus pedidos
+              <strong>Error!</strong> Devido a un error, no se pudo mostrar sus pedidos
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
@@ -39,7 +39,7 @@ class Consulta_compra
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
               <div class="alert alert-danger alert-dismissible fade show " role="alert">
-              <strong>Error!</strong> Devido a un error en la base de datos, no se pudo mostrar el voucher
+              <strong>Error!</strong> Devido a un error, no se pudo mostrar el voucher
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
@@ -60,7 +60,7 @@ class Consulta_compra
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
               <div class="alert alert-danger alert-dismissible fade show " role="alert">
-              <strong>Error!</strong> Devido a un error en la base de datos, no se pudo mostrar el voucher
+              <strong>Error!</strong> Debido a un problema en la base de datos, no se pudo mostrar el voucher
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
@@ -104,7 +104,7 @@ class Consulta_compra
             //  echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
               <div class="alert alert-danger alert-dismissible fade show " role="alert">
-              <strong>Error!</strong> Devido a un error en la base de datos, no se pudo cambiar el estado del pedido
+              <strong>Error!</strong> Debido a un problema no se pudo cambiar el estado del pedido
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 

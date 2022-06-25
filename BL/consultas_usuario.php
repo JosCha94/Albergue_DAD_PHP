@@ -125,7 +125,7 @@ class Consulta_usuario
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-              <strong>Error!</strong> Devido a un error no se puede mostrar los datos del usuario por el momento
+              <strong>Error!</strong> Debido a un problema no se puede mostrar los datos del usuario por el momento
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <?php
@@ -202,7 +202,7 @@ class Consulta_usuario
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
               <div class="alert alert-danger alert-dismissible fade show " role="alert">
-              <strong>Error!</strong> Devido a un error en la base de datos, no se pudo actualizar la contraseña por el momento
+              <strong>Error!</strong> Debido a un problema , no se pudo actualizar la contraseña por el momento
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
