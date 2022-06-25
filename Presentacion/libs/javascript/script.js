@@ -170,3 +170,5 @@ function formData() {
     
 };
 //--------------FORMULARIOS PERFIL USUARIO----------------//
+
+// -------------RETIRO COMPRA--------------------

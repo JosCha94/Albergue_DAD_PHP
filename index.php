@@ -39,6 +39,7 @@ switch ($error = 'SinError') {
     <meta name="keywords" content="adopcion, perritos, donaciones, albergues, suscripción">
     <meta name="description" content="Adopta un perrito en el albergue, dona para apoyar al albergue, suscribete a un plan para apadrinar, coprar productos para el perrito">
     <!-- LINKS HOJAS DE ESTILOS -->
+    <link rel="stylesheet" href="Presentacion\libs\datatable\dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="Presentacion/libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="Presentacion/libs/css/estilos.css">
     <link rel="stylesheet" href="Presentacion/libs/flaticon/flaticon.css">
@@ -116,6 +117,13 @@ switch ($error = 'SinError') {
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($modulo == "blog" || $modulo == "blog-single") ? " active " : " " ?> mx-2" href="index.php?modulo=blog">Blog</a>
                         </li>
+                        <?php $rolVendedor = $log->activeRol($_SESSION['usuario'][2], [2,5]); 
+                        if($rolVendedor == 'true'):?>
+                        <li class="nav-item">
+                            <a class="nav-link <?php echo ($modulo == "compras" ) ? " active " : " " ?> mx-2" href="index.php?modulo=compras">Retiro de Compras</a>
+                        </li>
+                        <?php endif; ?>
+
                     </ul>
                     <?php if ($logueado == null || $logueado == 'false') {
                     ?>
@@ -258,6 +266,12 @@ switch ($error = 'SinError') {
             if ($modulo == "voucher") {
                 include_once "Presentacion/vistas/voucher.php";
             }
+            if ($modulo == "compras") {
+                include_once "Presentacion/vistas/compras.php";
+            }
+            if ($modulo == "detalle_compra") {
+                include_once "Presentacion/vistas/detalle_compra.php";
+            }
 
             ?>
         </div>
@@ -364,9 +378,15 @@ switch ($error = 'SinError') {
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script> -->
 <script src="Presentacion/libs/javascript/jquery-3.6.0.min.js"></script>
 <script src="Presentacion/libs/javascript/script.js"></script>
-
-
-
+<script src="Presentacion\libs\datatable\jquery.dataTables.min.js"></script>
+<script src="Presentacion\libs\datatable\dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#tablaVentasSin').DataTable({
+        // "scrollX": true
+    });
+});
+</script>
 
 
 

@@ -13,6 +13,7 @@ class autorizacion
 
     public function activeRol($estado, $id)
     {
+        $res='';
         $Rol = $estado;
         $array = json_decode($Rol, true);
         foreach ($array as $key => $value) :
@@ -37,6 +38,7 @@ class autorizacion
 
     public function permisosEspeciales($permisos, $id)
     {
+        $per='';
         $perEsp = $permisos;
         $array = json_decode($perEsp, true);
         foreach ($array as $key => $value) :
