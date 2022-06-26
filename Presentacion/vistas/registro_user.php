@@ -25,14 +25,14 @@ if (isset($_POST['registro_usr'])) {
 }
 ?>
 <section id="dormRegistro" class="container-fluid mt-5">
-    <div class="container">
+
         <div class="section-heading text-center">
             <h2>Nuevo usuario</h2>
         </div>
         <div class="row">
             <!-- donation box -->
 
-            <div class="col-lg-6 p-4 p-md-5 res-margin border border-dark bg-light bg-opacity-75 h-50 mx-auto">
+            <div class="col-12 col-md-6 p-md-5 res-margin border border-dark bg-light bg-opacity-75 h-50 mx-auto">
 
                 <h4 class="">¡Registrate!</h4>
 
@@ -127,6 +127,4 @@ if (isset($_POST['registro_usr'])) {
             <!-- /col-lg-->
         </div>
         <!-- /row-->
-    </div>
-    <!-- /container-->
 </section>
