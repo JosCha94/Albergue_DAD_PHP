@@ -126,7 +126,7 @@ class Consulta_compra
             //   echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                <strong class="fs-3">Error!</strong><br>Debido a un problema, por el momento no se puede listar las ventas
+                <strong class="fs-3">Error!</strong><br>Debido a un problema, por el momento no se puede mostrar los detalles de las ventas
 
             </div>
 

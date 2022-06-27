@@ -7,7 +7,7 @@ $detallePedido = $consulta->select_detallePedido_id($conexion, $idPedido);
 $infoCli = json_decode($pedido['datos_cliente']);
 
 ?>
-
+<?php if($detallePedido != '' && $pedido != '' ):?>
 <div class="mt-5">
     <div class="card">
         <div class="card-body">
@@ -77,3 +77,4 @@ $infoCli = json_decode($pedido['datos_cliente']);
         </div>
     </div>
 </div>
+<?php endif; ?>
