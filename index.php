@@ -117,7 +117,7 @@ switch ($error = 'SinError') {
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($modulo == "blog" || $modulo == "blog-single") ? " active " : " " ?> mx-2" href="index.php?modulo=blog">Blog</a>
                         </li>
-                        <?php $rolVendedor = $log->activeRol($_SESSION['usuario'][2], [2,5]); 
+                        <?php $rolVendedor = $log->activeRol($_SESSION['usuario'][2], [2,3]); 
                         if($rolVendedor == 'true'):?>
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($modulo == "compras" ) ? " active " : " " ?> mx-2" href="index.php?modulo=compras">Retiro de Compras</a>

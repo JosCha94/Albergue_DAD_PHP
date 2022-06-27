@@ -1,7 +1,9 @@
 <?php
-$rolPermitido= $log->activeRol($_SESSION['usuario'][2], [2,5]);
-$permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], [1]);
+$rolPermitido= $log->activeRol($_SESSION['usuario'][2], [2,3]);
+$permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], [5]);
 $permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], [5]);
+$Permiso2 = $log->activeRolPermi($_SESSION['usuario'][3], [6]);
+$Permiso = $log->permisosEspeciales($_SESSION['usuario'][3], [6]);
 
 switch ($error = 'SinError') {
     case ($logueado == 'false'):
@@ -51,7 +53,9 @@ if (isset($_POST['cambiarEstadoPedido'])) {
                         <td>Fecha</td>
                         <td>Precio total </td>
                         <td>Estado</td>
+                        <?php if ($Permiso == 'true' || $Permiso2 == 'true'):?>               
                         <td>Recogido</td>
+                        <?php endif; ?>
 
                     </tr>
                 </thead>
@@ -64,7 +68,9 @@ if (isset($_POST['cambiarEstadoPedido'])) {
                         <td>Fecha</td>
                         <td>Precio total </td>
                         <td>Estado</td>
+                        <?php if ($Permiso == 'true' || $Permiso2 == 'true'):?>               
                         <td>Recogido</td>
+                        <?php endif; ?>
 
                     </tr>
                 </tfoot>
@@ -79,12 +85,14 @@ if (isset($_POST['cambiarEstadoPedido'])) {
                             <td><?php echo ($value['pedi_fecha']); ?> </td>
                             <td><?php echo ($value['pedi_monto']); ?> </td>
                             <td><?php echo ($value['pedi_estado']); ?> </td>
+                            <?php if ($Permiso == 'true' || $Permiso2 == 'true'):?>     
                             <td>
                                 <form action="" method="post">
                                     <input type="hidden" name="pedido_id" value="<?= $value['pedi_id']; ?>">
                                     <button class="btn btn-success btn-xs mt-4 cambiarEstadoPedido" onclick="return confirm('¿Quieres cambiar estado de pedido a recogido?')" name="cambiarEstadoPedido" title="Cambiar estado"><i class="fa-solid fa-check"></i></button>
                                 </form>
                             </td>
+                            <?php endif; ?>
                             
                         </tr>
                     <?php endforeach; ?>
