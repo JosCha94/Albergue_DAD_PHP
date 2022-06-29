@@ -98,7 +98,7 @@ class Consulta_usuario
         }
         if (empty($mail)) {
             $errores['mail'] = "El campo Correo electronico es requerido";
-        } elseif (strlen($mail) > 20) {
+        } elseif (strlen($mail) > 30) {
             $errores['mail'] = "El Correo electronico puede tener de hasta 30 caracteres, sin espacios en blanco";
         } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
             $errores['mail'] = "La sintaxis del Correo electronico es incorrecta";

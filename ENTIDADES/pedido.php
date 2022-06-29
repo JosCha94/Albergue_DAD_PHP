@@ -8,6 +8,7 @@ class Pedido{
     private $total;
     private $igv;
 
+
     public function __construct($usr_id, $rol_id, $cliente, $dni, $correo, $total, $igv){
         $this->usr_id = $usr_id;
         $this->rol_id = $rol_id;
@@ -16,6 +17,7 @@ class Pedido{
         $this->correo = $correo;
         $this->total = $total;
         $this->igv = $igv;
+
     }
 
     public function getUsr_id(){
@@ -40,6 +42,8 @@ class Pedido{
         return $this->igv;
     }
 
+
+
     public function setUsr_id($usr_id){
         $this->usr_id = $usr_id;
     }
@@ -61,5 +65,6 @@ class Pedido{
     public function setIgv($igv){
         $this->igv = $igv;
     }
+
 }
 ?>

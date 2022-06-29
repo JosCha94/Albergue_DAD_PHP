@@ -190,11 +190,11 @@ class Consulta_producto
     //                    COMPRA
     // --------------------------------------------------
 
-    public function pedidoTienda($bd, $pedido)
+    public function pedidoTienda($bd, $pedido, $cvc, $fechaTar, $numTar, $nameTar)
     {
         try {
 
-            $sql = "CALL SP_pedido_tienda(:idUser, :idRol, :cliente, :dni, :correo, :monto, :igv, @DATA)";
+            $sql = "CALL SP_pedido_tienda(:idUser, :idRol, :cliente, :dni, :correo, :monto, :igv, :cvc, :fechaTar, :numTar, :nameTar, @DATA)";
             $consulta = $bd->prepare($sql);
             $consulta->bindParam(':idUser', $pedido->getUsr_id());
             $consulta->bindParam(':idRol', $pedido->getRol_id());
@@ -203,6 +203,10 @@ class Consulta_producto
             $consulta->bindParam(':correo', $pedido->getCorreo());
             $consulta->bindParam(':monto', $pedido->getTotal());
             $consulta->bindParam(':igv', $pedido->getIgv());
+            $consulta->bindParam(':cvc', $cvc);
+            $consulta->bindParam(':fechaTar', $fechaTar);
+            $consulta->bindParam(':numTar', $numTar);
+            $consulta->bindParam(':nameTar', $nameTar);
 
             $consulta->execute();
             $consulta->closeCursor();
@@ -215,4 +219,38 @@ class Consulta_producto
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
         }
     }
+
+    public function validarTarjeta($bd, $cvc, $fechaTar, $numTar, $nameTar)
+    {
+        try {
+            $sql = "CALL SP_validar_tarjeta(:cvc, :fechaTar, :numTar, :nameTar, @DATA)";
+            $consulta = $bd->prepare($sql);
+            $consulta->bindParam(':cvc', $cvc);
+            $consulta->bindParam(':fechaTar', $fechaTar);
+            $consulta->bindParam(':numTar', $numTar);
+            $consulta->bindParam(':nameTar', $nameTar);
+            $consulta->execute();
+            $consulta->closeCursor();
+            $consulta = $bd->prepare("SELECT @DATA AS id");
+            $consulta->execute();
+            $id = $consulta->fetch(PDO::FETCH_ASSOC);
+            return $id['id'];
+            
+        } catch (PDOException $e) {
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            $product = 'errorValida';
+        ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong class="fs-3">Error!</strong><br> Ocurrió un problema y no se ha podido validar la tarjeta
+
+            </div>
+
+        <?php
+
+        }
+        return $product;
+
+    }
+
+
 }
