@@ -251,6 +251,4 @@ class Consulta_producto
         return $product;
 
     }
-
-
 }

@@ -2,6 +2,35 @@
   font-family: 'Baloo Thambi 2', cursive;
 }
 
+@media print{
+  #logo_header, #footer-area{
+    display: none !important;
+  }
+  
+  .col_voucher{
+    flex: 0 0 auto;
+    width: 50%;
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+@media (max-width: 740px) {
+
+  .categoria,
+  .sizes {
+    font-size: 1rem;
+  }
+
+  .textRadio {
+    font-size: 1rem;
+  }
+
+  #deta_cliente_voucher, #deta_pedido_voucher{
+    border:none !important;
+  }
+
+}
+
 body {
   background-image: url(../images/huesoPatron.png);
   background-color: #fafbfd;
@@ -781,18 +810,9 @@ li {
   background-color: #E8630a;
 }
 
-@media (max-width: 740px) {
 
-  .categoria,
-  .sizes {
-    font-size: 1rem;
-  }
 
-  .textRadio {
-    font-size: 1rem;
-  }
 
-}
 
 
 

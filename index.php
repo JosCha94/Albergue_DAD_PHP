@@ -94,7 +94,7 @@ switch ($error = 'SinError') {
             <nav class="navbar navbar-expand-lg navbar-dark bg-transparent container-fluid">
 
                 <a class="navbar-brand" href="index.php?modulo=inicio">
-                    <a href="index.php?modulo= "><img src="Presentacion/libs/images/doglogo.png" alt="logo" width="80em"></a>
+                    <a href="index.php?modulo= " id="logo_header"><img src="Presentacion/libs/images/doglogo.png" alt="logo" width="80em"></a>
 
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -277,7 +277,7 @@ switch ($error = 'SinError') {
         </div>
 
         <!-- FOOTER -->
-        <footer class="footer-area">
+        <footer class="footer-area" id="footer-area">
             <!--== Start Footer Main ==-->
             <div class="footer-main mt-5">
                 <div class="container pt--0 pb--0">
