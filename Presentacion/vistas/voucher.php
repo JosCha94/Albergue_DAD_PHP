@@ -5,14 +5,13 @@ $idPedido = $_POST['idPedido'];
 $pedido = $consulta->select_pedido($conexion, $idPedido);
 $detallePedido = $consulta->select_detallePedido_id($conexion, $idPedido);
 $infoCli = json_decode($pedido['datos_cliente']);
-
 ?>
 <?php if($detallePedido != '' && $pedido != '' ):?>
 <div class="mt-5">
     <div class="card">
         <div class="card-body">
             <div class="row mb-2">
-                <div class="col-12 col-md-6 mx-auto">
+                <div class="col-12 col-md-6 mx-auto col_voucher">
                     <div class="text-center mt-2">
                         <img src="Presentacion/libs/images/doglogo.png" alt="logo" width="80em" class="ms-auto">
                     </div>
@@ -27,14 +26,14 @@ $infoCli = json_decode($pedido['datos_cliente']);
 
                     <!-- <h5 class="card-title">Card title</h5> -->
                 </div>
-                <div class="col-12 col-md-6 mx-auto">
-                    <div class="text-center mt-2 border rounded-2">
+                <div class="col-12 col-md-6 mx-auto col_voucher">
+                    <div class="text-center mt-2 border rounded-2" id="deta_pedido_voucher">
                         <p class="card-text fs-6">RUC: 123456</p>
                         <p class="card-text fs-5 "><?php echo $pedido['tipo_comprobante']; ?></p>
                         <p class="card-text fs-6"><?php echo $pedido['serie_comprobante']; ?></p>
                     </div>
                     <!-- <h5 class="card-title">Card title</h5> -->
-                    <div class="text-center mt-2 border rounded-2 p-1">
+                    <div class="text-center mt-2 border rounded-2 p-1" id="deta_cliente_voucher">
                         <p class="card-text">Fecha de Emision: <?php echo date("d-M,Y", strtotime($pedido['pedi_fecha'])); ?>
                         <p class="card-text-md ">Cliente: <?php echo $infoCli->cliente;  ?></p>
                         <p class="card-text">DNI: <?php echo $infoCli->dni;  ?></p>
