@@ -19,7 +19,7 @@ if (isset($_POST['registro_usr'])) {
 
         if ($estado == 'mal') {
         } else {
-            echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=inicio&mensaje=El Usuario se registro correctamente" />';
+            echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=inicio&mensaje=El Usuario se registro correctamente" />';
         }
     }
 }
