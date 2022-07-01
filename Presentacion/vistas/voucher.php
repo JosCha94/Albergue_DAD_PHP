@@ -27,13 +27,13 @@ $infoCli = json_decode($pedido['datos_cliente']);
                     <!-- <h5 class="card-title">Card title</h5> -->
                 </div>
                 <div class="col-12 col-md-6 mx-auto col_voucher">
-                    <div class="text-center mt-2 border rounded-2" id="deta_pedido_voucher">
+                    <div class="text-center mt-2 border rounded-2 deta_voucher w-75 mx-auto" id="deta_pedido_voucher">
                         <p class="card-text fs-6">RUC: 123456</p>
                         <p class="card-text fs-5 "><?php echo $pedido['tipo_comprobante']; ?></p>
                         <p class="card-text fs-6"><?php echo $pedido['serie_comprobante']; ?></p>
                     </div>
                     <!-- <h5 class="card-title">Card title</h5> -->
-                    <div class="text-center mt-2 border rounded-2 p-1" id="deta_cliente_voucher">
+                    <div class="text-center mt-2 border rounded-2 p-1 deta_voucher w-75 mx-auto" id="deta_cliente_voucher">
                         <p class="card-text">Fecha de Emision: <?php echo date("d-M,Y", strtotime($pedido['pedi_fecha'])); ?>
                         <p class="card-text-md ">Cliente: <?php echo $infoCli->cliente;  ?></p>
                         <p class="card-text">DNI: <?php echo $infoCli->dni;  ?></p>
@@ -66,7 +66,7 @@ $infoCli = json_decode($pedido['datos_cliente']);
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <div class="col-4 offset-md-10">
+                    <div class="col-4 offset-md-10" id="Total_voucher">
                         <p class="card-text">SUBTOTAL: <?php echo $Subtotal;  ?></p>
                         <p class="card-text">IGV: <?php echo $pedido['pedi_igv']; ?></p>
                         <p class="card-text">TOTAL: <?php echo $pedido['pedi_monto']; ?></p>
