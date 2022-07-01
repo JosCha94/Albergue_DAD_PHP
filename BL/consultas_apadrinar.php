@@ -64,11 +64,14 @@ class Consulta_apadrinar
             $consulta -> execute();
             $estado = "Correcto";
         }catch (PDOException $e){
-            echo "Ocurrio un error en la base de atos: " . $e -> getMessage();
+            echo "Ocurrio un error en la base de datos: " . $e -> getMessage();
             $estado = "Falló";
         }
         return $estado;
     } 
+
+
+    
 
 
 

@@ -2,6 +2,8 @@
 require_once('ENTIDADES/suscripciones.php');
 require_once('DAL/conexion.php');
 require_once('BL/consultas_apadrinar.php');
+require_once('BL/consultas_tienda.php');
+
 $conexion = conexion::conectar();
 $consulta = new Consulta_apadrinar();
 
@@ -12,11 +14,19 @@ $usr_data = $consulta -> datosUsuario_apadrinar($conexion, $usrId );
 $susTipoId = $consulta -> listarTipoSuscrip_id($conexion, $idSus);
 
 $newdate = date('d-m-Y', strtotime('+1 month'));
+
 if (isset($_POST['suscrip'])) {
+    $numTar = $_POST['numTarjeta'];
+    $mes = $_POST['mesEx'];
+    $anio = $_POST['anioEx'];
+    $fechaEx = $mes."/".$anio;
+    $cvc = $_POST['cvc'];
+    $titular = $_POST['nomTar'];
     $uId = $_POST['usrId'];
     $rolId = $_POST['rolId'];
     $idTipoSus = $_POST['tipoId'];
     $tiempoSus = $_POST['sus_tiempo'];
+
     $suscri = new suscripcion($uId, $rolId, $idTipoSus, $tiempoSus);
     $consulta = new Consulta_apadrinar();
     $estado = $consulta->insertar_Suscripcion($conexion, $suscri);
@@ -116,22 +126,35 @@ if (isset($_POST['suscrip'])) {
                                 <div class="card-body payment-card-body">
                                     <span class="font-weight-normal card-text">Número de tarjeta</span>
                                     <div class="input">
-                                        <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+                                        <input type="text" class="form-control" name="numTarjeta" placeholder="0000 0000 0000 0000" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                     </div> 
                                     <div class="row mt-3 mb-3">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 ">
                                             <span class="font-weight-normal card-text">fecha de expiracion</span>
-                                            <div class="input">
-                                                <i class="fa fa-calendar"></i>
-                                                <input type="text" class="form-control" placeholder="MM/YY">
-                                            </div> 
+                                            <i class="fa fa-calendar"></i><br>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <input type="text" class="form-control" name="mesEx" placeholder="MM" maxlength="2" size="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                                </div>
+                                                <div class="col-md-2 h2">
+                                                    <span>/</span>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <input type="text" class="form-control" name="anioEx" placeholder="YY" maxlength="2" size="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                                </div>
+                                            </div>
+                                            
                                         </div>
                                         <div class="col-md-6">
                                             <span class="font-weight-normal card-text">CVC/CVV</span>
-                                            <div class="input">
-                                                <i class="fa fa-lock"></i>
-                                                <input type="text" class="form-control" placeholder="000">
-                                            </div> 
+                                            <i class="fa fa-lock"></i>
+                                            <input type="text" class="form-control" name="cvc" placeholder="000" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 my-3">
+                                            <label for="cvc">Nombre del titular</label>
+                                            <input class="form-control" type="text" name="nomTar">
                                         </div>
                                     </div>
                                     <span class="text-muted certificate-text"><i class="fa fa-lock"></i> Tu transaccion es segura con nuestros certificados SSL</span>
