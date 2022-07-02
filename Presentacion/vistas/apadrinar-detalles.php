@@ -47,21 +47,21 @@ if (isset($_POST['suscrip'])) {
                     }?> 
                     <?php echo ' </strong></div>';
         }elseif($newSuscripTarj == 2){
-            echo '<div class="alert alert-danger text-center">¡No se pudo realizar la suscripción por falta de saldo en la tarjeta!';
+            echo '<div class="alert alert-danger text-center">¡No se pudo realizar la suscripción por falta de saldo en la tarjeta!</div>';
         }else{
-            echo '<div class="alert alert-danger text-center">¡No se pudo realizar la transacción!';
+            echo '<div class="alert alert-danger text-center">¡No se pudo realizar la transacción!</div>';
         }
     }elseif($valiTarjeta == 1){
-        echo '<div class="alert alert-danger text-center">¡La fecha de expiración de la tarjeta no coincide o el formato ingresado es erroneo!';
+        echo '<div class="alert alert-danger text-center">¡La fecha de expiración de la tarjeta no coincide o el formato ingresado es erroneo!</div>';
     }elseif($valiTarjeta == 2){
-        echo '<div class="alert alert-danger text-center">¡El codigo de verificación de la tarjeta no es el correcto!';
+        echo '<div class="alert alert-danger text-center">¡El codigo de verificación de la tarjeta no es el correcto!</div>';
     }elseif($valiTarjeta == 3){
-        echo '<div class="alert alert-danger text-center">¡La tarjeta no existe, o el numero ingresado es incorrecto';
+        echo '<div class="alert alert-danger text-center">¡La tarjeta no existe, o el numero ingresado es incorrecto</div>';
         
      }
    
 }
-var_dump($numTar, $fechaEx, $cvc, $titular, $precio, $uId, $rolId, $idTipoSus, $tiempoSus);
+
 
 
 ?>
