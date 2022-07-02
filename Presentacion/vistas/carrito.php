@@ -1,4 +1,6 @@
 <?php
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 $permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], [3]);
 $permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], [3]);
 
@@ -18,6 +20,11 @@ switch ($error = 'SinError') {
 ?>
 <?php if ($error == 'SinError') : ?>
     <?php
+
+    require_once('BL/phpmailer/Exception.php');
+    require_once('BL/phpmailer/PHPMailer.php');
+    require_once('BL/phpmailer/SMTP.php');
+
     require_once 'ENTIDADES/pedido.php';
     require_once('BL/consultas_usuario.php');
     require_once('BL/consultas_tienda.php');
@@ -65,6 +72,7 @@ switch ($error = 'SinError') {
         $fechaTar = $_POST['fechaTar'];
         $numTar = (int)$_POST['numTar'];
         $nameTar = $_POST['nameTar'];
+        $DateAndTime = date('m-d-Y h:i:s a', time());
         $pedido = new Pedido($idUser, $idRol, $cliente, $dni, $correo, $montoTotal, $IGV);
         $resVali = $consulta->validarTarjeta($conexion, $cvc, $fechaTar, $numTar, $nameTar);
         if ($resVali == 0) {
@@ -72,6 +80,38 @@ switch ($error = 'SinError') {
             if ($resPedi == 1) {
                 $_SESSION['usuario'][5] = json_encode(array());
                 echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=carrito&mensaje=Se ejecuto correctamente la compra" />';
+                $asunto = "Compra realizada en la tienda del albergue Planet Dog";
+
+                $body = "Hola <strong>".$cliente."</strong>, has hecho una compra en la tienda del albergue por un total de <strong>S/".$montoTotal."</strong>. El dia <strong>".$DateAndTime."</strong>, ingresa a tu cuenta del albergue para verificar los detalles de tu compra , recuerda que debes presentar el voucher de tu compra al momento de recoger tu compra en la tienda del albergue.";
+
+                $mail = new PHPMailer(true);
+
+                try {
+                    //Server settings
+                    $mail->SMTPDebug = "0";                      //Enable verbose debug output
+                    $mail->isSMTP();                                            //Send using SMTP
+                    $mail->Host       = 'smtp.gmail.com';'smtp.live.com';'smtp-mail.outlook.com';               //Set the SMTP server to send through
+                    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                    $mail->Username   = 'albergue.adoptar.perritos@gmail.com';                     //SMTP username
+                    $mail->Password   = 'iolsqknvqrlvoijr';                               //SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            
+                    //Recipients
+                    $mail->setFrom('albergue.adoptar.perritos@gmail.com', "ALBERGUE DE PERRITOS");
+                    $mail->addAddress($correo, $cliente);     //Add a recipient
+            
+                    //Content
+                    $mail->isHTML(true);                                  //Set email format to HTML
+                    $mail->Subject = $asunto;
+                    $mail->Body    = $body;
+                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+            
+                    $mail->send();
+                    echo 'El correo se mando correctamente';
+                } catch (Exception $e) {
+                    echo "Hubo un error al momento de enviar el correo: {$mail->ErrorInfo}";
+                }
             } elseif ($resPedi == 2) {
                 echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=carrito&error=No se pudo realizar la compra debido a falta de saldo en la Tarjeta" />';
             } else {

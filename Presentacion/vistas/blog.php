@@ -1,66 +1,50 @@
- <!-- ==== Page Content ==== -->
- <div id="blog-home" class="page mt-5">
-         <div class="container">
+<?php
+require_once('DAL/conexion.php');
+require_once('BL/consultas_post.php');
+$conexion = conexion::conectar();
+$consulta = new Consulta_post();
+$posts = $consulta->listarPost($conexion); // obtenemos todos los posts
+?>
+
+<!-- ==== Contenido de blog ==== -->
+<div id="blog-home" class="page mt-5">
+         <div class="container">   
             <div class="row">
-               <!-- Blog Entries Column -->
+               <!-- Columna de posts-->
                <div class="col-lg-8 page-with-sidebar">
                   <!-- Blog Post -->
+                  <?php foreach ($posts as $key => $value) : ?>     <!-- Recorremos todos los posts -->                        
                   <div class="card blog-card ">
-                     <!--  Post info -->
+                     <!-- informacion Post  -->
                      <div class="post-info mt-3">
-                        <ul class="list-inline m-0 p-0">
-                           <li class="list-inline-item"> 21 de Febrero del 2022</li>
-                           <li class="list-inline-item"> Por <a href="#">Autor</a></li>
+                        <ul class="list-inline m-0 p-0"> 
+                           <li class="list-inline-item"><?php echo ($value['post_fecha_creacion']); ?></li>
+                           <li class="list-inline-item"> Por: <?php echo ($value['post_autor']); ?></li>
                         </ul>
                      </div>
-                     <!-- /Post-info -->
-                     <a href="index.php?modulo=blog-single">
-                        <!-- image -->
+                     <!-- /Informacion post -->
+                        <!-- imagen -->
                         <div class="blog-img">
-                           <img class="card-img-top img-fluid" src="Presentacion/libs/images/blog1.jpg" alt="albergue">
+                           <img src="data:image/<?php echo($value['post_tipo_img']);?>;base64,<?php echo base64_encode( $value['post_imagen']); ?>" alt="albergue">
                         </div>
-                        <!-- /blog-img -->
+                        <!-- /imagen -->
                      </a>
                      <div class="card-body">
-                        <a href="index.php?modulo=blog-single">
-                           <h3 class="card-title">10 señales de un barrio que admite perros</h3>
+                           <h3 class="card-title "><?php echo ($value['post_titulo']); ?></h3>  <!-- Titulo del post -->
                         </a>
-                        <!-- excerpt -->
-                        <p class="card-text mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                        <a href="index.php?modulo=blog-single" class="btn btn-secondary">Leer más &rarr;</a>
-                     </div>
-                     <!--card-footer -->
-                  </div>
-
-                  <div class="card blog-card mb-3">
-                     <!--  Post info -->
-                     <div class="post-info mt-3">
-                        <ul class="list-inline m-0 p-0">
-                           <li class="list-inline-item"> 21 de Febrero del 2022</li>
-                           <li class="list-inline-item"> Por <a href="#">Autor</a></li>
-                        </ul>
-                     </div>
-                     <!-- /Post-info -->
-                     <a href="index.php?modulo=blog-single">
-                        <!-- image -->
-                        <div class="blog-img">
-                           <img class="card-img-top img-fluid" src="Presentacion/libs/images/blog1.jpg" alt="albergue">
-                        </div>
-                        <!-- /blog-img -->
-                     </a>
-                     <div class="card-body">
-                        <a href="index.php?modulo=blog-single">
-                           <h3 class="card-title">10 señales de un barrio que admite perros</h3>
-                        </a>
-                        <!-- excerpt -->
-                        <p class="card-text mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                        <a href="index.php?modulo=blog-single" class="btn btn-secondary">Leer más &rarr;</a>
-                     </div>
-                     <!--card-footer -->
-                  </div>
-                 
+                        <!--descripcion de post -->
+                        <p class="card-text mt-3"></p><?php echo ($value['post_descripcion']); ?></p>
+                           <form action="index.php?modulo=blog-single" method="post"> 
+                              <input type="hidden" value="<?php echo $value['post_id'];?>" name="idPost">       
+                              <a href="" class="btn btn-secondary">Leer más &rarr;</a>
+                           </form> 
+                     </div>                    
+                  </div>  
+                  <?php endforeach; ?>      
+                  <!-- /Blog Post -->             
                </div>
-               <!-- /page-with-sidebar -->
+               <!-- /columna de posts-->
+               <!-- /pagina-con-sidebar -->
                <!-- Sidebar -->
                <div id="sidebar" class="h-100 col-lg-4 card">
                   <!--widget-area -->
@@ -72,21 +56,19 @@
                         <button class="btn btn-secondary btn-sm" type="button">Ir</button>
                         </span>
                      </div>
-                  </div>
-                 
+                  </div>                 
                
                   <!--/widget-area -->
                   <div class="widget-area mt-3">
                      <h5 class="sidebar-header">Síguenos</h5>
                      <div class="contact-icon-info">
-                        <!-- Start Social Links -->
+                        <!--  Links  redes sociales-->
                         <ul class="social-list text-center list-inline">
                            <li class="list-inline-item"><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
                            <li class="list-inline-item"><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                           <li class="list-inline-item"><a  title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>
-                          
+                           <li class="list-inline-item"><a  title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>                         
                         </ul>
-                        <!-- /End Social Links -->
+                        <!-- / Links  redes sociales-->
                      </div>
                      <!--/contact-icon-info -->
                   </div>
@@ -98,4 +80,4 @@
          </div>
          <!-- /.container -->
       </div>
-      <!-- /page -->
+      <!-- /pagina-->

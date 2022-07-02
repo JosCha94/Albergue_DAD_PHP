@@ -10,7 +10,17 @@
   .col_voucher{
     flex: 0 0 auto;
     width: 50%;
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 0.5rem !important;    
+  }
+
+  #deta_cliente_voucher, #deta_pedido_voucher{
+    border: 1px solid #dee2e6 !important;
+    border-radius: 0.25rem !important;
+    width: 100% !important;
+  }
+
+  #Total_voucher{
+    margin-left: 83.33333333%;
   }
 }
 
@@ -25,7 +35,7 @@
     font-size: 1rem;
   }
 
-  #deta_cliente_voucher, #deta_pedido_voucher{
+  .deta_voucher{
     border:none !important;
   }
 
