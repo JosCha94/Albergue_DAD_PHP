@@ -52,22 +52,31 @@ class Consulta_apadrinar
         }
     }
 
-    public function insertar_Suscripcion($conexion, $suscri)
+    public function insertar_Suscripcion($conexion, $suscri, $monto, $cvc, $fechaTar, $numTar, $nameTar)
     {
         try {
-            $sql = "CALL SP_insertar_suscripcion(:idUsuario, :rolId,  :idTipoSus, :tiempoSus)";
+            $sql = "CALL SP_insert_suscrip_tarjeta(:idUsuario, :rolId,  :idTipoSus, :tiempoSus, :monto, :cvc, :fechaTar, :numtar, :nameTar, @DATA)";
             $consulta = $conexion->prepare($sql);
             $consulta -> bindValue(':idUsuario', $suscri->getUsr_id());
             $consulta -> bindValue(':rolId', $suscri->getRol_id());
             $consulta -> bindValue(':idTipoSus', $suscri->getTipo_id());
             $consulta -> bindValue(':tiempoSus', $suscri->getSuscrip_tiempo());
+            $consulta -> bindParam(':monto', $monto);
+            $consulta -> bindParam(':cvc', $cvc);
+            $consulta -> bindParam(':fechaTar', $fechaTar);
+            $consulta -> bindParam(':numtar', $numTar);
+            $consulta -> bindParam(':nameTar', $nameTar);
+
             $consulta -> execute();
-            $estado = "Correcto";
+            $consulta -> closeCursor();
+            $consulta = $conexion -> prepare("SELECT @DATA AS id");
+            $consulta -> execute();
+            $id = $consulta ->fetch(PDO::FETCH_ASSOC);
+            return $id['id'];
         }catch (PDOException $e){
+
             echo "Ocurrio un error en la base de datos: " . $e -> getMessage();
-            $estado = "Falló";
         }
-        return $estado;
     } 
 
 

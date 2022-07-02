@@ -16,37 +16,54 @@ $susTipoId = $consulta -> listarTipoSuscrip_id($conexion, $idSus);
 $newdate = date('d-m-Y', strtotime('+1 month'));
 
 if (isset($_POST['suscrip'])) {
-    $numTar = $_POST['numTarjeta'];
+    $numTar = (int)$_POST['numTarjeta'];
     $mes = $_POST['mesEx'];
     $anio = $_POST['anioEx'];
     $fechaEx = $mes."/".$anio;
-    $cvc = $_POST['cvc'];
+    $cvc = (int)$_POST['cvc'];
     $titular = $_POST['nomTar'];
+    $precio = $susTipoId['s_tipo_precio'];
     $uId = $_POST['usrId'];
     $rolId = $_POST['rolId'];
     $idTipoSus = $_POST['tipoId'];
     $tiempoSus = $_POST['sus_tiempo'];
-
     $suscri = new suscripcion($uId, $rolId, $idTipoSus, $tiempoSus);
     $consulta = new Consulta_apadrinar();
-    $estado = $consulta->insertar_Suscripcion($conexion, $suscri);
-
-    if ($estado == 'mal') {
-    } else {
-        echo '<div class="alert alert-success text-center">Suscripcion realizada con éxito, el próximo cobro se realizará el día <strong>' .$newdate. '</strong>
-         y la fecha del fin de su suscripción es <strong>'
-         ?> <?php if($tiempoSus == '1'){
+    $consulta2 = new Consulta_producto();
+    $valiTarjeta = $consulta2->validarTarjeta($conexion, $cvc, $fechaEx, $numTar, $titular);
+    if($valiTarjeta == 0){
+        $newSuscripTarj = $consulta->insertar_Suscripcion($conexion, $suscri, $precio, $cvc, $fechaEx, $numTar, $titular );
+        if ($newSuscripTarj == 1){
+            echo '<div class="alert alert-success text-center">Suscripcion realizada con éxito, el próximo cobro se realizará el día <strong>' .$newdate. '</strong>
+            y la fecha del fin de su suscripción es <strong>'
+            ?> <?php if($tiempoSus == 'Trimestral'){
                         echo date('d-m-Y', strtotime('+3 month'));
-                    }elseif($tiempoSus == '2'){
+                    }elseif($tiempoSus == 'Semestral'){
                         echo date('d-m-Y', strtotime('+6 month'));
-                    }elseif($tiempoSus == '3'){
+                    }elseif($tiempoSus == 'Anual'){
                         echo date('d-m-Y', strtotime('+12 month'));
-                    }elseif($tiempoSus == '4'){
+                    }elseif($tiempoSus == 'Indefinida'){
                         echo 'Indefinida';
                     }?> 
                     <?php echo ' </strong></div>';
-    }
+        }elseif($newSuscripTarj == 2){
+            echo '<div class="alert alert-danger text-center">¡No se pudo realizar la suscripción por falta de saldo en la tarjeta!';
+        }else{
+            echo '<div class="alert alert-danger text-center">¡No se pudo realizar la transacción!';
+        }
+    }elseif($valiTarjeta == 1){
+        echo '<div class="alert alert-danger text-center">¡La fecha de expiración de la tarjeta no coincide o el formato ingresado es erroneo!';
+    }elseif($valiTarjeta == 2){
+        echo '<div class="alert alert-danger text-center">¡El codigo de verificación de la tarjeta no es el correcto!';
+    }elseif($valiTarjeta == 3){
+        echo '<div class="alert alert-danger text-center">¡La tarjeta no existe, o el numero ingresado es incorrecto';
+        
+     }
+   
 }
+var_dump($numTar, $fechaEx, $cvc, $titular, $precio, $uId, $rolId, $idTipoSus, $tiempoSus);
+
+
 ?>
 
 <div class="container c-card d-flex justify-content-center mt-5 mb-5">
@@ -60,7 +77,7 @@ if (isset($_POST['suscrip'])) {
                             <span>Suscripcion : <?=$susTipoId['s_tipo_nombre'] ?></span>
                         </div>
                         <div class="mt-1">
-                            <sup class="super-price"><?=$susTipoId['s_tipo_precio'] ?></sup>
+                            <span class="super-price"><?=$susTipoId['s_tipo_precio'] ?></span>
                             <span class="super-month">/Mes</span>
                         </div>
                     </div>
@@ -71,10 +88,10 @@ if (isset($_POST['suscrip'])) {
                     <div class="select-tiempo p-3 mb-3">
                         <select class="form-select" aria-label="Default select example" name="sus_tiempo" required >
                             <option selected>Selecciona un tiempo para tu suscripcion</option>
-                            <option value="1">Trimestral</option>
-                            <option value="2">Semestral</option>
-                            <option value="3">Anual</option>
-                            <option value="4">Indefinida</option>
+                            <option value="Trimestral">Trimestral</option>
+                            <option value="Semestral">Semestral</option>
+                            <option value="Anual">Anual</option>
+                            <option value="Indefinida">Indefinida</option>
                         </select>
                     </div>
                     <hr class="mt-0 line">
@@ -162,6 +179,7 @@ if (isset($_POST['suscrip'])) {
                             </div>
                         </div>
                     </div>
+
                     <input type="hidden" name="tipoId" value="<?= $_POST['susId'];?>">
                     <input type="hidden" name="usrId" value="<?php echo $_SESSION['usuario'][0]; ?>">
                     <input type="hidden" name="rolId" value="<?= $usr_data['rol_id'] ?>">
