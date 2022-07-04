@@ -8,21 +8,11 @@ if (isset($_POST['submit_btn_donacion'])) {
    $apellidos = $_POST['apellidos'];
    $correo = $_POST['correo'];
    $celular = $_POST['celular'];
-   // archivo temporal (ruta y nombre)
-   $tmp_name = $_FILES['vaucher']['tmp_name'];
-   // Obtenemos los datos de la imagen tamaño, tipo y nombre
-   $tamano = $_FILES['vaucher']['size'];  
-   $tipo = $_FILES['vaucher']['type'];   
-   $nombre = $_FILES['vaucher']["name"];  
-   //ruta completa
-   $archivo_temporal = $_FILES['vaucher']['tmp_name'];  
-   //leer el archivo(imagen) temporal en binario  
-   $fp = fopen($archivo_temporal, 'r+b');   
-   $vaucher = fread($fp, filesize($archivo_temporal)); 
-   $monto = $_POST['monto'];
-   $don = new Donacion($nombres, $apellidos,  $correo, $celular, $vaucher, $monto);
+   $tipo_img = $_FILES ['vaucher']['type'];
+   $vaucher = file_get_contents($_FILES['vaucher']['tmp_name']);  //obtenemos el archivo de la imagen
+   $don = new Donacion($nombres, $apellidos,  $correo, $celular, $vaucher, $tipo_img);
    $consulta = new Consulta_donacion();
-   $estado = $consulta->SP_insertar_donacion($conexion, $don);
+   $estado = $consulta->insertarDonacion($conexion, $don); //Llamamos al metodo insertarDonacion de la clase Consulta_donacion
    if ($estado == 'mal') {
       echo '<div class="alert alert-success">Su donación fue enviada exitosamente.</div>';
    }
@@ -61,15 +51,15 @@ if (isset($_POST['submit_btn_donacion'])) {
                         <div class="row">
                            <div class="col-md-12 text-light">
                               <label>Nombre</label>
-                              <input type="text" name="nombre" class="form-control input-field" minlength="4" maxlength="50" placeholder="Ingresa tu nombre"required=""> 
+                              <input type="text" name="nombres" class="form-control input-field" minlength="4" maxlength="50" placeholder="Ingresa tu nombre"required=""> 
                            </div>
 						         <div class="col-md-12 text-light">
                               <label>Apellido</label>
-                              <input type="text" name="apellido" class="form-control input-field" minlength="4" maxlength="50" placeholder="Ingresa tu apellido" required=""> 
+                              <input type="text" name="apellidos" class="form-control input-field" minlength="4" maxlength="50" placeholder="Ingresa tu apellido" required=""> 
                            </div>
                            <div class="col-md-12 text-light">
                               <label>Correo Electrónico</label>
-                              <input type="email" name="email" class="form-control input-field" minlength="4" maxlength="50" placeholder="Ingresa tu correo electrónico" required=""> 
+                              <input type="email" name="correo" class="form-control input-field" minlength="4" maxlength="50" placeholder="Ingresa tu correo electrónico" required=""> 
                            </div>
                            <div class="col-md-12 text-light">
                               <label>Celular</label>
@@ -78,14 +68,10 @@ if (isset($_POST['submit_btn_donacion'])) {
                            <div class="col-md-12 text-light">
                               <label>Sube tu váucher</label>
                               <input type="file" name="vaucher" class="form-control input-field"> 
-                           </div> 
-                           <div class="col-md-12 text-light">
-                              <label>Monto donado </label>
-                              <input type="text" name="monto" class="form-control input-field" maxlength="4" placeholder="Ingresa el monto de tu donación" required=""> 
-                           </div>                           
+                           </div>                     
                         </div>
                         <!-- button -->
-                        <button type="submit" id="submit_btn" value="Submit" class="btn btn-donation mt-3"">Donar</button>
+                        <button type="submit" id="submit_btn" name ="submit_btn_donacion" value="Submit" class="btn btn-donation mt-3"">Donar</button>
                      </div>
                      <!-- /form-group-->                    
                      </form>
