@@ -6,7 +6,12 @@ $consulta = new Consulta_post();
 $posts = $consulta->listarPost($conexion); // obtenemos todos los posts
 ?>
 
+
 <!-- ==== Contenido de blog ==== -->
+<div class="section-heading text-center mt-5">
+   <h2>Blog</h2>
+</div>
+         
 <div id="blog-home" class="page mt-5">
          <div class="container">   
             <div class="row">
@@ -18,7 +23,7 @@ $posts = $consulta->listarPost($conexion); // obtenemos todos los posts
                      <!-- informacion Post  -->
                      <div class="post-info mt-3">
                         <ul class="list-inline m-0 p-0"> 
-                           <li class="list-inline-item"><?php echo ($value['post_fecha_creacion']); ?></li>
+                           <li class="list-inline-item"><?php echo date("Y/m/d") . "<br>"; ($value['post_fecha_creacion']); ?></li>
                            <li class="list-inline-item"> Por: <?php echo ($value['post_autor']); ?></li>
                         </ul>
                      </div>
@@ -30,13 +35,11 @@ $posts = $consulta->listarPost($conexion); // obtenemos todos los posts
                         <!-- /imagen -->
                      </a>
                      <div class="card-body">
-                           <h3 class="card-title "><?php echo ($value['post_titulo']); ?></h3>  <!-- Titulo del post -->
-                        </a>
-                        <!--descripcion de post -->
-                        <p class="card-text mt-3"></p><?php echo ($value['post_descripcion']); ?></p>
-                           <form action="index.php?modulo=blog-single" method="post"> 
-                              <input type="hidden" value="<?php echo $value['post_id'];?>" name="idPost">       
-                              <a href="" class="btn btn-secondary">Leer más &rarr;</a>
+                        <!-- Titulo del post -->
+                           <h3 class="card-title "><?php echo ($value['post_titulo']); ?></h3>  
+                           <form action="index.php?modulo=blog-single" method="post">       
+                              <input type="hidden" value="<?php echo $value['post_id'];?>" name="idPost">          
+                              <a href="" class="btn btn-donation">Leer más &rarr;</a>
                            </form> 
                      </div>                    
                   </div>  
@@ -48,16 +51,7 @@ $posts = $consulta->listarPost($conexion); // obtenemos todos los posts
                <!-- Sidebar -->
                <div id="sidebar" class="h-100 col-lg-4 card">
                   <!--widget-area -->
-                  <div class="widget-area">
-                     <h5 class="sidebar-header">Buscar</h5>
-                     <div class="input-group">
-                        <input type="text" class="form-control border border-secondary" placeholder="">
-                        <span class="input-group-btn">
-                        <button class="btn btn-secondary btn-sm" type="button">Ir</button>
-                        </span>
-                     </div>
-                  </div>                 
-               
+                  
                   <!--/widget-area -->
                   <div class="widget-area mt-3">
                      <h5 class="sidebar-header">Síguenos</h5>
