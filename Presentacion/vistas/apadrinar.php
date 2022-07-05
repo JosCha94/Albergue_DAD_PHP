@@ -14,7 +14,7 @@ $susTipo = $consulta -> listarTipoSuscrip($conexion);
             <div class="col-lg-6">
                 <div class="sus-title ps-5 mb-5" style="max-width: 600px;">
                     <h6 class=" text-uppercase">Planes de suscripción</h6>
-                    <h1 class="display-5 text-uppercase mb-0">apadrina y apoya a los perrtitos del albergue</h1>
+                    <h1 class="display-5 text-uppercase mb-0">apadrina y apoya a los perritos del albergue</h1>
                 </div>
                 <div class="sus-p text-center">
                     <p class="h4"><i> <strong>Apadrinar</strong>  a nuestros perritos nunca fue tan fácil, con planes desde los <strong>S/9.00</strong></i> </p>

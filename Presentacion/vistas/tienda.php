@@ -27,6 +27,17 @@
       }
    }
    ?>
+   <div class="container tienda">
+      <img class="img-fluid" src="Presentacion/libs/images/tienda.jpg" alt="Tienda perritos">
+   </div>
+   <div class="texto-imagen text-center">BIENVENIDOS A LA TIENDA</div>
+   <div class="carrito text-end">
+   <?php if ($logueado == 'false') {
+            } else { ?>
+               <a href="index.php?modulo=carrito" class="cart mx-5"><i class="fa-solid fa-cart-shopping"></i></a>
+            <?php } ?>
+   </div>
+
    <?php if ($logueado == 'false') { ?>
       <div class="alert alert-danger mt-5" role="alert">
          <h4 class="alert-heading">¡Atención!</h4>
@@ -36,7 +47,7 @@
       </div>
    <?php }  ?>
    <!-- <?php echo $_SESSION['usuario'][5]; ?> -->
-   <div class="container adop-body mt-5">
+   <div class="container adop-body">
       <div class="row">
          <div class="col-md-3 sidebar-filter">
             <h2 class="mt-0 mb-5">Tienda de<br> Productos</h2>
@@ -84,10 +95,7 @@
             <?php endif; ?>
 
             <!-- <div class="divider mt-5 mb-5 border-bottom border-secondary"></div> -->
-            <?php if ($logueado == 'false') {
-            } else { ?>
-               <a href="index.php?modulo=carrito" class="btn btn-lg btn-block btn-primary mt-5">Carrito</a>
-            <?php } ?>
+            
          </div>
 
          <div class="col-md-9">
