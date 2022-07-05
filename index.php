@@ -197,8 +197,14 @@ switch ($error = 'SinError') {
                 </div>
             </div>
         </div>
-
-
+        
+        <div class="container-fluid cont-inicio">
+            <?php
+        if ($modulo == "" || $modulo == "inicio") {
+                include_once "Presentacion/vistas/inicio.php";
+            }
+            ?>
+        </div>
 
         <!-- BODY -->
         <div class="container mb-5">
@@ -218,9 +224,7 @@ switch ($error = 'SinError') {
                 </div>
             <?php
             }
-            if ($modulo == "" || $modulo == "inicio") {
-                include_once "Presentacion/vistas/inicio.php";
-            }
+            
             if ($modulo == "adoptar") {
                 include_once "Presentacion/vistas/adoptar.php";
             }

@@ -4,16 +4,18 @@ class Donacion{
     private $dona_apellidos;
     private $dona_correo;
     private $dona_celular;
-    private $dona_vaucher;     
+    private $dona_vaucher;
+    private $dona_nombre_img;
     private $dona_tipo_img;
 
-    public function __construct( $dona_nombres, $dona_apellidos, $dona_correo, $dona_celular, $dona_vaucher, $dona_tipo_img){
+    public function __construct($dona_nombres, $dona_apellidos, $dona_correo, $dona_celular, $dona_vaucher, $dona_nombre_img, $dona_tipo_img){
         $this->dona_nombres = $dona_nombres;
         $this->dona_apellidos = $dona_apellidos;
         $this->dona_correo = $dona_correo;
         $this->dona_celular = $dona_celular;
         $this->dona_vaucher = $dona_vaucher;
-        $this->dona_monto=$dona_tipo_img;
+        $this->dona_nombre_img = $dona_nombre_img;
+        $this->dona_tipo_img = $dona_tipo_img;
     }
 
     public function getDona_nombres(){
@@ -31,10 +33,13 @@ class Donacion{
     public function getDona_vaucher(){
         return $this->dona_vaucher;
     }
+    public function getDona_nombre_img(){
+        return $this->dona_nombre_img;
+    }
     public function getDona_tipo_img(){
         return $this->dona_tipo_img;
     } 
-    
+
     public function setDona_nombres($dona_nombres){
         $this->dona_nombres = $dona_nombres;
     }
@@ -49,6 +54,9 @@ class Donacion{
     }
     public function setDona_vaucher($dona_vaucher){
         $this->dona_vaucher = $dona_vaucher;
+    }
+    public function setDona_nombre_img($dona_nombre_img){
+        $this->dona_nombre_img = $dona_nombre_img;
     }
     public function setDona_monto($dona_tipo_img){
         $this->dona_monto = $dona_tipo_img;

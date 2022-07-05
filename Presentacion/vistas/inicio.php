@@ -1,3 +1,39 @@
+   <div id="carouselExampleCaptions" class="carousel slide mx-0 mb-5" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+         <div class="carousel-item active">
+            <img src="Presentacion/libs/images/carrusel1.jpg" class="d-block img-fluid" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            <h5>Ayudanos a construir un mundo mejor para los perritos abandonados</h5>
+            </div>
+         </div>
+         <div class="carousel-item">
+            <img src="Presentacion/libs/images/slide1.jpg" class="d-block img-fluid" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            <h5>El amor y compañia que te pueden ofrecer es infinito</h5>
+            </div>
+         </div>
+         <div class="carousel-item">
+            <img src="Presentacion/libs/images/carrusel3.jpg" class="d-block img-fluid" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            <h5>Se convertiran en tu mejor amigo</h5>
+            </div>
+         </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+         <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+         <span class="visually-hidden">Next</span>
+      </button>
+   </div>
+<!-- 
 <div class="row d-flex justify-content-center">
    <img class="img-fluid w-50" src="Presentacion/libs/images/PAGINA.jpg" alt="construccion">
 </div>
@@ -7,7 +43,7 @@
       <div></div>
    <div></div>
 </div>
-</div>
+</div> -->
 <section id="aboutus" class="container-fluid bg-light mx-auto">
          <div class="container pt-0">
             <!-- section heading -->  
@@ -21,7 +57,7 @@
 				         que han sido queridos pero ya no pueden ser cuidados y los que simplemente no son deseados.
 				         Acogemos a los perritos hasta que podamos encontrarles un hogar permanente y cariñoso.</p>
                   <!-- list -->
-                  <h3>¿Por qué adoptar un perrito del albergue?</h3>
+                  <h3 class="my-3">¿Por qué adoptar un perrito del albergue?</h3>
                   <ul class="custom pl-0 font-weight-bold">
                      <li>Te brindan amor incondicional.</li>
                      <li>Salvas una vida.</li>

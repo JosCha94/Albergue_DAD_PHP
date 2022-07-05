@@ -203,6 +203,48 @@ ul.custom li:before {
 }
 
 /* VAINA DE LOADING END*/
+/* INICIO SLIDER PAGINA INICIO */
+.cont-inicio{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+.carousel.slide img{
+  /* height: 100%; */
+  width: 100%;
+  overflow: auto;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  /* position: absolute; */
+}
+.carousel-inner h5{
+  color: white;
+  font-size: 300%;
+}
+.carousel-inner p{
+  color: white;
+  font-size: 25px;
+}
+
+/* FIN DE SLIDER */
+/* ACERCA DE NOSTROS*/
+
+.section-heading h2{
+  color: #001E6C;
+}
+.lead{
+  color: #001E6C;
+  text-align: justify;
+}
+.col-lg-7 h3{
+  color: #001E6C;
+}
+
+
+/*ACERCA DE NOSOTROS FIN*/
+
 
 /* FOOTER   */
 footer {
@@ -252,6 +294,8 @@ footer a:hover {
 
 .sidebar-filter {
   font-size: 14px;
+  color: #001E6C;
+  font-weight: bold;
 }
 
 /*============FOTOS PERRITOS=============*/
@@ -502,6 +546,7 @@ h1.text-center {
 .section-heading h2 {
   font-size: 62px;
   font-weight: 800;
+  color: #001E6C;
 }
 
 .section-heading.light-icon h2:before {
@@ -819,7 +864,38 @@ li {
   opacity: 0.75;
   background-color: #E8630a;
 }
-
+/* TIENDA */
+.container.tienda{
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+.container.tienda img{
+  display: block;
+}
+.texto-imagen{
+  color:#E8630a;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 10px;
+  border: 2px solid;
+  border-radius: 20px;
+  border-color: #E8630A;
+  padding: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+a.cart{
+  font-size: 50px;
+  color: #E8630A;
+}
+a.cart:hover{
+  color: #001E6C;
+}
+/* FIN TIENDA */
 
 
 

@@ -1,27 +1,40 @@
- <!-- ==== Page Content ==== -->
- <div class="page mt-5">
+<?php
+require_once('DAL/conexion.php');
+require_once('BL/consultas_post.php');
+$conexion = conexion::conectar();
+$consulta = new Consulta_post();
+$idPost = $_POST['idPost']; // id del post que se quiere mostrar
+$id = $idPost;
+$post = $consulta->mostrarPost($conexion, $id); // obtenemos el post que se quiere mostrar
+
+?>
+
+<!-- ==== Pagina Contenido de post==== -->
+<div class="page mt-5">
+          <!-- .container -->
          <div class="container">
+            <!-- .row -->
             <div class="row">
-               <!-- Post Content Column -->
+               <!-- Columna post-->
                <div class="col-lg-8  page-with-sidebar">
-                  <h2 class="mb-2">10 señales de un barrio que admite perros</h2>
-                  <!-- Post info-->
+                  <!-- Titulo del post -->
+                  <h2 class="mb-2"><?php echo $post['post_titulo'] ?></h2>  
+                  <!-- Informacion post-->
                   <div class="post-info text-muted">
-                     21 de febrero del  2022 por
-                     <a href="#">Autor</a> 
+                     <ul class="list-inline m-0 p-0"> 
+                          <!-- Fecha de creacion del post -->
+                        <li class="list-inline-item"><?php echo $post['post_fecha_creacion'] ?></li> 
+                        <!-- Autor del post -->
+                        <li class="list-inline-item"> Por: <?php echo $post['post_autor'] ?></li>  
+                     </ul>
                   </div>
                   <hr>
-                  <!-- Preview Image -->
-                  <img src="Presentacion/libs/images/blog1.jpg" class="img-fluid" alt="">
+                   <!-- Imagen del post -->
+                  <img src="data:image/<?php echo($post['post_tipo_img']);?>;base64,<?php echo base64_encode( $post['post_imagen']); ?>" alt="albergue">
                   <hr>
-                  <!-- Post Content -->
-                  <p class="lead text-primary">Elegir un barrio para usted y su perro</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <b>Is es profecto tu.</b> Sed quot homines, tot sententiae; Ego vero volo in virtute vim esse quam maximam; Animi enim quoque dolores percipiet omnibus partibus maiores quam corporis. Itaque haec cum illis est dissensio, cum Peripateticis nulla sane.</p>
-                  <h4>Tips</h4>
-                  <p>
-                     Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper 
-                  </p>
-                  <!-- Comments Form -->
+                  <!-- Descripcion del post -->
+                  <p class="lead text-primary"> <?php echo $post['post_descripcion'] ?></p>  
+                  <!-- Formulario de comentarios -->
                   <div class="card my-4 mt-5 bg-light">
                      <h5 class="card-header">Comentarios:</h5>
                      <div class="card-body">
@@ -39,13 +52,12 @@
                         </form>
                      </div>
                   </div>
-                  <!-- Comment -->
-                  
+                   <!-- Formulario de comentarios -->                
                </div>
-               <!-- /page-with-sidebar -->
+               <!-- /sidebar  de pagina-->
                <!-- Sidebar -->
                <div id="sidebar" class="h-100 col-lg-4 card">
-                  <!--widget-area -->
+                  <!--widget- -->
                   <div class="widget-area">
                      <h5 class="sidebar-header">Buscar</h5>
                      <div class="input-group">
@@ -55,20 +67,20 @@
                         </span>
                      </div>
                   </div>
-                 
+                 <!--widget-area -->
                   <div class="widget-area">
                      <h5 class="sidebar-header">Síguenos</h5>
                      <div class="contact-icon-info">
-                        <!-- Start Social Links -->
+                        <!-- Links redes sociales-->
                         <ul class="social-list text-center list-inline">
                            <li class="list-inline-item"><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
                            <li class="list-inline-item"><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
                            <li class="list-inline-item"><a  title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>
                           
                         </ul>
-                        <!-- /End Social Links -->
+                        <!-- /Fin links redes sociales-->
                      </div>
-                     <!--/contact-icon-info -->
+                     <!--/contactos-icon-info -->
                   </div>
                   <!--/widget-area -->
                </div>
