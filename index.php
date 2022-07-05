@@ -144,6 +144,7 @@ switch ($error = 'SinError') {
                                 </li>
                             </ul>
                         </div>
+                        <a href="index.php?modulo=carrito" class="cart mx-3 text-light fs-5"><i class="fa-solid fa-cart-shopping"></i></a>
                     <?php
                     }
                     ?>
