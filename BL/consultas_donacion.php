@@ -4,15 +4,15 @@ class Consulta_donacion
     public function insertarDonacion($conexion,$don)
     {
         try {
-            $sql = "CALL SP_insertar_donacion(:nombres, :apellidos, :correo, :celular, :vaucher, :nombre_img :tipo_img)";
+            $sql = "CALL SP_insertar_donacion(:nombres, :apellidos, :correo, :celular, :vaucher, :tipo_img, :monto)";
             $consulta = $conexion->prepare($sql);
             $consulta->bindValue(':nombres', $don->getDona_nombres());
             $consulta->bindValue(':apellidos', $don->getDona_apellidos());
             $consulta->bindValue(':correo', $don->getDona_correo());
             $consulta->bindValue(':celular', $don->getDona_celular());
             $consulta->bindValue(':vaucher', $don->getDona_vaucher());
-            $consulta->bindValue(':nombre_img', $don->getDona_nombre_img());
             $consulta->bindValue(':tipo_img', $don->getDona_tipo_img());
+            $consulta->bindValue(':monto', $don->getDona_monto());
             $consulta->execute();
         } catch (PDOException $e) {
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
@@ -27,7 +27,6 @@ class Consulta_donacion
         $correo = trim ($don->getDona_correo());
         $celular = trim ($don->getDona_celular());
         $vaucher = $don->getDona_vaucher();
-        $nombre_img = trim ($don->getDona_nombre_img());
         $tipo_img = trim ($don->getDona_tipo_img());
 
         if (empty($nombres)) {

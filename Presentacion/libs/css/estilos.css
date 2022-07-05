@@ -546,11 +546,11 @@ h1.text-center {
 .section-heading h2 {
   font-size: 62px;
   font-weight: 800;
-  color: #001E6C;
+  color: #E8630A;
 }
 
 .section-heading.light-icon h2:before {
-  color: #fff !important;
+  color: #001E6C !important;
 }
 
 .section-heading h2:before {
@@ -567,6 +567,9 @@ h1.text-center {
   margin-top: -40px;
   position: absolute;
 }
+.dona-data{
+  color: #001E6C;
+}
 
 /* forms */
 .form-control {
@@ -576,6 +579,10 @@ h1.text-center {
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   border-radius: 0px;
   line-height: 2;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
 }
 
 .form-control input {
