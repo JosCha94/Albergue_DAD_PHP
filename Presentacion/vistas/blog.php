@@ -30,7 +30,7 @@ $posts = $consulta->listarPost($conexion); // obtenemos todos los posts
                      <!-- /Informacion post -->
                         <!-- imagen -->
                         <div class="blog-img">
-                           <img src="data:image/<?php echo($value['post_tipo_img']);?>;base64,<?php echo base64_encode( $value['post_imagen']); ?>" alt="albergue">
+                        <img src="data:image/<?php echo ($value['post_img_tipo']); ?>;base64,<?php echo base64_encode($value['post_img']); ?>" alt="<?= $value['post_titulo']; ?>" class="img-fluid ">
                         </div>
                         <!-- /imagen -->
                      </a>
