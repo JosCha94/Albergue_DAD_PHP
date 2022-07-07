@@ -4,7 +4,7 @@ require_once('BL/consultas_post.php');
 $conexion = conexion::conectar();
 $consulta = new Consulta_post();
 $idPost = $_POST['idPost']; // id del post que se quiere mostrar
-$id = $idPost;
+$id = $idPost;  
 $post = $consulta->mostrarPost($conexion, $id); // obtenemos el post que se quiere mostrar
 
 ?>
@@ -23,14 +23,14 @@ $post = $consulta->mostrarPost($conexion, $id); // obtenemos el post que se quie
                   <div class="post-info text-muted">
                      <ul class="list-inline m-0 p-0"> 
                           <!-- Fecha de creacion del post -->
-                        <li class="list-inline-item"><?php echo $post['post_fecha_creacion'] ?></li> 
+                        <li class="list-inline-item"><?php echo date("Y/m/d") . "<br>"; $post['post_fecha_creacion'] ?></li> 
                         <!-- Autor del post -->
                         <li class="list-inline-item"> Por: <?php echo $post['post_autor'] ?></li>  
                      </ul>
                   </div>
                   <hr>
                    <!-- Imagen del post -->
-                  <img src="data:image/<?php echo($post['post_tipo_img']);?>;base64,<?php echo base64_encode( $post['post_imagen']); ?>" alt="albergue">
+                  <img src="data:image/<?php echo($post['post_tipo_img']);?>;base64,<?php echo base64_encode( $post['post_imagen']); ?>" alt="<?= $value['post_titulo']; ?>">
                   <hr>
                   <!-- Descripcion del post -->
                   <p class="lead text-primary"> <?php echo $post['post_descripcion'] ?></p>  

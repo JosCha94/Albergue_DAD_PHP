@@ -55,7 +55,7 @@ switch ($error = 'SinError') {
     }
     ?>
     <?php if ($formTipo == 'dataUser') : ?>
-        <div class="col-12 col-md-6 border border-dark p-4 p-md-5 my-4 bg-light bg-opacity-75 mx-auto" id="formData">
+        <div class="col-12 col-md-6 shadow-lg p-4 p-md-5 my-4 bg-light bg-opacity-75 mx-auto" id="formData">
             <h3>INGRESA TUS DATOS PARA CAMBIAR</h3>
             <form action="" method="POST">
                 <?php if (isset($errores)) : ?>
@@ -94,7 +94,7 @@ switch ($error = 'SinError') {
                 </div>
 
                                 <?php if($usuario != ''): ?>
-                <button class="btn btn-orange my-3" name="actualizar_data">Actualizar</button>
+                <button class="btn btn-adopt my-3" name="actualizar_data">Actualizar</button>
                 <button type="reset" class="btn btn-danger my-3 mx-3" id="btn-cleanFormData">Limpiar</button>
                 <?php endif; ?>
             </form>

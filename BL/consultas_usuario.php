@@ -224,5 +224,25 @@ class Consulta_usuario
         return $estado;
     }
 
+    public function usuario_sus_adop($conexion, $id)
+    {
+        try {
+            $sql = "CALL SP_mostrar_datos_usuario($id)";
+            $consulta = $conexion->prepare($sql);
+            $consulta->execute();
+            $user = $consulta->fetchall(PDO::FETCH_ASSOC);
+            return $user;
+        } catch (PDOException $e) {
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+              <strong>Error!</strong> Debido a un problema no se puede mostrar los datos del usuario por el momento
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php
+            $user = 'error';
+        }
+    }
+
 }
 ?>
