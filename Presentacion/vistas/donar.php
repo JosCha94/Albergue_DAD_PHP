@@ -61,7 +61,7 @@ if (isset($_POST['submit_btn_donacion'])) {
                <h2 class="my-3">Donar</h2>
             </div>
             <h2>Sigue estos pasos para donar:</h2>
-            <p class="h5">Llena el formulario con tus datos y la captura del váucher de tu donación.</p>                   
+            <p class="h5">Llena el formulario con tus datos y adjunta la captura del váucher de tu donación.</p>                   
             <div class="row">
             <div class="col-sm-12">
                <!-- Bank accounts List -->
