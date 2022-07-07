@@ -52,7 +52,7 @@ if (isset($_POST['submit_btn_donacion'])) {
 <section id="donation" class="container-fluid my-5">
    <div class="texto-imagen text-center mb-5">
       Apoyanos con una donación
-      <p class="h6">Ayudanos a los perros de la calle, dales una oportunidas</p>
+      <p class="h6">Ayuda a los perros de la calle, dales una oportunidad</p>
  </div>
    <div class="container">
       <div class="row">
