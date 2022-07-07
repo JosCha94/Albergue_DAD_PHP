@@ -237,13 +237,13 @@ class Consulta_producto
             return $id['id'];
             
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             $product = 'errorValida';
         ?>
-            <!-- <div class="alert alert-danger alert-dismissible fade show " role="alert">
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
                 <strong class="fs-3">Error!</strong><br> Ocurrió un problema y no se ha podido validar la tarjeta
 
-            </div> -->
+            </div>
 
         <?php
 
