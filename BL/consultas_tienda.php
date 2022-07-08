@@ -10,12 +10,12 @@ class Consulta_producto
             $products = $consulta->fetchAll(PDO::FETCH_ASSOC);
             return $products;
         } catch (PDOException $e) {
-            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
 ?>
-            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+            <!-- <div class="alert alert-danger alert-dismissible fade show " role="alert">
                 <strong class="fs-3">Error!</strong><br> Ocurrió un problema y no se puede mostrar los productos
 
-            </div>
+            </div> -->
 
         <?php
         }

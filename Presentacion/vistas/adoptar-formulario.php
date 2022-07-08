@@ -50,7 +50,7 @@ switch ($error = 'SinError') {
 
     <div class="container form-adopt">
         <div class="card text-black">
-            <div class="card-body p-md-5">
+            <div class="card-body d-flex  ">
                 <div class="row justify-content-center">
                     <div class="col-md-7 ">
                         <p class="text-center f mb-5 mx-1 mx-md-4 mt-4">Formulario de adopcion</p>
@@ -101,12 +101,12 @@ switch ($error = 'SinError') {
 
                         </form>
                     </div>
-                    <div class="col-md-5 align-items-center ">
+                    <div class="col-md-5">
                         <div class="perro-nombre d-block mt-5">
                             <p class="text-center f"><?php echo ($perro['perro_nombre']) ?></p>
                         </div>
-                        <div class="perro-img d-block mt-5 ">
-                            <img src="data:image/<?php echo ($imgPerro['img_perro_tipo']); ?>;base64,<?php echo base64_encode($imgPerro['img_perro_foto']); ?>" class="img-fluid my-5 mx-5" alt="Sample image">
+                        <div class="perro-img mt-5 ">
+                            <img src="data:image/<?php echo ($imgPerro['img_perro_tipo']); ?>;base64,<?php echo base64_encode($imgPerro['img_perro_foto']); ?>" class="img-fluid shadow-lg" alt="Sample image">
                         </div>
                     </div>
                 </div>

@@ -49,7 +49,7 @@ $posts = $consulta->listarPost($conexion); // obtenemos todos los posts
                <!-- /columna de posts-->
                <!-- /pagina-con-sidebar -->
                <!-- Sidebar -->
-               <div id="sidebar" class="h-100 col-lg-4 card">
+               <div id="sidebar" class="h-100 col-lg-4 my-5 card">
                   <!--widget-area -->
                   
                   <!--/widget-area -->
