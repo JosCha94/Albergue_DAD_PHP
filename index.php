@@ -9,6 +9,7 @@ $log = new autorizacion();
 $logueado = $log->logueado($_SESSION['usuario']);
 $rolActi = $log->activeRol($_SESSION['usuario'][2], [1, 2]);
 
+
 $modulo = $_GET['modulo'] ?? '';
 
 $Rol = $_SESSION['usuario'][2];
