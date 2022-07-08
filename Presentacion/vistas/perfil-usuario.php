@@ -56,18 +56,18 @@ switch ($error = 'SinError') {
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                    <div class="accordion-body">
                     
                     <?php
                     if (count($sus_adop) >0){
-                     foreach ($sus_adop as $key => $value) : ?>
-                        <ul class="borde p-3">
-                            <li class="mx-5 mt-2">Nombre del perrito :<strong><?= $value['perro_nombre']?></strong></li>
-                            <li class="mx-5">Fecha de entrevista :<strong><?= $value['adop_fecha_entrevista']?></strong></li>
-                            <li class="mx-5">Estado de la adopción :<strong><?= $value['adop_estado']?></strong></li>
-                            <li class="mx-5 mb-2">fecha de adopción :<strong><?= $value['adop_fecha']?></strong></li>
-                        </ul>
-                    </div>
+                        foreach ($sus_adop as $key => $value) : ?>
+                            <div class="accordion-body">
+                                <ul class="borde p-3">
+                                    <li class="mx-5 mt-2">Nombre del perrito :<strong><?= $value['perro_nombre']?></strong></li>
+                                    <li class="mx-5">Fecha de entrevista :<strong><?= $value['adop_fecha_entrevista']?></strong></li>
+                                    <li class="mx-5">Estado de la adopción :<strong><?= $value['adop_estado']?></strong></li>
+                                    <li class="mx-5 mb-2">fecha de adopción :<strong><?= $value['adop_fecha']?></strong></li>
+                                </ul>
+                            </div>
                     <?php endforeach;
                     }else{ ?>
                         <div class="empty-msg">
@@ -87,8 +87,8 @@ switch ($error = 'SinError') {
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                    <div class="accordion-body">
                     <?php foreach ($sus_adop as $key => $value) : ?>
+                    <div class="accordion-body">
                         <ul class="borde p-3">
                             <li class="mx-5 mt-2">Tipo de suscripción : <strong><?= $value['s_tipo_nombre']?></strong></li>
                             <li class="mx-5">Precio :<strong><?= $value['s_tipo_precio']?></strong></li>
