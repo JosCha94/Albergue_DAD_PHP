@@ -79,7 +79,7 @@ if (isset($_POST['submit_btn_donacion'])) {
             <div class="col-lg-6 res-margin  h-50">
                <!-- Form Starts -->
                <div id="donation_form">
-                  <form class="form-control shadow-lg p-5" action="" method="post" enctype="multipart/form-data">
+                  <form class="dona-form form-control p-5 bg-secondary bg-opacity-75 shadow-lg" action="" method="post" enctype="multipart/form-data">
                   <h4 class="text-center">¡Muchas gracias por tu ayuda!</h4>
                <?php if (isset($errores)) : ?>
                      <?php if(count($errores) != 0) : ?>
