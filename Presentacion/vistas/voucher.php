@@ -8,7 +8,7 @@ $infoCli = json_decode($pedido['datos_cliente']);
 ?>
 <?php if($detallePedido != '' && $pedido != '' ):?>
 <div class="mt-5 d-flex justify-content-center">
-    <div class="card  shadow-lg bg-secondary bg-opacity-25 w-50">
+    <div class="card  shadow-lg bg-secondary bg-opacity-25 w-md-50">
         <div class="card-body">
             <div class="row mb-2">
                 <div class="col-12 col-md-6 mx-auto col_voucher">
@@ -66,7 +66,7 @@ $infoCli = json_decode($pedido['datos_cliente']);
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <div class="col-4 offset-md-10" id="Total_voucher">
+                    <div class="col-4 offset-8 offset-md-9 pb-2" id="Total_voucher">
                         <p class="card-text">SUBTOTAL: <?php echo $Subtotal;  ?></p>
                         <p class="card-text">IGV: <?php echo $pedido['pedi_igv']; ?></p>
                         <p class="card-text">TOTAL: <?php echo $pedido['pedi_monto']; ?></p>
