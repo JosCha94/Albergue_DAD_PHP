@@ -30,7 +30,7 @@ $post = $consulta->mostrarPost($conexion, $id); // obtenemos el post que se quie
                   </div>
                   <hr>
                    <!-- Imagen del post -->
-                  <img src="data:image/<?php echo($post['post_tipo_img']);?>;base64,<?php echo base64_encode( $post['post_imagen']); ?>" alt="<?= $value['post_titulo']; ?>">
+                   <img src="data:image/<?php echo ($post['post_img_tipo']); ?>;base64,<?php echo base64_encode($post['post_img']); ?>" alt="<?= $post['post_titulo']; ?>" class="img-fluid ">
                   <hr>
                   <!-- Descripcion del post -->
                   <p class="lead text-primary"> <?php echo $post['post_descripcion'] ?></p>  
