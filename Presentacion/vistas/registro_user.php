@@ -46,7 +46,7 @@ if (isset($_POST['registro_usr'])) {
     <div class="row">
         <!-- donation box -->
 
-        <div class="col-12 col-md-6 p-md-5 res-margin shadow-lg bg-secondary bg-opacity-75 h-50 text-white mx-auto">
+        <div class="col-12 col-md-6 p-md-5 res-margin border border-dark bg-light bg-opacity-75 h-50 mx-auto">
 
             <h4 class="">¡Registrate!</h4>
 

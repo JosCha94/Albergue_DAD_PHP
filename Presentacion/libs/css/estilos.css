@@ -495,7 +495,20 @@ p {
 
 /********formulario adopcion**************/
 
+.body {
+  text-align: center;
+  background: url(../images/huesoPatron.png);
+  background-repeat: repeat;
+  background-size: contain;
+  background-position: center;
+}
 
+/* .form-adopt{
+ margin-top: 80px ;
+ box-shadow: -3px -3px 9px #aaa9a9a2,
+              3px 3px 7px rgba(147, 149, 151, 0.671);
+  
+} */
 .card.text-black {
   border-radius: 25px;
   -webkit-border-radius: 25px;
@@ -505,10 +518,8 @@ p {
   background-color: transparent;
 }
 
-p.text-center.f {
+h1.text-center {
   color: #E8630A;
-  font-weight: bold;
-  font-size: 50px;
 }
 
 
@@ -598,9 +609,6 @@ p.text-center.f {
   height: 48px;
   margin-left: 0px;
   border-radius: 0;
-}
-.dona-form{
-  border: none;
 }
 
 /* button */
@@ -844,9 +852,14 @@ li {
 }
 
 /*********PERFIL DE USUARIO *************/
-h1.text-uppercase{
-  color: #E8630A;
-  font-weight: bold;
+.img-circle {
+  border-radius: 50%;
+}
+
+.btn-orange {
+  color: #fff;
+  background-color: #E8630a;
+  border-color: #E8630a;
 }
 h3.text-center{
   color: #001E6C;
@@ -883,9 +896,6 @@ ul.borde.p-3{
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 }
-.empty-msg{
-  color: #001E6C;
-}
 
 /* TIENDA */
 .container.tienda{
@@ -919,18 +929,6 @@ a.cart:hover{
   color: #001E6C;
 }
 
-/*** CARRITO   */
-
-
-h2.text-center.my-5{
-  color: #E8630A;
-  font-weight: bold;
-}
-
-tr.cart{
-  color: #001E6C;
-  font-size: 20px;
-}
 
 
 

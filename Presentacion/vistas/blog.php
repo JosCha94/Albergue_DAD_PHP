@@ -12,14 +12,14 @@ $posts = $consulta->listarPost($conexion); // obtenemos todos los posts
    <h2>Blog</h2>
 </div>
          
-<div id="blog-home" class="page shadow-lg bg-secondary bg-opacity-50 p-5">
-         <div class="container ">   
+<div id="blog-home" class="page mt-5">
+         <div class="container">   
             <div class="row">
                <!-- Columna de posts-->
                <div class="col-lg-8 page-with-sidebar">
                   <!-- Blog Post -->
                   <?php foreach ($posts as $key => $value) : ?>     <!-- Recorremos todos los posts -->                        
-                  <div class="card blog-card w-75 ms-5">
+                  <div class="card blog-card ">
                      <!-- informacion Post  -->
                      <div class="post-info mt-3">
                         <ul class="list-inline m-0 p-0"> 

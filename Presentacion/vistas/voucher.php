@@ -7,8 +7,8 @@ $detallePedido = $consulta->select_detallePedido_id($conexion, $idPedido);
 $infoCli = json_decode($pedido['datos_cliente']);
 ?>
 <?php if($detallePedido != '' && $pedido != '' ):?>
-<div class="mt-5 d-flex justify-content-center">
-    <div class="card  shadow-lg bg-secondary bg-opacity-25 w-50">
+<div class="mt-5">
+    <div class="card">
         <div class="card-body">
             <div class="row mb-2">
                 <div class="col-12 col-md-6 mx-auto col_voucher">
@@ -27,13 +27,13 @@ $infoCli = json_decode($pedido['datos_cliente']);
                     <!-- <h5 class="card-title">Card title</h5> -->
                 </div>
                 <div class="col-12 col-md-6 mx-auto col_voucher">
-                    <div class="text-center mt-2 border border-dark rounded-2 deta_voucher w-75 mx-auto" id="deta_pedido_voucher">
+                    <div class="text-center mt-2 border rounded-2 deta_voucher w-75 mx-auto" id="deta_pedido_voucher">
                         <p class="card-text fs-6">RUC: 123456</p>
                         <p class="card-text fs-5 "><?php echo $pedido['tipo_comprobante']; ?></p>
                         <p class="card-text fs-6"><?php echo $pedido['serie_comprobante']; ?></p>
                     </div>
                     <!-- <h5 class="card-title">Card title</h5> -->
-                    <div class="text-center mt-2 border border-dark rounded-2 p-1 deta_voucher w-75 mx-auto" id="deta_cliente_voucher">
+                    <div class="text-center mt-2 border rounded-2 p-1 deta_voucher w-75 mx-auto" id="deta_cliente_voucher">
                         <p class="card-text">Fecha de Emision: <?php echo date("d-M,Y", strtotime($pedido['pedi_fecha'])); ?>
                         <p class="card-text-md ">Cliente: <?php echo $infoCli->cliente;  ?></p>
                         <p class="card-text">DNI: <?php echo $infoCli->dni;  ?></p>
@@ -43,7 +43,7 @@ $infoCli = json_decode($pedido['datos_cliente']);
             </div>
 
             <div class="row">
-                <div class="col-12 border border-dark border-2 rounded-3">
+                <div class="col-12 border border-2 rounded-3">
                     <table class="table">
                         <thead>
                             <tr>

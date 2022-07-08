@@ -6,19 +6,21 @@
       </div>
       <div class="carousel-inner">
          <div class="carousel-item active">
-            <a href="index.php?modulo=donar"><img src="Presentacion\libs\images\carrusel4.jpg" class="d-block img-fluid" alt="..."></a>
+            <img src="Presentacion/libs/images/carrusel1.jpg" class="d-block img-fluid" alt="...">
             <div class="carousel-caption d-none d-md-block">
             <h5>Ayudanos a construir un mundo mejor para los perritos abandonados</h5>
             </div>
          </div>
          <div class="carousel-item">
-            <a href="index.php?modulo=tienda"><img src="Presentacion/libs/images/carrusel2.jpg" class="d-block img-fluid" alt="..."></a>
+            <img src="Presentacion/libs/images/slide1.jpg" class="d-block img-fluid" alt="...">
             <div class="carousel-caption d-none d-md-block">
+            <h5>El amor y compañia que te pueden ofrecer es infinito</h5>
             </div>
          </div>
          <div class="carousel-item">
-            <a href="index.php?modulo=adoptar"><img src="Presentacion/libs/images/carrusel6.jpg" class="d-block img-fluid" alt="..."></a>
+            <img src="Presentacion/libs/images/carrusel3.jpg" class="d-block img-fluid" alt="...">
             <div class="carousel-caption d-none d-md-block">
+            <h5>Se convertiran en tu mejor amigo</h5>
             </div>
          </div>
       </div>
