@@ -17,11 +17,11 @@ class Consulta_usuario
 
             $consulta->execute();
             $consulta->closeCursor();
-            $consulta = $conexion->prepare("SELECT @DATA AS id");
+            $consulta = $conexion->prepare("SELECT @DATA AS rnum");
             $consulta->execute();
-            $id = $consulta->fetch(PDO::FETCH_ASSOC);
-            return $id['id'];
-            // $estado='bien';
+            $resnum = $consulta->fetch(PDO::FETCH_ASSOC);
+            return $resnum['rnum'];
+
         } catch (PDOException $e) {
             //  echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
@@ -29,29 +29,8 @@ class Consulta_usuario
                      <strong>Error!</strong> No se pudo insertar el usuario.
                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                  </div>
-             <?php
-            // $bad = $e->getMessage();
-            // $cel = 'UK_numero_celular_USR';
-            // $email = 'UK_email_USR';
-
-            // $cel_coincidencia = strpos($bad, $cel);
-            // $email_coincidencia = strpos($bad, $email);
-            // if ($cel_coincidencia !== false) { 
-            //     <div class="alert alert-danger alert-dismissible fade show " role="alert">
-            //         <strong>Error!</strong> El numero de celular ya existe, ingrese otro numero de celular
-            //         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            //     </div>
-            
-            // }elseif ($email_coincidencia !== false) {
-            //     <div class="alert alert-danger alert-dismissible fade show " role="alert">
-            //         <strong>Error!</strong> El correo electronico ya existe, ingrese otra dirreción de correo
-            //         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            //     </div>
-            
-            // };
-            // $estado='mal';
+             <?php        
         }
-        //  return $estado;
         
     }
 
@@ -148,7 +127,7 @@ class Consulta_usuario
     public function actualizar_usuario($conexion, $uid, $usu)
     {
         try {
-            $sql = "CALL SP_update_usuario($uid, :usuario, :nombre, :ape_pat, :ape_mat, :email, :celular)";
+            $sql = "CALL SP_update_usuario($uid, :usuario, :nombre, :ape_pat, :ape_mat, :email, :celular,  @DATA)";
             $consulta = $conexion->prepare($sql);
             $consulta->bindValue(':usuario', $usu->getUsuario());
             $consulta->bindValue(':nombre', $usu->getUsr_nombre());
@@ -156,33 +135,25 @@ class Consulta_usuario
             $consulta->bindValue(':ape_mat', $usu->getUsr_apellido_materno());
             $consulta->bindValue(':email', $usu->getUsr_email());
             $consulta->bindValue(':celular', $usu->getUsr_celular());
+            
             $consulta->execute();
-            $estado='bien';
+            $consulta->closeCursor();
+            $consulta = $conexion->prepare("SELECT @DATA AS rnum");
+            $consulta->execute();
+            $resnum = $consulta->fetch(PDO::FETCH_ASSOC);
+            return $resnum['rnum'];
 
         } catch (PDOException $e) {
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
-            $bad = $e->getMessage();
-            $cel = 'UK_numero_celular_USR';
-            $email = 'UK_email_USR';
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong> No se pudo actualizar el usuario.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php
 
-            $cel_coincidencia = strpos($bad, $cel);
-            $email_coincidencia = strpos($bad, $email);
-            if ($cel_coincidencia !== false) { ?>
-                <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                    <strong>Error!</strong> El numero de celular ya existe, ingrese otro numero de celular
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php
-            }elseif ($email_coincidencia !== false) {?>            
-                <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                    <strong>Error!</strong> El correo electronico ya existe, ingrese otra dirreción de correo
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php
-            };
-            $estado='mal';
         }
-        return $estado;        
+  
     }
 
     public function Validar_pass($pass1, $pass2)

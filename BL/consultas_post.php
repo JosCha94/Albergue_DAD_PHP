@@ -16,7 +16,7 @@ class Consulta_post
 
     public function mostrarPost($conexion,$id) {
         try{
-            $sql = "CALL SP_select_post($id)";
+            $sql = "CALL SP_select_post_id_admin($id)";
             $consulta = $conexion->prepare($sql);
             $consulta->execute();
             $postId = $consulta->fetch(PDO::FETCH_ASSOC);

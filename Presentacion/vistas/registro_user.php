@@ -32,7 +32,7 @@ if (isset($_POST['registro_usr'])) {
             </div>
         <?php
 
-        } else {
+        } elseif ($estado == 3) {
             echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=registro&mensaje=El Usuario se registro correctamente" />';
         }
     }

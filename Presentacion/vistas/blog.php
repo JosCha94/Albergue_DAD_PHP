@@ -39,7 +39,7 @@ $posts = $consulta->listarPost($conexion); // obtenemos todos los posts
                            <h3 class="card-title "><?php echo ($value['post_titulo']); ?></h3>  
                            <form action="index.php?modulo=blog-single" method="post">       
                               <input type="hidden" value="<?php echo $value['post_id'];?>" name="idPost">          
-                              <a href="" class="btn btn-donation">Leer más &rarr;</a>
+                              <button type="submit" class="btn btn-donation">Leer más &rarr;</a>
                            </form> 
                      </div>                    
                   </div>  
