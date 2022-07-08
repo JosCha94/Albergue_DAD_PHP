@@ -28,9 +28,6 @@ switch ($error = 'SinError') {
     <div class="col-12 col-md-4  p-3 position-relative user-data">
         <h3 class="text-center h1"> Mis Datos</h3>
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col-auto d-none d-lg-block">
-                <h3 class="mb-0 text-center mt-2"><?php echo ($usuario['usuario']); ?></h3>
-            </div>
             <div class="col p-4 mt-2 d-flex flex-column position-static">
                 <!-- <strong class="d-inline-block mb-2 text-white">Nombre: <?php echo ($usuario['usr_nombre']); ?></strong> -->
                 <div class="mb-1 u-data">Nombre: <?php echo ($usuario['usr_nombre']); ?></div>
@@ -60,7 +57,10 @@ switch ($error = 'SinError') {
                 </h2>
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                     <div class="accordion-body">
-                    <?php foreach ($sus_adop as $key => $value) : ?>
+                    
+                    <?php
+                    if (count($sus_adop) >0){
+                     foreach ($sus_adop as $key => $value) : ?>
                         <ul class="borde p-3">
                             <li class="mx-5 mt-2">Nombre del perrito :<strong><?= $value['perro_nombre']?></strong></li>
                             <li class="mx-5">Fecha de entrevista :<strong><?= $value['adop_fecha_entrevista']?></strong></li>
@@ -68,7 +68,15 @@ switch ($error = 'SinError') {
                             <li class="mx-5 mb-2">fecha de adopción :<strong><?= $value['adop_fecha']?></strong></li>
                         </ul>
                     </div>
-                    <?php endforeach; ?>
+                    <?php endforeach;
+                    }else{ ?>
+                        <div class="empty-msg">
+                            Este apartado está vacio
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    
 
                 </div>
             </div>
