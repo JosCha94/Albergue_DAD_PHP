@@ -154,10 +154,10 @@ switch ($error = 'SinError') {
             </nav>
         </div>
         <!-- <h1>HI</h1>
-    <?php
-    echo $rolUs;
+        <?php
+        echo $rolUs;
 
-    ?> -->
+        ?> -->
         <!-- Modal -->
         <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -285,7 +285,7 @@ switch ($error = 'SinError') {
         <footer class="footer-area" id="footer-area">
             <!--== Start Footer Main ==-->
             <div class="footer-main mt-5">
-                <div class="container pt--0 pb--0">
+                <div class="container pt-0 pb-0">
                     <div class="row">
                         <div class="col-md-6 col-lg-3">
                             <div class="widget-item widget-about">
@@ -329,7 +329,7 @@ switch ($error = 'SinError') {
                             <div class="widget-item">
                                 <h4 class="widget-title">Informacion de contacto</h4>
                                 <div class="widget-contact-info">
-                                    <p class="contact-info-desc">Si tienes alguna duda o pregunta, por favor escribenos a: <a href="mailto://demo@example.com">demo@example.com</a></p>
+                                    <p class="contact-info-desc">Si tienes alguna duda o pregunta, por favor escribenos a: <a href="mailto://demo@example.com">albergue.adoptar.perritos@gmail.com</a></p>
                                     <div class="contact-item">
                                         <div class="icon">
                                             <i class="pe-7s-map-marker"></i>
@@ -356,7 +356,7 @@ switch ($error = 'SinError') {
 
             <!--== Start Footer Bottom ==-->
             <div class="footer-bottom">
-                <div class="container pt--0 pb--0">
+                <div class="container pt-0 pb-0">
                     <div class="row">
                         <div class="col-12">
                             <div class="footer-bottom-content">

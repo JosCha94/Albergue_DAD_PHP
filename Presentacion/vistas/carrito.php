@@ -131,11 +131,11 @@ switch ($error = 'SinError') {
     $error = 0;
 
     ?>
-    <div class="container adop-body mt-5">
+    <div class="container adop-body  my-5 bg-secondary bg-opacity-25 shadow-lg">
         <div class="row">
             <div class="col-md-10 mx-auto">
                 <!-- productos -->
-                <h2 class="text-center">Carrito de compras</h2>
+                <h2 class="text-center my-5">Carrito de compras</h2>
                 <div class="wrapper-gallery row magnific-popup mt-5">
                     <div class="d-block d-md-none mb-4">
                         <?php foreach ($products as $key => $value) : ?>
@@ -172,7 +172,7 @@ switch ($error = 'SinError') {
                     <div class="d-none d-md-block">
                         <table class="table">
                             <thead>
-                                <tr>
+                                <tr class="cart">
                                     <th scope="col">#</th>
                                     <th scope="col">IMG</th>
                                     <th scope="col">Producto</th>
