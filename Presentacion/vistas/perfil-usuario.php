@@ -107,8 +107,9 @@ switch ($error = 'SinError') {
                         Mis compras
                     </button>
                 </h2>
-                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse <?php echo(count($pedidos)>0)?'show':'' ?>" aria-labelledby="panelsStayOpen-headingThree">
                     <div class="accordion-body">
+                    <?php if(count($pedidos)>0) : ?>
                     <?php foreach ($pedidos as $key => $value) : ?>
                         <form action="index.php?modulo=voucher" method="post">
                             <input type="hidden" name="idPedido" value="<?= $value['pedi_id']; ?>">
@@ -117,6 +118,12 @@ switch ($error = 'SinError') {
                             </button>
                         </form>
                     <?php endforeach; ?>
+                    <?php else : ?>
+                        <div class="empty-msg">
+                            No tiene compras realizadas en los ultimos 30 dias
+                        </div>
+                    <?php endif; ?>
+
                     </div>
                 </div>
             </div>

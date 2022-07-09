@@ -26,7 +26,7 @@ try {
         header("location: ../index.php");
     } else {
 
-        echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=inicio&error=Usuario o Contraseña incorrectos" />';
+        echo '<meta http-equiv="refresh" content="0; url=../index.php?modulo=inicio&errorlogin=Usuario o Contraseña incorrectos" />';
         
     }
 } catch (PDOException $e) {

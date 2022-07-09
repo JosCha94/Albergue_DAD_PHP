@@ -153,11 +153,6 @@ switch ($error = 'SinError') {
 
             </nav>
         </div>
-        <!-- <h1>HI</h1>
-        <?php
-        echo $rolUs;
-
-        ?> -->
         <!-- Modal -->
         <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -198,16 +193,17 @@ switch ($error = 'SinError') {
                 </div>
             </div>
         </div>
-        
-        <div class="container-fluid cont-inicio">
-            <?php
+
+
+    
+          <!-- BODY -->     
+        <div class="container-fluid cont-inicio">        
+            <?php            
         if ($modulo == "" || $modulo == "inicio") {
                 include_once "Presentacion/vistas/inicio.php";
             }
             ?>
-        </div>
-
-        <!-- BODY -->
+        </div>        
         <div class="container mb-5">
             <?php
             if (isset($_GET['mensaje'])) {
@@ -224,8 +220,7 @@ switch ($error = 'SinError') {
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <?php
-            }
-            
+            }          
             if ($modulo == "adoptar") {
                 include_once "Presentacion/vistas/adoptar.php";
             }
