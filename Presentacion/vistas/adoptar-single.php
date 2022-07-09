@@ -17,7 +17,7 @@ $imgPerro = $consulta->buscarImagen_perro($conexion, $id);
     </div>
     <!-- Section Adoption -->
     <section id="adoption" class="pages">
-        <div class="jumbotron ">
+        <div class="jumbotron">
             <!-- Heading -->
             <div class="jumbo-heading">
                 <h1><?php echo ($perro['perro_nombre']) ?></h1>
