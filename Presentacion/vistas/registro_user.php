@@ -129,7 +129,7 @@ if (isset($_POST['registro_usr'])) {
 
                     <!-- button -->
                     <div class="mt-3 d-flex justify-content-around">
-                        <button type="submit" name="registro_usr" value="Submit" class="btn btn-orange my-3">Registrase</button>
+                        <button type="submit" name="registro_usr" value="Submit" class="btn btn-adopt my-3">Registrase</button>
                         <button type="reset" id="submit_btn" value="Submit" class="btn btn-danger my-3 mx-3">Limpiar</button>
                     </div>
 

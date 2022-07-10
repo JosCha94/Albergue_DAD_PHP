@@ -67,7 +67,7 @@ if (isset($_POST['registro_comentario'])) {
                         <li class="list-group-item">
                            <div class="media">
                               <div class="media-body">
-                                 <h5 class="mt-0 usr-name" ><?php echo $value['user_nombre'] ?></h5>
+                                 <h5 class="mt-0 usr-name" ><?php echo $value['user_nombre'] ?> dice:</h5>
                                  <span class="comentario"><?php echo $value['comentario'] ?></span>
                               </div>
                            </div>
