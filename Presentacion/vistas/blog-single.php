@@ -33,15 +33,15 @@ if (isset($_POST['registro_comentario'])) {
 ?>
 
 <!-- ==== Pagina Contenido de post==== -->
-<div class="page mt-5">
+<div class="page">
    <!-- .container -->
    <div class="container">
       <!-- .row -->
-      <div class="row">
+      <div class="row my-0">
          <!-- Columna post-->
-         <div class="col-lg-8  page-with-sidebar">
+         <div class="col-lg-8 mx-auto my-5 page-with-sidebar">
             <!-- Titulo del post -->
-            <h2 class="mb-2"><?php echo $post['post_titulo'] ?></h2>
+            <h2 class="mb-2 p-titulo"><?php echo $post['post_titulo'] ?></h2>
             <!-- Informacion post-->
             <div class="post-info text-muted">
                <ul class="list-inline m-0 p-0">
@@ -57,18 +57,18 @@ if (isset($_POST['registro_comentario'])) {
             <img src="data:image/<?php echo ($post['post_img_tipo']); ?>;base64,<?php echo base64_encode($post['post_img']); ?>" alt="<?= $post['post_titulo']; ?>" class="img-fluid ">
             <hr>
             <!-- Descripcion del post -->
-            <p class="lead text-dark"> <?php echo $post['post_descripcion'] ?></p>
+            <p class="lead descripcion"> <?php echo $post['post_descripcion'] ?></p>
             <!-- Comentarios -->
-            <div class="card my-4 mt-5 bg-light">
-               <h5 class="card-header">Comentarios:</h5>
+            <div class="card coment my-4 mt-5">
+               <h5 class="card-header coment">Comentarios:</h5>
                <div class="card-body">
                   <ul class="list-group">
                      <?php foreach ($comentarios as $key => $value) : ?>
                         <li class="list-group-item">
                            <div class="media">
                               <div class="media-body">
-                                 <h5 class="mt-0"><?php echo $value['user_nombre'] ?></h5>
-                                 <?php echo $value['comentario'] ?>
+                                 <h5 class="mt-0 usr-name" ><?php echo $value['user_nombre'] ?></h5>
+                                 <span class="comentario"><?php echo $value['comentario'] ?></span>
                               </div>
                            </div>
                         </li>
@@ -77,18 +77,18 @@ if (isset($_POST['registro_comentario'])) {
                </div>
             </div>
             <!-- Formulario de comentarios -->
-            <div class="card my-4 mt-5 bg-light">
-               <h5 class="card-header">Dejanos un Comentario:</h5>
+            <div class="card my-4 mt-5 card-coments">
+               <h5 class="card-header coment">Dejanos un Comentario:</h5>
                <div class="card-body">
                   <form action=" " method="post">
-                     <div class="form-group mb-3">
+                     <div class="form-group mb-3 ">
                         <input type="text" class="form-control" placeholder="Nombre" value="<?php echo $info->user_name ?>" name="autor_comentario" disabled>
                      </div>
                      <div class="form-group">
                         <textarea class="form-control mb-3" rows="3" placeholder="Comentario" name="post_comentario"></textarea>
                      </div>
                      <input type="hidden" name="post" value="<?php echo $idPost ?>">
-                     <button type="submit" class="btn btn-secondary" name="registro_comentario">Enviar</button>
+                     <button type="submit" class="btn btn-lg px-5 btn-adopt" name="registro_comentario">Enviar</button>
                   </form>
                </div>
             </div>
