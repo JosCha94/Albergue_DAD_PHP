@@ -57,7 +57,7 @@ if (isset($_POST['registro_comentario'])) {
             <img src="data:image/<?php echo ($post['post_img_tipo']); ?>;base64,<?php echo base64_encode($post['post_img']); ?>" alt="<?= $post['post_titulo']; ?>" class="img-fluid ">
             <hr>
             <!-- Descripcion del post -->
-            <p class="lead text-primary"> <?php echo $post['post_descripcion'] ?></p>
+            <p class="lead text-dark"> <?php echo $post['post_descripcion'] ?></p>
             <!-- Comentarios -->
             <div class="card my-4 mt-5 bg-light">
                <h5 class="card-header">Comentarios:</h5>
