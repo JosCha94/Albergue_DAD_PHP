@@ -49,25 +49,25 @@ $posts = $consulta->listarPost($conexion); // obtenemos todos los posts
                <!-- /columna de posts-->
                <!-- /pagina-con-sidebar -->
                <!-- Sidebar -->
-               <div id="sidebar" class="h-100 col-lg-4 my-5 card">
+               <!-- <div id="sidebar" class="h-100 col-lg-4 my-5 card"> -->
                   <!--widget-area -->
                   
                   <!--/widget-area -->
-                  <div class="widget-area mt-3">
+                  <!-- <div class="widget-area mt-3">
                      <h5 class="sidebar-header">Síguenos</h5>
-                     <div class="contact-icon-info">
+                     <div class="contact-icon-info"> -->
                         <!--  Links  redes sociales-->
-                        <ul class="social-list text-center list-inline">
+                        <!-- <ul class="social-list text-center list-inline">
                            <li class="list-inline-item"><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
                            <li class="list-inline-item"><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
                            <li class="list-inline-item"><a  title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>                         
-                        </ul>
+                        </ul> -->
                         <!-- / Links  redes sociales-->
-                     </div>
+                     <!-- </div> -->
                      <!--/contact-icon-info -->
-                  </div>
+                  <!-- </div> -->
                   <!--/widget-area -->
-               </div>
+               <!-- </div> -->
                <!--/sidebar -->      
             </div>
             <!-- /.row -->
