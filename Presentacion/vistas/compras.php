@@ -49,8 +49,8 @@ if (isset($_POST['cambiarEstadoPedido'])) {
                         <td>Fecha</td>
                         <td>Precio total </td>
                         <td>Estado</td>
-                        <?php if ($Permiso == 'true' || $Permiso2 == 'true'):?>               
-                        <td>Recogido</td>
+                        <?php if ($permisosRol == 'true' || $permisoEsp == 'true'):?>   
+                        <td>Cambiar a recogido</td>
                         <?php endif; ?>
 
                     </tr>
@@ -64,8 +64,8 @@ if (isset($_POST['cambiarEstadoPedido'])) {
                         <td>Fecha</td>
                         <td>Precio total </td>
                         <td>Estado</td>
-                        <?php if ($Permiso == 'true' || $Permiso2 == 'true'):?>               
-                        <td>Recogido</td>
+                        <?php if ($permisosRol == 'true' || $permisoEsp == 'true'):?>   
+                        <td>Cambiar a recogido</td>
                         <?php endif; ?>
 
                     </tr>

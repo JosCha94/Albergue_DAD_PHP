@@ -27,6 +27,14 @@ if (isset($_POST['carrito'])) {
 }
 ?>
 <div class="container margin1 mt-5">
+<?php if ($logueado == 'false') { ?>
+      <div class="alert alert-danger mt-5" role="alert">
+         <h4 class="alert-heading">¡Atención!</h4>
+         <p>Para poder comprar debes estar registrado y logueado</p>
+         <hr>
+         <p class="mb-0 h6">¡Gracias!</p>
+      </div>
+   <?php }  ?>
     <div class="row">
         <div class="col-md-5">
             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">

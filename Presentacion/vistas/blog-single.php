@@ -1,4 +1,20 @@
 <?php
+$permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], [1]);
+$permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], [1]);
+
+switch ($error = 'SinError') {
+    case ($logueado == 'false'):
+        $error = 'Debe iniciar sesión para poder visualizar este pagina';
+        break;
+    case ($permisoEsp == 'true'):
+        break;
+    case ($rolActi != 'true'):
+        $error = 'No tiene activado el rol de Cliente';
+        break;
+}
+?>
+<?php if ($error == 'SinError') : ?>
+<?php
 require_once('DAL/conexion.php');
 require_once('BL/consultas_post.php');
 $conexion = conexion::conectar();
@@ -131,3 +147,10 @@ if (isset($_POST['registro_comentario'])) {
    <!-- /.container -->
 </div>
 <!-- /page -->
+<?php else : ?>
+
+<div class="alert alert-danger" role="alert">
+    <?php echo $error; ?>
+</div>
+
+<?php endif; ?>

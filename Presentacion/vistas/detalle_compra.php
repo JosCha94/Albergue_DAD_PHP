@@ -1,7 +1,8 @@
 <?php
-$rolPermitido= $log->activeRol($_SESSION['usuario'][2], [2,5]);
-$permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], [1]);
-$permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], [5]);
+$rolPermitido= $log->activeRol($_SESSION['usuario'][2], [2,3]);
+$permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], [6]);
+$permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], [6]);
+
 
 switch ($error = 'SinError') {
     case ($logueado == 'false'):
@@ -11,9 +12,6 @@ switch ($error = 'SinError') {
         break;
     case ($rolPermitido != 'true'):
         $error = 'Su rol actual no le otorga permisos para acceder a esta página';
-        break;
-    case ($permisosRol != 'true'):
-        $error = 'Su rol actual no tiene permiso para acceder a esta pagina';
         break;
 }
 ?>

@@ -11,9 +11,6 @@ switch ($error = 'SinError') {
     case ($rolActi != 'true'):
         $error = 'No tiene activado el rol de Cliente';
         break;
-    case ($permisosRol != 'true'):
-        $error = 'Su rol actual no tiene permiso para acceder a esta pagina';
-        break;
 }
 ?>
 <?php if ($error == 'SinError') : ?>
