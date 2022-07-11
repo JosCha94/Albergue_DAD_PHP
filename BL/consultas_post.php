@@ -41,7 +41,7 @@ class Consulta_post
             return $res['rpost'];
 
         } catch (PDOException $e) {
-            //  echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
                  <div class="alert alert-danger alert-dismissible fade show " role="alert">
                      <strong>Error!</strong> No se pudo agregar el comentario.
@@ -64,7 +64,7 @@ class Consulta_post
             // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
             ?>
                  <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                     <strong>Error!</strong> No se pudo mostrar los monetarios del post.
+                     <strong>Error!</strong> No se pudo mostrar los comentarios del post.
                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                  </div>
              <?php  
