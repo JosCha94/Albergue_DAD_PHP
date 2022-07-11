@@ -20,8 +20,9 @@ switch ($error = 'SinError') {
     $id = $_SESSION['usuario'][0];
     $usuario = $consulta->detalleUsuario($conexion, $id);
     $pedidos = $consulta2->listar_pedidos_user($conexion, $id);
-    $sus_adop = $consulta->usuario_sus_adop($conexion, $id);
-
+    $adop_datos = $consulta->usuario_datos_adop($conexion, $id);
+    $sus_datos = $consulta->usuario_datos_sus($conexion, $id);
+    
 ?>
 <h1 class="text-center text-uppercase my-4">HOLA <?php echo ($usuario['usuario']); ?></h1>
 <div class="row my-md-4 shadow-lg">
@@ -58,8 +59,8 @@ switch ($error = 'SinError') {
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                     
                     <?php
-                    if (count($sus_adop) >0){
-                        foreach ($sus_adop as $key => $value) : ?>
+                    if (count($adop_datos) >0){
+                        foreach ($adop_datos as $key => $value) : ?>
                             <div class="accordion-body">
                                 <ul class="borde p-3">
                                     <li class="mx-5 mt-2">Nombre del perrito :<strong><?= $value['perro_nombre']?></strong></li>
@@ -87,7 +88,9 @@ switch ($error = 'SinError') {
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                    <?php foreach ($sus_adop as $key => $value) : ?>
+                    <?php 
+                    if (count($adop_datos) >0){
+                    foreach ($sus_datos as $key => $value) : ?>
                     <div class="accordion-body">
                         <ul class="borde p-3">
                             <li class="mx-5 mt-2">Tipo de suscripción : <strong><?= $value['s_tipo_nombre']?></strong></li>
@@ -98,6 +101,13 @@ switch ($error = 'SinError') {
                         </ul>
                     </div>
                     <?php endforeach; ?>
+                }else{ ?>
+                        <div class="empty-msg">
+                            Este apartado está vacio
+                        </div>
+                        <?php
+                    }
+                    ?>
                     </div>
                 </div>
             </div>

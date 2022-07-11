@@ -101,7 +101,7 @@ $imgPerro = $consulta->buscarImagen_perro($conexion, $id);
 
                             </div>
                             <div class="d-grid justify-content-center btns">
-                                <a href="index.php?modulo=adoptar-formulario&id=<?= $value['perro_id']; ?>" class="btn btn-adopt mt-3">¡Adóptalo ahora!</a><br>
+                                <a href="index.php?modulo=adoptar-formulario&id=<?= urlencode(base64_encode(($value['perro_id']*489554)/7854)) ;?>" class="btn btn-adopt mt-3">¡Adóptalo ahora!</a><br>
                                 <a href="index.php?modulo=apadrinar"><span>Si no puedes adoptarlo, ¡apadrínalo!</span> </a>
                             </div>
                         </div>

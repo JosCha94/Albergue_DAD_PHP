@@ -13,15 +13,18 @@ switch ($error = 'SinError') {
         break;
 }
 ?>
+
+
 <?php if ($error == 'SinError') : ?>
     <?php
     require_once('ENTIDADES/adopciones.php');
     require_once('DAL/conexion.php');
     require_once('BL/consultas_adopcion.php');
+    $en_id = $_GET['id'];  
+    $id = (base64_decode(urldecode($en_id)))*7854/489554;
 
     $conexion = conexion::conectar();
     $consulta = new Consulta_adopcion();
-    $id = $_GET['id'];
     $usrId = $_SESSION['usuario'][0];
     $imgPerro = $consulta->mostarImagenes_perro($conexion, $id); //muestra la imagen del perro seleccionado
     $perro = $consulta->listarPerro($conexion, $id); //muestra los datos del perro seleccionado
@@ -31,7 +34,7 @@ switch ($error = 'SinError') {
     if (isset($_POST['adopt_submit'])) {
         $uId = $_POST['usrId'];
         $rolId = $_POST['rolId'];
-        $perro_id = $_POST['perroId'];
+        $perro_id = $id;
         $dueno = $_POST['dueno'];
         $razon = $_POST['tex_adop'];
         $adop = new adopcion($uId, $rolId, $perro_id, $dueno, $razon);
@@ -94,7 +97,6 @@ switch ($error = 'SinError') {
                             <input type="hidden" name="dueno" value="<?= $usr_ado['usr_nombre'] ?> <?= $usr_ado['usr_apellido_paterno'] ?> <?= $usr_ado['usr_apellido_materno'] ?> ">
                             <input type="hidden" name="usrId" value="<?php echo $_SESSION['usuario'][0]; ?>">
                             <input type="hidden" name="rolId" value="<?= $usr_ado['rol_id'] ?>">
-                            <input type="hidden" name="perroId" value="<?php echo $_GET['id'] ?>">
 
                         </form>
                     </div>
