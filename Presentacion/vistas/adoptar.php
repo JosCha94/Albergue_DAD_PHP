@@ -6,7 +6,7 @@ $conexion = conexion::conectar();
 $consulta = new Consulta_adopcion();
 $imgPerro = $consulta->listarImagen_perro($conexion);
 
-
+if (in_array(1,$PermisosVistaPag)):
 ?>
 
 
@@ -127,3 +127,12 @@ $imgPerro = $consulta->listarImagen_perro($conexion);
         </div>
     </div>
 </div>
+<?php else : ?>
+<!-- <div class="container"> -->
+    <div class="row">
+        
+        <img src="Presentacion\libs\images\mantenimiento-web.png" alt="pagina en mantenimiento" class="img-fluid mt-5 mx-auto">
+        </div>
+    <!-- </div> -->
+    
+<?php endif; ?>

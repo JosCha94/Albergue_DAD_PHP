@@ -4,6 +4,8 @@ require_once('BL/consultas_post.php');
 $conexion = conexion::conectar();
 $consulta = new Consulta_post();
 $posts = $consulta->listarPost($conexion); // obtenemos todos los posts
+
+if (in_array(4,$PermisosVistaPag)):
 ?>
 
 
@@ -82,3 +84,12 @@ $posts = $consulta->listarPost($conexion); // obtenemos todos los posts
 </div>
 <!-- /pagina-->
 </div>
+<?php else : ?>
+<!-- <div class="container"> -->
+    <div class="row">
+        
+        <img src="Presentacion\libs\images\mantenimiento-web.png" alt="pagina en mantenimiento" class="img-fluid mt-5 mx-auto">
+        </div>
+    <!-- </div> -->
+    
+<?php endif; ?>

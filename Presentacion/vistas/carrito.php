@@ -10,8 +10,8 @@ switch ($error = 'SinError') {
         break;
     case ($permisoEsp == 'true'):
         break;
-    case ($rolActi != 'true'):
-        $error = 'No tiene activado el rol de Cliente';
+    case ($rolActual == ' '):
+        $error = 'No tiene un rol activado';
         break;
     case ($permisosRol != 'true'):
         $error = 'Su rol actual no tiene permiso para acceder a esta pagina';
@@ -62,7 +62,7 @@ switch ($error = 'SinError') {
 
     if (isset($_POST['btn-pagar'])) {
         $idUser = $_SESSION['usuario'][0];
-        $idRol =  $rolUs;
+        $idRol =  $rolActual;
         $cliente = $usuario['usr_nombre'] . ' ' . $usuario['usr_apellido_paterno'] . ' ' . $usuario['usr_apellido_materno'];
         $dni = $_POST['dni'];
         $correo = $usuario['usr_email'];

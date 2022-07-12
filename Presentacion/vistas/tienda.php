@@ -26,6 +26,8 @@
          }
       }
    }
+
+   if (in_array(3,$PermisosVistaPag)):
    ?>
    <div class="container tienda">
       <img class="img-fluid" src="Presentacion/libs/images/tienda.jpg" alt="Tienda perritos">
@@ -177,3 +179,12 @@
          </div>
       </div>
    </div>
+   <?php else : ?>
+<!-- <div class="container"> -->
+    <div class="row">
+        
+        <img src="Presentacion\libs\images\mantenimiento-web.png" alt="pagina en mantenimiento" class="img-fluid mt-5 mx-auto">
+        </div>
+    <!-- </div> -->
+    
+<?php endif; ?>

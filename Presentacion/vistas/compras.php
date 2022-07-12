@@ -1,5 +1,5 @@
 <?php
-$rolPermitido= $log->activeRol($_SESSION['usuario'][2], [2,3]);
+$rolPermitido= $log->RolPermitido($_SESSION['usuario'][2], $compras);
 $permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], [6]);
 $permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], [6]);
 

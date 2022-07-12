@@ -6,6 +6,7 @@ $consulta = new Consulta_apadrinar();
 
 $susTipo = $consulta -> listarTipoSuscrip($conexion);
 
+if (in_array(2,$PermisosVistaPag)):
 ?>
 
 <div class="container-fluid py-5">
@@ -129,7 +130,12 @@ $susTipo = $consulta -> listarTipoSuscrip($conexion);
         </div>
     </div>
 </div>
-
-
-
-
+<?php else : ?>
+<!-- <div class="container"> -->
+    <div class="row">
+        
+        <img src="Presentacion\libs\images\mantenimiento-web.png" alt="pagina en mantenimiento" class="img-fluid mt-5 mx-auto">
+        </div>
+    <!-- </div> -->
+    
+<?php endif; ?>

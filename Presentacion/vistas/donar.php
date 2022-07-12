@@ -48,6 +48,7 @@ if (isset($_POST['submit_btn_donacion'])) {
       
    }
 }
+
 ?>
 <section id="donation" class="container-fluid my-5">
    <div class="texto-imagen text-center mb-5">

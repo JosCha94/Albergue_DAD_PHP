@@ -3,7 +3,7 @@ switch ($error = 'SinError') {
     case ($logueado == 'false'):
         $error = 'Debe iniciar sesión para poder visualizar este pagina';
         break;
-    case ($rolActi != 'true'):
+    case ($rolActual == ' '):
         $error = 'No tiene activado el rol de Cliente';
         break;
 }

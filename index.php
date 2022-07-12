@@ -7,21 +7,21 @@ require_once('DAL/conexion.php');
 $conexion = conexion::conectar();
 $log = new autorizacion();
 $logueado = $log->logueado($_SESSION['usuario']);
-$rolActi = $log->activeRol($_SESSION['usuario'][2], [1, 2]);
+$rolActual = $log->RolActual($_SESSION['usuario'][2]);
+$rolPermiBtn = $log->roles_permitidos_btn($conexion);
 $info = json_decode($_SESSION['usuario'][1]);
 
-$modulo = $_GET['modulo'] ?? '';
+if ($_SESSION['usuario'][7] == '') {
+    $rolPermiBtn = $log->roles_permitidos_btn($conexion);
+    $_SESSION['usuario'][7] = $rolPermiBtn;
+}
+$PermisosVistas = $_SESSION['usuario'][7];
 
-$Rol = $_SESSION['usuario'][2];
-$array = json_decode($Rol, true);
-foreach ($array as $key => $value) :
-    if ($value['id'] == 1) {
-        $resRol = $value['id'];
-    } elseif ($value['id'] == 2) {
-        $resRol = $value['id'];
-    }
-endforeach;
-$rolUs = $resRol;
+$compras = $log->permisosVistas($PermisosVistas['btn_compras']);
+$PermisosVistaPag = $log->permisosVistas($PermisosVistas['bloqueo_vistas']);
+
+
+$modulo = $_GET['modulo'] ?? '';
 
 switch ($error = 'SinError') {
     case ($conexion  == 'fallo'):
@@ -118,7 +118,7 @@ switch ($error = 'SinError') {
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($modulo == "blog" || $modulo == "blog-single") ? " active " : " " ?> mx-2" href="index.php?modulo=blog">Blog</a>
                         </li>
-                        <?php $rolVendedor = $log->activeRol($_SESSION['usuario'][2], [2,3]); 
+                        <?php $rolVendedor = $log->RolPermitido($_SESSION['usuario'][2], $compras); 
                         if($rolVendedor == 'true'):?>
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($modulo == "compras" ) ? " active " : " " ?> mx-2" href="index.php?modulo=compras">Retiro de Compras</a>
