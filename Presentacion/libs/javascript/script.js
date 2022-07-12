@@ -178,3 +178,11 @@ $(document).ready(function() {
         // "scrollX": true
     });
 });
+
+///////////////////////////////////////////////////////////
+
+function checkDelete() {
+    let status = confirm("¿Está seguro que quiere cancelar su suscripcion? Los perritos se pondrán tristes =( ");
+    return status;
+
+}

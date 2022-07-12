@@ -9,7 +9,7 @@ switch ($error = 'SinError') {
 }
 ?>
 <?php if ($error == 'SinError') : ?>
-    <?php
+<?php
     require_once('BL/consultas_usuario.php');
     require_once('BL/consultas_compras.php');
     require_once 'ENTIDADES/usuario.php';
@@ -23,6 +23,23 @@ switch ($error = 'SinError') {
     $adop_datos = $consulta->usuario_datos_adop($conexion, $id);
     $sus_datos = $consulta->usuario_datos_sus($conexion, $id);
     
+
+
+    if (isset($_POST['usr-cancel-sus'])) {
+        $sus_id = $_POST['cancel-sus'];
+        $consulta3 = new Consulta_usuario();
+        $cancel = $consulta3->cancelar_suscipcion($conexion, $sus_id);
+        if(!$cancel)
+        {
+            echo '<div class="alert alert-danger">¡Ocurrio un error, la solicitud no pudo ser rechazada!.</div>';
+        }else{
+            echo "<meta http-equiv='refresh' content='2'>";
+            echo '<div class="alert alert-success">¡La suscripcion fue cancelada exitosamente!.</div>';
+        }
+    }
+
+
+
 ?>
 <h1 class="text-center text-uppercase my-4">HOLA <?php echo ($usuario['usuario']); ?></h1>
 <div class="row my-md-4 shadow-lg">
@@ -57,28 +74,22 @@ switch ($error = 'SinError') {
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                    
-                    <?php
-                    if (count($adop_datos) >0){
-                        foreach ($adop_datos as $key => $value) : ?>
-                            <div class="accordion-body">
-                                <ul class="borde p-3">
-                                    <li class="mx-5 mt-2">Nombre del perrito :<strong><?= $value['perro_nombre']?></strong></li>
-                                    <li class="mx-5">Fecha de entrevista :<strong><?= $value['adop_fecha_entrevista']?></strong></li>
-                                    <li class="mx-5">Estado de la adopción :<strong><?= $value['adop_estado']?></strong></li>
-                                    <li class="mx-5 mb-2">fecha de adopción :<strong><?= $value['adop_fecha']?></strong></li>
-                                </ul>
-                            </div>
-                    <?php endforeach;
-                    }else{ ?>
-                        <div class="empty-msg">
-                            Este apartado está vacio
-                        </div>
-                        <?php
-                    }
-                    ?>
-                    
-
+                    <?php if (count($adop_datos) >0): ?>
+                    <?php foreach ($adop_datos as $key => $value) : ?>
+                    <div class="accordion-body">
+                        <ul class="borde p-3">
+                            <li class="mx-5 mt-2">Nombre del perrito :<strong><?= $value['perro_nombre']?></strong></li>
+                            <li class="mx-5">Fecha de entrevista :<strong><?= $value['adop_fecha_entrevista']?></strong></li>
+                            <li class="mx-5">Estado de la adopción :<strong><?= $value['adop_estado']?></strong></li>
+                            <li class="mx-5 mb-2">fecha de adopción :<strong><?= $value['adop_fecha']?></strong></li>
+                        </ul>
+                    </div>
+                    <?php endforeach;?>
+                    <?php else: ?>
+                    <div class="empty-msg">
+                        Este apartado está vacio
+                    </div>
+                    <?php endif; ?>    
                 </div>
             </div>
             <div class="accordion-item two">
@@ -88,26 +99,43 @@ switch ($error = 'SinError') {
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                    <?php 
-                    if (count($adop_datos) >0){
-                    foreach ($sus_datos as $key => $value) : ?>
+                    <?php if (count($sus_datos) >0):?>
+                    <?php foreach ($sus_datos as $key => $value) : ?>
                     <div class="accordion-body">
-                        <ul class="borde p-3">
-                            <li class="mx-5 mt-2">Tipo de suscripción : <strong><?= $value['s_tipo_nombre']?></strong></li>
-                            <li class="mx-5">Precio :<strong><?= $value['s_tipo_precio']?></strong></li>
-                            <li class="mx-5">Estado de la suscripción<strong><?= $value['suscrip_estado']?></strong></li>
-                            <li class="mx-5">Fecha de Inicio :<strong><?= $value['suscrip_fecha_inicio']?></strong></li>
-                            <li class="mx-5 mb-2">Fecha de caducidad : <strong><?= $value['suscrip_fecha_termino'];?></strong></li>
-                        </ul>
+                        <div class="row borde">
+                            <div class="col-md-6">
+                                <ul class="p-3">
+                                    <li class="mx-5 mt-2">Tipo de suscripción : <strong><?= $value['s_tipo_nombre']?></strong></li>
+                                    <li class="mx-5">Precio :<strong><?= $value['s_tipo_precio']?></strong></li>
+                                    <?php if($value['suscrip_estado'] == 'Cancelada'):?>
+                                    <li class="mx-5 ">Estado de la suscripción: <strong class="text-danger"><?= $value['suscrip_estado']?></strong></li>
+                                    <?php else: ?>
+                                    <li class="mx-5 ">Estado de la suscripción: <strong class="text-success"><?= $value['suscrip_estado']?></strong></li>
+                                    <?php endif; ?>
+                                    <li class="mx-5">Fecha de Inicio :<strong><?= $value['suscrip_fecha_inicio']?></strong></li>
+                                    <li class="mx-5 mb-2">Fecha de caducidad : <strong><?= $value['suscrip_fecha_termino'];?></strong></li>
+                                </ul>
+                            </div>
+                            <?php if($value['suscrip_estado'] == 'Cancelada'):?>
+                                <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                        <a href="index.php?modulo=apadrinar" class="btn text-white usr-cancel-sus btn-success p-3 mb-3" name="usr-cancel-sus">¡Suscribete denuevo!</a>
+                                </div>
+                            <?php else: ?>
+                                <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                    <form action="" method="POST">
+                                        <button class="btn usr-cancel-sus btn-warning p-3 mb-3" name="usr-cancel-sus" onclick="return checkDelete()">Cancelar suscripción</button>
+                                        <input type="hidden" name="cancel-sus" value="<?= $value['suscrip_id']; ?>">
+                                    </form>     
+                                </div>
+                            <?php endif; ?>
+                            </row>
                     </div>
-                    <?php endforeach; ?>
-                }else{ ?>
-                        <div class="empty-msg">
-                            Este apartado está vacio
-                        </div>
-                        <?php
-                    }
-                    ?>
+                    <?php endforeach;?>
+                    <?php else: ?>
+                    <div class="empty-msg m-3">
+                        No tienes suscripciones activas en este momento
+                    </div>
+                    <?php endif;?>
                     </div>
                 </div>
             </div>
