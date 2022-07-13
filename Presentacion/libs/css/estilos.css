@@ -951,7 +951,7 @@ span.h6{
   color: #E8630a;
   font-weight: bold;
 }
-ul.borde.p-3{
+.borde{
   border: #E8630a solid 2px;
   border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -961,6 +961,15 @@ ul.borde.p-3{
 }
 .empty-msg{
   color: #001E6C;
+}
+.usr-cancel-sus{
+  color: #001E6C;
+  font-size: 20px;
+  font-weight: bold;
+}
+.usr-cancel-sus:hover{
+  color: white;
+  background-color: red;
 }
 
 /* TIENDA */
