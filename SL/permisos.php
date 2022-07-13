@@ -66,7 +66,7 @@ class autorizacion
     public function roles_permitidos_btn($conexion)
     {
         try {
-            $sql = "CALL SP_select_btn_permisos()";
+            $sql = "CALL SP_select_permisos_area()";
             $consulta = $conexion->prepare($sql);
             $consulta->execute();
             $per = $consulta->fetch(PDO::FETCH_ASSOC);
