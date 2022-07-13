@@ -4,7 +4,7 @@ $permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], [1]);
 
 switch ($error = 'SinError') {
     case ($logueado == 'false'):
-        $error = 'Debe iniciar sesión para poder visualizar este pagina';
+        $error = 'Debe iniciar sesión para poder visualizar esta pagina';
         break;
     case ($permisoEsp == 'true'):
         break;

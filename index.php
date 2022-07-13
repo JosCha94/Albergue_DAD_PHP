@@ -8,14 +8,10 @@ $conexion = conexion::conectar();
 $log = new autorizacion();
 $logueado = $log->logueado($_SESSION['usuario']);
 $rolActual = $log->RolActual($_SESSION['usuario'][2]);
-$rolPermiBtn = $log->roles_permitidos_btn($conexion);
+$_SESSION['permisos'] = $log->roles_permitidos_btn($conexion);
 $info = json_decode($_SESSION['usuario'][1]);
 
-if ($_SESSION['usuario'][7] == '') {
-    $rolPermiBtn = $log->roles_permitidos_btn($conexion);
-    $_SESSION['usuario'][7] = $rolPermiBtn;
-}
-$PermisosVistas = $_SESSION['usuario'][7];
+$PermisosVistas = $_SESSION['permisos'];
 
 $compras = $log->permisosVistas($PermisosVistas['btn_compras']);
 $PermisosVistaPag = $log->permisosVistas($PermisosVistas['bloqueo_vistas']);
