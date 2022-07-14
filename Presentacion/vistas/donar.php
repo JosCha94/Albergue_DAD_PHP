@@ -36,12 +36,13 @@ if (isset($_POST['submit_btn_donacion'])) {
    $errores = $consulta->validar_donacion($don);  //llamamos al metodo validar_donacion de la clase consulta_donacion
    if (count($errores) == 0) {    //si no hay errores
       $estado = $consulta->insertarDonacion($conexion, $don);    //insertamos la donacion
-         if(!$estado){
-            echo "<meta http-equiv='refresh' content='3'>";
-            echo '<div class="alert alert-success">¡Su donación fue enviada exitosamente!.</div>';
-         }else{
+         if($estado == '2'){
             echo "<meta http-equiv='refresh' content='3'>";
             echo '<div class="alert alert-success">¡Hubo un error al momento de almacenar la informacion, intentelo de nuevo por favor!.</div>';
+            
+         }elseif($estado =='3'){
+            echo "<meta http-equiv='refresh' content='3'>";
+            echo '<div class="alert alert-success">¡Su donación fue  exitosa!.¡Muchas Gracias!</div>';
          }
    } else {
       echo '<div class="alert alert-danger">Hubo un error al momento de validar los datos ingresados</div>';

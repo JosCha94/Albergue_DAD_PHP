@@ -41,9 +41,11 @@ switch ($error = 'SinError') {
         $adop = new adopcion($uId, $rolId, $perro_id, $dueno, $razon);
         $consulta = new Consulta_adopcion();
         $estado = $consulta->insertarForm_adopcion($conexion, $adop);
-        if ($estado == 'mal') {
-        } else {
-            echo '<div class="alert alert-success">Solicitud de enviada con exito. Ahora, por favor espere un maximo de 48 horas para una respuesta.</div>';
+        if ($estado == '2') {
+            echo '<div class="alert alert-danger">Debido a un error, la solicitud no pudo ser enviada.</div>';
+        } elseif($estado == 3) {
+            echo '<div class="alert alert-success alert-dismissible">Solicitud de enviada con exito. Ahora, por favor espere un maximo de 48 horas para una respuesta.</div>';
+            echo '<meta http-equiv="refresh" content="3">';
         }
     }
 

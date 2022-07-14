@@ -4,7 +4,7 @@ class Consulta_donacion
     public function insertarDonacion($conexion,$don)
     {
         try {
-            $sql = "CALL SP_insertar_donacion(:nombres, :apellidos, :correo, :celular, :vaucher, :tipo_img, :monto)";
+            $sql = "CALL SP_insertar_donacion(:nombres, :apellidos, :correo, :celular, :vaucher, :tipo_img, :monto, @DATA)";
             $consulta = $conexion->prepare($sql);
             $consulta->bindValue(':nombres', $don->getDona_nombres());
             $consulta->bindValue(':apellidos', $don->getDona_apellidos());
@@ -14,9 +14,18 @@ class Consulta_donacion
             $consulta->bindValue(':tipo_img', $don->getDona_tipo_img());
             $consulta->bindValue(':monto', $don->getDona_monto());
             $consulta->execute();
+
+            $consulta ->closeCursor();
+            $consulta = $conexion->prepare("SELECT @DATA AS rnum");
+            $consulta->execute();
+            $resnum = $consulta->fetch(PDO::FETCH_ASSOC);
+            $resultado = $resnum['rnum'];
+
         } catch (PDOException $e) {
             echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            $resultado = 'falló';
         }
+        return $resultado;
     }
     
     public function validar_donacion($don)
