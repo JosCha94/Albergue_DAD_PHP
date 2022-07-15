@@ -27,8 +27,8 @@ switch ($error = 'SinError') {
 
     if (isset($_POST['usr-cancel-sus'])) {
         $sus_id = $_POST['cancel-sus'];
-        $consulta3 = new Consulta_usuario();
-        $cancel = $consulta3->cancelar_suscipcion($conexion, $sus_id);
+
+        $cancel = $consulta->cancelar_suscipcion($conexion, $sus_id);
         if(!$cancel)
         {
             echo '<div class="alert alert-danger">¡Ocurrio un error, la solicitud no pudo ser rechazada!.</div>';
@@ -38,9 +38,29 @@ switch ($error = 'SinError') {
         }
     }
 
+    if (isset($_POST['btn-delCuenta'])){
+        $userId = $id;
 
+        $elimina = $consulta->eliminar_cuenta($conexion, $userId);
+        if($elimina == 1){
+            echo '<div class="alert alert-danger alert-dismissible fade show " role="alert">
+            <strong>Error!</strong> No se pudo cerrar su cuenta ahora, intentelo mas tarde
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+        }elseif($elimina == 2){
+            echo '<div class="alert alert-success alert-dismissible fade show " role="alert">
+             Tienes una adopcion en proceso y no puedes cerrar tu cuenta hasta que no finalice.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+        }elseif($elimina == 3){
+            session_destroy();
+            echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=inicio&cerrarcuenta=Su cuenta se cerro exitosamente" />';
+           
 
+        }
+    }
 ?>
+
 <h1 class="text-center text-uppercase my-4">HOLA <?php echo ($usuario['usuario']); ?></h1>
 <div class="row my-md-4 shadow-lg">
     <div class="col-12 col-md-4  p-3 position-relative user-data">
@@ -56,6 +76,11 @@ switch ($error = 'SinError') {
             <div class="my-3">
                 <a class="btn btn-adopt w-100 my-4 my-md-2 mx-auto" href="index.php?modulo=update-user&formTipo=dataUser" id="btn-changedata">Cambiar datos</a>
                 <a class="btn btn-adopt w-100 my-2 mx-auto" href="index.php?modulo=update-user&formTipo=passUser" id="btn-changedata">Cambiar contraseña</a>
+                <form method="post" action="">
+                    <!-- <input type="hidden" name="cancelU-id" value="<?php echo ($usuario['usr_id']); ?>"> -->
+                    <button class="btn btn-danger w-100 my-2 mx-auto" onclick="return confirm('¿Quieres cerrar tu cuenta de forma definitiva?')" name="btn-delCuenta">Cerrar cuenta</a>
+                </form>
+                
             </div>
         </div>
         <div class="<?php echo ($section != '') ? 'position-absolute bottom-0' : '' ?>">
