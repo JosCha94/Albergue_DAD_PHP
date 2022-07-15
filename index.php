@@ -13,7 +13,7 @@ $info = json_decode($_SESSION['usuario'][1]);
 
 $PermisosVistas = $_SESSION['permisos'];
 
-$compras = $log->permisosVistas($PermisosVistas['btn_compras']);
+$compras = $log->permisosVistas($PermisosVistas['area_compras']);
 $PermisosVistaPag = $log->permisosVistas($PermisosVistas['bloqueo_vistas']);
 
 
