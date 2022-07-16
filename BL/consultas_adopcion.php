@@ -10,7 +10,13 @@ class Consulta_adopcion{
             $perro = $consulta->fetch(PDO::FETCH_ASSOC);
             return $perro;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong><br> Debido a un error no se ha podido mostrar los perritos.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php     
         }
     }
     //Muestra todas las fotos de cada uno de los perros
@@ -22,7 +28,13 @@ class Consulta_adopcion{
             $img_perro = $consulta->fetchAll(PDO::FETCH_ASSOC);
             return $img_perro;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong><br> Hubo un error y no se ha podido mostrar las fotos de los perritos
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php     
         }
     }
     public function buscarImagen_perro($conexion, $id) {
@@ -34,7 +46,13 @@ class Consulta_adopcion{
             $img_perro = $consulta->fetchall(PDO::FETCH_ASSOC);
             return $img_perro;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong><br> Un error ha evitado que se puedan mostrar las imagenes de los perritos.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php     
         }
 
     }
@@ -46,8 +64,16 @@ class Consulta_adopcion{
             $img_perro = $consulta->fetch(PDO::FETCH_ASSOC);
             return $img_perro;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong><br> No se ha podido encontrar las imagenes que estaba buscando.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php     
+
         }
+
     }
 
     // public function insertarForm_adopcion($conexion, $adop)
@@ -84,7 +110,14 @@ class Consulta_adopcion{
             $resultado = $resnum['rnum'];
             
         }catch (PDOException $e){
-            echo "Ocurrio un error en la base de atos: " . $e -> getMessage();
+            // echo "Ocurrio un error en la base de atos: " . $e -> getMessage();
+
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong><br> Ocurrió algo y no se ha podido procesar la informacion de la solicitud.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php     
             $resultado = "Falló";
         }
         return $resultado;
@@ -98,7 +131,13 @@ class Consulta_adopcion{
             $usr_adop = $consulta->fetch(PDO::FETCH_ASSOC);
             return $usr_adop;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong><br> No se ha podido mostrar la información solicitada
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php     
         }
     }
 

@@ -12,7 +12,13 @@ class Consulta_apadrinar
             $sus = $consulta->fetchAll(PDO::FETCH_ASSOC);
             return $sus;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong><br> No se ha podido mostrar la información de las suscripciones
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php     
         }
     }
 
@@ -24,7 +30,13 @@ class Consulta_apadrinar
             $susTipo = $consulta->fetchall(PDO::FETCH_ASSOC);
             return $susTipo;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong><br> No se ha podido mostrar la información de las solicitudes mostradas
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php     
         }
     }
 
@@ -36,7 +48,13 @@ class Consulta_apadrinar
             $susTipoid = $consulta->fetch(PDO::FETCH_ASSOC);
             return $susTipoid;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong><br> No se ha podido mostrar la información solicitada.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php     
         }
     }
 
@@ -48,7 +66,13 @@ class Consulta_apadrinar
             $usr_adop = $consulta->fetch(PDO::FETCH_ASSOC);
             return $usr_adop;
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong><br> No se ha podido mostrar la informacion solicitada.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php     
         }
     }
 
@@ -75,7 +99,14 @@ class Consulta_apadrinar
             return $id['id'];
         }catch (PDOException $e){
 
-            echo "Ocurrio un error en la base de datos: " . $e -> getMessage();
+            // echo "Ocurrio un error en la base de datos: " . $e -> getMessage();
+
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                <strong>Error!</strong><br> La consulta ha fallado y no se ha podido agregar la suscripción.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php     
         }
     } 
 

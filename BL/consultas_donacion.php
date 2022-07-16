@@ -22,7 +22,14 @@ class Consulta_donacion
             $resultado = $resnum['rnum'];
 
         } catch (PDOException $e) {
-            echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            // echo "Ocurrió un ERROR con la base de datos: " .    $e->getMessage();
+            ?>
+                <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                    <strong>Error!</strong><br> Debido a un error no se ha podido procesar la informacion de la donación, intentelo de nuevo por favor.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php     
+
             $resultado = 'falló';
         }
         return $resultado;

@@ -88,6 +88,33 @@ switch ($error = 'SinError') {
                         <button class="btn btn-danger w-100 my-2 mx-auto" onclick="return confirm('¿Quieres cerrar tu cuenta de forma definitiva? , todas tus suscripciones se cancelaran aunq no hayan finalizado')" name="btn-delCuenta">Cerrar cuenta</a>
                     </form>
 
+        </div>
+    </div>
+    <div class="col-12 col-md-8 p-3 user-adopt">
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item one">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        Mis Perritos adoptados
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                    <?php if (count($adop_datos) >0): ?>
+                    <?php foreach ($adop_datos as $key => $value) : ?>
+                    <div class="accordion-body">
+                        <ul class="borde p-3">
+                            <li class="mx-5 mt-2">Nombre del perrito :<strong><?= $value['perro_nombre']?></strong></li>
+                            <li class="mx-5">Fecha de entrevista :<strong><?= $value['adop_fecha_entrevista']?></strong></li>
+                            <li class="mx-5">Estado de la adopción :<strong><?php if($value['adop_estado'] == 'Rechazada'){ echo 'Lo sentimos, su solicitud fue rechazada o el perrito fue adoptado por otra persona';}else{echo $value['adop_estado'];} ?></strong></li>
+                            <li class="mx-5 mb-2">fecha de adopción :<strong><?= $value['adop_fecha']?></strong></li>
+                        </ul>
+                    </div>
+                    <?php endforeach;?>
+                    <?php elseif(count($adop_datos) == 0): ?>
+                    <div class="empty-msg">
+                        Este apartado está vacio
+                    </div>
+                    <?php endif; ?>    
                 </div>
             </div>
             <div class="<?php echo ($section != '') ? 'position-absolute bottom-0' : '' ?>">
