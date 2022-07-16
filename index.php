@@ -13,7 +13,7 @@ $info = json_decode($_SESSION['usuario'][1]);
 
 $PermisosVistas = $_SESSION['permisos'];
 
-$compras = $log->permisosVistas($PermisosVistas['btn_compras']);
+$compras = $log->permisosVistas($PermisosVistas['area_compras']);
 $PermisosVistaPag = $log->permisosVistas($PermisosVistas['bloqueo_vistas']);
 
 
@@ -128,6 +128,7 @@ switch ($error = 'SinError') {
                     <?php
                     } else {
                     ?>
+                    <div class="d-flex justify-content-between">
                         <div class="dropdown mx-4">
                             <a class="dropdown-toggle text-uppercase text-light text-decoration-none" type="button" id="dropdownMenuUser" data-bs-toggle="dropdown" aria-expanded="false">
                             <?php echo $info->nick; ?>
@@ -141,7 +142,8 @@ switch ($error = 'SinError') {
                                 </li>
                             </ul>
                         </div>
-                        <a href="index.php?modulo=carrito" class="cart mx-3 text-light fs-5"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <a href="index.php?modulo=carrito" class="cart mx-3 text-light fs-5 me-3"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
                     <?php
                     }
                     ?>
