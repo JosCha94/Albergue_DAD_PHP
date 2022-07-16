@@ -80,12 +80,12 @@ switch ($error = 'SinError') {
                         <ul class="borde p-3">
                             <li class="mx-5 mt-2">Nombre del perrito :<strong><?= $value['perro_nombre']?></strong></li>
                             <li class="mx-5">Fecha de entrevista :<strong><?= $value['adop_fecha_entrevista']?></strong></li>
-                            <li class="mx-5">Estado de la adopción :<strong><?= $value['adop_estado']?></strong></li>
+                            <li class="mx-5">Estado de la adopción :<strong><?php if($value['adop_estado'] == 'Rechazada'){ echo 'Lo sentimos, su solicitud fue rechazada o el perrito fue adoptado por otra persona';}else{echo $value['adop_estado'];} ?></strong></li>
                             <li class="mx-5 mb-2">fecha de adopción :<strong><?= $value['adop_fecha']?></strong></li>
                         </ul>
                     </div>
                     <?php endforeach;?>
-                    <?php else: ?>
+                    <?php elseif(count($adop_datos) == 0): ?>
                     <div class="empty-msg">
                         Este apartado está vacio
                     </div>
