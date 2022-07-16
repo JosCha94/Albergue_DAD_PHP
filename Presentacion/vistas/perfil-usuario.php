@@ -51,12 +51,17 @@ switch ($error = 'SinError') {
              Tienes una adopcion vigente y no puedes cerrar tu cuenta hasta que no finalice.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>';
-        } elseif ($elimina == 4) {
+        } elseif ($elimina == 3) {
             echo '<div class="alert alert-success alert-dismissible fade show " role="alert">
-         Tienes una solicitud de adopcion en proceso y no puedes cerrar tu cuenta hasta que concluya.
+         Tienes una solicitud de adopcion en proceso, podras cerrar tu cuenta cuando concluya.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>';
         } elseif ($elimina == 4) {
+            echo '<div class="alert alert-success alert-dismissible fade show " role="alert">
+     Tienes pedidos sin recoger, recogelos para poder cerrar tu cuenta
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+        } elseif ($elimina == 5) {
             session_destroy();
             echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=inicio&cerrarcuenta=Su cuenta se cerro exitosamente" />';
         }
