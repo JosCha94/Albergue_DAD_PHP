@@ -8,8 +8,12 @@ $conexion = conexion::conectar();
 $log = new autorizacion();
 $logueado = $log->logueado($_SESSION['usuario']);
 $rolActual = $log->RolActual($_SESSION['usuario'][2]);
-$_SESSION['permisos'] = $log->roles_permitidos_btn($conexion);
+
 $info = json_decode($_SESSION['usuario'][1]);
+
+if($_SESSION['permisos'] == null || $_SESSION['permisos'] == ''):
+    $_SESSION['permisos'] = $log->roles_permitidos_btn($conexion);
+endif;
 
 $PermisosVistas = $_SESSION['permisos'];
 
@@ -133,7 +137,7 @@ switch ($error = 'SinError') {
                             <a class="dropdown-toggle text-uppercase text-light text-decoration-none" type="button" id="dropdownMenuUser" data-bs-toggle="dropdown" aria-expanded="false">
                             <?php echo $info->nick; ?>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuUser">
+                            <ul class="dropdown-menu ddropdown-menu-lg-end" aria-labelledby="dropdownMenuUser">
                                 <li class="mb-2">
                                     <a href="index.php?modulo=perfil-usuario" class="text-decoration-none text-dark" title="Perfil usuario">Mi perfil</a>
                                 </li>
