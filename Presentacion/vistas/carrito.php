@@ -6,7 +6,7 @@ switch ($error = 'SinError') {
     case ($logueado == 'false'):
         $error = 'Debe iniciar sesión para poder visualizar este pagina';
         break;
-    case ($rolActual == ' '):
+    case ($rolActual == ''):
         $error = 'No tiene un rol activado';
         break;
 }

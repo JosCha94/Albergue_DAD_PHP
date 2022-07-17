@@ -1,4 +1,14 @@
 <?php
+switch ($error = 'SinError') {
+    case ($logueado == 'false'):
+        $error = 'Debe iniciar sesión para poder visualizar este pagina';
+        break;
+    case ($rolActual == ''):
+        $error = 'No tiene ningun rol activo';
+        break;
+}
+ if ($error == 'SinError') : ?>
+<?php
 require_once('BL/consultas_compras.php');
 $consulta = new Consulta_compra();
 $idPedido = $_POST['idPedido'];
@@ -76,4 +86,11 @@ $infoCli = json_decode($pedido['datos_cliente']);
         </div>
     </div>
 </div>
+<?php endif; ?>
+<?php else : ?>
+
+<div class="alert alert-danger" role="alert">
+    <?php echo $error; ?>
+</div>
+
 <?php endif; ?>

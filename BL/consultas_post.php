@@ -29,9 +29,8 @@ class Consulta_post
     public function insetar_post($conexion, $post, $usu, $coment)
     {
         try {
-            $sql = "CALL SP_insertar_comentario_post($post, :usuario, :comentario, @DATA)";
+            $sql = "CALL SP_insertar_comentario_post($post, $usu, :comentario, @DATA)";
             $consulta = $conexion->prepare($sql);
-            $consulta->bindValue(':usuario', $usu);
             $consulta->bindValue(':comentario', $coment);
             $consulta->execute();
             $consulta->closeCursor();

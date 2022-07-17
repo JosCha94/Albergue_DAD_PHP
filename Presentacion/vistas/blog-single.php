@@ -6,9 +6,7 @@ switch ($error = 'SinError') {
     case ($logueado == 'false'):
         $error = 'Debe iniciar sesión para poder visualizar esta pagina';
         break;
-    case ($permisoEsp == 'true'):
-        break;
-    case ($rolActual == ' '):
+    case ($rolActual == ''):
         $error = 'No tiene ningun rol activo';
         break;
 }
@@ -30,7 +28,7 @@ $comentarios = $consulta->listarComentariosPost($conexion, $idPost); // obtenemo
 
 if (isset($_POST['registro_comentario'])) {
    $PostID = $idPost;
-   $user = $info->user_name;
+   $user = $_SESSION['usuario'][0];
    $coment = $_POST['post_comentario'];
    $estadop = $consulta->insetar_post($conexion, $PostID, $user, $coment);
 
@@ -89,7 +87,7 @@ if (isset($_POST['registro_comentario'])) {
                         <li class="list-group-item">
                            <div class="media">
                               <div class="media-body">
-                                 <h5 class="mt-0 usr-name" ><?php echo $value['user_nombre'] ?> dice:</h5>
+                                 <h5 class="mt-0 usr-name" ><?php echo $value['nombre'] ?> dice:</h5>
                                  <span class="comentario"><?php echo $value['comentario'] ?></span>
                               </div>
                            </div>
