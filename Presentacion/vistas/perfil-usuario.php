@@ -127,9 +127,9 @@ switch ($error = 'SinError') {
                             </div>
                         <?php endif; ?>
                     </div>
-                </div>
+                <!-- </div>
 
-                <div class="col-12 col-md-8 p-3 user-adopt">
+                <div class="col-12 col-md-8 p-3 user-adopt"> -->
                     <div class="accordion" id="accordionPanelsStayOpenExample">
                         <div class="accordion-item one">
                             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
