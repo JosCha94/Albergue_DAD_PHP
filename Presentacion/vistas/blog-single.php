@@ -50,6 +50,12 @@ if (isset($_POST['registro_comentario'])) {
 
 <!-- ==== Pagina Contenido de post==== -->
 <div class="page">
+<div class="jumbotron-blog">
+            <!-- Heading -->
+<div class="jumbo-heading">
+      <h1>BLOG</h1>
+</div>
+</div>
    <!-- .container -->
    <div class="container">
       <!-- .row -->
@@ -94,7 +100,7 @@ if (isset($_POST['registro_comentario'])) {
             </div>
             <!-- Formulario de comentarios -->
             <div class="card my-4 mt-5 card-coments">
-               <h5 class="card-header coment">Dejanos un Comentario:</h5>
+               <h5 class="card-header coment">Deja tu Comentario:</h5>
                <div class="card-body">
                   <form action=" " method="post">
                      <div class="form-group mb-3 ">

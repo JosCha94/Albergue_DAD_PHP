@@ -20,27 +20,7 @@ if (in_array(4,$PermisosVistaPag)):
          
 <div id="blog-home" class="page-blog">
    <div class="container "> 
-      <div class="row d-flex justify-content-end">
-         <div id="sidebar" class="h-100 col-lg-4 mb-5 shadow-lg card">
-               <!--widget-area -->
-               <!--/widget-area -->
-            <div class="widget-area p-1">
-               <h3 class="sidebar-header mb-5">Síguenos</h3>
-               <div class="contact-icon-info">
-                  <!--  Links  redes sociales-->
-                  <ul class="social-list text-center mt-5 list-inline">
-                     <li class="list-inline-item"><a title="Facebook" href="#"><i class="blog-i mx-4 fab fa-facebook-f"></i></a></li>
-                     <li class="list-inline-item"><a title="Twitter" href="#"><i class="blog-i mx-4 fab fa-twitter"></i></a></li>
-                     <li class="list-inline-item"><a  title="Instagram" href="#"><i class="blog-i mx-4 fab fa-instagram"></i></a></li>                         
-                  </ul>
-                  <!-- / Links  redes sociales-->
-               </div>
-               <!--/contact-icon-info -->
-            </div>
-            <!--/widget-area -->
-         </div>
-            <!--/sidebar -->      
-      </div>  
+ 
       <div class="row">
          <!-- Columna de posts-->
          <?php foreach ($posts as $key => $value) : ?>     <!-- Recorremos todos los posts -->                        
