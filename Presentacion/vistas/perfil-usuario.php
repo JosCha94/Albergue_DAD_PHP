@@ -89,6 +89,13 @@ switch ($error = 'SinError') {
                     </form>
 
         </div>
+        <div class="<?php echo ($section != '') ? 'position-absolute bottom-0' : '' ?>">
+                <h6 class="user-date">Fecha de creacion: <span class="h6"><?php echo ($usuario['usr_fecha_creacion']); ?></span></h6>
+                <br>
+                <h6 class="user-date">Ultima actualización: <span class="h6"><?php echo ($usuario['usr_fecha_modificacion']); ?></span></h6>
+
+            </div>
+        </div>
     </div>
     <div class="col-12 col-md-8 p-3 user-adopt">
         <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -117,13 +124,7 @@ switch ($error = 'SinError') {
                     <?php endif; ?>    
                 </div>
             </div>
-            <div class="<?php echo ($section != '') ? 'position-absolute bottom-0' : '' ?>">
-                <h6 class="user-date">Fecha de creacion: <span class="h6"><?php echo ($usuario['usr_fecha_creacion']); ?></span></h6>
-                <br>
-                <h6 class="user-date">Ultima actualización: <span class="h6"><?php echo ($usuario['usr_fecha_modificacion']); ?></span></h6>
 
-            </div>
-        </div>
         <div class="col-12 col-md-8 p-3 user-adopt">
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item one">
