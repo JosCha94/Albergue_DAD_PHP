@@ -1,19 +1,13 @@
 <?php
-$permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], [1]);
-$permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], [1]);
-
 switch ($error = 'SinError') {
     case ($logueado == 'false'):
         $error = 'Debe iniciar sesión para poder visualizar este pagina';
         break;
-    case ($permisoEsp == 'true'):
-        break;
-    case ($rolActual == ' '):
+    case ($rolActual == ''):
         $error = 'No tiene ningun rol activo';
         break;
 }
-?>
-<?php if ($error == 'SinError') : ?>
+ if ($error == 'SinError') : ?>
 <?php
 require_once('ENTIDADES/suscripciones.php');
 require_once('DAL/conexion.php');

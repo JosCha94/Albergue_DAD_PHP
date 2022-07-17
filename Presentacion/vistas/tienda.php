@@ -131,7 +131,7 @@
                         </form>
                         <p class="caption-gallery" data-aos="zoom-in"><?= $value['product_nombre']; ?></p>
                         <p class="h5 text-dark" data-aos="zoom-in">S/ <?= $value['product_precio']; ?></p>
-                        <?php if ($logueado == 'false') {
+                        <?php if ($logueado == 'false' || $rolActual == '') {
                         } else { ?>
                            <form action="" method="post" id="form_producto" name="form_producto">
                               <div class="row">

@@ -3,12 +3,8 @@ switch ($error = 'SinError') {
     case ($logueado == 'false'):
         $error = 'Debe iniciar sesión para poder visualizar este pagina';
         break;
-    case ($rolActual == ' '):
-        $error = 'No tiene un rol activado';
-        break;
 }
-?>
-<?php if ($error == 'SinError') : ?>
+if ($error == 'SinError') : ?>
     <?php
     require_once('BL/consultas_usuario.php');
     require_once('BL/consultas_compras.php');
@@ -63,7 +59,7 @@ switch ($error = 'SinError') {
     </div>';
         } elseif ($elimina == 5) {
             session_destroy();
-            echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=inicio&cerrarcuenta=Su cuenta se cerro exitosamente" />';
+            echo '<meta http-equiv="refresh" content="0; url=index.php?modulo=inicio&mensaje=Su cuenta se cerro exitosamente" />';
         }
     }
     ?>
@@ -84,7 +80,7 @@ switch ($error = 'SinError') {
                     <a class="btn btn-adopt w-100 my-4 my-md-2 mx-auto" href="index.php?modulo=update-user&formTipo=dataUser" id="btn-changedata">Cambiar datos</a>
                     <a class="btn btn-adopt w-100 my-2 mx-auto" href="index.php?modulo=update-user&formTipo=passUser" id="btn-changedata">Cambiar contraseña</a>
                     <form method="post" action="">
-                        <!-- <input type="hidden" name="cancelU-id" value="<?php echo ($usuario['usr_id']); ?>"> -->
+
                         <button class="btn btn-danger w-100 my-2 mx-auto" onclick="return confirm('¿Quieres cerrar tu cuenta de forma definitiva? , todas tus suscripciones se cancelaran aunq no hayan finalizado')" name="btn-delCuenta">Cerrar cuenta</a>
                     </form>
 

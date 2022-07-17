@@ -3,12 +3,8 @@ switch ($error = 'SinError') {
     case ($logueado == 'false'):
         $error = 'Debe iniciar sesión para poder visualizar este pagina';
         break;
-    case ($rolActual == ' '):
-        $error = 'No tiene activado el rol de Cliente';
-        break;
 }
-?>
-<?php if ($error == 'SinError') : ?>
+if ($error == 'SinError') : ?>
     <?php
     require_once('BL/consultas_usuario.php');
     require_once 'ENTIDADES/usuario.php';
