@@ -1,18 +1,15 @@
 <?php
-$rolPermitido= $log->activeRol($_SESSION['usuario'][2], [2,3]);
-$permisosRol = $log->activeRolPermi($_SESSION['usuario'][3], [6]);
-$permisoEsp = $log->permisosEspeciales($_SESSION['usuario'][4], [6]);
-
+$rolPermitido= $log->RolPermitido($_SESSION['usuario'][2], $compras);
 
 switch ($error = 'SinError') {
     case ($logueado == 'false'):
         $error = 'Debe iniciar sesión para poder visualizar este pagina';
         break;
-    case ($permisoEsp == 'true'):
-        break;
     case ($rolPermitido != 'true'):
         $error = 'Su rol actual no le otorga permisos para acceder a esta página';
         break;
+
+    
 }
 ?>
 <?php if ($error == 'SinError') : ?>
@@ -21,11 +18,10 @@ switch ($error = 'SinError') {
     $consulta = new Consulta_compra();
 
     $pedido = $_GET['pedido'] ?? '';
+    $pedido = (base64_decode(urldecode($pedido)))*721/48954;
     $detalle = $consulta->detalleCompra($conexion, $pedido);
 
     ?>
-
-
     <div class="mt-5">
         <h2 class="text-center my-2">Detalle de compra</h2>
         <div class="card-group">

@@ -74,7 +74,7 @@ if (isset($_POST['cambiarEstadoPedido'])) {
                     <?php foreach ($ventas as $key => $value) : ?>
                         <tr class="text-center">
                             <td><?php echo ($value['pedi_id']); ?>
-                            <br><a href="index.php?modulo=detalle_compra&pedido=<?php echo ($value['pedi_id']); ?>">Detalle</a> </td>
+                            <br><a href="index.php?modulo=detalle_compra&pedido=<?= urlencode(base64_encode(($value['pedi_id']*48954)/721)) ;?>>">Detalle</a> </td>
                             <td><?php echo ($value['tipo_comprobante']); ?> </td>
                             <td><?php echo ($value['datos_cliente']); ?></td>
                             <td><?php echo ($value['serie_comprobante']); ?> </td>

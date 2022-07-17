@@ -23,7 +23,7 @@ class Consulta_compra
             </div>
 
             <?php
-        }        
+        }
     }
 
     public function select_pedido($conexion, $pid)
@@ -44,7 +44,7 @@ class Consulta_compra
             </div>
 
             <?php
-        }        
+        }
     }
 
     public function select_detallePedido_id($conexion, $pid)
@@ -65,7 +65,7 @@ class Consulta_compra
             </div>
 
             <?php
-        }        
+        }
     }
 
     // ----------------------------------------
