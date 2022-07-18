@@ -99,6 +99,10 @@ if (isset($_POST['registro_comentario'])) {
             <!-- Formulario de comentarios -->
             <div class="card my-4 mt-5 card-coments">
                <h5 class="card-header coment">Deja tu Comentario:</h5>
+               <div>
+                  <p class="lead"> No toleramos comentarios racistas, sexistas o abusivos
+                     Sé respetuoso, genera una conversación positiva y sin spam.</p>
+               </div>
                <div class="card-body">
                   <form action=" " method="post">
                      <div class="form-group mb-3 ">
