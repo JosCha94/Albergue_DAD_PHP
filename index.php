@@ -137,12 +137,12 @@ switch ($error = 'SinError') {
                             <a class="dropdown-toggle text-uppercase text-light text-decoration-none" type="button" id="dropdownMenuUser" data-bs-toggle="dropdown" aria-expanded="false">
                             <?php echo $info->nick; ?>
                             </a>
-                            <ul class="dropdown-menu ddropdown-menu-lg-end" aria-labelledby="dropdownMenuUser">
+                            <ul class="dropdown-menu dropdown-menu-lg-end p-3 shadow-lg" aria-labelledby="dropdownMenuUser">
                                 <li class="mb-2">
-                                    <a href="index.php?modulo=perfil-usuario" class="text-decoration-none text-dark" title="Perfil usuario">Mi perfil</a>
+                                    <a href="index.php?modulo=perfil-usuario" class="text-decoration-none " title="Perfil usuario">Mi perfil</a>
                                 </li>
                                 <li>
-                                    <a href="BL/cerrar_sesion.php?modulo=&sesion=cerrar" class="text-decoration-none text-dark" title="Cerrar Sessión">Cerrar Sesión</a>
+                                    <a href="BL/cerrar_sesion.php?modulo=&sesion=cerrar" class="text-decoration-none" title="Cerrar Sessión">Cerrar Sesión</a>
                                 </li>
                             </ul>
                         </div>

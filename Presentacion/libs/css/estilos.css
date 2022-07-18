@@ -80,7 +80,9 @@ body {
 }
 
 #nav_principal .navbar .collapse .nav-link {
-  color: white
+  color: white;
+  font-size: 20px;
+  padding: 20px;
 }
 
 #nav_principal .navbar .collapse .nav-link:hover {
@@ -1015,6 +1017,19 @@ h2.text-center.my-5{
 tr.cart{
   color: #001E6C;
   font-size: 20px;
+}
+/* dropdown perfil usuario */
+
+ul.dropdown-menu{
+  background-color: #E8630A;
+  font-size: 20px;
+}
+
+ul.dropdown-menu a{
+  color: white;
+}
+ul.dropdown-menu a:hover{
+  color: #001E6C;
 }
 
 
