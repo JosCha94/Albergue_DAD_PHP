@@ -61,7 +61,7 @@ class Consulta_donacion
             $errores['correo'] = 'El correo es obligatorio';
         }elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
             $errores['correo'] = 'El correo no es válido';
-        }
+        } 
 
         if (empty($celular)) {
             $errores['celular'] = 'El celular es obligatorio';
@@ -71,13 +71,13 @@ class Consulta_donacion
             $errores['celular'] = 'El celular debe ser numérico';
         } 
 
+       
+
         if (empty($vaucher)) {
             $errores['vaucher'] = 'El vaucher es obligatorio';
         } 
 
-        if (empty($tipo_img)) {
-            $errores['tipo_img'] = 'El tipo de imagen es obligatorio';
-        }  elseif ($tipo_img != 'jpg' && $tipo_img != 'png' && $tipo_img != 'jpeg') {
+        if ($tipo_img != 'jpg' && $tipo_img != 'png' && $tipo_img != 'jpeg') {
             $errores['tipo_img'] = 'El tipo de imagen debe ser jpg, jpeg o png';
         }
 

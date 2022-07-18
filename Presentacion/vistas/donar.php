@@ -109,27 +109,27 @@ if (isset($_POST['submit_btn_donacion'])) {
                      <div class="row">
                         <div class="col-md-12">
                            <label>Nombres</label>
-                           <input type="text" name="nombres" class="form-control input-field" minlength="4" maxlength="50" value="<?php echo(isset($nombres))?  $nombres :  $usuario['usr_nombre'] ?>" placeholder="Ingresa tu nombre"required> 
+                           <input type="text" name="nombres" class="form-control input-field" minlength="3" maxlength="50" value="<?php echo(isset($nombres))?  $nombres :  $usuario['nombres'] ?>" placeholder="Ingresa tu nombre"required> 
                         </div>
                         <div class="col-md-12">
                            <label>Apellidos</label>
-                           <input type="text" name="apellidos" class="form-control input-field" minlength="4" maxlength="50" value="<?php echo(isset($apellidos))? $apellidos : $usuario['usr_apellido_paterno'] . ' ' . $usuario['usr_apellido_materno'] ?>" placeholder=" Ingresa tu apellido" required> 
+                           <input type="text" name="apellidos" class="form-control input-field" minlength="3" maxlength="50" value="<?php echo(isset($apellidos))? $apellidos : $usuario['apellidos'] ?>" placeholder="Ingresa tu apellido" required> 
                         </div>
                         <div class="col-md-12">
                            <label>Correo Electrónico</label>
-                           <input type="email" name="correo" class="form-control input-field" minlength="4" maxlength="50" value="<?php echo(isset($correo))? $correo : $usuario['usr_email'] ?>"placeholder="Ingresa tu correo electrónico" required> 
+                           <input type="email" name="correo" class="form-control input-field" minlength="4" maxlength="50" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" value="<?php echo(isset($correo))? $correo : $usuario['correo'] ?>"placeholder="Ingresa tu correo electrónico" required> 
                         </div>
                         <div class="col-md-12">
                            <label>Celular</label>
-                           <input type="text" name="celular" class="form-control input-field" maxlength="9"  value="<?php echo(isset($celular))? $celular : $usuario['usr_celular'] ?>"placeholder="Ingresa tu número de celular" required> 
+                           <input type="text" name="celular" class="form-control input-field" minlength="9" maxlength="9"  value="<?php echo(isset($celular))? $celular : $usuario['celular'] ?>"placeholder="Ingresa tu número de celular" required> 
                         </div>
                         <div class="col-md-12t">
                            <label>Monto donado</label>
-                           <input type="number" step="0,01" name="monto" class="form-control input-field" placeholder="Monto donado en soles"required> 
+                           <input type="number" step="0,01" name="monto" class="form-control input-field" min="5"  placeholder="Monto donado en soles"required> 
                         </div>
                         <div class="col-md-12">
                            <label>Sube tu váucher</label>
-                           <input type="file" name="vaucher" class="form-control input-field" > 
+                           <input type="file" name="vaucher" class="form-control input-field"  required> 
                         </div>                     
                      </div>
                      <!-- button -->
