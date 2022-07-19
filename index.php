@@ -11,11 +11,11 @@ $rolActual = $log->RolActual($_SESSION['usuario'][2]);
 
 $info = json_decode($_SESSION['usuario'][1]);
 
-if($_SESSION['usuario'] == null || $_SESSION['usuario'] == ''):
-    if($_SESSION['permisos'] == null || $_SESSION['permisos'] == ''):
-        $_SESSION['permisos'] = $log->roles_permitidos_btn($conexion);
-    endif;
+
+if($_SESSION['permisos'] == null || $_SESSION['permisos'] == ''):
+    $_SESSION['permisos'] = $log->roles_permitidos_btn($conexion);
 endif;
+
 
 $PermisosVistas = $_SESSION['permisos'];
 
